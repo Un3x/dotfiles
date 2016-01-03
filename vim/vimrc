@@ -1,1 +1,70 @@
-moiqjzromgijjmoijqzrgomij
+
+" Colorscheme
+colorscheme solarized
+set background=dark
+syntax enable
+
+" enable mouse
+mouse=a 
+
+" Spaces & tabs
+set tabstop=4
+set softtabstop=4
+set expandtab
+
+" Display Interface
+set number 			" show line number
+set showcmd 			" show command bar in the bottom
+
+" Catching filetype
+filetype indent on		" each filetype uses the filetype.vim in the indent folder
+
+" Wildmenu
+set wildmenu
+
+" Lazy redraw to gain perf
+set lazyredraw
+
+" highlighting
+set showmatch
+set incsearch
+set hlsearch
+
+" folding
+set foldenable
+set foldlevelstart=10
+set foldnestmax=10
+set foldmethod=indent
+
+" moving
+nnoremap j gj
+nnoremap k gk
+
+" leader
+let mapleader=","
+
+" open ag.vim
+nnoremap <leader>a :Ag
+
+" open Nerdtree
+nnoremap <tab> : NERDTreeToggle<CR>
+
+" open CTRLP 
+nnoremap <c-p> : CtrlP<CR>
+
+" Pathogen
+execute pathogen#infect()
+call pathogen#helptags() " generate helptags for everything in ‘runtimepath’
+filetype plugin indent on
+
+" Syntastic configuration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
