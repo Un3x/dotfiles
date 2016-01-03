@@ -30,7 +30,6 @@ vim: ~/.vim ~/.vimrc
 ~/.vim:
 	@echo 'Deploy vim config'
 	ln -s $(CURDIR)/vim/vim $@
-	git submodule update --init --recursive
 
 remove-vim:
 	@echo 'Remove Vim config'

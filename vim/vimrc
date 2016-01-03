@@ -57,4 +57,7 @@ execute pathogen#infect()
 call pathogen#helptags() " generate helptags for everything in ‘runtimepath’
 filetype plugin indent on
 
+" configuration for airline
+set laststatus=3
+
 
