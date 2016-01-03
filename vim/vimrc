@@ -5,7 +5,7 @@ set background=dark
 syntax enable
 
 " enable mouse
-mouse=a 
+set mouse=a 
 
 " Spaces & tabs
 set tabstop=4
@@ -56,15 +56,5 @@ nnoremap <c-p> : CtrlP<CR>
 execute pathogen#infect()
 call pathogen#helptags() " generate helptags for everything in ‘runtimepath’
 filetype plugin indent on
-
-" Syntastic configuration
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 
