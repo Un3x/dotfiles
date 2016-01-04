@@ -17,6 +17,10 @@ syntax enable
 " enable mouse
 set mouse=a 
 
+" show whitespace
+set list
+set listchars=trail:.
+
 " Spaces & tabs
 set encoding=utf-8
 set tabstop=4
