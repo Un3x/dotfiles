@@ -12,8 +12,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Colorscheme
-colorscheme solarized
-set background=dark
 syntax enable
 
 " enable mouse
@@ -63,14 +61,17 @@ Plugin 'scrooloose/syntastic'
 
 " open Nerdtree
 Plugin 'scrooloose/nerdtree'
-nnoremap <tab> : NERDTreeToggle<CR>
+nnoremap <tab> :NERDTreeToggle<CR>
 
 " open CTRLP 
 Plugin 'kien/ctrlp.vim'
-nnoremap <c-p> : CtrlP<CR>
+nnoremap <c-p> :CtrlP<CR>
 
 " Vim Airline
 Plugin 'bling/vim-airline'
+
+" Colorscheme
+Plugin 'tomasr/molokai'
 
 " configuration for airline
 set laststatus=2
