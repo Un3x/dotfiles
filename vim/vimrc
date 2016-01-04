@@ -18,9 +18,12 @@ syntax enable
 set mouse=a 
 
 " Spaces & tabs
+set encoding=utf-8
 set tabstop=4
 set softtabstop=4
 set expandtab
+vnoremap < <gv
+vnoremap > >gv
 
 " Display Interface
 set number 			" show line number
@@ -39,6 +42,10 @@ set lazyredraw
 set showmatch
 set incsearch
 set hlsearch
+set ignorecase
+
+" removing swap file
+set noswapfile
 
 " folding
 set foldenable
@@ -71,6 +78,10 @@ Plugin 'bling/vim-airline'
 
 " Colorscheme
 Plugin 'tomasr/molokai'
+
+" Php indenting
+Plugin '2072/PHP-Indenting-for-VIm'
+set autoindent
 
 " configuration for airline
 set laststatus=2
