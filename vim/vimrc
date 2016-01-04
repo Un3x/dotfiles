@@ -6,7 +6,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/some/path/here')
+" call vundle#begin('~/.vim/bundle')
 "
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -61,11 +61,10 @@ Plugin 'scrooloose/syntastic'
 
 " open Nerdtree
 Plugin 'scrooloose/nerdtree'
-nnoremap <tab> :NERDTreeToggle<CR>
+map <tab> :NERDTreeToggle<CR>
 
 " open CTRLP 
 Plugin 'kien/ctrlp.vim'
-nnoremap <c-p> :CtrlP<CR>
 
 " Vim Airline
 Plugin 'bling/vim-airline'
@@ -75,3 +74,6 @@ Plugin 'tomasr/molokai'
 
 " configuration for airline
 set laststatus=2
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
