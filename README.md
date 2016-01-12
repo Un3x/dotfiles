@@ -2,12 +2,12 @@
 Configuration of my dotfiles
 
 
-To install vim configuration
+ "To install vim configuration
 
-$ make vim
+* $ make vim
 
 Then open vim and update plugins with vundle
 
-:source %
+* :source %
 
-:PluginInstall
+* :PluginInstall
