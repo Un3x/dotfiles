@@ -15,7 +15,7 @@ Plugin 'VundleVim/Vundle.vim'
 syntax enable
 
 " enable mouse
-set mouse=a 
+set mouse=a
 
 " show whitespace
 set list
@@ -34,6 +34,9 @@ vnoremap > >gv
 " Display Interface
 set number 			" show line number
 set showcmd 			" show command bar in the bottom
+
+"autoremove whitespace EOL
+autocmd BufWritePre * :%s/\s\+$//e
 
 " Catching filetype
 filetype indent on		" each filetype uses the filetype.vim in the indent folder
@@ -67,7 +70,7 @@ nnoremap k gk
 let mapleader=","
 
 " fugitive
-Plugin 'tpope/vim-fugitive' 
+Plugin 'tpope/vim-fugitive'
 
 " Syntastic
 Plugin 'scrooloose/syntastic'
@@ -76,7 +79,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 map <tab> :NERDTreeToggle<CR>
 
-" open CTRLP 
+" open CTRLP
 Plugin 'kien/ctrlp.vim'
 
 " Vim Airline
