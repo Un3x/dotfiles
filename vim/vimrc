@@ -21,6 +21,9 @@ set mouse=a
 set list
 set listchars=trail:.
 
+"autoremove whitespace EOL
+autocmd BufWritePre * :%s/\s\+$//e
+
 " Spaces & tabs
 set encoding=utf-8
 set tabstop=4
@@ -35,8 +38,6 @@ vnoremap > >gv
 set number 			" show line number
 set showcmd 			" show command bar in the bottom
 
-"autoremove whitespace EOL
-autocmd BufWritePre * :%s/\s\+$//e
 
 " Catching filetype
 filetype indent on		" each filetype uses the filetype.vim in the indent folder
