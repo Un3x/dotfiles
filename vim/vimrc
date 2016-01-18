@@ -93,6 +93,9 @@ Plugin 'tomasr/molokai'
 Plugin '2072/PHP-Indenting-for-VIm'
 set autoindent
 
+" debugger
+Bundle 'joonty/vdebug.git'
+
 " configuration for airline
 set laststatus=2
 
