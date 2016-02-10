@@ -8,6 +8,4 @@ Configuration of my dotfiles
 
 Then open vim and update plugins with vundle
 
-* :source %
-
 * :PluginInstall
