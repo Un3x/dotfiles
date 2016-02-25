@@ -98,6 +98,7 @@ Bundle 'joonty/vdebug.git'
 
 " Note
 Plugin 'xolox/vim-notes'
+Plugin 'xolox/vim-misc'
 
 " configuration for airline
 set laststatus=2
