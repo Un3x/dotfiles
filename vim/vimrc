@@ -96,6 +96,9 @@ set autoindent
 " debugger
 Bundle 'joonty/vdebug.git'
 
+" Note
+Plugin 'xolox/vim-notes'
+
 " configuration for airline
 set laststatus=2
 
