@@ -85,6 +85,7 @@ Plugin 'kien/ctrlp.vim'
 
 " Vim Airline
 Plugin 'bling/vim-airline'
+Plugin 'bling/vim-bufferline'
 
 " Colorscheme
 Plugin 'tomasr/molokai'
@@ -99,6 +100,9 @@ Bundle 'joonty/vdebug.git'
 " Note
 Plugin 'xolox/vim-notes'
 Plugin 'xolox/vim-misc'
+
+" Syntax highlighting
+Plugin 'groenewege/vim-less'
 
 " configuration for airline
 set laststatus=2
