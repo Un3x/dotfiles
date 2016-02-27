@@ -22,7 +22,7 @@ help:
 
 all: vim
 
-vim: ~/.vim ~/.vimrc 
+vim: ~/.vim ~/.vimrc
 
 ~/.vimrc:
 	ln -s $(CURDIR)/vim/vimrc $@
@@ -30,7 +30,7 @@ vim: ~/.vim ~/.vimrc
 ~/.vim:
 	@echo 'Deploy vim config'
 	ln -s $(CURDIR)/vim/vim $@
-	vim +PluginInstall +qall 
+	vim +PluginInstall +qall
 
 remove-vim:
 	@echo 'Remove Vim config'
@@ -39,4 +39,4 @@ remove-vim:
 
 clean: remove-vim
 
-.PHONY: clean help remove-vim 
+.PHONY: clean help remove-vim
