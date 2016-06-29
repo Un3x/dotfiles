@@ -104,6 +104,9 @@ Plugin 'xolox/vim-misc'
 " Syntax highlighting
 Plugin 'groenewege/vim-less'
 
+" Enhanced javascript
+Plugin 'pangloss/vim-javascript'
+
 " configuration for airline
 set laststatus=2
 
