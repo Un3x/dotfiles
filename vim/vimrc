@@ -121,14 +121,13 @@ Plugin 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_php_checkers=['php', 'phpcs']
-let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_aggregate_errors = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 
 " open Nerdtree
 Plugin 'scrooloose/nerdtree'
@@ -140,6 +139,7 @@ Plugin 'xuyuanp/nerdtree-git-plugin'
 
 " open CTRLP
 Plugin 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 " Vim Airline
 Plugin 'bling/vim-airline'
