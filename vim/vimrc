@@ -88,7 +88,7 @@ Plugin 'scrooloose/nerdtree'
 map <tab> :NERDTreeToggle<CR>
 
 " open CTRLP
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " Vim Airline
 Plugin 'bling/vim-airline'
