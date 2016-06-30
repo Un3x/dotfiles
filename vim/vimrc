@@ -63,6 +63,12 @@ set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
 
+" visual indentation
+Plugin 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=lightgrey
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
+
 " moving
 nnoremap j gj
 nnoremap k gk
@@ -72,6 +78,7 @@ let mapleader=","
 
 " fugitive
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 
 " Syntastic
 Plugin 'scrooloose/syntastic'
@@ -91,6 +98,9 @@ let g:airline#extensions#tabline#enabled = 1
 " Colorscheme
 Plugin 'tomasr/molokai'
 
+" Php Syntax
+Plugin 'stanangeloff/php.vim'
+
 " Php indenting
 Plugin '2072/PHP-Indenting-for-VIm'
 set autoindent
@@ -102,10 +112,10 @@ Bundle 'joonty/vdebug.git'
 Plugin 'xolox/vim-notes'
 Plugin 'xolox/vim-misc'
 
-" Syntax highlighting
+" Syntax
 Plugin 'groenewege/vim-less'
-
-" Enhanced javascript
+Plugin 'elzr/vim-json'
+Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 
 " configuration for airline
