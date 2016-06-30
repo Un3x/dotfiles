@@ -18,8 +18,17 @@ Plugin 'VundleVim/Vundle.vim'
 " Colorscheme
 syntax enable
 
+" Set to auto read when a file is changed from the outside
+set autoread
+
 " enable mouse
 set mouse=a
+
+" Height of the command bar
+set cmdheight=2
+
+"Always show current position
+set ruler
 
 " show whitespace
 set list
@@ -42,9 +51,14 @@ vnoremap > >gv
 set number 			" show line number
 set showcmd 			" show command bar in the bottom
 
+" Add a bit extra margin to the left
+set foldcolumn=1
 
 " Catching filetype
 filetype indent on		" each filetype uses the filetype.vim in the indent folder
+set ai
+set si
+set wrap
 
 " Wildmenu
 set wildmenu
@@ -76,6 +90,24 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
 " moving
 nnoremap j gj
 nnoremap k gk
+
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Remove the Windows ^M - when the encodings gets messed up
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+
+" Close the current buffer
+map <leader>bd :Bclose<cr>:tabclose<cr>gT
+
+" Close all the buffers
+map <leader>ba :bufdo bd<cr>
+
 
 " leader
 let mapleader=","
@@ -137,6 +169,16 @@ Plugin 'pangloss/vim-javascript'
 
 " configuration for airline
 set laststatus=2
+
+
+
+""""""""""""""""""""""""""""""
+" => Visual mode related
+""""""""""""""""""""""""""""""
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
