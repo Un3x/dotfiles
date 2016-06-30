@@ -86,6 +86,7 @@ Plugin 'kien/ctrlp.vim'
 " Vim Airline
 Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
+let g:airline#extensions#tabline#enabled = 1
 
 " Colorscheme
 Plugin 'tomasr/molokai'
