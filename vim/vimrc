@@ -139,6 +139,7 @@ Plugin 'xuyuanp/nerdtree-git-plugin'
 
 " open CTRLP
 Plugin 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_max_files = 0
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 " Vim Airline
