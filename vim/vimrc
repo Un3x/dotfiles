@@ -149,9 +149,6 @@ Plugin 'bling/vim-bufferline'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-" Colorscheme
-Plugin 'tomasr/molokai'
-
 " Php Syntax
 Plugin 'stanangeloff/php.vim'
 
