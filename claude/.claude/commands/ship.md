@@ -78,6 +78,7 @@ Phases: `setup` → `post-plan` → `implement` → `push-pr` → `done`
 - If tests fail unrelated to the plan, note them and continue
 - Do not add comments in code - code should be self-explanatory
 - No blocking on flaky feature tests
+- **Learning capture**: If you encounter a non-trivial problem during implementation (unexpected behavior, tricky API, framework gotcha, debugging dead-end) and find a solution, save the lesson to your auto memory. This compounds knowledge across sessions and prevents hitting the same wall twice.
 
 ### 4. Push and Create PR
 - Update session: phase as `push-pr`
