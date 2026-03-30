@@ -72,11 +72,10 @@ Phases: `setup` → `post-plan` → `implement` → `push-pr` → `done`
 - At each step:
   - Implement the code changes
   - Run quality checks (rubocop, tests as specified in plan)
-  - Commit with a focused message (why, not what; no co-authored-by)
+  - Commit changes
   - Track progress in `.notes/<branch_name>/implement-plan.md`
   - Update session with current plan step number
 - If tests fail unrelated to the plan, note them and continue
-- Do not add comments in code - code should be self-explanatory
 - No blocking on flaky feature tests
 - **Learning capture**: If you encounter a non-trivial problem during implementation (unexpected behavior, tricky API, framework gotcha, debugging dead-end) and find a solution, save the lesson to your auto memory. This compounds knowledge across sessions and prevents hitting the same wall twice.
 

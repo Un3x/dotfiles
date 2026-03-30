@@ -59,6 +59,26 @@ Status markers:
 - If you have questions, put them at the end of the plan document
 - Lines with FIXME should be addressed in the plan
 
+## Mandatory Diagrams
+
+Every plan MUST include ASCII diagrams where applicable. Diagrams force hidden assumptions into the open and make hand-wavy planning impossible.
+
+Include diagrams for:
+- **Data flow**: How data moves through the system (request → service → response). Include happy path AND error/nil/empty shadow paths.
+- **State machines**: If the feature involves status transitions or lifecycle (e.g., pending → active → archived)
+- **Dependencies**: What existing code this touches and how components connect
+
+Diagram format: simple ASCII art in the plan document. Keep them minimal — just enough to show the structure.
+
+Example:
+```
+Request → Controller → Service → Repository → DB
+                         ↓ (error)
+                    ErrorHandler → 422 response
+```
+
+Skip diagrams only for trivial changes (copy updates, config changes, simple bug fixes with obvious scope).
+
 ## IMPORTANT: Stop on questions
 When you have questions about requirements or implementation approach, you MUST:
 1. Write them at the end of the plan document

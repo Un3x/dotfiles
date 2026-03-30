@@ -113,11 +113,13 @@ alias view="nvim -R"
 alias vimdiff="nvim -d"
 
 alias api="cd /home/unex/Project/api-entreprise/siade"
+alias apistration="cd /home/unex/Project/api-entreprise/apistration"
 alias passemarche="cd /home/unex/Project/api-entreprise/voie_rapide"
 alias admin="cd /home/unex/Project/api-entreprise/admin_api_entreprise"
 alias bangun="cd /home/unex/Project/creche/bangun"
 alias troskapp="cd /home/unex/Project/troskapp"
 alias poe2="cd /home/unex/Documents/mylife_in_a_vault/projects/poe2"
+alias life="cd /home/unex/Documents/mylife_in_a_vault"
 alias claudegod="claude --dangerously-skip-permissions"
 
 alias ra="rubocop -A"
