@@ -53,7 +53,9 @@ Status markers:
 
 ## Planning Guidelines
 - Explore the codebase first to understand context
-- Each step should contain its own tests and quality checks
+- **TDD is the default.** Each step must state (a) the failing test(s) to write first, and (b) the behavior change that makes them pass. Tests and implementation live in the same step, not separate ones.
+- **Reject bundled-test steps.** Do not plan a final "add tests" or "write specs" step covering multiple prior steps — that's deferred testing, not TDD. If you catch yourself writing one, split the tests back into the steps they belong to.
+- **Spike exception.** If the user explicitly flagged this as a spike/exploration during `/challenge`, TDD can be relaxed — note it in the plan. Otherwise assume TDD.
 - Always include a final step for quality enhancement (analysis after development)
 - Keep plans concise - clarity over verbosity
 - If you have questions, put them at the end of the plan document

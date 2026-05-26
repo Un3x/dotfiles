@@ -133,7 +133,23 @@
     "playwright-skill@playwright-skill": true,
     "dsfr@dsfr-skill": true,
     "compound-engineering@every-marketplace": false,
-    "ruby-lsp@claude-plugins-official": true
+    "ruby-lsp@claude-plugins-official": true,
+    "accessibility@rgaa-toolkit": true,
+    "aiss-consult@ai-success-story": true
+  },
+  "extraKnownMarketplaces": {
+    "rgaa-toolkit": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/Isalafont/claude-skill-rgaa-dev.git"
+      }
+    },
+    "ai-success-story": {
+      "source": {
+        "source": "github",
+        "repo": "Un3x/ai-success-story"
+      }
+    }
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "medium",
