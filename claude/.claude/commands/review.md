@@ -35,6 +35,7 @@ Categories:
 - **Silent failures**: Bare rescue/catch blocks, swallowed errors, missing error handling on external calls
 - **Data loss**: Destructive migrations without backfill, cascade deletes, missing null checks on critical paths
 - **Auth/authz gaps**: Missing authorization checks, privilege escalation paths, exposed endpoints
+- **Untested new code paths**: New methods, branches, or behaviors introduced without a corresponding test. This is not "low coverage" hand-wringing — flag only when a specific new path has zero direct test exercising it. TDD was violated; bugs will ship. (Exception: spike PRs explicitly flagged as such.)
 
 ### 4. Run Pass 2: INFORMATIONAL
 Issues worth knowing about but not blocking.
@@ -42,7 +43,7 @@ Issues worth knowing about but not blocking.
 Categories:
 - **Conditional complexity**: Nested conditions that hide logic bugs, boolean expressions that could be simplified
 - **Missing edge cases**: Nil/null/empty/zero handling, unicode, timezone, pagination boundaries
-- **Test gaps**: New code paths without test coverage, happy-path-only tests, missing error case tests
+- **Test gaps**: Happy-path-only tests, missing error case tests, weak assertions (promoted to CRITICAL if an entire new code path has zero tests)
 - **Performance**: Unbounded queries, missing pagination, loading associations unnecessarily
 - **Dead code**: Unused variables, unreachable branches, commented-out code
 - **Naming/clarity**: Misleading names, magic numbers, unclear intent (only when it could cause bugs)
@@ -55,7 +56,19 @@ If the codebase is a Rails application, run a layered architecture check using t
 
 Skip this pass for non-Rails projects.
 
-### 6. Diagram the data flow (if applicable)
+### 6. Run Pass 4: SIMPLICITY (over-engineering)
+Complexity that costs more than it pays. Same rule as CRITICAL: each finding needs a concrete cost statement, not a vibe.
+
+Categories:
+- **Speculative generality**: params, options, config flags, or branches nothing uses today
+- **Single-caller indirection**: a class/service/method with exactly one call site that could be inlined
+- **Impossible-state defense**: guards/rescues for states that cannot occur given the actual callers
+- **Homeless abstraction**: new class/module created where existing code had a natural home
+- **Plan drift**: diff significantly larger than the plan's size estimate (`.notes/<branch>/plan.md`) — name where the growth happened
+
+Each finding states the deletion payoff ("inlining this removes 40 lines and one file").
+
+### 7. Diagram the data flow (if applicable)
 If the diff touches a data pipeline, request handler, or multi-step process:
 - Draw an ASCII diagram of the data flow
 - Mark where validation happens (or doesn't)
@@ -80,6 +93,11 @@ Fix: [suggested fix]
 `file:line` — [explanation + which layer boundary is crossed]
 Fix: [suggested extraction or restructure]
 
+### SIMPLICITY (over-engineering)
+
+**1. [Category]: [Brief description]**
+`file:line` — [what it costs, what deleting/inlining buys]
+
 ### INFORMATIONAL (worth knowing)
 
 **1. [Category]: [Brief description]**
@@ -90,8 +108,9 @@ Fix: [suggested extraction or restructure]
 
 ### Summary
 - Critical: N issues
+- Simplicity: N issues
 - Informational: N issues
-- Verdict: [ship it / fix criticals first / needs rethink]
+- Verdict: [ship it / fix criticals first / simplify first / needs rethink]
 ```
 
 ## Rules

@@ -71,6 +71,16 @@ For each feature/issue, think through these in order:
 [brief rationale]
 ```
 
+## Persist the Verdict
+
+After presenting findings, ask the user whether they agree with the recommendation. Then update Linear so downstream commands (`/plan`, `/ship`) read the post-challenge truth instead of the original issue:
+
+- **Agreed (proceed / rethink with changes)**: update the issue description — reframed problem, scope cuts, spike flag if applicable. The description should reflect what we actually decided to build.
+- **Disagreed or killed**: leave a comment with the verdict and the user's decision, so the reasoning survives the next time the issue surfaces.
+- **No Linear issue** (conversation-mode challenge): offer to create one capturing the agreed scope.
+
+Never update Linear before the user has weighed in.
+
 ## Rules
 
 - Be direct. If the idea is bad, say so.

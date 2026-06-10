@@ -74,18 +74,20 @@ Phases: `setup` → `post-plan` → `implement` → `push-pr` → `done`
   2. Run the test — confirm it fails for the expected reason (not a typo/syntax error)
   3. **Green**: Implement the minimum code needed to make the test pass
   4. Run the test — confirm it passes
-  5. Refactor if needed, re-run tests to confirm still green
+  5. **Refactor = shrink**: reduce line count and indirection — never introduce an abstraction that isn't in the plan. If one feels necessary mid-step, stop and flag it instead of improvising. Re-run tests to confirm still green
   6. Run broader quality checks (rubocop, related test files)
   7. **Commit**: tests and implementation ship in the same commit (never separate "add tests" commits)
   8. Track progress in `.notes/<branch_name>/implement-plan.md`
   9. Update session with current plan step number
 - **Spike exception**: If the plan was flagged as a spike during `/challenge`, the red-green cycle is optional — but note skipped tests in the plan file so review catches them.
+- **Diff-size tripwire**: if the diff grows wildly beyond the plan's size estimate, stop, note it in the session file, and surface it to the user — don't push through.
 - If tests fail unrelated to the plan, note them and continue
 - No blocking on flaky feature tests
 - **Learning capture**: If you encounter a non-trivial problem during implementation (unexpected behavior, tricky API, framework gotcha, debugging dead-end) and find a solution, save the lesson to your auto memory. This compounds knowledge across sessions and prevents hitting the same wall twice.
 
 ### 4. Push and Create PR
 - Update session: phase as `push-pr`
+- Run the `/simplify` skill on the branch diff and apply its fixes (reuse, simplification, inlining); re-run tests to confirm still green
 - Push branch to remote with `-u` flag
 - Create pull request using `gh pr create`
 - PR title: concise, under 70 characters

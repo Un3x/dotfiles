@@ -56,10 +56,18 @@ Status markers:
 - **TDD is the default.** Each step must state (a) the failing test(s) to write first, and (b) the behavior change that makes them pass. Tests and implementation live in the same step, not separate ones.
 - **Reject bundled-test steps.** Do not plan a final "add tests" or "write specs" step covering multiple prior steps — that's deferred testing, not TDD. If you catch yourself writing one, split the tests back into the steps they belong to.
 - **Spike exception.** If the user explicitly flagged this as a spike/exploration during `/challenge`, TDD can be relaxed — note it in the plan. Otherwise assume TDD.
-- Always include a final step for quality enhancement (analysis after development)
+- Always include a final simplification step: after green, what can be deleted, inlined, or collapsed? The plan ends by removing code, not adding polish.
 - Keep plans concise - clarity over verbosity
 - If you have questions, put them at the end of the plan document
 - Lines with FIXME should be addressed in the plan
+
+## Simplicity Gate
+
+Complexity is cheapest to kill before it's coded. Every plan must pass this gate:
+
+- **Two-design rule**: before writing steps, sketch the simplest viable implementation — the "junior dev solution": no new classes, modify existing code in place. The plan MUST state this baseline and justify every departure from it. No justification = the simple version IS the plan.
+- **Abstraction budget**: a new class/service/concern/module requires either ≥2 real call sites today or an explicit architectural rule from the repo. "We might need it later" does not qualify (YAGNI).
+- **Diff-size estimate**: the plan states the expected size (approximate lines + files touched). This is a tripwire for `/ship`: wildly exceeding it means stop and flag, not push through.
 
 ## Mandatory Diagrams
 
