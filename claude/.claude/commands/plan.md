@@ -63,11 +63,28 @@ Status markers:
 
 ## Simplicity Gate
 
-Complexity is cheapest to kill before it's coded. Every plan must pass this gate:
+Complexity is cheapest to kill before it's coded. Core principle: **the planner never chooses complexity unilaterally — the user does.**
 
-- **Two-design rule**: before writing steps, sketch the simplest viable implementation — the "junior dev solution": no new classes, modify existing code in place. The plan MUST state this baseline and justify every departure from it. No justification = the simple version IS the plan.
-- **Abstraction budget**: a new class/service/concern/module requires either ≥2 real call sites today or an explicit architectural rule from the repo. "We might need it later" does not qualify (YAGNI).
-- **Diff-size estimate**: the plan states the expected size (approximate lines + files touched). This is a tripwire for `/ship`: wildly exceeding it means stop and flag, not push through.
+### The plan IS the simple solution
+Write the plan for the simplest viable design, full stop — not as a baseline to justify departures from, as the actual plan. If you believe the simple design is genuinely insufficient, you don't get to decide: put the upgrade in **Complexity opt-ins** (below), mark the issue `has-questions`, and STOP. Complexity escalation is a question only the user can answer.
+
+### Complexity opt-ins (mechanical tripwire list)
+Any of the following is automatically an opt-in — it CANNOT appear in the base plan, only in the opt-ins section pending user sign-off:
+- new class / service / concern / module
+- new DB table or column
+- new gem
+- new background job
+- new endpoint / route
+- new state or status value
+- new config flag / env var
+
+Each opt-in states what it costs (new files, new concepts, ~lines) and what it concretely buys. After the user picks, rewrite the plan with accepted opt-ins folded in. No judgment calls: if it's on the list, it's an opt-in, even if it feels "obviously needed".
+
+### Diff-size estimate
+The plan states the expected size (approximate lines + files touched). This is a tripwire for `/ship`: wildly exceeding it means stop and flag, not push through.
+
+### Fresh-eyes half-size review (non-trivial plans)
+Before marking a plan `ready`, spawn a subagent with fresh context — only the issue and the draft plan, not this conversation — with one job: "Propose a design with half the moving parts. What would a skeptical senior delete?" If it finds a materially simpler shape, rewrite the base plan around it (the original design moves to opt-ins). Skip for the trivial-change tier that already skips diagrams.
 
 ## Mandatory Diagrams
 
@@ -90,6 +107,8 @@ Request → Controller → Service → Repository → DB
 Skip diagrams only for trivial changes (copy updates, config changes, simple bug fixes with obvious scope).
 
 ## IMPORTANT: Stop on questions
+Complexity opt-ins count as questions — a plan with pending opt-ins is `has-questions`, not `ready`.
+
 When you have questions about requirements or implementation approach, you MUST:
 1. Write them at the end of the plan document
 2. Update session file (mark issue as `has-questions`, keep as current)
