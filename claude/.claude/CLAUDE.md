@@ -10,6 +10,10 @@
 ## Coding Behavior
 
 - Before writing code on an ambiguous task, state the interpretation you're committing to. If two reasonable interpretations exist, ask first.
+- Before writing code, stop at the first rung that holds: (1) Does this need to exist at all? (YAGNI) (2) Does the standard library do it? (3) Does a native platform feature cover it? (4) Does an already-installed dependency solve it? (5) Can it be one line? (6) Only then: the minimum that works. The escalation past a rung is itself a complexity opt-in — surface it, don't take it silently.
+- Deletion over addition. Boring over clever. Fewest files possible. No abstraction, dependency, or boilerplate that wasn't requested.
+- When two implementations are the same size, prefer the one with better edge-case handling.
+- Never lazy about: trust-boundary validation, error handling that prevents data loss, security, accessibility, anything explicitly requested. Minimal means less code, not less correct.
 
 ## Rails Architecture
 
