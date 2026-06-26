@@ -1,6 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "model": "claude-fable-5",
   "hooks": {
     "Stop": [
       {
@@ -11,6 +10,14 @@
             "command": "/home/unex/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/unex/.local/bin/claude-usage --refresh >/dev/null 2>&1"
           }
         ]
       }
@@ -129,6 +136,10 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
   "enabledPlugins": {
     "playwright-skill@playwright-skill": true,
     "dsfr@dsfr-skill": true,
@@ -153,5 +164,6 @@
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "medium",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "tui": "fullscreen"
 }
