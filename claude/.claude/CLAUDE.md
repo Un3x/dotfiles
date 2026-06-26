@@ -14,6 +14,7 @@
 - Deletion over addition. Boring over clever. Fewest files possible. No abstraction, dependency, or boilerplate that wasn't requested.
 - When two implementations are the same size, prefer the one with better edge-case handling.
 - Never lazy about: trust-boundary validation, error handling that prevents data loss, security, accessibility, anything explicitly requested. Minimal means less code, not less correct.
+- When splitting work into issues/PRs, split into vertical slices that each deliver coherent, reviewable functionality — never into horizontal layers (model / controller / tests as separate PRs). If a sub-issue can only be described by its mechanics, not by what it lets a user or system do, it's too atomic. A PR should tell one story.
 
 ## Rails Architecture
 
