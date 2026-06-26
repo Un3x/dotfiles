@@ -91,7 +91,17 @@ Phases: `setup` → `post-plan` → `implement` → `push-pr` → `done`
 - Push branch to remote with `-u` flag
 - Create pull request using `gh pr create`
 - PR title: concise, under 70 characters
-- PR body: summary bullets + test plan + link to Linear issue
+- **PR body: a pointer to the issue, not a second copy of it.** The issue holds the why/what/plan; the diff holds the how. Keep it to ≤6 lines, this exact shape:
+  ```
+  <one-sentence summary of what changed>
+
+  - <key change>            # optional, only for multi-part PRs
+  - <key change>            # max 3 bullets
+
+  Closes <ISSUE-ID> → <Linear URL>
+  ```
+  No test plan (CI + the diff cover it), no implementation narrative, no restating the issue. If you feel the urge to explain more, it belongs in the issue.
+- **PR comments** (review replies, follow-ups): one line each, or don't post. If it needs a paragraph, put it on the Linear issue and link it.
 - Update session: mark as `shipped`, record PR number
 
 ### 5. Next Issue
