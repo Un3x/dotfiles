@@ -4,11 +4,49 @@ Plan command for Linear issues. Handles both initial planning and replanning.
 - `/plan <issue1> <issue2> ...` - Create or replan for listed issues (IDs or URLs)
 - `/plan` (no args) - Resume active session OR replan plans with unanswered questions
 
+## The one rule
+
+**The plan IS the simplest Rails-conventional design. Nothing else.**
+
+Convention over configuration. Rails built-in before custom construct. No new class, table, gem, job, route, state value, or config flag unless the issue demands it or the user asked for it. If you believe the simple design is genuinely insufficient, you do not design the alternative — you add **one flagged sentence** at the end of the plan ("Flag: I think X is insufficient because Y"), mark the issue `has-questions`, and stop. The user drives complexity escalation, never the planner.
+
+## Plan format — one screen max
+
+`.notes/<branch_name>/plan.md` (strip prefix before `/` in branch names):
+
+```markdown
+# <ISSUE-ID> — <title>
+
+<one-line restatement of the outcome>
+
+## Diagram
+<5-line ASCII of the flow: happy path + error path. So a reader grasps the change in a second — describe the design, never justify it.>
+
+## Steps
+1. <failing test to write> → <change that makes it pass>
+2. ...
+N. Simplify: after green, what can be deleted, inlined, or collapsed?
+
+## Size
+~X lines, Y files   ← hard cap for /ship, not an estimate to outgrow
+
+## Questions          ← only if any; presence = has-questions
+- ...
+Flag: ...             ← only if you believe simple is insufficient (one sentence)
+```
+
+- **TDD is the default.** Each step = failing test + the behavior change that makes it pass, together. Never a trailing "add tests" step. Spike exception only if `/challenge` flagged it — note it in the plan.
+- Explore the codebase before planning; plans reference real files.
+- Lines with FIXME must be addressed when replanning.
+
+## Fresh-eyes check (non-trivial plans only)
+
+Before marking `ready`, spawn a subagent with only the issue + draft plan: "Propose a design with half the moving parts." If it finds a simpler shape, that becomes the plan.
+
 ## Session Tracking
 
-All progress is persisted in `.notes/_plan-session.md` so work survives context compaction or session restarts.
+Progress persists in `.notes/_plan-session.md` so work survives compaction or restarts:
 
-Session file format:
 ```markdown
 # Plan Session
 Started: YYYY-MM-DD HH:MM
@@ -22,158 +60,18 @@ Started: YYYY-MM-DD HH:MM
 FAS-123
 ```
 
-Status markers:
-- `[ ]` pending - not yet processed
-- `[~]` has-questions - plan exists but needs answers
-- `[x]` ready - plan complete, no questions
-
-## Behavior
-
-### With issue arguments ($1, $2, ...):
-1. Create/update `.notes/_plan-session.md` with the issue list
-2. For each issue:
-   a. Update session: mark as current
-   b. Fetch issue details from Linear MCP (use the issue ID like FAS-385 or extract from URL)
-   c. Get the branch name from the Linear issue
-   d. Check if `.notes/<branch_name>/plan.md` exists (strip prefix before `/` in branch names)
-   e. If plan exists and has your answers to previous questions: replan (re-read answers, update plan)
-   f. If plan exists but no changes: skip (already clean)
-   g. If no plan: create new plan by exploring codebase and following repository guidelines
-   h. Update session: mark as ready or has-questions
-3. After all issues processed OR if stopping for questions: update session file
+### With issue arguments:
+1. Write session file with the issue list
+2. Per issue: fetch from Linear MCP → get branch name → create/replan/skip at `.notes/<branch>/plan.md` → update session status
+3. Stop the moment a plan has questions or a flag — do NOT guess on ambiguity
 
 ### Without arguments:
-1. **First**: Check if `.notes/_plan-session.md` exists with pending items → resume from current position
-2. **Then**: Scan all `.notes/*/plan.md` files for unanswered questions or `FIXME:` markers
-3. For each plan needing attention:
-   - Re-read the plan and answers
-   - Rewrite the plan addressing the answers
-   - If new questions arise, add them at the end
-   - Update session file status
+1. Resume from session file if pending items exist
+2. Else scan `.notes/*/plan.md` for unanswered questions / FIXMEs and replan those
 
-## Planning Guidelines
-- Explore the codebase first to understand context
-- **TDD is the default.** Each step must state (a) the failing test(s) to write first, and (b) the behavior change that makes them pass. Tests and implementation live in the same step, not separate ones.
-- **Reject bundled-test steps.** Do not plan a final "add tests" or "write specs" step covering multiple prior steps — that's deferred testing, not TDD. If you catch yourself writing one, split the tests back into the steps they belong to.
-- **Spike exception.** If the user explicitly flagged this as a spike/exploration during `/challenge`, TDD can be relaxed — note it in the plan. Otherwise assume TDD.
-- Always include a final simplification step: after green, what can be deleted, inlined, or collapsed? The plan ends by removing code, not adding polish.
-- Keep plans concise - clarity over verbosity
-- If you have questions, put them at the end of the plan document
-- Lines with FIXME should be addressed in the plan
-
-## Simplicity Gate
-
-Complexity is cheapest to kill before it's coded. Core principle: **the planner never chooses complexity unilaterally — the user does.**
-
-### The plan IS the simple solution
-Write the plan for the simplest viable design, full stop — not as a baseline to justify departures from, as the actual plan. If you believe the simple design is genuinely insufficient, you don't get to decide: put the upgrade in **Complexity opt-ins** (below), mark the issue `has-questions`, and STOP. Complexity escalation is a question only the user can answer.
-
-### Complexity opt-ins (mechanical tripwire list)
-Any of the following is automatically an opt-in — it CANNOT appear in the base plan, only in the opt-ins section pending user sign-off:
-- new class / service / concern / module
-- new DB table or column
-- new gem
-- new background job
-- new endpoint / route
-- new state or status value
-- new config flag / env var
-
-Each opt-in states what it costs (new files, new concepts, ~lines) and what it concretely buys. After the user picks, rewrite the plan with accepted opt-ins folded in. No judgment calls: if it's on the list, it's an opt-in, even if it feels "obviously needed".
-
-### Diff-size estimate
-The plan states the expected size (approximate lines + files touched). This is a tripwire for `/ship`: wildly exceeding it means stop and flag, not push through.
-
-### Fresh-eyes half-size review (non-trivial plans)
-Before marking a plan `ready`, spawn a subagent with fresh context — only the issue and the draft plan, not this conversation — with one job: "Propose a design with half the moving parts. What would a skeptical senior delete?" If it finds a materially simpler shape, rewrite the base plan around it (the original design moves to opt-ins). Skip for the trivial-change tier that already skips diagrams.
-
-## Mandatory Diagrams
-
-Every plan MUST include ASCII diagrams where applicable. Diagrams force hidden assumptions into the open and make hand-wavy planning impossible.
-
-Include diagrams for:
-- **Data flow**: How data moves through the system (request → service → response). Include happy path AND error/nil/empty shadow paths.
-- **State machines**: If the feature involves status transitions or lifecycle (e.g., pending → active → archived)
-- **Dependencies**: What existing code this touches and how components connect
-
-Diagram format: simple ASCII art in the plan document. Keep them minimal — just enough to show the structure.
-
-Example:
-```
-Request → Controller → Service → Repository → DB
-                         ↓ (error)
-                    ErrorHandler → 422 response
-```
-
-Skip diagrams only for trivial changes (copy updates, config changes, simple bug fixes with obvious scope).
-
-## IMPORTANT: Stop on questions
-Complexity opt-ins count as questions — a plan with pending opt-ins is `has-questions`, not `ready`.
-
-When you have questions about requirements or implementation approach, you MUST:
-1. Write them at the end of the plan document
-2. Update session file (mark issue as `has-questions`, keep as current)
-3. STOP and wait for the user to answer
-4. Do NOT guess or make assumptions on ambiguous requirements
-
-After user answers, they can run `/plan` to resume - the session file tells you where you were.
-
-## Resumption
-
-When resuming (via `/plan` with no args and an active session):
-1. Read `.notes/_plan-session.md` to understand current state
-2. Find the `## Current` issue
-3. Read its plan to see if questions were answered
-4. Continue from there
-
-This works even after:
-- Context compaction (conversation summarized)
-- Session restart (new Claude Code session)
-- Interruption (user closes terminal)
-
-Always read the session file first to reorient yourself.
+Always read the session file first when resuming.
 
 ## Output
 
-### When stopping for questions:
-```
-Planning paused - questions need answers.
-
-Progress (5/24):
-  [x] FAS-121 - ready
-  [x] FAS-122 - ready
-  [~] FAS-123 - has questions (see below)
-  [ ] FAS-124 - pending
-  ...
-
-Questions for FAS-123:
-1. Should the validation apply to existing records?
-2. What error message format do you prefer?
-
-Answer in the plan file or here, then run `/plan` to continue.
-```
-
-### When batch complete:
-```
-Planning complete.
-
-Ready:
-  FAS-123 - title of issue (branch: fas-123-slugified-title)
-  FAS-124 - title of issue (branch: fas-124-slugified-title)
-
-Still has questions:
-  FAS-125 - title of issue (3 questions remaining)
-
-To ship ready plans:
-/ship FAS-123 FAS-124
-```
-
-This allows the user to copy-paste the /ship command directly, editing if needed.
-
-### When resuming:
-```
-Resuming plan session (started YYYY-MM-DD).
-Progress: 5/24 issues processed.
-Current: FAS-123 (has-questions)
-
-Reading plan and continuing...
-```
+On stop: show progress list + the questions, so the user can answer inline.
+On batch complete: list ready issues with branch names + a copy-pasteable `/ship FAS-123 FAS-124` line, and any still-has-questions issues.

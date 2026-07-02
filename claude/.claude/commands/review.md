@@ -51,7 +51,8 @@ Categories:
 ### 5. Run Pass 3: ARCHITECTURE (Rails projects only)
 If the codebase is a Rails application, run a layered architecture check using the `layered-rails` skill:
 - Invoke `/layers:review` on the changed files
-- This checks for layer violations (e.g., controller doing domain logic), god objects, missing abstractions, and extraction signals
+- **Violations only**: misplaced responsibility (e.g., controller doing domain logic), god objects
+- **Never prescribe adding a construct.** A finding may only relocate code to an existing home or delete it — "extract a service/form object/query object" is not a valid finding. Review removes complexity; it never adds it.
 - Merge findings into the output under an "ARCHITECTURE" section between CRITICAL and INFORMATIONAL
 
 Skip this pass for non-Rails projects.
@@ -60,6 +61,7 @@ Skip this pass for non-Rails projects.
 Complexity that costs more than it pays. Same rule as CRITICAL: each finding needs a concrete cost statement, not a vibe.
 
 Categories:
+- **Configuration over convention**: config flags, option hashes, initializers, or custom plumbing where a Rails convention/built-in does the job — name the built-in that replaces it
 - **Speculative generality**: params, options, config flags, or branches nothing uses today
 - **Single-caller indirection**: a class/service/method with exactly one call site that could be inlined
 - **Impossible-state defense**: guards/rescues for states that cannot occur given the actual callers

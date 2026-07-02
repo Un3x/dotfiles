@@ -63,8 +63,7 @@ Phases: `setup` → `post-plan` → `implement` → `push-pr` → `done`
 
 ### 2. Provide Plan to Linear
 - Update session: phase as `post-plan`
-- Add the plan content to the Linear issue as a comment
-- Remove Linear-specific references from the posted content
+- Comment a **plan summary** on the Linear issue, not the full plan: the diagram + the step list (one line per step) + the size cap. ≤15 lines. The full plan lives in `.notes/` and the PR diff tells the rest.
 
 ### 3. Implement Plan
 - Update session: phase as `implement`
@@ -80,7 +79,7 @@ Phases: `setup` → `post-plan` → `implement` → `push-pr` → `done`
   8. Track progress in `.notes/<branch_name>/implement-plan.md`
   9. Update session with current plan step number
 - **Spike exception**: If the plan was flagged as a spike during `/challenge`, the red-green cycle is optional — but note skipped tests in the plan file so review catches them.
-- **Diff-size tripwire**: if the diff grows wildly beyond the plan's size estimate, stop, note it in the session file, and surface it to the user — don't push through.
+- **Diff-size tripwire**: the plan's `## Size` is a hard cap, not an estimate. If the diff is about to exceed it, stop, note it in the session file, and surface it to the user — don't push through.
 - If tests fail unrelated to the plan, note them and continue
 - No blocking on flaky feature tests
 - **Learning capture**: If you encounter a non-trivial problem during implementation (unexpected behavior, tricky API, framework gotcha, debugging dead-end) and find a solution, save the lesson to your auto memory. This compounds knowledge across sessions and prevents hitting the same wall twice.

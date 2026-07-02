@@ -3,9 +3,16 @@
 ## Commit Conventions
 
 - Commit messages focus on **why**, not what
+- Commit message = subject line + at most 1-2 lines of why (only when the why isn't obvious from the subject). Never narrate the diff.
 - No `Co-Authored-By` trailer
 - Do not add comments in code — code should be self-explanatory
 - **NEVER** disable GPG signing (`--no-gpg-sign`) — always ask the user if GPG signing fails
+
+## Prose Diet
+
+- Never create documentation files (README sections, docs/, guides) unless explicitly requested.
+- PR bodies, issue comments, handoff notes: a pointer plus the minimum that orients the reader. If it needs a paragraph, question whether it needs to exist.
+- Prefer a 5-line diagram over 5 paragraphs when explaining a flow.
 
 ## Coding Behavior
 
@@ -18,5 +25,9 @@
 
 ## Rails Architecture
 
-- Apply layered architecture principles (layered-rails skill) by reflex on any Rails work: planning features, reviewing code/PRs, refactoring, or discussing design trade-offs
-- Extraction requires the rule of three — don't create a layer, service, or abstraction for a single use. Layered architecture says where code goes when it exists, not that more layers are better.
+- **Vanilla Rails first.** Convention over configuration is the doctrine: reach for the Rails built-in (`validates`, `normalizes`, `enum`, scopes, `delegated_type`, `generates_token_for`, Turbo, …) before any custom construct, config flag, or option hash. If Rails has an opinion, follow it.
+- Responsibility placement is not negotiable: domain logic doesn't live in controllers, one job per class. But correct placement means putting code in the right *existing* home (usually the model), not creating a new one.
+- Extraction requires the rule of three — no layer, service, or abstraction for a single use. A fat-ish model beats a thin model orbited by single-caller objects.
+- The layered-rails skill is a **review instrument only** (`/review` Pass 3, violations check). Never invoke it during planning or implementation; never let it prescribe adding a construct.
+
+@RTK.md
