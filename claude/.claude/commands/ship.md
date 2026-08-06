@@ -1,4 +1,4 @@
-Ship command for Linear issues. Executes provide-plan + implement-plan + PR for each issue.
+Ship command for Linear issues. Executes provide-plan + implement-plan + PR + review loop for each issue.
 
 ## Usage
 - `/ship <issue1> <issue2> ...` - Ship listed issues sequentially
@@ -14,7 +14,7 @@ Session file format:
 Started: YYYY-MM-DD HH:MM
 
 ## Issues
-- [x] FAS-123 - shipped (PR: #123)
+- [x] FAS-123 - shipped (PR: #123, review clean round 2)
 - [>] FAS-124 - in-progress (step: implement, plan-step: 3/5)
 - [ ] FAS-125 - pending
 - [-] FAS-126 - skipped (has questions)
@@ -33,11 +33,11 @@ FAS-127: RuntimeError in UserService - needs investigation
 Status markers:
 - `[ ]` pending - not yet started
 - `[>]` in-progress - currently being shipped
-- `[x]` shipped - PR created successfully
+- `[x]` shipped - PR created and review loop finished clean
 - `[-]` skipped - has questions or intentionally skipped
 - `[!]` failed - error during shipping
 
-Phases: `setup` → `post-plan` → `implement` → `push-pr` → `done`
+Phases: `setup` → `post-plan` → `implement` → `push-pr` → `review` → `done`
 
 ## Behavior
 
@@ -75,7 +75,7 @@ Phases: `setup` → `post-plan` → `implement` → `push-pr` → `done`
   4. Run the test — confirm it passes
   5. **Refactor = shrink**: reduce line count and indirection — never introduce an abstraction that isn't in the plan. If one feels necessary mid-step, stop and flag it instead of improvising. Re-run tests to confirm still green
   6. Run broader quality checks (rubocop, related test files)
-  7. **Commit**: tests and implementation ship in the same commit (never separate "add tests" commits)
+  7. **Commit**: tests and implementation ship in the same commit (never separate "add tests" commits). The message must pass the standalone-reviewer test (commit conventions): the plan step you just implemented is context the reviewer does not have — the why it carries goes in the message, in domain terms
   8. Track progress in `.notes/<branch_name>/implement-plan.md`
   9. Update session with current plan step number
 - **Spike exception**: If the plan was flagged as a spike during `/challenge`, the red-green cycle is optional — but note skipped tests in the plan file so review catches them.
@@ -101,9 +101,24 @@ Phases: `setup` → `post-plan` → `implement` → `push-pr` → `done`
   ```
   No test plan (CI + the diff cover it), no implementation narrative, no restating the issue. If you feel the urge to explain more, it belongs in the issue.
 - **PR comments** (review replies, follow-ups): one line each, or don't post. If it needs a paragraph, put it on the Linear issue and link it.
-- Update session: mark as `shipped`, record PR number
+- Update session: record PR number, phase as `review`
 
-### 5. Next Issue
+### 5. Review Loop
+- Spawn a review subagent (fresh context, no /review skill) whose prompt is exactly:
+  ```
+  Can you review the pull request : <pull_request_link>
+  ```
+  Nothing else — the reviewer forms its own view from the PR alone.
+- Triage its report:
+  - **No actionable findings** → mark issue `shipped` (record the round count), move to next issue
+  - **Actionable findings** → save them to `.notes/<branch_name>/review-round-N.md`, then fix on the same branch:
+    1. **Re-plan**: append a `## Review round N` section to `.notes/<branch_name>/plan.md` — same format and same one-rule as /plan (one step per finding: failing test → fix; simplest fix only, flag rather than escalate). A finding you disagree with gets a one-line rebuttal in review-round-N.md instead of a step.
+    2. **Re-ship**: implement the new steps with the phase-3 red-green-commit cycle, push to the same branch (the PR updates)
+    3. Spawn a **fresh** review subagent on the updated PR with the same prompt, repeat
+- **Round cap: 3.** If findings remain after round 3, stop looping: note the open findings in the session file `## Notes` and surface them to the user — don't ping-pong indefinitely.
+- Update session round number after each pass so resumption re-enters the loop correctly
+
+### 6. Next Issue
 - Move to next pending issue in session
 - If none remaining, session complete
 
@@ -113,7 +128,8 @@ When resuming (via `/ship` with no args):
 1. Read `.notes/_ship-session.md` to understand current state
 2. Find the `## Current` issue and `## Current Phase`
 3. For `implement` phase: also read `.notes/<branch>/implement-plan.md` to find current step
-4. Continue from that exact point
+4. For `review` phase: read the latest `.notes/<branch>/review-round-N.md` — unfixed findings → resume the fix cycle; all fixed → spawn the next review subagent
+5. Continue from that exact point
 
 This works even after:
 - Context compaction (conversation summarized)
@@ -135,8 +151,15 @@ Continuing implementation...
 
 ### After each issue ships:
 ```
-Shipped FAS-124 -> PR: https://github.com/org/repo/pull/124
+Shipped FAS-124 -> PR: https://github.com/org/repo/pull/124 (review clean after 2 rounds)
 Continuing with FAS-125...
+```
+
+### When the review cap is hit:
+```
+FAS-124 -> PR: https://github.com/org/repo/pull/124 — 3 review rounds done, findings still open:
+  - [finding]
+Session saved. Fix manually or answer here to continue.
 ```
 
 ### When batch complete:
