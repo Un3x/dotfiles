@@ -70,6 +70,10 @@ ZSH_THEME="agnoster" # set by `omz`
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# bare `tmux` creates/attaches the vault (EA) session; projects get named
+# sessions via start-project-session.sh
+ZSH_TMUX_DEFAULT_SESSION_NAME="vault"
+
 plugins=(git aliases colored-man-pages colorize tmux docker)
 
 source $ZSH/oh-my-zsh.sh
@@ -118,6 +122,8 @@ alias datapass="cd /home/unex/Project/api-entreprise/data_pass"
 alias relais="cd /home/unex/Project/api-entreprise/relais"
 alias passemarche="cd /home/unex/Project/api-entreprise/voie_rapide"
 alias admin="cd /home/unex/Project/api-entreprise/admin_api_entreprise"
+alias simplifions="cd /home/unex/Project/api-entreprise/simplifions"
+alias giratoire="cd /home/unex/Project/lesensgiratoire"
 alias bangun="cd /home/unex/Project/creche/bangun"
 alias troskapp="cd /home/unex/Project/troskapp"
 alias poe2="cd /home/unex/Documents/mylife_in_a_vault/projects/poe2"
