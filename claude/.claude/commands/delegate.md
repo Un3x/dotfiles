@@ -12,7 +12,7 @@ The coding agent must run with the *repo's* CLAUDE.md and config, which a subage
 ## Behavior
 
 1. **Resolve the session**: `SESSION=$(command tmux display-message -p '#S')`. If not inside tmux, stop: tell the user to start the project session first (`systems/start-project-session.sh`).
-2. **Compose the prompt**: the command plus the context that emerged this session — corrections, decisions, constraints the user already told you. This is the whole point: the user should not have to repeat themselves to the coding agent. Keep it tight; reference ticket IDs and files, don't paste walls of text.
+2. **Compose the prompt**: the command plus the context that emerged this session — corrections, decisions, constraints the user already told you. This is the whole point: the user should not have to repeat themselves to the coding agent. Keep it tight; reference ticket IDs and files, don't paste walls of text. **Every brief ends with a done-condition and a stop trigger**: the observable state that means finished (PR green, tests pass, plan posted) and when to halt and report instead of continuing ("stop after the plan", "stop if the fix spreads beyond <scope>").
 3. **Check what the code window is running**:
    `command tmux display-message -p -t "$SESSION:code" '#{pane_current_command}'`
    - A shell (`zsh`/`bash`): send a fresh launch — `command tmux send-keys -t "$SESSION:code" -l 'claude "<prompt>"'` then `command tmux send-keys -t "$SESSION:code" Enter`

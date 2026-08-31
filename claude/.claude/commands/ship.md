@@ -68,6 +68,7 @@ Phases: `setup` → `post-plan` → `implement` → `push-pr` → `review` → `
 ### 3. Implement Plan
 - Update session: phase as `implement`
 - Follow each step in the plan
+- **First action of this phase**: copy the plan's step list verbatim into your todo list, one todo per step — paraphrasing the plan is how steps get silently dropped
 - At each step, follow the **red-green-commit** cycle:
   1. **Red**: Write the failing test(s) specified in the plan step
   2. Run the test — confirm it fails for the expected reason (not a typo/syntax error)
