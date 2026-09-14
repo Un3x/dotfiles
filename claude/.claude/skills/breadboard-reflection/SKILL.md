@@ -1,3 +1,9 @@
+---
+name: breadboard-reflection
+description: "Find and fix design smells in an existing breadboard."
+disable-model-invocation: true
+---
+
 # Breadboard Analysis
 
 Find design smells in a breadboard and fix them. Works on existing breadboards built with the `/breadboarding` skill.

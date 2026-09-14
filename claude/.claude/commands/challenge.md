@@ -1,3 +1,8 @@
+---
+description: "Question whether and what to build before planning. Run before /plan."
+disable-model-invocation: true
+---
+
 Challenge command. Forces a "are we building the right thing?" pass before engineering work.
 
 ## Usage

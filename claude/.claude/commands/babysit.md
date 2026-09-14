@@ -1,3 +1,8 @@
+---
+description: "Keep a PR merge-ready: watch CI, conflicts, and review comments; fix the mechanical, escalate the rest."
+disable-model-invocation: true
+---
+
 Keep a PR merge-ready without the user polling it. Watches CI, conflicts, and review comments; fixes what's mechanical; escalates what needs judgment.
 
 ## Usage

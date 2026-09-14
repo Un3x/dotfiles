@@ -1,6 +1,24 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "model": "claude-fable-5[1m]",
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "deny": [
+      "Bash(ansible-vault decrypt:*)",
+      "Bash(ansible-vault edit:*)",
+      "Bash(ansible-vault view:*)",
+      "Bash(bin/rails credentials:*)",
+      "Bash(bundle exec rails credentials:*)",
+      "Bash(rails credentials:*)",
+      "Bash(scp:*)",
+      "Bash(sftp:*)",
+      "Bash(ssh:*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/config/credentials/*.key)",
+      "Read(**/config/master.key)"
+    ]
+  },
+  "model": "fable[1m]",
   "hooks": {
     "Stop": [
       {
@@ -92,6 +110,16 @@
       }
     ],
     "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "date '+Current date/time: %A %Y-%m-%d %H:%M %Z'",
+            "timeout": 5
+          }
+        ]
+      },
       {
         "matcher": "",
         "hooks": [
@@ -229,8 +257,7 @@
     "dsfr@dsfr-skill": true,
     "compound-engineering@every-marketplace": false,
     "ruby-lsp@claude-plugins-official": true,
-    "accessibility@rgaa-toolkit": true,
-    "aiss-consult@ai-success-story": true
+    "accessibility@rgaa-toolkit": true
   },
   "extraKnownMarketplaces": {
     "rgaa-toolkit": {
@@ -238,16 +265,12 @@
         "source": "git",
         "url": "https://github.com/Isalafont/claude-skill-rgaa-dev.git"
       }
-    },
-    "ai-success-story": {
-      "source": {
-        "source": "github",
-        "repo": "Un3x/ai-success-story"
-      }
     }
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "medium",
   "tui": "fullscreen",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "verbose": false,
+  "agentPushNotifEnabled": true
 }
