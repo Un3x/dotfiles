@@ -1,3 +1,8 @@
+---
+description: "Implement planned Linear issues: red-green-commit, PR, review loop."
+disable-model-invocation: true
+---
+
 Ship command for Linear issues. Executes provide-plan + implement-plan + PR + review loop for each issue.
 
 ## Usage
@@ -110,12 +115,15 @@ Phases: `setup` → `post-plan` → `implement` → `push-pr` → `review` → `
   Can you review the pull request : <pull_request_link>
   ```
   Nothing else — the reviewer forms its own view from the PR alone.
-- Triage its report:
+- In parallel, get the Codex second opinion on the same branch (background; Codex review mode is read-only by design):
+  `codex exec review --base main > .notes/<branch_name>/codex-review-round-N.md 2>&1`
+  Missing `codex` or a failed run (including a sandbox error) is noted in the session file `## Notes` and does not block the loop; never bypass its sandbox to force it.
+- Triage both reports as one list (a Codex finding needs the same concrete failure scenario before it counts; rejected ones get a one-line rebuttal in review-round-N.md):
   - **No actionable findings** → mark issue `shipped` (record the round count), move to next issue
   - **Actionable findings** → save them to `.notes/<branch_name>/review-round-N.md`, then fix on the same branch:
     1. **Re-plan**: append a `## Review round N` section to `.notes/<branch_name>/plan.md` — same format and same one-rule as /plan (one step per finding: failing test → fix; simplest fix only, flag rather than escalate). A finding you disagree with gets a one-line rebuttal in review-round-N.md instead of a step.
     2. **Re-ship**: implement the new steps with the phase-3 red-green-commit cycle, push to the same branch (the PR updates)
-    3. Spawn a **fresh** review subagent on the updated PR with the same prompt, repeat
+    3. Spawn a **fresh** review subagent on the updated PR with the same prompt, rerun Codex, repeat
 - **Round cap: 3.** If findings remain after round 3, stop looping: note the open findings in the session file `## Notes` and surface them to the user — don't ping-pong indefinitely.
 - Update session round number after each pass so resumption re-enters the loop correctly
 

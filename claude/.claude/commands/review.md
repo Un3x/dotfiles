@@ -1,3 +1,8 @@
+---
+description: "Paranoid two-pass code review of a branch, PR, or files."
+disable-model-invocation: true
+---
+
 Paranoid code review. Two-pass structural audit of changes, designed to catch bugs that pass CI but blow up in production.
 
 ## Usage
@@ -20,7 +25,14 @@ This is the **paranoid staff engineer brain**. Not a style review, not a linting
 - Check if `.claude/review-checklist.md` exists (project-specific overrides)
 - If not, use the built-in checklist below
 
-### 3. Run Pass 1: CRITICAL
+### 3. Launch the Codex second opinion (background)
+Start it before your own passes so it runs in parallel (review mode is read-only by design):
+- Branch: `codex exec review --base main > .notes/<branch>/codex-review.md 2>&1`
+- PR number: `gh pr checkout <number>` first, then the same command
+- Specific files: `codex exec review --base main "Only review: <files>"`
+Run it with `run_in_background`; collect the file after Pass 4. If `codex` is missing or fails (quota, login, "Review blocked … sandbox could not start"), say so in the Summary and continue — the second opinion is additive, never blocking. Never pass `--dangerously-bypass-approvals-and-sandbox` to get past a sandbox error: review mode then runs commands unsandboxed (it will happily run the test suite).
+
+### 4. Run Pass 1: CRITICAL
 Issues that will break production, lose data, or create security holes.
 
 For each finding:
@@ -37,7 +49,7 @@ Categories:
 - **Auth/authz gaps**: Missing authorization checks, privilege escalation paths, exposed endpoints
 - **Untested new code paths**: New methods, branches, or behaviors introduced without a corresponding test. This is not "low coverage" hand-wringing — flag only when a specific new path has zero direct test exercising it. TDD was violated; bugs will ship. (Exception: spike PRs explicitly flagged as such.)
 
-### 4. Run Pass 2: INFORMATIONAL
+### 5. Run Pass 2: INFORMATIONAL
 Issues worth knowing about but not blocking.
 
 Categories:
@@ -48,7 +60,7 @@ Categories:
 - **Dead code**: Unused variables, unreachable branches, commented-out code
 - **Naming/clarity**: Misleading names, magic numbers, unclear intent (only when it could cause bugs)
 
-### 5. Run Pass 3: ARCHITECTURE (Rails projects only)
+### 6. Run Pass 3: ARCHITECTURE (Rails projects only)
 If the codebase is a Rails application, run a layered architecture check using the `layered-rails` skill:
 - Invoke `/layers:review` on the changed files
 - **Violations only**: misplaced responsibility (e.g., controller doing domain logic), god objects
@@ -57,7 +69,7 @@ If the codebase is a Rails application, run a layered architecture check using t
 
 Skip this pass for non-Rails projects.
 
-### 6. Run Pass 4: SIMPLICITY (over-engineering)
+### 7. Run Pass 4: SIMPLICITY (over-engineering)
 Complexity that costs more than it pays. Same rule as CRITICAL: each finding needs a concrete cost statement, not a vibe.
 
 Categories:
@@ -70,7 +82,10 @@ Categories:
 
 Each finding states the deletion payoff ("inlining this removes 40 lines and one file").
 
-### 7. Diagram the data flow (if applicable)
+### 8. Merge the Codex opinion
+Read `codex-review.md`. For each Codex finding: verify it against the code (same bar as your own — concrete failure scenario or drop it). Agreements get a "(also Codex)" tag on your finding; new confirmed findings go under CODEX SECOND OPINION; findings you reject get a one-line rebuttal there so the user sees the disagreement, not silence.
+
+### 9. Diagram the data flow (if applicable)
 If the diff touches a data pipeline, request handler, or multi-step process:
 - Draw an ASCII diagram of the data flow
 - Mark where validation happens (or doesn't)
@@ -100,6 +115,11 @@ Fix: [suggested extraction or restructure]
 **1. [Category]: [Brief description]**
 `file:line` — [what it costs, what deleting/inlining buys]
 
+### CODEX SECOND OPINION
+**Confirmed:** [findings Codex raised that you verified and did not have]
+**Rejected:** [finding — why]
+(or: "Codex: no additional findings" / "Codex: not run — <reason>")
+
 ### INFORMATIONAL (worth knowing)
 
 **1. [Category]: [Brief description]**
@@ -112,6 +132,7 @@ Fix: [suggested extraction or restructure]
 - Critical: N issues
 - Simplicity: N issues
 - Informational: N issues
+- Codex: N confirmed / N rejected
 - Verdict: [ship it / fix criticals first / simplify first / needs rethink]
 ```
 
