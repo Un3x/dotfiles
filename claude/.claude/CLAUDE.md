@@ -29,13 +29,10 @@
 - When two implementations are the same size, prefer the one with better edge-case handling.
 - Never lazy about: trust-boundary validation, error handling that prevents data loss, security, accessibility, anything explicitly requested. Minimal means less code, not less correct.
 - Any push landing on the default branch without a PR review gets a fresh-eyes review subagent before the done report.
-- When splitting work into issues/PRs, split into vertical slices that each deliver coherent, reviewable functionality — never into horizontal layers (model / controller / tests as separate PRs). If a sub-issue can only be described by its mechanics, not by what it lets a user or system do, it's too atomic. A PR should tell one story.
+- Splitting work into issues/PRs: vertical slices, one story per PR — the grain is in `~/.claude/skills/challenge/slices.md`.
 
-## Rails Architecture
+## Rails
 
-- **Vanilla Rails first.** Convention over configuration is the doctrine: reach for the Rails built-in (`validates`, `normalizes`, `enum`, scopes, `delegated_type`, `generates_token_for`, Turbo, …) before any custom construct, config flag, or option hash. If Rails has an opinion, follow it.
-- Responsibility placement is not negotiable: domain logic doesn't live in controllers, one job per class. But correct placement means putting code in the right *existing* home (usually the model), not creating a new one.
-- Extraction requires the rule of three — no layer, service, or abstraction for a single use. A fat-ish model beats a thin model orbited by single-caller objects.
-- The layered-rails skill is a **review instrument only** (`/review` Pass 3, violations check). Never invoke it during planning or implementation; never let it prescribe adding a construct.
+- **Vanilla Rails first.** Before writing or planning Rails code, read `~/.claude/skills/plan/one-rule.md`: the simplest Rails-conventional design, placement in existing homes, rule of three, layered-rails as a review instrument only.
 
 @RTK.md
