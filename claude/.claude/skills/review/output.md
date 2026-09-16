@@ -38,6 +38,7 @@ Fix: [suggested extraction or restructure]
 [ASCII diagram if applicable]
 
 ### Summary
+- Author: [PR author login, or the branch owner]
 - Critical: N issues
 - Simplicity: N issues
 - Informational: N issues
