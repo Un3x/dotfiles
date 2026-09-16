@@ -1,13 +1,12 @@
 ---
-description: "Paranoid two-pass code review of a branch, PR, or files."
-disable-model-invocation: true
+description: "Paranoid two-pass code review of a branch, PR, or files. Use whenever the user asks to review a PR, a pull request URL, a branch, or files (\"can you review…\", \"est-ce qu'on peut review…\")."
 ---
 
 Paranoid code review. Two-pass structural audit of changes, designed to catch bugs that pass CI but blow up in production.
 
 ## Usage
 - `/review` - Review current branch changes against main
-- `/review <PR-number>` - Review a specific PR
+- `/review <PR-number>` or `/review <PR URL>` - Review a specific PR (also triggered by a plain request such as "peux-tu review https://github.com/org/repo/pull/504")
 - `/review <file1> <file2> ...` - Review specific files
 
 ## Purpose
@@ -18,7 +17,7 @@ This is the **paranoid staff engineer brain**. Not a style review, not a linting
 
 ### 1. Gather the diff
 - No args: `git diff main...HEAD` (all changes on current branch)
-- PR number: fetch PR diff via `gh pr diff <number>`
+- PR number or URL: fetch PR diff via `gh pr diff <number-or-url>`
 - Specific files: `git diff main -- <files>`
 
 ### 2. Read the checklist
@@ -28,7 +27,7 @@ This is the **paranoid staff engineer brain**. Not a style review, not a linting
 ### 3. Launch the Codex second opinion (background)
 Start it before your own passes so it runs in parallel (review mode is read-only by design):
 - Branch: `codex exec review --base main > .notes/<branch>/codex-review.md 2>&1`
-- PR number: `gh pr checkout <number>` first, then the same command
+- PR number or URL: `gh pr checkout <number-or-url>` first, then the same command
 - Specific files: `codex exec review --base main "Only review: <files>"`
 Run it with `run_in_background`; collect the file after Pass 4. If `codex` is missing or fails (quota, login, "Review blocked … sandbox could not start"), say so in the Summary and continue — the second opinion is additive, never blocking. Never pass `--dangerously-bypass-approvals-and-sandbox` to get past a sandbox error: review mode then runs commands unsandboxed (it will happily run the test suite).
 

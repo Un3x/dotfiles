@@ -110,20 +110,17 @@ Phases: `setup` → `post-plan` → `implement` → `push-pr` → `review` → `
 - Update session: record PR number, phase as `review`
 
 ### 5. Review Loop
-- Spawn a review subagent (fresh context, no /review skill) whose prompt is exactly:
+- Spawn a review subagent (fresh context) whose prompt is exactly:
   ```
-  Can you review the pull request : <pull_request_link>
+  Run /review <pull_request_link>
   ```
-  Nothing else — the reviewer forms its own view from the PR alone.
-- In parallel, get the Codex second opinion on the same branch (background; Codex review mode is read-only by design):
-  `codex exec review --base main > .notes/<branch_name>/codex-review-round-N.md 2>&1`
-  Missing `codex` or a failed run (including a sandbox error) is noted in the session file `## Notes` and does not block the loop; never bypass its sandbox to force it.
-- Triage both reports as one list (a Codex finding needs the same concrete failure scenario before it counts; rejected ones get a one-line rebuttal in review-round-N.md):
+  Nothing else — the reviewer forms its own view from the PR alone. `/review` carries the checklist, the four passes and the Codex second opinion, so this phase adds nothing on top of it. Save the subagent's report to `.notes/<branch_name>/review-round-N.md`.
+- Triage the report (CRITICAL, ARCHITECTURE, SIMPLICITY and confirmed CODEX findings; a "Codex: not run" line is noted in the session file `## Notes` and does not block the loop):
   - **No actionable findings** → mark issue `shipped` (record the round count), move to next issue
-  - **Actionable findings** → save them to `.notes/<branch_name>/review-round-N.md`, then fix on the same branch:
+  - **Actionable findings** → fix on the same branch:
     1. **Re-plan**: append a `## Review round N` section to `.notes/<branch_name>/plan.md` — same format and same one-rule as /plan (one step per finding: failing test → fix; simplest fix only, flag rather than escalate). A finding you disagree with gets a one-line rebuttal in review-round-N.md instead of a step.
     2. **Re-ship**: implement the new steps with the phase-3 red-green-commit cycle, push to the same branch (the PR updates)
-    3. Spawn a **fresh** review subagent on the updated PR with the same prompt, rerun Codex, repeat
+    3. Spawn a **fresh** review subagent on the updated PR with the same prompt, repeat
 - **Round cap: 3.** If findings remain after round 3, stop looping: note the open findings in the session file `## Notes` and surface them to the user — don't ping-pong indefinitely.
 - Update session round number after each pass so resumption re-enters the loop correctly
 
