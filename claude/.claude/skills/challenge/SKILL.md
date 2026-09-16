@@ -1,4 +1,5 @@
 ---
+name: challenge
 description: "Question whether and what to build before planning. Run before /plan."
 disable-model-invocation: true
 ---
@@ -17,52 +18,18 @@ Run this BEFORE `/plan`. Planning locks in HOW to build. This questions WHETHER 
 
 ## Behavior
 
-### With issue arguments:
-1. Fetch issue details from Linear MCP
-2. For each issue, run the challenge framework below
-3. Output findings per issue
-
-### Without arguments:
-1. Ask the user what they're about to build
-2. Run the challenge framework on their description
+With issue arguments: fetch issue details from Linear MCP, run the challenge framework on each, output findings per issue. Without arguments: ask the user what they're about to build, then run the framework on their description.
 
 ## Challenge Framework
 
 For each feature/issue, think through these in order:
 
-### 1. Job-to-be-Done
-- What is the user actually trying to accomplish?
-- Is the issue description the real problem, or a symptom?
-- Restate the problem in terms of user outcome, not implementation
-
-### 2. 10x Check
-- What would a 10x better version of this look like?
-- Are we thinking too small? Too incremental?
-- What would make users genuinely delighted, not just unblocked?
-
-### 3. Scope Interrogation
-- Is this the minimum that delivers the outcome?
-- What can we cut without losing the core value?
-- What are we including "just in case" that we should drop?
-- Conversely: is there something small we're missing that would 3x the value?
-
-### 4. Risk & Reversibility
-- Is this a one-way door or two-way door?
-- What's the blast radius if this is wrong?
-- Can we ship a smaller version first to validate?
-
-### 5. Opportunity Cost
-- What are we NOT doing by spending time on this?
-- Is this the highest-leverage thing right now?
-- Does this compound (builds future value) or is it a one-off?
-
-### 6. Split Granularity (only if recommending a split)
-Splitting an oversized issue is correct — but the right grain is **the smallest change that still delivers coherent, reviewable functionality**, not the smallest change possible. A PR must let the reviewer see the global purpose; over-atomic splits destroy that.
-
-- Each resulting issue = a **vertical slice** (thin end-to-end functionality the user or system can observe), not a **horizontal layer** (a "model" PR, a "controller" PR, a "tests" PR — never split this way).
-- **One-sentence test**: each sub-issue must be describable in one sentence of *functional* value ("parents can see their invoice"). If you can only describe it by its implementation mechanics ("add the `Invoice` model"), it's too atomic — merge it back.
-- A PR that brings no observable behavior on its own is a sliver, not a slice. Prefer fewer, story-telling PRs over many mechanical ones.
-- Sequencing dependencies (slice B builds on slice A) is fine and expected — that's phasing, not atomizing.
+1. **Job-to-be-Done** — What is the user actually trying to accomplish? Is the issue description the real problem, or a symptom? Restate the problem in terms of user outcome, not implementation.
+2. **10x Check** — What would a 10x better version of this look like? Are we thinking too small? Too incremental? What would make users genuinely delighted, not just unblocked?
+3. **Scope Interrogation** — Is this the minimum that delivers the outcome? What can we cut without losing the core value? What are we including "just in case" that we should drop? Conversely: is there something small we're missing that would 3x the value?
+4. **Risk & Reversibility** — Is this a one-way door or two-way door? What's the blast radius if this is wrong? Can we ship a smaller version first to validate?
+5. **Opportunity Cost** — What are we NOT doing by spending time on this? Is this the highest-leverage thing right now? Does this compound (builds future value) or is it a one-off?
+6. **Split Granularity** (only if recommending a split) — [`slices.md`](slices.md): vertical slices, one-sentence test, one story per PR.
 
 ## Output Format
 

@@ -1,4 +1,5 @@
 ---
+name: clean
 description: "Delete .notes subfolders whose Linear issue is Done."
 disable-model-invocation: true
 ---
