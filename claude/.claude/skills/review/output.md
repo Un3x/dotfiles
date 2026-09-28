@@ -2,6 +2,8 @@
 
 File references are full repository paths, never a basename: Rails has many `show.html.erb`.
 
+The report is written in the language of the PR (title, commits, description), whatever language the session runs in: it is relayed to the team as is (2026-09-18 Passemarche, 2026-09-21 Apistration: two reports rewritten in French on request).
+
 ```
 ## Code Review: [branch or PR title]
 
