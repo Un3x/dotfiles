@@ -101,7 +101,7 @@ def table(roots, since):
         text = read(f)
         fm, body = split_frontmatter(text)
         n = text.count("\n")
-        d = len(description(fm))
+        d = 0 if re.search(r"^disable-model-invocation:\s*true", fm, re.M) else len(description(fm))
         total_desc += d
         g = guardrails(body)
         dates = len(DATE.findall(body))
