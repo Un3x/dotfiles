@@ -6,7 +6,7 @@ Read at phase 5 (review) of `/ship`.
   ```
   Run /review <pull_request_link>
   ```
-  Nothing else — the reviewer forms its own view from the PR alone. `/review` carries the checklist, the four passes and the Codex second opinion, so this phase adds nothing on top of it. Save the subagent's report to `.notes/<branch_name>/review-round-N.md`.
+  Nothing else — the reviewer forms its own view from the PR alone. `/review` carries the checklist, the four passes and the Codex second opinion, so this phase adds nothing on top of it. Save the subagent's report **verbatim** to `.notes/<branch_name>/review-round-N.md` (the `review/output.md` shape, headings and numbering kept), then append `## Triage` with one line per finding: `N. fixed | rebutted: <why> | deferred: <where>`. A paraphrased round file cannot be counted (72 round files by 2026-09-30, a dozen heading shapes, no recurrence measurable).
 - Triage the report (ASKED vs BUILT lines marked missing, deviates or extra, then CRITICAL, ARCHITECTURE, SIMPLICITY and confirmed CODEX findings; a "Codex: not run" line is noted in the session file `## Notes` and does not block the loop):
   - **No actionable findings** → mark issue `shipped` (record the round count), move to next issue
   - **Actionable findings** → fix on the same branch:
