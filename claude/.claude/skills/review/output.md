@@ -9,9 +9,9 @@ The report is written in the language of the PR (title, commits, description), w
 
 ### ASKED vs BUILT
 Ask: [ISSUE-ID and title, or "no source found"]
-- [line of the ask] — delivered (`file`, `test`) | missing | deviates: [how] | unproven
+- [line of the ask] — delivered (`file`, `test`) | missing | deviates: [how] | unclear: [what would settle it] | unproven
 - ...
-Extra: [what the diff does that no line asked for, with size] (or none)
+Extra: [what the diff does that no line asked for, with size, and the limit it crosses if any] (or none)
 Verdict: delivered | partial | off-target
 
 ### CRITICAL (must fix)
