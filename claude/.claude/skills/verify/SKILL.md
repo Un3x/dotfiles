@@ -18,7 +18,7 @@ An agent that has to start the app, find the admin login and click to a screen r
 1. Interview the repo, not the user: surface, launch command, seed accounts per role, harness, evidence, isolation. Rails answers in [`rails.md`](rails.md). Ask the user only what the code cannot answer: which port is free, whether the map is committed or local.
 2. Write `.claude/skills/verify-<app>/SKILL.md` with frontmatter (`name: verify-<app>`, a description that names the app, the surface and « launch »), and the sections Launch, Doctor, Enter (accounts and login path per role), Drive, Evidence, Cleanup, every one grounded in what step 1 found.
 3. Write `features/README.md` and one file per feature for the top three to five, from routes, menus and system tests, in the shape of [`feature-file.md`](feature-file.md).
-4. Placement: committed → plain files; local → real files in the vault project folder `projects/<name>/verify/`, symlink in the repo, `.claude/skills/verify-<app>` added to `.gitignore` (same pattern as `.notes`). Ask once, record nothing else.
+4. Placement: local by default → real files in the vault project folder `projects/<name>/verify/`, symlink in the repo, `.claude/skills/verify-<app>` added to `.gitignore` (same pattern as `.notes`). Committed, plain files, only when the user says so for that project; whether coworkers get the skill is their question to ask, not ours to settle.
 5. Prove it once end to end: launch, doctor, log in, drive one feature, capture evidence, clean up, then check the evidence survived. A map never run is a draft.
 
 ## `/verify maintain` — keep the map honest
