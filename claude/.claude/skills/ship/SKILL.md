@@ -1,7 +1,6 @@
 ---
 name: ship
-description: "Implement planned Linear issues: red-green-commit, PR, review loop."
-disable-model-invocation: true
+description: "Implement one planned Linear issue: red-green-commit, proof through the verify map, PR, review loop. Run by a subagent that the tech lead session spawns with `Run /ship <ISSUE>`."
 ---
 
 Ship command for Linear issues. Executes provide-plan + implement-plan + PR + review loop for each issue.

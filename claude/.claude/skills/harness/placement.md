@@ -4,8 +4,8 @@ Read at step 4 of the pass, for every memory, correction and new rule. **A fact 
 
 | The fact says… | It goes in | Examples |
 | --- | --- | --- |
-| how one thing is done, at one step | the skill that does that step — `SKILL.md` if every run reads it, a sibling file if one step reads it | "PR body is ≤6 lines" → `commit/pull-request.md`; "poll the code pane" → `delegate/follow-loop.md` |
-| a gesture two skills perform | one skill both call with the Skill tool | `/simplify` from `/ship`; `/review` from `/ship`'s review loop |
+| how one thing is done, at one step | the skill that does that step — `SKILL.md` if every run reads it, a sibling file if one step reads it | "PR body is ≤6 lines" → `commit/pull-request.md`; "follow a shipping subagent" → `work/SKILL.md` § Following |
+| a gesture two skills perform | one skill both call with the Skill tool | `/simplify` from `/ship`; `/review` from `/ship`'s review loop; `/ship` from `work` |
 | a fact two skills read | a sibling in the skill that owns it; the others link its relative path, one level deep | the one rule → `plan/one-rule.md`, linked by `ship` and `review` |
 | a convention valid for any work, any repo | `~/.claude/CLAUDE.md` — and remove as much as you add | prose diet, the coding rungs |
 | a convention valid for one repo | that repo's `CLAUDE.md`, or `.claude/rules/*.md` scoped by path | Firefox + Chromium checks for Bangun UI |

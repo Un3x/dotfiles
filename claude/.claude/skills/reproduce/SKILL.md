@@ -1,7 +1,6 @@
 ---
 name: reproduce
 description: "Reproduce a bug report through the real app before anyone writes a ticket or a fix: find an existing fix, drive the feature from the verify map twice, cross-check the state, post one of five verdicts with evidence where the report lives."
-disable-model-invocation: true
 ---
 
 # reproduce

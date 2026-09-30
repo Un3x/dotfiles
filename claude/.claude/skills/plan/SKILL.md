@@ -1,7 +1,6 @@
 ---
 name: plan
 description: "Write or replan `.notes/<branch>/plan.md` for Linear issues."
-disable-model-invocation: true
 ---
 
 Plan command for Linear issues. Handles both initial planning and replanning.
