@@ -7,6 +7,7 @@ Delegate a command to the project's coding agent via the tmux "code" window. For
 
 ## Usage
 - `/delegate API-123` — run the issue end to end: `/challenge`, then `/plan`, then `/ship`, one brief each, the user weighing in after the challenge
+- `/delegate /reproduce <report>` — a bug report is reproduced through the app before it is ticketed or planned; the verdict comes back with evidence
 - `/delegate /plan API-123` — send /plan to the coding agent
 - `/delegate /ship API-123 API-124` — send /ship
 - `/delegate <any prompt>` — send an arbitrary instruction
