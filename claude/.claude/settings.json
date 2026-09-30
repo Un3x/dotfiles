@@ -71,6 +71,16 @@
             "timeout": 5
           }
         ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/unex/.claude/hooks/tech-lead.sh",
+            "timeout": 5
+          }
+        ]
       }
     ],
     "SessionEnd": [
