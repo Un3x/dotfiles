@@ -47,6 +47,11 @@ For each feature/issue, think through these in order:
 
 **Opportunity cost**: [what we're trading off]
 
+**Appetite**: [the size the outcome is worth: a morning, a day, a week — /plan's size cap takes it]
+**No-gos**: [what this issue will not do, one line each — /review's asked pass reads them as limits]
+**Rabbit holes**: [where the work could sink time, and the way around]
+**Rejected alternatives**: [what was considered and why not, one line each]
+
 **Recommendation**: [proceed as-is / rethink scope / split into phases / kill it]
 [brief rationale; if splitting, name the vertical slices and the one-sentence value of each]
 ```
@@ -55,7 +60,8 @@ For each feature/issue, think through these in order:
 
 After presenting findings, ask the user whether they agree with the recommendation. Then update Linear so downstream commands (`/plan`, `/ship`) read the post-challenge truth instead of the original issue:
 
-- **Agreed (proceed / rethink with changes)**: update the issue description — reframed problem, scope cuts, spike flag if applicable. The description should reflect what we actually decided to build, in the words of `commit/readers.md`: why, scope, limits, for a non-technical reader.
+- **Agreed (proceed / rethink with changes)**: update the issue description — reframed problem, scope, appetite, no-gos, spike flag if applicable. The description should reflect what we actually decided to build, in the words of `commit/readers.md`: why, scope, limits, for a non-technical reader. Rejected alternatives and rabbit holes stay in the challenge output, not on the issue.
+- **Last line of every challenge, verbatim**: `CHALLENGE: GO` (proceed as is or with agreed changes), `CHALLENGE: RESHAPE` (split or rethink, the user decides), or `CHALLENGE: DROP`. The follow loop reads that line and nothing else.
 - **Disagreed or killed**: leave a comment with the verdict and the user's decision, so the reasoning survives the next time the issue surfaces.
 - **No Linear issue** (conversation-mode challenge): offer to create one capturing the agreed scope.
 
