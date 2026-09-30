@@ -1,0 +1,9 @@
+# Asked versus built
+
+Read at step 2 of `/review`. Code review checks whether the change is sound; this pass checks whether it is the change that was asked for. Bangun CRE-278 (2026-09-25): three review rounds found the PR clean, and only the sub-assistant noticed afterwards that the labelled history count was computed and rendered nowhere.
+
+1. **Find the ask.** The PR body's `Closes` / `Suite de` link → the Linear issue body (`get_issue`), and the delegate brief when the session has it. No issue and no brief → skip the pass, write `Asked: no source found` in the report, nothing else.
+2. **Write the ask as a checklist** before reading the diff: every behaviour the issue promises, every limit it states (« does not », « stays »), every acceptance line. From the issue's words, not the plan's: the plan is the author's reading, the same one the diff came from.
+3. **Read the diff against the checklist**, one of three marks per line: **delivered** (name the file and the test that proves it), **missing** (nothing in the diff does it), **deviates** (done differently from what the issue says, or a stated limit crossed). Then the reverse: **extra** — anything in the diff no line of the ask covers, with its size.
+4. **Prove the user-facing lines.** When the project has a verify map (`.claude/skills/verify-<app>/`) and the diff touches routes, views or JavaScript, drive the mapped feature once and cite the evidence path; without a map, cite the system test that walks the path. A delivered line with neither is marked **unproven**.
+5. **Verdict**: `delivered` (every line delivered or proven, no deviation), `partial` (missing or unproven lines), `off-target` (a deviation or an extra larger than the ask). Missing, deviates and extra lines are findings with the same weight as CRITICAL for the ship loop.

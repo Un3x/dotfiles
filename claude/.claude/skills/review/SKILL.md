@@ -20,22 +20,23 @@ This is the **paranoid staff engineer brain**. Not a style review, not a linting
    - No args: `git diff main...HEAD` (all changes on current branch)
    - PR number or URL: fetch PR diff via `gh pr diff <number-or-url>`, and the author via `gh pr view <number-or-url> --json author -q .author.login` — the report prints it, so whoever relays the findings knows whether the fix is ours to delegate or the author's (Apistration PR #383, 2026-09-15: a team PR framed as ours to fix)
    - Specific files: `git diff main -- <files>`
-2. **Read the checklist**: `.claude/review-checklist.md` if the project has one (project-specific overrides), else [`checklist.md`](checklist.md).
-3. **Launch the Codex second opinion (background)**. Start it before your own passes so it runs in parallel (review mode is read-only by design):
+2. **Asked versus built**: [`asked.md`](asked.md) — the ask as a checklist from the issue, then the diff marked against it. Done when every line carries delivered / missing / deviates and the extras are listed.
+3. **Read the checklist**: `.claude/review-checklist.md` if the project has one (project-specific overrides), else [`checklist.md`](checklist.md).
+4. **Launch the Codex second opinion (background)**. Start it before your own passes so it runs in parallel (review mode is read-only by design):
    - Branch: `codex exec review --base main > .notes/<branch>/codex-review.md 2>&1`
    - PR number or URL: `gh pr checkout <number-or-url>` first, then the same command
    - Specific files: `codex exec review --base main "Only review: <files>"`
    Run it with `run_in_background`; collect the file after Pass 4. If `codex` is missing or fails (quota, login, "Review blocked … sandbox could not start"), say so in the Summary and continue — the second opinion is additive, never blocking. Never pass `--dangerously-bypass-approvals-and-sandbox` to get past a sandbox error: review mode then runs commands unsandboxed (it will happily run the test suite).
-4. **Run the four passes** of the checklist in order: CRITICAL, INFORMATIONAL, ARCHITECTURE (Rails only), SIMPLICITY. A pass is done when every category has been checked against the whole diff.
-5. **Merge the Codex opinion**. Read `codex-review.md`. For each Codex finding: verify it against the code (same bar as your own — concrete failure scenario or drop it). Agreements get a "(also Codex)" tag on your finding; new confirmed findings go under CODEX SECOND OPINION; findings you reject get a one-line rebuttal there so the user sees the disagreement, not silence.
-6. **Diagram the data flow** (if the diff touches a data pipeline, request handler, or multi-step process): ASCII diagram, mark where validation happens (or doesn't), mark where errors can occur and how they're handled.
-7. **Write the report** in the format of [`output.md`](output.md).
+5. **Run the four passes** of the checklist in order: CRITICAL, INFORMATIONAL, ARCHITECTURE (Rails only), SIMPLICITY. A pass is done when every category has been checked against the whole diff.
+6. **Merge the Codex opinion**. Read `codex-review.md`. For each Codex finding: verify it against the code (same bar as your own — concrete failure scenario or drop it). Agreements get a "(also Codex)" tag on your finding; new confirmed findings go under CODEX SECOND OPINION; findings you reject get a one-line rebuttal there so the user sees the disagreement, not silence.
+7. **Diagram the data flow** (if the diff touches a data pipeline, request handler, or multi-step process): ASCII diagram, mark where validation happens (or doesn't), mark where errors can occur and how they're handled.
+8. **Write the report** in the format of [`output.md`](output.md).
 
 ## Rules
 
 - No style nits. RuboCop and linters handle that.
 - Every critical finding must include a concrete failure scenario ("when X happens, Y breaks because Z").
 - Don't flag things that are already covered by existing tests (read the test files).
-- If the diff is clean, say "no issues found, ship it" — don't invent problems.
+- If the diff is clean, say "no issues found, ship it" — don't invent problems. Clean code that misses a line of the ask is not clean: the verdict is `partial`.
 - Be specific. "This could be a problem" is useless. "This N+1 fires on the index page with 50+ records and will timeout" is useful.
 - Read surrounding code for context before flagging — the "bug" might be handled elsewhere.

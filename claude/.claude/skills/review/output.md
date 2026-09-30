@@ -7,6 +7,13 @@ The report is written in the language of the PR (title, commits, description), w
 ```
 ## Code Review: [branch or PR title]
 
+### ASKED vs BUILT
+Ask: [ISSUE-ID and title, or "no source found"]
+- [line of the ask] — delivered (`file`, `test`) | missing | deviates: [how] | unproven
+- ...
+Extra: [what the diff does that no line asked for, with size] (or none)
+Verdict: delivered | partial | off-target
+
 ### CRITICAL (must fix)
 
 **1. [Category]: [Brief description]**
@@ -41,6 +48,7 @@ Fix: [suggested extraction or restructure]
 
 ### Summary
 - Author: [PR author login, or the branch owner]
+- Asked: delivered | partial (N missing, N unproven) | off-target | no source found
 - Critical: N issues
 - Simplicity: N issues
 - Informational: N issues
