@@ -29,6 +29,8 @@ jq -r 'select(.type=="user") | .message.content
 
 `scripts/scan-corrections.py [DAYS] [--project SUBSTRING]` runs the first query over every project and keeps the lines that look like a correction. Triage by hand: most hits are false positives.
 
+Model routing data (decided 2026-09-30): the `Model:` line of review reports and the model of the fresh-eyes subagent in `.notes/*/plan.md`, against the round count and the asked verdict, say whether the smaller model held.
+
 What you look for, by yield:
 
 1. **A user correction** — "no", "never", "I told you", an instruction reformulated twice. The strongest evidence: someone paid to say what the harness should have said. Read the two turns before it to know what the agent had in front of it.

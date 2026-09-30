@@ -29,4 +29,4 @@ Flag: ...             ← only if you believe simple is insufficient (one senten
 
 ## Fresh-eyes check (non-trivial plans only)
 
-Before marking `ready`, spawn a subagent with only the issue + draft plan: "Propose a design with half the moving parts." If it finds a simpler shape, that becomes the plan.
+Before marking `ready`, spawn a subagent on `sonnet` with only the issue + draft plan: "Propose a design with half the moving parts." If it finds a simpler shape, that becomes the plan. Exploration and fresh-eyes run on the smaller model on purpose (routing decided 2026-09-30, not for limits but to have the data when they bind); judgment stays on the main one.

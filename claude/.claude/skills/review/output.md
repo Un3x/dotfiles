@@ -48,6 +48,7 @@ Fix: [suggested extraction or restructure]
 
 ### Summary
 - Author: [PR author login, or the branch owner]
+- Model: [the model this review ran on]
 - Asked: delivered | partial (N missing, N unproven) | off-target | no source found
 - Critical: N issues
 - Simplicity: N issues

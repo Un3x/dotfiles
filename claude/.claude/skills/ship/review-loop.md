@@ -2,7 +2,7 @@
 
 Read at phase 5 (review) of `/ship`.
 
-- Spawn a review subagent (fresh context) whose prompt is exactly:
+- Spawn a review subagent (fresh context, main model: review is judgment) whose prompt is exactly:
   ```
   Run /review <pull_request_link>
   ```
