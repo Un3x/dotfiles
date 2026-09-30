@@ -7,18 +7,14 @@
 
 ## Commit Conventions
 
-- Commit messages focus on **why**, not what
-- Commit message = subject line + at most 1-2 lines of why. Never narrate the diff.
-- **Standalone-reviewer test**: the message must make sense to someone reading the log commit-by-commit with no access to the issue, the PR, or the plan. "Obvious" is judged from that reader's seat, not the author's — the author always has too much context.
-- Subject states the behavior or capability change in domain terms, not the artifact ("Add FooService" is diff narration; "Let controllers verify attestations offline" is a subject).
-- No `Co-Authored-By` trailer
+- Commit messages and PR title/body: the `commit` skill, read before every `git commit` and `gh pr create`.
 - Do not add comments in code — code should be self-explanatory
 - **NEVER** disable GPG signing (`--no-gpg-sign`) — always ask the user if GPG signing fails
 
 ## Prose Diet
 
 - Never create documentation files (README sections, docs/, guides) unless explicitly requested.
-- PR bodies, issue comments, handoff notes: a pointer plus the minimum that orients the reader. If it needs a paragraph, question whether it needs to exist.
+- Issue comments, handoff notes: a pointer plus the minimum that orients the reader. If it needs a paragraph, question whether it needs to exist.
 - Prefer a 5-line diagram over 5 paragraphs when explaining a flow.
 
 ## Coding Behavior

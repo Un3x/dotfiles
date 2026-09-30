@@ -10,7 +10,7 @@ Read at phase 3 (implement) of `/ship`, and again at each review round's re-ship
   4. Run the test — confirm it passes
   5. **Refactor = shrink**: reduce line count and indirection — never introduce an abstraction that isn't in the plan. If one feels necessary mid-step, stop and flag it instead of improvising. Re-run tests to confirm still green
   6. Run broader quality checks (rubocop, related test files)
-  7. **Commit**: tests and implementation ship in the same commit (never separate "add tests" commits). The message must pass the standalone-reviewer test (commit conventions): the plan step you just implemented is context the reviewer does not have — the why it carries goes in the message, in domain terms
+  7. **Commit**: tests and implementation ship in the same commit (never separate "add tests" commits), with the message written by the `commit` skill: the plan step is context the log reader does not have
   8. Track progress in `.notes/<branch_name>/implement-plan.md`
   9. Update session with current plan step number
 - **Spike exception**: If the plan was flagged as a spike during `/challenge`, the red-green cycle is optional — but note skipped tests in the plan file so review catches them.
