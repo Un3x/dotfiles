@@ -16,7 +16,7 @@ Read at step 2 of `/plan`, when writing or replanning `.notes/<branch_name>/plan
 N. Simplify: after green, what can be deleted, inlined, or collapsed?
 
 ## Size
-~X lines, Y files   ← hard cap for /ship, not an estimate to outgrow; sized from the issue's appetite when /challenge wrote one
+~X lines, Y files, N commits in reading order   ← an estimate, not a cap (user, 2026-09-30): one PR per functionality, self-sufficient; the commits are the reviewer's path. Sized from the issue's appetite when /challenge wrote one.
 
 ## Questions          ← only if any; presence = has-questions
 - ...

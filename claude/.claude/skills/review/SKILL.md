@@ -18,7 +18,7 @@ This is the **paranoid staff engineer brain**. Not a style review, not a linting
 
 1. **Gather the diff**
    - No args: `git diff main...HEAD` (all changes on current branch)
-   - PR number or URL: fetch PR diff via `gh pr diff <number-or-url>`, and the author via `gh pr view <number-or-url> --json author -q .author.login` — the report prints it, so whoever relays the findings knows whether the fix is ours to delegate or the author's (Apistration PR #383, 2026-09-15: a team PR framed as ours to fix)
+   - PR number or URL: fetch PR diff via `gh pr diff <number-or-url>`; past a handful of commits read them in order (`gh pr view --json commits`, then `git show` each) and follow the review guide when the body links one, since the commits are the author's reading path; and the author via `gh pr view <number-or-url> --json author -q .author.login` — the report prints it, so whoever relays the findings knows whether the fix is ours to delegate or the author's (Apistration PR #383, 2026-09-15: a team PR framed as ours to fix)
    - Specific files: `git diff main -- <files>`
 2. **Asked versus built**: [`asked.md`](asked.md) — the ask as a checklist from the issue, then the diff marked against it. Done when every line carries delivered / missing / deviates and the extras are listed.
 3. **Read the checklist**: `.claude/review-checklist.md` if the project has one (project-specific overrides), else [`checklist.md`](checklist.md).

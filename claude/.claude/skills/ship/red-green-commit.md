@@ -14,7 +14,7 @@ Read at phase 3 (implement) of `/ship`, and again at each review round's re-ship
   8. Track progress in `.notes/<branch_name>/implement-plan.md`
   9. Update session with current plan step number
 - **Spike exception**: If the plan was flagged as a spike during `/challenge`, the red-green cycle is optional — but note skipped tests in the plan file so review catches them.
-- **Diff-size tripwire**: the plan's `## Size` is a hard cap, not an estimate. If the diff is about to exceed it, stop, note it in the session file, and surface it to the user — don't push through.
+- **Scope tripwire**: the diff stops at the issue's scope, never at a line count. A change the plan did not name goes in the session file and to the user; a diff that outgrows a commit-by-commit read gets a review guide (`commit/review-guide.md`), not a split that ships half a functionality.
 - If tests fail unrelated to the plan, note them and continue
 - No blocking on flaky feature tests
 - **Learning capture**: If you encounter a non-trivial problem during implementation (unexpected behavior, tricky API, framework gotcha, debugging dead-end) and find a solution, save the lesson to your auto memory. This compounds knowledge across sessions and prevents hitting the same wall twice.
