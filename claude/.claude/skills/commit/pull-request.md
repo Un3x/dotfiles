@@ -1,6 +1,6 @@
 # Pull request title and body
 
-Read at `gh pr create`, and at phase 4 of `/ship`.
+Read at `gh pr create`, and at phase 4 of `/ship`. The reader is the reviewer, then the developer who lands here from a commit months later when the issue is archived ([`readers.md`](readers.md)): the why must stand without Linear.
 
 - **Title**: the story of the branch in under 70 characters, shaped like a commit subject. A one-commit PR takes its commit subject verbatim.
 - **Body**, this shape and nothing else:
@@ -10,6 +10,6 @@ Read at `gh pr create`, and at phase 4 of `/ship`.
 
   Closes <ISSUE-ID> → <Linear URL>
   ```
-  The last line becomes `Suite de`, `Related` or a sha for a follow-up without an issue. A screenshot when the change is visible. A « Howto review » paragraph giving the reading order of the commits only when the PR holds five commits or more and the order matters.
+  The last line becomes `Suite de`, `Related` or a sha for a follow-up without an issue. A screenshot when the change is visible. Numbered steps to test by hand only when the diff does not make them obvious. A « Howto review » paragraph giving the reading order of the commits only when the PR holds five commits or more and the order matters.
 - Nothing else: no headers, no test plan (CI and the diff), no proof essay (Apistration #439, 2026-09-24: 21 lines of `git grep` to prove a field was dead, when the two specs pinning it were the proof), no restating of the issue.
-- Review replies and follow-ups: assistants never post on PR threads (guardrail). A follow-up that needs words goes on the Linear issue, linked from the body; Thomas talks to the team.
+- Review replies and follow-ups: assistants never post on PR threads (guardrail). A follow-up that changes the scope goes on the Linear issue as a question; a technical leftover becomes its own one-line issue or stays in `.notes/`; Thomas talks to the team.
