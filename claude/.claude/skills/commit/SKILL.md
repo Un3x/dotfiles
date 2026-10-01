@@ -10,7 +10,7 @@ The commit is read by the developer in a production incident, from `git blame`, 
 ## Commit message
 
 1. **Subject** — under 60 characters, hard stop 72. The behaviour or capability that changed, in the repo's language, prefixed when it helps by the area in words and a colon: `Editor: paginate authorization requests`. A type prefix (`feat:`, `fix(voice):`) only where the repo's own `CLAUDE.md` asks for one. Done when the line reads as a changelog entry for the team.
-2. **Body** — empty by default. One or two lines only when the subject leaves a why or a constraint unsaid: the reason, or the trap avoided. Never the files touched, the steps taken, the plan step, or a ticket link: GitHub resolves the sha to its PR, and the PR carries the issue. Done when nothing in it can be read from the diff.
+2. **Body** — empty by default. Written only when the subject leaves a why or a constraint unsaid: the reason, the trap avoided, the situation before. As long as that takes and no longer: every sentence carries something the diff cannot show. A sentence that says what the code now does (« the batch now passes the keys down ») is the diff retold: cut it. Lines wrapped at 72 characters. Never the files touched, the steps taken, the plan step, or a ticket link: GitHub resolves the sha to its PR, and the PR carries the issue. Done when nothing in it can be read from the diff.
 3. **Fix-ups from a review round** go into the commit they fix: `git commit --fixup <sha>`, then `GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash <base>` before merge (no editor opens), pushed with `--force-with-lease`. Done when the branch reads as one story, not as the review loop.
 4. Commit with the message in a heredoc, no trailer of any kind.
 
