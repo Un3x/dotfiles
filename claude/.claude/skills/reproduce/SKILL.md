@@ -5,7 +5,7 @@ description: "Reproduce a bug report through the real app before anyone writes a
 
 # reproduce
 
-A report is a claim until the app shows it. Agents patch bugs that are already fixed more than half the time when nothing checks first (SRI Lab, 2026, in `docs/pstack-feature-map/study-2026-09-30.md` § 2); a reproduction that stops at « already fixed » or « not reproduced » is a ticket and a plan that never happen. Runs in the project's code window: it launches the app.
+A report is a claim until the app shows it. Agents patch bugs that are already fixed more than half the time when nothing checks first (SRI Lab, 2026, in `docs/pstack-feature-map/study-2026-09-30.md` § 2); a reproduction that stops at « already fixed » or « not reproduced » is a ticket and a plan that never happen. Runs in the project lead session: it launches the app.
 
 ## Usage
 - `/reproduce <report>` — the report is pasted text (email, Slack, Sentry event), a screenshot path, or a Linear issue id or URL.
