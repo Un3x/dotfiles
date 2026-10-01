@@ -5,7 +5,7 @@ description: "Take a subject for this project and run it end to end: route a bug
 
 # work
 
-The tech lead session runs in the repo with the vault protocol and the project role injected at start (`~/.claude/hooks/tech-lead.sh`, marker `.claude/tech-lead`). It owns the vertical: what needs doing is decided here, done here when it is judgment, done by a subagent when it is implementation. A subagent gets the repo's `CLAUDE.md` only, never this session's role (checked 2026-09-30): the coder codes, the tech lead decides. Replaces `/delegate` and the tmux code window (retired 2026-09-30: two sessions meant the user carried every fact between them by hand).
+The project lead session runs in the repo with the vault protocol and the project role injected at start (`~/.claude/hooks/project-lead.sh`, marker `.claude/project-lead`). It owns the vertical: what needs doing is decided here, done here when it is judgment, done by a subagent when it is implementation. A subagent gets the repo's `CLAUDE.md` only, never this session's role (checked 2026-09-30): the coder codes, the project lead decides. Replaces `/delegate` and the tmux code window (retired 2026-09-30: two sessions meant the user carried every fact between them by hand).
 
 ## Routing
 
@@ -29,7 +29,7 @@ The Agent tool runs it in the background and notifies on completion; one issue p
 
 ## Rules
 
-- Judgment in session, implementation in subagents: the tech lead reads app code to shape, challenge and review; it does not edit it. The one exception is the verify map, which is the tech lead's own file.
+- Judgment in session, implementation in subagents: the project lead reads app code to shape, challenge and review; it does not edit it. The one exception is the verify map, which is the project lead's own file.
 - Every answer sent to a subagent traces to something the user said or a file they validated.
 - Nothing secret in a subagent prompt: it lands in the transcript.
 - The brief to a subagent is the command plus the decisions of this session, one paragraph; the user does not repeat themselves.

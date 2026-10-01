@@ -18,7 +18,7 @@
       "Read(**/config/master.key)"
     ]
   },
-  "model": "claude-fable-5-1[1m]",
+  "model": "opus",
   "hooks": {
     "Stop": [
       {
@@ -77,7 +77,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/unex/.claude/hooks/tech-lead.sh",
+            "command": "/home/unex/.claude/hooks/project-lead.sh",
             "timeout": 5
           }
         ]
