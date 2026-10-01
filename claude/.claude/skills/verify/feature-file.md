@@ -4,7 +4,7 @@ Read at `/verify create` step 3 and at `/verify maintain` step 1. One file per u
 
 1. `Sub-features` — short ids, one line each.
 2. `How to get to it (user POV)` — every entry point: menu path, URL, keyboard shortcut, who can see it.
-3. `Driving it with Capybara` — starts with `Preconditions:`; then labelled bullets, each pairing a user action with the exact step and the observable result.
+3. `Driving it with <harness>` — the harness the project skill's Drive section names (Capybara on Rails, the repo's own elsewhere); starts with `Preconditions:`; then labelled bullets, each pairing a user action with the exact step and the observable result.
 4. `Gotchas` — what wastes or invalidates a run.
 
 `features/README.md` is the index: baseline preconditions (port, seed accounts, data reset), driving conventions, proof rules, then one line per feature file.
