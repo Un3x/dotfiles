@@ -9,7 +9,7 @@
 
 - Commit messages and PR title/body: the `commit` skill, read before every `git commit` and `gh pr create`.
 - Do not add comments in code — code should be self-explanatory
-- **NEVER** disable GPG signing (`--no-gpg-sign`) — always ask the user if GPG signing fails
+- **NEVER** disable GPG signing (`--no-gpg-sign`). If signing fails, the key is locked: leave the change staged with its message ready, end your message with this line on its own — `GPG locked — run: ! echo | gpg --clearsign >/dev/null, then say go` — and carry on with whatever needs no commit. A subagent hands that line up to the session that spawned it.
 
 ## Prose Diet
 
