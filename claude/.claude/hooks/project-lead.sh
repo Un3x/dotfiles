@@ -4,6 +4,19 @@
 # and its subagents carry both the repo's rules and the project's role. Imports cannot do this: an @ import
 # outside the repo needs an interactive approval and stays raw in headless runs (tested 2026-09-30).
 M="$PWD/.claude/project-lead"
+VAULT="$HOME/Documents/mylife_in_a_vault"
+case "$HERDR_PANE_ID" in
+    *:p1)
+        if [ -f "$M" ]; then L="project manager"
+        elif [ "$PWD" = "$VAULT" ]; then L="Kyna"
+        else case "$PWD" in "$VAULT"/projects/*) L="assistant" ;; esac
+        fi
+        if [ -n "$L" ]; then
+            "${HERDR_BIN_PATH:-herdr}" pane rename "$HERDR_PANE_ID" "$L" >/dev/null 2>&1
+            "${HERDR_BIN_PATH:-herdr}" tab rename "$HERDR_TAB_ID" "$L" >/dev/null 2>&1
+        fi
+        ;;
+esac
 [ -f "$M" ] || exit 0
 P=$(head -1 "$M"); P="${P/#\~/$HOME}"
 [ -d "$P" ] || { echo "project-lead: vault project folder not found: $P" >&2; exit 0; }
