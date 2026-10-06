@@ -462,6 +462,12 @@ return {
     },
   },
   {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    ft = "markdown",
+    opts = {},
+  },
+  {
     "NvChad/nvim-colorizer.lua",
     event = "BufReadPost",
     opts = {
