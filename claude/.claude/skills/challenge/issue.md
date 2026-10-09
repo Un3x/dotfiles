@@ -1,4 +1,4 @@
-# What a Linear issue holds
+# What an issue holds
 
 Read by `/challenge` before it persists a verdict, and by any session that opens a ticket (`/work` after a `reproduced` or `flaky` verdict). The reader is the one of `commit/readers.md`: a non-technical teammate, in plain words, one screen.
 

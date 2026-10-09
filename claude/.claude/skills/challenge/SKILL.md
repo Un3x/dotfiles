@@ -17,7 +17,7 @@ Run this BEFORE `/plan`. Planning locks in HOW to build. This questions WHETHER 
 
 ## Behavior
 
-With issue arguments: fetch issue details from Linear MCP, run the challenge framework on each, output findings per issue. Without arguments: ask the user what they're about to build, then run the framework on their description.
+With issue arguments: read each issue from the project's tracker ([`../tracker.md`](../tracker.md)), run the challenge framework on each, output findings per issue. Without arguments: ask the user what they're about to build, then run the framework on their description.
 
 ## Challenge Framework
 
@@ -58,14 +58,14 @@ For each feature/issue, think through these in order:
 
 ## Persist the Verdict
 
-After presenting findings, ask the user whether they agree with the recommendation. Then update Linear so downstream commands (`/plan`, `/ship`) read the post-challenge truth instead of the original issue:
+After presenting findings, ask the user whether they agree with the recommendation. Then update the issue so downstream commands (`/plan`, `/ship`) read the post-challenge truth instead of the original issue:
 
 - **Agreed (proceed / rethink with changes)**: update the issue description in the shape of [`issue.md`](issue.md) — reframed problem, acceptance lines, limits (the no-gos), appetite, spike flag if applicable. An issue someone else wrote gets its missing lines added under their own heading, never rewritten. The description should reflect what we actually decided to build, in the words of `commit/readers.md`: why, scope, limits, for a non-technical reader. Rejected alternatives and rabbit holes stay in the challenge output, not on the issue.
 - **Last line of every challenge, verbatim**: `CHALLENGE: GO` (proceed as is or with agreed changes), `CHALLENGE: RESHAPE` (split or rethink, the user decides), or `CHALLENGE: DROP`. The follow loop reads that line and nothing else.
 - **Disagreed or killed**: leave a comment with the verdict and the user's decision, so the reasoning survives the next time the issue surfaces.
-- **No Linear issue** (conversation-mode challenge): offer to create one capturing the agreed scope.
+- **No issue** (conversation-mode challenge): offer to create one capturing the agreed scope.
 
-Never update Linear before the user has weighed in.
+Never update the tracker before the user has weighed in.
 
 ## Rules
 

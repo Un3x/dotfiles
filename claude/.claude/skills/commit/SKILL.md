@@ -5,7 +5,7 @@ description: "Write a commit message, or a pull request title and body, for a re
 
 # commit
 
-The commit is read by the developer in a production incident, from `git blame`, with no ticket open; the PR by its reviewer; the Linear issue by a non-technical teammate ([`readers.md`](readers.md)). Loïc's history on API Entreprise is the model ([`examples.md`](examples.md)): a subject that names the change in domain words, no body unless a why is not already in the subject, `Closes <link>`.
+The commit is read by the developer in a production incident, from `git blame`, with no ticket open; the PR by its reviewer; the issue by a non-technical teammate ([`readers.md`](readers.md)). Loïc's history on API Entreprise is the model ([`examples.md`](examples.md)): a subject that names the change in domain words, no body unless a why is not already in the subject, `Closes <link>`.
 
 ## Commit message
 
@@ -20,6 +20,6 @@ Read [`pull-request.md`](pull-request.md) at `gh pr create`.
 
 ## Rules
 
-- The why is written once, in the message: the plan, the Linear issue and the PR are not files the log reader can open.
+- The why is written once, in the message: the plan, the issue and the PR are not files the log reader can open.
 - The message speaks the repo's language (Simplifions: French; Bangun, Apistration: English), whatever language the session runs in.
 - A subject past 72 characters is a subject carrying its body: cut it, do not wrap it (2026-08 → 09-30: 89 of 368 subjects on Bangun and Simplifions ran past 72).
