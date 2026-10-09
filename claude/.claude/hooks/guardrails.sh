@@ -28,7 +28,7 @@ case "$TOOL" in
     if printf '%s' "$CMD" | grep -qE -- "${START}gh +pr +(comment|review)\b|${START}gh +api\b[^;&|]*pulls/[^ ]*/(comments|reviews)"; then
       block "assistants never post on PR threads. Put it on the Linear issue or hand the words to the user."
     fi
-    if printf '%s' "$CMD" | grep -qE -- "${START}(command +)?tmux +send-keys" && [ "$(printf '%s' "$CMD" | grep -oE '/(plan|ship|review|challenge)\b' | wc -l)" -ge 2 ]; then
+    if printf '%s' "$CMD" | grep -qE -- "${START}(command +)?herdr +agent +prompt" && [ "$(printf '%s' "$CMD" | grep -oE '/(plan|ship|review|challenge)\b' | wc -l)" -ge 2 ]; then
       block "one slash command per delegated brief. Chaining is the follow loop's job."
     fi
     ;;
