@@ -1,58 +1,46 @@
 # Output format
 
-File references are full repository paths, never a basename: Rails has many `show.html.erb`.
+The report says what is wrong and how to see it, never how to fix it. Its reader is the author or the next agent, who finds the code and the fix on their own: a finding is a behaviour, the steps that reproduce it, and the result. No `file:line`, no class or method names, no « Fix: » line (Passemarche PR #562, 2026-10-09: the findings were right, Thomas rewrote every one before posting). A finding that only exists in the code (a missing index, an unrelated reformatting) names the screen, the data or the change it touches in plain words.
 
 The report is written in the language of the PR (title, commits, description), whatever language the session runs in: it is relayed to the team as is (2026-09-18 Passemarche, 2026-09-21 Apistration: two reports rewritten in French on request).
 
+A section with nothing in it is left out. The data flow diagram of step 7 is a working tool, not part of the report.
+
 ```
-## Code Review: [branch or PR title]
+## Code Review: [PR title or branch] — [verdict: ship it / fix criticals first / simplify first / needs rethink]
+Author: [PR author login, or the branch owner] · Model: [the model this review ran on]
 
 ### ASKED vs BUILT
 Ask: [ISSUE-ID and title, or "no source found"]
-- [line of the ask] — delivered (`file`, `test`) | missing | deviates: [how] | unclear: [what would settle it] | unproven
-- ...
-Extra: [what the diff does that no line asked for, with size, and the limit it crosses if any] (or none)
+- [line of the ask] — delivered ([the test or scenario that proves it]) | missing | deviates: [how] | unclear: [what would settle it] | unproven
+Extra: [what the change does that no line asked for, and the limit it crosses if any]
 Verdict: delivered | partial | off-target
 
 ### CRITICAL (must fix)
 
-**1. [Category]: [Brief description]**
-`file:line` — [explanation of the failure scenario]
-Fix: [suggested fix]
-
-**2. ...**
+**1. [The wrong behaviour, in one sentence]**
+Reproduce:
+1. [step]
+2. [step]
+Result: [what happens, against what should]
 
 ### ARCHITECTURE (layer violations)
 
-**1. [Violation type]: [Brief description]**
-`file:line` — [explanation + which layer boundary is crossed]
-Fix: [suggested extraction or restructure]
+**1. [The violation, in one sentence]**
+[Why it hurts: what change it makes harder]
 
 ### SIMPLICITY (over-engineering)
 
-**1. [Category]: [Brief description]**
-`file:line` — [what it costs, what deleting/inlining buys]
+**1. [What is heavier than it needs to be]**
+[What it costs]
 
 ### CODEX SECOND OPINION
-**Confirmed:** [findings Codex raised that you verified and did not have]
-**Rejected:** [finding — why]
-(or: "Codex: no additional findings" / "Codex: not run — <reason>")
+Confirmed: [findings Codex raised that you verified and did not have, written like the ones above]
+Rejected: [finding — why]
+(or: "not run — <reason>"; agreements are tagged "(also Codex)" on your own finding and need no line here)
 
 ### INFORMATIONAL (worth knowing)
 
-**1. [Category]: [Brief description]**
-`file:line` — [explanation]
-
-### Data Flow
-[ASCII diagram if applicable]
-
-### Summary
-- Author: [PR author login, or the branch owner]
-- Model: [the model this review ran on]
-- Asked: delivered | partial (N missing, N unproven) | off-target | no source found
-- Critical: N issues
-- Simplicity: N issues
-- Informational: N issues
-- Codex: N confirmed / N rejected
-- Verdict: [ship it / fix criticals first / simplify first / needs rethink]
+**1. [What to know, in one sentence]**
+[When it shows up, and who it affects]
 ```
