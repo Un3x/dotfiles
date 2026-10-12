@@ -55,6 +55,22 @@ if [ -n "$cost" ]; then
   parts+=("$cost_fmt")
 fi
 
+# Plan limits: 5-hour and 7-day windows, with reset time
+limit() {
+  local label=$1 window=$2 fmt=$3 pct reset filled bar=""
+  pct=$(echo "$input" | jq -r ".rate_limits.$window.used_percentage // empty" 2>/dev/null)
+  reset=$(echo "$input" | jq -r ".rate_limits.$window.resets_at // empty" 2>/dev/null)
+  [ -z "$pct" ] && return
+  pct=$(printf "%.0f" "$pct")
+  filled=$(( (pct + 10) / 20 ))
+  for i in 1 2 3 4 5; do [ "$i" -le "$filled" ] && bar+="▓" || bar+="░"; done
+  local s="$label $bar ${pct}%"
+  [ -n "$reset" ] && s+=" ↻$(date -d "@$reset" +"$fmt")"
+  parts+=("$s")
+}
+limit 5h five_hour "%H:%M"
+limit 7d seven_day "%a %H:%M"
+
 # Git branch — run from the session's cwd
 if [ -n "$cwd" ] && [ -d "$cwd" ]; then
   branch=$(git -C "$cwd" symbolic-ref --short HEAD 2>/dev/null \
