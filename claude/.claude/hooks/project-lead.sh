@@ -25,3 +25,6 @@ echo "# Project lead session — vault project folder: $P (STATUS.md, LOG.md, me
 cat "$V/systems/sub-assistant-protocol.md"
 echo
 cat "$P/CLAUDE.md"
+S="$(git rev-parse --absolute-git-dir 2>/dev/null)/worktree-sweep"
+[ -f "$S" ] && { echo; cat "$S"; }
+setsid "$(dirname "$(readlink -f "$0")")/worktree-sweep.sh" "$PWD" </dev/null >/dev/null 2>&1 &
