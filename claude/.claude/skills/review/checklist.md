@@ -18,6 +18,7 @@ Categories:
 - **Data loss**: Destructive migrations without backfill, cascade deletes, missing null checks on critical paths
 - **Auth/authz gaps**: Missing authorization checks, privilege escalation paths, exposed endpoints
 - **Untested new code paths**: New methods, branches, or behaviors introduced without a corresponding test. This is not "low coverage" hand-wringing — flag only when a specific new path has zero direct test exercising it. TDD was violated; bugs will ship. (Exception: spike PRs explicitly flagged as such.)
+- **Unproven premise**: Name the one fact the change is safe or effective because of, and how it is proven (test, drive, measurement, or assumed). If that fact is unproven for the case that motivated the PR, it is CRITICAL and the verdict cannot be ship it.
 
 ## Pass 2: INFORMATIONAL
 Issues worth knowing about but not blocking.
@@ -32,7 +33,8 @@ Categories:
 
 ## Pass 3: ARCHITECTURE (Rails projects only)
 If the codebase is a Rails application, run a layered architecture check using the `layered-rails` skill:
-- Invoke `/layers:review` on the changed files
+- Read `~/.claude/skills/layered-rails/commands/review.md` and run its checks on the changed files (it is a file, not a slash command)
+- Open the section with `Source: layered-rails review.md`, then list the checks run, even when nothing is found
 - **Violations only**: misplaced responsibility (e.g., controller doing domain logic), god objects
 - **Never prescribe adding a construct.** A finding may only relocate code to an existing home or delete it — "extract a service/form object/query object" is not a valid finding. Review removes complexity; it never adds it.
 - Merge findings into the output under an "ARCHITECTURE" section between CRITICAL and INFORMATIONAL

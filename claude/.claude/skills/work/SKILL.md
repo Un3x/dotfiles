@@ -33,3 +33,4 @@ The Agent tool runs it in the background and notifies on completion; one issue p
 - Every answer sent to a subagent traces to something the user said or a file they validated.
 - Nothing secret in a subagent prompt: it lands in the transcript.
 - The brief to a subagent is the command plus the decisions of this session, one paragraph; the user does not repeat themselves.
+- Ask the user only product or preference calls. When the app, the console, the browser or a logged-in CLI can answer, run it and show the result.
