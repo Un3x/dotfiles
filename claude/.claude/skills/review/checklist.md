@@ -29,8 +29,8 @@ Categories:
 - **Test gaps**: Happy-path-only tests, missing error case tests, weak assertions (promoted to CRITICAL if an entire new code path has zero tests)
 - **Performance**: Unbounded queries, missing pagination, loading associations unnecessarily
 - **Dead code**: Unused variables, unreachable branches, commented-out code
-- **Naming/clarity**: Misleading names, magic numbers, unclear intent (only when it could cause bugs)
-- **Readability** (app code and specs, no bug risk needed; the cost is a reviewer's time): double-negative or vague `describe`/`context` names; several cases driven by a data table and metaprogramming instead of one `context` per case with its stub in a `before` and a `shared_examples` taking the expected value; helpers returning tuples to destructure; vague assertions (`be >= 400` where the status is known); memoized readers with an inline block instead of `@x ||= build_x`
+- **Naming/clarity**: Misleading names, magic numbers, unclear intent (only when it could cause bugs; test names and readable code: see Readability)
+- **Readability** (app code and specs, no bug risk needed; the cost is a reviewer's time; RSpec/Ruby examples): double-negative or vague `describe`/`context` names; several cases driven by a data table and metaprogramming instead of one `context` per case with its stub in a `before` and a `shared_examples` taking the expected value; helpers returning tuples to destructure; vague assertions (`be >= 400` where the status is known); memoized readers with an inline block instead of `@x ||= build_x`
 
 ## Pass 3: ARCHITECTURE (Rails projects only)
 If the codebase is a Rails application, run a layered architecture check using the `layered-rails` skill:
@@ -48,9 +48,9 @@ Complexity that costs more than it pays, measured against [the one rule](../plan
 Categories:
 - **Configuration over convention**: config flags, option hashes, initializers, or custom plumbing where a Rails convention/built-in does the job — name the built-in that replaces it
 - **Speculative generality**: params, options, config flags, or branches nothing uses today
-- **Single-caller indirection**: a class/service/method with exactly one call site that could be inlined
+- **Single-caller indirection**: a class/service/method with exactly one call site that could be inlined (a `build_x` behind an `@x ||=` memo, or a `shared_examples`, is readability, not indirection)
 - **Impossible-state defense**: guards/rescues for states that cannot occur given the actual callers
 - **Homeless abstraction**: new class/module created where existing code had a natural home
 - **Plan drift**: diff significantly larger than the plan's size estimate (`.notes/<branch>/plan.md`) — name where the growth happened. Lines added by a readability rewrite are not drift
 
-Each finding states the deletion payoff ("inlining this removes 40 lines and one file").
+Each finding states the deletion payoff ("inlining this removes 40 lines and one file"). Never flag a Readability rewrite in this pass.

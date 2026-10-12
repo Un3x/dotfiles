@@ -34,7 +34,7 @@ This is the **paranoid staff engineer brain**. Not a style review, not a linting
 
 ## Rules
 
-- No style nits. RuboCop and linters handle that.
+- No style nits a linter catches. Pass 2 Readability is not a nit.
 - Every critical finding must include a concrete failure scenario ("when X happens, Y breaks because Z").
 - Don't flag things that are already covered by existing tests (read the test files).
 - If the diff is clean, say "no issues found, ship it" — don't invent problems. Clean code that misses a line of the ask is not clean: the verdict is `partial`.
