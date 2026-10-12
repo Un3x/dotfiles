@@ -30,6 +30,6 @@
 
 ## Rails
 
-- **Vanilla Rails first.** Before writing or planning Rails code, read `~/.claude/skills/plan/one-rule.md`: the simplest Rails-conventional design, placement in existing homes, rule of three, layered-rails as a review instrument only.
+- **Vanilla Rails first.** Before writing or planning Rails code, read `~/.claude/skills/plan/one-rule.md`: the simplest Rails-conventional design, placement in existing homes, rule of three, layered-rails as a check only, never a design input.
 
 @RTK.md

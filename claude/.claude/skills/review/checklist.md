@@ -33,7 +33,7 @@ Categories:
 
 ## Pass 3: ARCHITECTURE (Rails projects only)
 If the codebase is a Rails application, run a layered architecture check using the `layered-rails` skill:
-- Read `~/.claude/skills/layered-rails/commands/review.md` and run its checks on the changed files (it is a file, not a slash command)
+- Read `~/.claude/skills/layered-rails/commands/review.md` and run its « Layer Violations » list on the changed files (it is a file, not a slash command)
 - Open the section with `Source: layered-rails review.md`, then list the checks run, even when nothing is found
 - **Violations only**: misplaced responsibility (e.g., controller doing domain logic), god objects
 - **Never prescribe adding a construct.** A finding may only relocate code to an existing home or delete it — "extract a service/form object/query object" is not a valid finding. Review removes complexity; it never adds it.
