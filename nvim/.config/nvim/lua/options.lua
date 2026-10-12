@@ -4,6 +4,17 @@ local opt = vim.opt
 opt.syntax = "on"
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
+if not vim.env.DISPLAY and not vim.env.WAYLAND_DISPLAY then
+  local osc52 = require("vim.ui.clipboard.osc52")
+  local function unnamed()
+    return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
+  end
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = { ["+"] = osc52.copy("+"), ["*"] = osc52.copy("*") },
+    paste = { ["+"] = unnamed, ["*"] = unnamed },
+  }
+end
 opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 3 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
