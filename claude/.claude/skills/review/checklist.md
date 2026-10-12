@@ -30,6 +30,7 @@ Categories:
 - **Performance**: Unbounded queries, missing pagination, loading associations unnecessarily
 - **Dead code**: Unused variables, unreachable branches, commented-out code
 - **Naming/clarity**: Misleading names, magic numbers, unclear intent (only when it could cause bugs)
+- **Readability** (app code and specs, no bug risk needed; the cost is a reviewer's time): double-negative or vague `describe`/`context` names; several cases driven by a data table and metaprogramming instead of one `context` per case with its stub in a `before` and a `shared_examples` taking the expected value; helpers returning tuples to destructure; vague assertions (`be >= 400` where the status is known); memoized readers with an inline block instead of `@x ||= build_x`
 
 ## Pass 3: ARCHITECTURE (Rails projects only)
 If the codebase is a Rails application, run a layered architecture check using the `layered-rails` skill:
@@ -50,6 +51,6 @@ Categories:
 - **Single-caller indirection**: a class/service/method with exactly one call site that could be inlined
 - **Impossible-state defense**: guards/rescues for states that cannot occur given the actual callers
 - **Homeless abstraction**: new class/module created where existing code had a natural home
-- **Plan drift**: diff significantly larger than the plan's size estimate (`.notes/<branch>/plan.md`) — name where the growth happened
+- **Plan drift**: diff significantly larger than the plan's size estimate (`.notes/<branch>/plan.md`) — name where the growth happened. Lines added by a readability rewrite are not drift
 
 Each finding states the deletion payoff ("inlining this removes 40 lines and one file").

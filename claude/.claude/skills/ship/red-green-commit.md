@@ -8,7 +8,7 @@ Read at phase 3 (implement) of `/ship`, and again at each review round's re-ship
   2. Run the test — confirm it fails for the expected reason (not a typo/syntax error)
   3. **Green**: Implement the minimum code needed to make the test pass
   4. Run the test — confirm it passes
-  5. **Refactor = shrink**: reduce line count and indirection — never introduce an abstraction that isn't in the plan. If one feels necessary mid-step, stop and flag it instead of improvising. Re-run tests to confirm still green
+  5. **Refactor = less indirection, not fewer lines**: each test and each method reads top to bottom without jumping around. A table of lambdas, `instance_exec`, a helper returning tuples to destructure, or an inline `begin…end` memo is not a refactor: undo it. Never introduce an abstraction the plan doesn't name; if one feels necessary mid-step, stop and flag it instead of improvising. Re-run tests to confirm still green
   6. Run broader quality checks (rubocop, related test files)
   7. **Commit**: tests and implementation ship in the same commit (never separate "add tests" commits), with the message written by the `commit` skill: the plan step is context the log reader does not have
   8. Track progress in `.notes/<branch_name>/implement-plan.md`
