@@ -27,7 +27,7 @@ This is the **paranoid staff engineer brain**. Not a style review, not a linting
    - PR number or URL: `gh pr checkout <number-or-url>` first, then the same command
    - Specific files: `codex exec review --base main "Only review: <files>"`
    Run it with `run_in_background`; collect the file after Pass 4. If `codex` is missing or fails (quota, login, "Review blocked … sandbox could not start"), say so under CODEX SECOND OPINION and continue — the second opinion is additive, never blocking. Never pass `--dangerously-bypass-approvals-and-sandbox` to get past a sandbox error: review mode then runs commands unsandboxed (it will happily run the test suite).
-5. **Run the four passes** of the checklist in order: CRITICAL, INFORMATIONAL, ARCHITECTURE (Rails only), SIMPLICITY. A pass is done when every category has been checked against the whole diff.
+5. **Run the four passes** of the checklist in order: CRITICAL, INFORMATIONAL, DESIGN, SIMPLICITY. A pass is done when every category has been checked against the whole diff.
 6. **Merge the Codex opinion**. Read `codex-review.md`. For each Codex finding: verify it against the code (same bar as your own — concrete failure scenario or drop it). Agreements get a "(also Codex)" tag on your finding; new confirmed findings go under CODEX SECOND OPINION; findings you reject get a one-line rebuttal there so the user sees the disagreement, not silence.
 7. **Diagram the data flow** (if the diff touches a data pipeline, request handler, or multi-step process): ASCII diagram, mark where validation happens (or doesn't), mark where errors can occur and how they're handled.
 8. **Write the report** in the format of [`output.md`](output.md).

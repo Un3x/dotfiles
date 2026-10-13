@@ -7,6 +7,8 @@ Read at step 2 of `/plan`, when writing or replanning `.notes/<branch_name>/plan
 
 <one-line restatement of the outcome>
 
+Kind: trivial | fills <system> | new system | isolated — <why, one line>   ← one-rule.md § What are we building
+
 ## Diagram
 <5-line ASCII of the flow: happy path + error path. So a reader grasps the change in a second — describe the design, never justify it.>
 
@@ -18,7 +20,7 @@ N. Simplify: after green, what can be deleted, inlined, or collapsed?
 ## Size
 ~X lines, Y files, N commits in reading order   ← an estimate, not a cap (user, 2026-09-30): one PR per functionality, self-sufficient; the commits are the reviewer's path. Sized from the issue's appetite when /challenge wrote one.
 
-Layers: layered-rails violations check — ok | moved <what> to <existing home>   ← Rails only
+Design: grid — ok | <finding> → <change in the steps>
 
 ## Questions          ← only if any; presence = has-questions
 - ...
@@ -29,10 +31,10 @@ Flag: ...             ← only if you believe simple is insufficient (one senten
 - Explore the codebase before planning; plans reference real files.
 - Lines with FIXME must be addressed when replanning.
 
-## Layers check (Rails only, trial since 2026-10-12)
+## Design check
 
-After the steps are written, run only the « Layer Violations » list of `~/.claude/skills/layered-rails/commands/review.md` against the planned changes. A failed check moves the code to an existing home in the steps; it never adds a class, service or object. Record the result on the `Layers:` line. Skip the rest of that file (callbacks, extraction signals, specification test).
+After the steps are written, read what the change plugs into (every user of the classes it touches), then walk [`../review/design-grid.md`](../review/design-grid.md) against the planned changes. A finding changes the steps: it moves code to its owner, removes a second path, or adds the preparatory refactor the kind calls for (`one-rule.md`). Record the result on the `Design:` line.
 
 ## Fresh-eyes check (non-trivial plans only)
 
-Before marking `ready`, spawn a subagent on `sonnet` with only the issue + draft plan: "Propose a design with half the moving parts." If it finds a simpler shape, that becomes the plan. Exploration and fresh-eyes run on the smaller model on purpose (routing decided 2026-09-30, not for limits but to have the data when they bind); judgment stays on the main one.
+Before marking `ready`, spawn a subagent on `sonnet` with only the issue + draft plan: "Propose a design with half the moving parts." If it finds a simpler shape, that becomes the plan. If its shape contradicts a rule (`one-rule.md`, the project `CLAUDE.md`), never reject it on the rule alone: put the conflict under Questions, both shapes in one line each, and let the user decide. Exploration and fresh-eyes run on the smaller model on purpose (routing decided 2026-09-30, not for limits but to have the data when they bind); judgment stays on the main one.

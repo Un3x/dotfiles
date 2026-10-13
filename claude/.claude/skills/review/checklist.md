@@ -32,15 +32,12 @@ Categories:
 - **Naming/clarity**: Misleading names, magic numbers, unclear intent (only when it could cause bugs; test names and readable code: see Readability)
 - **Readability** (app code and specs, no bug risk needed; the cost is a reviewer's time; RSpec/Ruby examples): double-negative or vague `describe`/`context` names; several cases driven by a data table and metaprogramming instead of one `context` per case with its stub in a `before` and a `shared_examples` taking the expected value; helpers returning tuples to destructure; vague assertions (`be >= 400` where the status is known); memoized readers with an inline block instead of `@x ||= build_x`
 
-## Pass 3: ARCHITECTURE (Rails projects only)
-If the codebase is a Rails application, run a layered architecture check using the `layered-rails` skill:
-- Read `~/.claude/skills/layered-rails/commands/review.md` and run its « Layer Violations » list on the changed files (it is a file, not a slash command)
-- Open the section with `Source: layered-rails review.md`, then list the checks run, even when nothing is found
-- **Violations only**: misplaced responsibility (e.g., controller doing domain logic), god objects
-- **Never prescribe adding a construct.** A finding may only relocate code to an existing home or delete it — "extract a service/form object/query object" is not a valid finding. Review removes complexity; it never adds it.
-- Merge findings into the output under an "ARCHITECTURE" section between CRITICAL and INFORMATIONAL
-
-Skip this pass for non-Rails projects.
+## Pass 3: DESIGN
+Walk [`design-grid.md`](design-grid.md) on the diff and on what it plugs into (callers, base classes, every other user of the classes it changes). Open the section with the families checked, even when nothing is found.
+- A finding names the owner or the path that should carry the code, and what disappears from the diff if it moves.
+- A finding may propose a construct (a predicate on an object, a generic step) only when it removes a mechanism: name the mechanism removed. Otherwise it relocates or deletes.
+- When the fix is a reshaping larger than the PR, give the target as a sketch in the repository's idioms and the order (refactor first, behaviour unchanged, then the feature).
+- Merge findings into the output under a "DESIGN" section between CRITICAL and INFORMATIONAL
 
 ## Pass 4: SIMPLICITY (over-engineering)
 Complexity that costs more than it pays, measured against [the one rule](../plan/one-rule.md). Same rule as CRITICAL: each finding needs a concrete cost statement, not a vibe.
@@ -51,6 +48,7 @@ Categories:
 - **Single-caller indirection**: a class/service/method with exactly one call site that could be inlined (a `build_x` behind an `@x ||=` memo, or a `shared_examples`, is readability, not indirection)
 - **Impossible-state defense**: guards/rescues for states that cannot occur given the actual callers
 - **Homeless abstraction**: new class/module created where existing code had a natural home
+- **Kind mismatch**: the shape does not match what is being built (`one-rule.md` § What are we building): a system built for a trivial change, or a graft where an existing system needed widening
 - **Plan drift**: diff significantly larger than the plan's size estimate (`.notes/<branch>/plan.md`) — name where the growth happened. Lines added by a readability rewrite are not drift
 
 Each finding states the deletion payoff ("inlining this removes 40 lines and one file"). Never flag a Readability rewrite in this pass.
