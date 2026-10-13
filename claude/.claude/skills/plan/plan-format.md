@@ -20,6 +20,7 @@ N. Simplify: after green, what can be deleted, inlined, or collapsed?
 ## Size
 ~X lines, Y files, N commits in reading order   ← an estimate, not a cap (user, 2026-09-30): one PR per functionality, self-sufficient; the commits are the reviewer's path. Sized from the issue's appetite when /challenge wrote one.
 
+Entry points: <the routes, jobs or commands that reach the objects this plan changes>
 Design: grid — ok | <finding> → <change in the steps>
 
 ## Questions          ← only if any; presence = has-questions
@@ -35,7 +36,7 @@ Flag: ...             ← only if you believe simple is insufficient (one senten
 
 Kind trivial: skip it, `Design: n/a`.
 
-After the steps are written, read what the change plugs into (every user of the classes it touches), then walk [`../review/design-grid.md`](../review/design-grid.md) against the planned changes. A finding changes the steps: it moves code to its owner, removes a second path, or adds the preparatory refactor the kind calls for (`one-rule.md`). Record the result on the `Design:` line.
+After the steps are written, list on the `Entry points:` line every route, job or command that reaches the objects the plan changes (grep the callers, the routes file, the controllers). Behaviour that belongs to one of them cannot live in an object they share. Then walk [`../review/design-grid.md`](../review/design-grid.md) against the planned changes. A finding changes the steps: it moves code to its owner, removes a second path, or adds the preparatory refactor the kind calls for (`one-rule.md`). Record the result on the `Design:` line.
 
 ## Fresh-eyes check (non-trivial plans only)
 
