@@ -33,6 +33,8 @@ Flag: ...             ← only if you believe simple is insufficient (one senten
 
 ## Design check
 
+Kind trivial: skip it, `Design: n/a`.
+
 After the steps are written, read what the change plugs into (every user of the classes it touches), then walk [`../review/design-grid.md`](../review/design-grid.md) against the planned changes. A finding changes the steps: it moves code to its owner, removes a second path, or adds the preparatory refactor the kind calls for (`one-rule.md`). Record the result on the `Design:` line.
 
 ## Fresh-eyes check (non-trivial plans only)

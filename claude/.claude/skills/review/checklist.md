@@ -34,9 +34,7 @@ Categories:
 
 ## Pass 3: DESIGN
 Walk [`design-grid.md`](design-grid.md) on the diff and on what it plugs into (callers, base classes, every other user of the classes it changes). Open the section with the families checked, even when nothing is found.
-- A finding names the owner or the path that should carry the code, and what disappears from the diff if it moves.
-- A finding may propose a construct (a predicate on an object, a generic step) only when it removes a mechanism: name the mechanism removed. Otherwise it relocates or deletes.
-- When the fix is a reshaping larger than the PR, give the target as a sketch in the repository's idioms and the order (refactor first, behaviour unchanged, then the feature).
+- A finding says in plain words who decides or holds what today, who should, and what disappears if it moves (`output.md`: no fix, no code names). The target sketch belongs to `/review design`.
 - Merge findings into the output under a "DESIGN" section between CRITICAL and INFORMATIONAL
 
 ## Pass 4: SIMPLICITY (over-engineering)
@@ -48,6 +46,8 @@ Categories:
 - **Single-caller indirection**: a class/service/method with exactly one call site that could be inlined (a `build_x` behind an `@x ||=` memo, or a `shared_examples`, is readability, not indirection)
 - **Impossible-state defense**: guards/rescues for states that cannot occur given the actual callers
 - **Homeless abstraction**: new class/module created where existing code had a natural home
+
+A construct that removes a mechanism (a second path, a list, a copy), named as such in the plan, is neither single-caller indirection nor a homeless abstraction.
 - **Kind mismatch**: the shape does not match what is being built (`one-rule.md` § What are we building): a system built for a trivial change, or a graft where an existing system needed widening
 - **Plan drift**: diff significantly larger than the plan's size estimate (`.notes/<branch>/plan.md`) — name where the growth happened. Lines added by a readability rewrite are not drift
 

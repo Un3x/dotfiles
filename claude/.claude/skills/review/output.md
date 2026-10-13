@@ -24,10 +24,10 @@ Reproduce:
 2. [step]
 Result: [what happens, against what should]
 
-### ARCHITECTURE (layer violations)
+### DESIGN
 
-**1. [The violation, in one sentence]**
-[Why it hurts: what change it makes harder]
+**1. [Who decides or holds what today, and who should, in plain words]**
+[What disappears if it moves: a second path, a list, a copy]
 
 ### SIMPLICITY (over-engineering)
 

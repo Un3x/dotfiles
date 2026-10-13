@@ -15,7 +15,7 @@ Report only what the code shows. An empty family is a fine outcome.
 - **Reaching through objects**: reading another object's internals or options instead of asking it.
 - **Stretched inheritance**: a subclass overriding a base method to disable it, a base built for another case, constants borrowed from a sibling.
 - **Layer direction** (Rails): a model reading `Current` or the request, a service taking `params`, a controller computing a business rule, a view querying the database, a mailer sent from a model callback.
-- **Wrong level of abstraction**: generic machinery with a single user, or a second copy of an existing variant. Ask what the next feature of the same kind would have to write.
+- **Wrong level of abstraction**: generic machinery with a single user, or a copy of an existing variant where the system already has a slot for it. Ask what the next feature of the same kind would have to write.
 
 ## Control flow
 

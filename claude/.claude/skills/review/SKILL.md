@@ -1,6 +1,6 @@
 ---
 name: review
-description: "Paranoid two-pass code review of a branch, PR, or files. Use whenever the user asks to review a PR, a pull request URL, a branch, or files (\"can you review…\", \"est-ce qu'on peut review…\")."
+description: "Paranoid two-pass code review of a branch, PR, or files. Use whenever the user asks to review a PR, a pull request URL, a branch, or files (\"can you review…\", \"est-ce qu'on peut review…\"), or to review a PR's design together (\"relis cette PR avec moi\", \"review de conception\")."
 ---
 
 Paranoid code review. Two-pass structural audit of changes, designed to catch bugs that pass CI but blow up in production.
@@ -9,6 +9,7 @@ Paranoid code review. Two-pass structural audit of changes, designed to catch bu
 - `/review` - Review current branch changes against main
 - `/review <PR-number>` or `/review <PR URL>` - Review a specific PR (also triggered by a plain request such as "peux-tu review https://github.com/org/repo/pull/504")
 - `/review <file1> <file2> ...` - Review specific files
+- `/review design <PR>` - Design review in conversation with the user, ending with a shareable page ([`design-review.md`](design-review.md)); also triggered by "relis cette PR avec moi", "review de conception"
 
 ## Purpose
 

@@ -1,6 +1,6 @@
 # The one rule
 
-Read by `/plan` before writing a plan, by `/ship` when re-planning after a review round, and by `/review` Pass 4 (simplicity). The global `CLAUDE.md` points here for Rails architecture.
+Read by `/plan` before writing a plan, by `/ship` when re-planning after a review round, and by `/review` (Pass 4 and design reviews). The global `CLAUDE.md` points here before any planning or coding.
 
 **The plan is the simplest design that fits what we are building: simple, readable, never over-engineered.**
 
@@ -12,7 +12,7 @@ Answer first. The kind sets the level of abstraction, the pattern to follow and 
 |------|-------|
 | **Trivial**: a field, a label, a guard | Inline in the existing code. No new class. |
 | **Fills an existing system**: a new endpoint in the catalogue, a new case of a mechanism that already exists | Follow the system's pattern. The new code writes only what is specific to it. If the system has no slot for this case, widening the slot is the work: a refactor first, behaviour unchanged, then the feature. |
-| **A new system**: a mechanism other features will plug into | Name what the next user plugs in, and check it against the next feature of the same kind. The user confirms the kind before the plan goes further. |
+| **A new system**: a mechanism other features will plug into | Name what the next user plugs in, and check it against the next feature of the same kind. The kind goes under Questions (`has-questions`) and the plan stops until the user confirms it. |
 | **Isolated**: a one-off script, an importer, an experiment | Kept apart from the core, simple inside, no reuse expected. |
 
 When the kind is unclear, it is a question, not a guess.
@@ -22,5 +22,5 @@ When the kind is unclear, it is a question, not a guess.
 - **A graft is not simple.** A small diff that adds a second path for something the system already does (a second builder, a hook beside a chain step, a mock branch beside the real one) is wrong even when it works. Widen the existing path instead.
 - **Vanilla Rails first.** Reach for the Rails built-in (`validates`, `normalizes`, `enum`, scopes, `delegated_type`, `generates_token_for`, Turbo, …) before any custom construct, config flag or option hash.
 - **Code goes with the object that owns the decision**, in its existing home when one fits. Read every user of that home first: an object shared by two entry points cannot own behaviour that belongs to one of them.
-- **A new class, layer or abstraction needs a reason from the kind**: a slot of a system, or a third use. Generic machinery with a single user is over-engineering.
+- **A new class, layer or abstraction needs a reason from the kind**: a slot of a system, a third use, or a mechanism it removes (name it). Generic machinery with a single user is over-engineering.
 - **The user drives escalation.** If you believe the shape the kind calls for is insufficient, or the preparatory refactor outweighs the feature, add **one flagged sentence** at the end of the plan (« Flag: I think X because Y »), mark the issue `has-questions`, and stop. Never design the alternative.
