@@ -10,7 +10,7 @@ Report only what the code shows. An empty family is a fine outcome.
 
 - **Misplaced rule**: a caller decides something the object could state itself. A `case` or a table on error types to know which deserve a proof, instead of each error saying so.
 - **Re-derived knowledge**: a layer rebuilds from an output (a message, a title, a serialized payload, a raw header) what another layer knew as a typed fact. Matching on human-readable strings breaks silently when the wording changes.
-- **Ad-hoc list**: ask what justifies « this case yes, that one no ». No business rule behind it: the list is the smell. A rule behind it: the rule goes in the code, not the list.
+- **Ad-hoc list**: ask what justifies « this case yes, that one no ». No business rule behind it: the list is the smell. A rule behind it: the rule goes in the code, not the list. Before tagging cases one by one, ask whether an existing type or status already states the rule (a 404 already means « definitive, no result »): then the rule follows the type, and a case that disagrees has the wrong type.
 - **Wrong owner for the entry point**: behaviour that depends on the route, the caller or the response placed in an object several routes share.
 - **Reaching through objects**: reading another object's internals or options instead of asking it.
 - **Stretched inheritance**: a subclass overriding a base method to disable it, a base built for another case, constants borrowed from a sibling.
