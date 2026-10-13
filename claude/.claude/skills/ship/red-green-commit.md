@@ -14,7 +14,8 @@ Read at phase 3 (implement) of `/ship`, and again at each review round's re-ship
   8. Track progress in `.notes/<branch_name>/implement-plan.md`
   9. Update session with current plan step number
 - **Spike exception**: If the plan was flagged as a spike during `/challenge`, the red-green cycle is optional — but note skipped tests in the plan file so review catches them.
-- **Design tripwire**: when a plan step's design does not hold (the approved construct breaks a test or hides a failure), stop and flag it with what broke. Never swap in another construct, least of all one the plan's Design line rejected: the shape is the planner's call.
+- **A change the plan names but the step could do without gets its own commit**, before the commit that uses it: a boy-scout cleanup, a new hook in a base class, a rename. Folded into a feature commit, it reads as a required change.
+- **Design tripwire**: when a plan step's design does not hold (the approved construct breaks a test or hides a failure), stop and flag it with what broke. Never swap in another construct, least of all one the plan's `Design:` line rejected: the shape is the planner's call.
 - **Scope tripwire**: the diff stops at the issue's scope, never at a line count. A change the plan did not name goes in the session file and to the user; a diff that outgrows a commit-by-commit read gets a review guide (`commit/review-guide.md`), not a split that ships half a functionality.
 - If tests fail unrelated to the plan, note them and continue
 - No blocking on flaky feature tests
