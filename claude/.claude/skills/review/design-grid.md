@@ -39,10 +39,11 @@ Report only what the code shows. An empty family is a fine outcome.
 
 ## Contracts
 
-- **Public contract**: response shape, error format, SDKs, generated docs, compatibility for existing clients.
+- **Public contract**: response shape, error format, SDKs, generated docs, compatibility for existing clients. A change in a shared parent class reaches the output of every subclass: documented and mocked on each, or kept in the subclass.
 - **Tests and docs encoding a sorting rule** rather than a need: they flip the day the rule changes.
 
 ## Product and security
 
 - **What the feature lets a user prove, forge, skip or learn**: a document obtained with chosen inputs, a response revealing whether a record exists.
 - **Personal data**: minimization, who sees what.
+- **Invented value**: a missing value replaced by a default the code cannot know is right, in a param or in a rendered document (the usual provider printed as a source). Unknown is written as unknown, or the call fails.
