@@ -1,6 +1,6 @@
 ---
 name: review-guide
-description: "Write a reading guide for a PR too large to review commit by commit; typed by the user only."
+description: "Publish a reading guide, as a Claude artifact, for a PR too large to review commit by commit; typed by the user only."
 disable-model-invocation: true
 ---
 
@@ -10,7 +10,7 @@ disable-model-invocation: true
 
 Run from the repo. A PR number resolves to its branch and commits with `gh pr view <n> --json headRefName,commits`. Read the commits in order (`git show`) before writing a line.
 
-Write `.notes/<branch>/review-guide.md` (create the folder) in the PR's language, these sections in this order:
+The guide is a Claude artifact, never a local `.md`: an HTML page in the session's scratchpad directory (`review-guide-<branch>.html`), published with the Artifact tool, whose rules apply (it loads its design skill first); first publish with icon `guide` and the title `Guide de lecture <PR>`. In the PR's language, these sections in this order, one anchored section each:
 
 1. **Vue d'ensemble** — what changed in one sentence, then the deliverables per surface (routes, docs, SDKs, UI…).
 2. **Exemple de bout en bout** — one concrete case followed through every stage the change touches, from declaration to what the caller or the user sees.
@@ -18,4 +18,4 @@ Write `.notes/<branch>/review-guide.md` (create the folder) in the PR's language
 4. **Gardes-fous** — the tests that keep the pieces from diverging, what they cover, what they do not.
 5. **Commits & tests** — the commits in reading order, each with « ce qu'il faut lire » (the files and the idea, not the diff), and the commands to run locally. Split the essential hand-written lines from the skimmable generated ones, with the counts.
 
-Done when the file exists: report its path and stop. The user publishes it and links it from the PR body's third line; never post it, push it or edit the PR. It never replaces the commits: it tells the reviewer which one to open next.
+Done when the artifact is published: report its URL and stop. It is private; the user shares it and links it from the PR body's third line. A new round of commits republishes to the same URL: the same file path in this session, the artifact's `url` from another. Never post it on the PR, push it or edit the PR. It never replaces the commits: it tells the reviewer which one to open next.
