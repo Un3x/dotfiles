@@ -15,7 +15,6 @@ Categories:
 - **Race conditions**: TOCTOU bugs, concurrent access without locking, shared mutable state
 - **Trust boundaries**: User input flowing into queries/commands without validation, LLM output treated as trusted, external API responses used without verification
 - **Silent failures**: Bare rescue/catch blocks, swallowed errors, missing error handling on external calls
-- **Stale cache**: a cached value whose content, shape or lifetime changes while its key stays the same; the key changes in the same commit, never a purge left to the deploy
 - **Data loss**: Destructive migrations without backfill, cascade deletes, missing null checks on critical paths
 - **Auth/authz gaps**: Missing authorization checks, privilege escalation paths, exposed endpoints
 - **Untested new code paths**: New methods, branches, or behaviors introduced without a corresponding test. This is not "low coverage" hand-wringing — flag only when a specific new path has zero direct test exercising it. TDD was violated; bugs will ship. (Exception: spike PRs explicitly flagged as such.)

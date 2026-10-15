@@ -29,7 +29,7 @@ Report only what the code shows. An empty family is a fine outcome.
 - **Shared mutable context**: values set then reset to hide them, defensive copies, reads that depend on step order.
 - **Inputs mutated in place** (normalization, defaults), so the original is lost to whoever needs it later. Capture it at the boundary.
 - **Time**: several « now » in one operation, time zones, expiry windows.
-- **Cache**: does the new behaviour bypass, poison or leak through a cache, and on which key.
+- **Cache**: does the new behaviour bypass, poison or leak through a cache, and on which key. A cached value whose content, shape or lifetime changes gets a new key in the same commit, not a purge left to the deploy.
 
 ## Paths and environments
 
