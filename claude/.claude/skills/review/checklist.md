@@ -15,6 +15,7 @@ Categories:
 - **Race conditions**: TOCTOU bugs, concurrent access without locking, shared mutable state
 - **Trust boundaries**: User input flowing into queries/commands without validation, LLM output treated as trusted, external API responses used without verification
 - **Silent failures**: Bare rescue/catch blocks, swallowed errors, missing error handling on external calls
+- **Stale cache**: a cached value whose content, shape or lifetime changes while its key stays the same; the key changes in the same commit, never a purge left to the deploy
 - **Data loss**: Destructive migrations without backfill, cascade deletes, missing null checks on critical paths
 - **Auth/authz gaps**: Missing authorization checks, privilege escalation paths, exposed endpoints
 - **Untested new code paths**: New methods, branches, or behaviors introduced without a corresponding test. This is not "low coverage" hand-wringing — flag only when a specific new path has zero direct test exercising it. TDD was violated; bugs will ship. (Exception: spike PRs explicitly flagged as such.)
@@ -30,7 +31,7 @@ Categories:
 - **Performance**: Unbounded queries, missing pagination, loading associations unnecessarily
 - **Dead code**: Unused variables, unreachable branches, commented-out code
 - **Naming/clarity**: Misleading names, magic numbers, unclear intent (only when it could cause bugs; test names and readable code: see Readability)
-- **Readability** (app code and specs, no bug risk needed; the cost is a reviewer's time; RSpec/Ruby examples): double-negative or vague `describe`/`context` names; several cases driven by a data table and metaprogramming instead of one `context` per case with its stub in a `before` and a `shared_examples` taking the expected value; helpers returning tuples to destructure; vague assertions (`be >= 400` where the status is known); memoized readers with an inline block instead of `@x ||= build_x`
+- **Readability** (app code and specs, no bug risk needed; the cost is a reviewer's time; RSpec/Ruby examples): double-negative or vague `describe`/`context` names; several cases driven by a data table and metaprogramming instead of one `context` per case with its stub in a `before` and a `shared_examples` taking the expected value; helpers returning tuples to destructure; vague assertions (`be >= 400` where the status is known); memoized readers with an inline block instead of `@x ||= build_x`; a sequence of steps whose purpose only the commit message explains, instead of a method that names it
 
 ## Pass 3: DESIGN
 Walk [`design-grid.md`](design-grid.md) on the diff and on what it plugs into (callers, base classes, every other user of the classes it changes). Open the section with the families checked, even when nothing is found.

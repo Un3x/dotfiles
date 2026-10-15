@@ -13,6 +13,8 @@ When exploring the codebase, read `CONTEXT.md` (if it exists) so test names and 
 
 Tests verify behavior through public interfaces, not implementation details. Code can change entirely; tests shouldn't. A good test reads like a specification — "user can checkout with valid cart" tells you exactly what capability exists — and survives refactors because it doesn't care about internal structure.
 
+When an outside rule drives the change (a provider's calendar, a publication date, a threshold), write one example per real case the rule produces, the why in its name (« in March, the February data is not out yet »): each case's input and output stay visible, and the wrong case shows where a shared table would hide it.
+
 See [tests.md](tests.md) for examples and [mocking.md](mocking.md) for mocking guidelines.
 
 ## Seams — where tests go
