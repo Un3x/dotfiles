@@ -24,7 +24,7 @@ Ledger: `~/Documents/mylife_in_a_vault/systems/lessons.md`, one row per lesson.
    - **Fix**: true of this diff only; the commit that answered it says everything. Counted, nothing written.
    - **Lesson**: it would have caught a mistake in another PR. Test: rewrite it without this PR's names; if it still says something, it is a lesson.
    - **Taste**: a preference stated once. The user says whether it is a rule.
-3. **Check the ledger and the homes** for a rule that already covers the lesson (`grep` the ledger, the repo's `CLAUDE.md` files and `.claude/skills`, `~/.claude/skills`). Covered: it is a **repeat**. Add the PR to that row's Repeats and say why the rule was not applied: not read at the decision, too vague, or contradicted by code the agent copied. The fix moves or sharpens that rule, never adds a second one.
+3. **Check the ledger and the homes** for a rule that already covers the lesson (`grep` the ledger, the repo's `CLAUDE.md` files and `.claude/skills`, `~/.claude/skills`). Covered: it is a **repeat**. Add the PR to that row's Repeats and say why the rule was not applied: not read at the decision, too vague, or contradicted by code the agent copied. The fix moves or sharpens that rule, never adds a second one. **Contradicted** (the lesson goes against an existing rule): both quoted in the step 5 table; the user reconciles them into one wording.
 4. **Draft the rule** for a new lesson: one or two sentences, the why with it, a short example from the PR stripped of its names. Its home is where the agent reads it when it makes that decision:
 
    | The lesson is about | Home |

@@ -30,9 +30,9 @@
 
 ## Contradictions
 
-- Two things I act on that disagree (rules, design grid, plan, review finding, ticket, code, something the user said) is never normal and never mine to settle. Stop, quote both sides, ask the user. Never pick a side because it is newer, already approved or easier: rebutting a review finding by citing the plan is picking a side.
-- A rule I write contradicts none already written; if it does, the user reconciles both into one wording before anything is committed.
-- A subagent does not ask: it stops on that point and opens its report with `Contradictions:`, both sides quoted.
+- When two things acted on disagree (a rule, the plan, a review finding, the ticket, the code, what the user said), that is never normal and never the agent's to settle: stop, quote both sides, ask the user. Never pick a side because it is newer, already approved or easier: rebutting a review finding by citing the plan is picking a side. A claim a test or the code can check is not a contradiction: check it.
+- A new rule contradicts no rule in a `CLAUDE.md` or under `~/.claude/skills/`; if it does, the user reconciles both into one wording before anything is committed.
+- A subagent does not ask: it leaves that point undone, finishes the rest, and opens its report with `Contradictions:`, both sides quoted.
 
 ## Rails
 
