@@ -70,6 +70,7 @@ Never update the tracker before the user has weighed in.
 ## Rules
 
 - Be direct. If the idea is bad, say so.
+- **Finding facts is your job, never the user's.** A fact the code, git history, tracker or a tool can give is looked up (an Explore subagent in the background, the questions that do not depend on it asked meanwhile); the user gets decisions only, each with its recommended answer.
 - If the issue is clearly well-scoped and straightforward, say "looks good, proceed to /plan" — don't force artificial depth.
 - Don't over-engineer the challenge for small tasks. A 1-line bug fix doesn't need a 10x vision.
 - The goal is to catch scope mistakes and wrong problems BEFORE we invest in planning.

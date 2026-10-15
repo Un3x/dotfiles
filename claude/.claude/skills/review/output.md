@@ -35,6 +35,7 @@ Result: [what happens, against what should]
 [What it costs]
 
 ### CODEX SECOND OPINION
+Effort: [rung] ([the signals, or "none"])
 Confirmed: [findings Codex raised that you verified and did not have, written like the ones above]
 Rejected: [finding — why]
 (or: "not run — <reason>"; agreements are tagged "(also Codex)" on your own finding and need no line here)

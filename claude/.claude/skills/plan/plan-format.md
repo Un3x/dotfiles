@@ -24,12 +24,13 @@ Entry points: <the routes, jobs or commands that reach the objects this plan cha
 Design: grid — ok | <finding> → <change in the steps>
 
 ## Questions          ← only if any; presence = has-questions
-- ...
+- ... → recommended: ...   ← decisions only, each with its recommended answer
 Flag: ...             ← only if you believe simple is insufficient (one sentence)
 ```
 
 - **TDD is the default.** Each step = failing test + the behavior change that makes it pass, together. Never a trailing "add tests" step. Spike exception only if `/challenge` flagged it — note it in the plan.
 - Explore the codebase before planning; plans reference real files.
+- Facts are looked up, never put under Questions ([`../challenge/SKILL.md`](../challenge/SKILL.md) § Rules); only decisions go to the user.
 - Lines with FIXME must be addressed when replanning.
 
 ## Design check
@@ -40,4 +41,4 @@ After the steps are written, list on the `Entry points:` line every route, job o
 
 ## Fresh-eyes check (non-trivial plans only)
 
-Before marking `ready`, spawn a subagent on `sonnet` with only the issue + draft plan: "Propose a design with half the moving parts." If it finds a simpler shape, that becomes the plan. If its shape contradicts a rule (`one-rule.md`, the project `CLAUDE.md`), never reject it on the rule alone: put the conflict under Questions, both shapes in one line each, and let the user decide. Exploration and fresh-eyes run on the smaller model on purpose (routing decided 2026-09-30, not for limits but to have the data when they bind); judgment stays on the main one.
+Before marking `ready`, spawn a subagent on `sonnet` with only the issue + draft plan: "Propose a design with half the moving parts." If it finds a simpler shape, that becomes the plan. If its shape contradicts a rule (`one-rule.md`, the project `CLAUDE.md`), never reject it on the rule alone: put the conflict under Questions, both shapes in one line each and the recommended one, and let the user decide. Exploration and fresh-eyes run on the smaller model on purpose (routing decided 2026-09-30, not for limits but to have the data when they bind); judgment stays on the main one.
