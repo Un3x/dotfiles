@@ -18,4 +18,16 @@ The guide is a Claude artifact, never a local `.md`: an HTML page in the session
 4. **Gardes-fous** — the tests that keep the pieces from diverging, what they cover, what they do not.
 5. **Commits & tests** — the commits in reading order, each with « ce qu'il faut lire » (the files and the idea, not the diff), and the commands to run locally. Split the essential hand-written lines from the skimmable generated ones, with the counts.
 
+Rules, from Loïc's iterations on his guides (skelz0r/dotfiles, `pr-review-guide`):
+
+- **Executive first.** The overview answers « what is this PR and what must I read »; the rest is one click away.
+- **Say what can be skipped, with numbers.** Generated and mechanical files are most of a large diff: count them from `git diff --numstat` and name the check that guarantees them, so the reader trusts skipping them.
+- **Each step of the example** says in its title what the reader is looking at, and in its first sentence how it differs from the previous one.
+- **Only real artefacts.** Code excerpts, payloads, failure messages and screenshots come from the head commit or from running it, truncated visibly with `…`. Never an invented payload: a plausible fake misleads the reviewer the guide is for.
+- **Link everything, pinned**: files to the method that matters (`blob/<sha>/path#L43`), commits to their page in the PR, never a branch name, since the guide outlives the branch.
+- **Assumptions labelled as assumptions**: a decision resting on a belief (« nobody relies on these codes ») says why it is believed and who adapts if it is wrong, in a warning callout.
+- **Behaviour changes in a Before / After / Why table**, so a reviewer checks each one against the code.
+- **Show the safety nets' real failure messages**: they tell a future contributor what to do.
+- **Numbers come from commands** run on the head commit, identical wherever they appear.
+
 Done when the artifact is published: report its URL and stop. It is private; the user shares it and links it from the PR body's third line. A new round of commits republishes to the same URL: the same file path in this session, the artifact's `url` from another. Never post it on the PR, push it or edit the PR. It never replaces the commits: it tells the reviewer which one to open next.
