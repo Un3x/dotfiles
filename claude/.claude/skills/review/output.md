@@ -1,10 +1,10 @@
 # Output format
 
-The report says what is wrong and how to see it, never how to fix it. Its reader is the author or the next agent, who finds the code and the fix on their own: a finding is a behaviour, the steps that reproduce it, and the result. No `file:line`, no class or method names, no « Fix: » line (Passemarche PR #562, 2026-10-09: the findings were right, Thomas rewrote every one before posting). A finding that only exists in the code (a missing index, an unrelated reformatting) names the screen, the data or the change it touches in plain words.
+The report says what is wrong and how to see it, never how to fix it. Its reader is the author or the next agent, who finds the code and the fix on their own: a finding is a behaviour, the steps that reproduce it, and the result. No `file:line`, no class or method names, no « Fix: » line (the one path allowed is the file a missed rule lives in) (Passemarche PR #562, 2026-10-09: the findings were right, Thomas rewrote every one before posting). A finding that only exists in the code (a missing index, an unrelated reformatting) names the screen, the data or the change it touches in plain words.
 
 The report is written in the language of the PR (title, commits, description), whatever language the session runs in: it is relayed to the team as is (2026-09-18 Passemarche, 2026-09-21 Apistration: two reports rewritten in French on request).
 
-A section with nothing in it is left out. The data flow diagram of step 7 is a working tool, not part of the report.
+A section with nothing in it is left out. The data flow diagram of step 8 is a working tool, not part of the report.
 
 ```
 ## Code Review: [PR title or branch] — [verdict: ship it / fix criticals first / simplify first / needs rethink]
@@ -33,6 +33,9 @@ Result: [what happens, against what should]
 
 **1. [What is heavier than it needs to be]**
 [What it costs]
+
+### RULES MISSED
+1. [the rule, quoted] — [its file] — [where the diff breaks it, in plain words]
 
 ### CODEX SECOND OPINION
 Effort: [rung] ([the signals, or "none"])
