@@ -34,7 +34,7 @@ Categories:
 
 ## Pass 3: DESIGN
 Walk [`design-grid.md`](design-grid.md) on the diff and on what it plugs into (callers, base classes, every other user of the classes it changes). Open the section with the families checked, even when nothing is found.
-- A finding says in plain words who decides or holds what today, who should, and what disappears if it moves (`output.md`: no fix, no code names). The target sketch belongs to `/review design`.
+- A finding says in plain words who decides or holds what today, who should, and what disappears if it moves (`output.md`: no fix, no code names). The target sketch belongs to `/manual-review-pr`.
 - Merge findings into the output under a "DESIGN" section between CRITICAL and INFORMATIONAL
 
 ## Pass 4: SIMPLICITY (over-engineering)
