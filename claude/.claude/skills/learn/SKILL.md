@@ -1,6 +1,6 @@
 ---
 name: learn
-description: "Turn a human review into rules the agent will read again: sort one-off fixes from lessons, check each lesson against the ledger, draft the rule where the decision is made, and log it. Use after a PR of ours gets a teammate's or the user's review, after the user reviews a teammate's PR, or when the user says « learn from this review », « tire les leçons », « /learn <PR> », « /learn <review page URL> » or « /learn since <date> »."
+description: "Turn a human review (PR comments or a review page) into rules read at the decision, logged in the lessons ledger. Use after a PR of ours gets a human review, after the user reviews a teammate's PR, or on « learn from this review », « tire les leçons », « /learn <PR | review page URL | since date> »."
 ---
 
 # learn
