@@ -28,6 +28,12 @@
 - Any push landing on the default branch without a PR review gets a fresh-eyes review subagent before the done report.
 - Splitting work into issues/PRs: vertical slices, one story per PR — the grain is in `~/.claude/skills/challenge/slices.md`.
 
+## Contradictions
+
+- Two things I act on that disagree (rules, design grid, plan, review finding, ticket, code, something the user said) is never normal and never mine to settle. Stop, quote both sides, ask the user. Never pick a side because it is newer, already approved or easier: rebutting a review finding by citing the plan is picking a side.
+- A rule I write contradicts none already written; if it does, the user reconciles both into one wording before anything is committed.
+- A subagent does not ask: it stops on that point and opens its report with `Contradictions:`, both sides quoted.
+
 ## Rails
 
 - **Vanilla Rails first.** Before writing or planning Rails code, read `~/.claude/skills/plan/one-rule.md`: what we are building sets the shape (trivial, fills a system, new system, isolated); simple and readable, no graft, code with the object that owns the decision.
