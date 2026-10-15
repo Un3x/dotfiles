@@ -18,6 +18,15 @@ Report only what the code shows. An empty family is a fine outcome.
 - **Two classes in one**: most methods of a class open on the same branch (`if not_found?`). It holds two objects: split them and pick one where it is built.
 - **Wrong level of abstraction**: generic machinery with a single user, or a copy of an existing variant where the system already has a slot for it. Ask what the next feature of the same kind would have to write.
 
+## Rails health
+
+From layered-rails' review list (`~/.claude/skills/layered-rails/commands/review.md`); its layer checks are « Layer direction » above.
+
+- **Callbacks**: a callback doing work outside the record (charging, syncing another system) instead of keeping the record consistent; a flag to skip a callback (`skip_*`, `unless: :flag`).
+- **Concerns**: a concern that groups code by kind (all the validations, all the scopes) instead of carrying one behaviour testable on its own; a concern grown past one screen.
+- **Services**: domain logic moved out of the model into a service, leaving the model with only fields.
+- **God object**: a class the diff grows that already changes often and holds several unrelated jobs (unlike « Two classes in one », where one job splits on a branch).
+
 ## Control flow
 
 - **Working around the framework**: a hook wrapping a chain, rescue and re-raise, `send` on a private method, because the natural extension point does not fit. The code sits in the wrong place.
