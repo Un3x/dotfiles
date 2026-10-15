@@ -18,7 +18,8 @@ The project lead session runs in the repo with the vault protocol and the projec
 | a PR to look at | `/review <url>`, fresh subagent | report relayed, in the PR's language |
 | a PR with a human review: ours reviewed by a teammate or the user, or a teammate's the user reviewed | `/learn <PR>`, in session | the kept rules applied, the ledger updated |
 | Monday, or drift suspected | `/verify maintain`, subagent | outcome in the check-in |
-| an explicit command | as given | — |
+| a settled ask that ends in a PR, with no issue: an EA brief, a chore | one subagent follows `/ship` with the ask in place of the issue and plan: worktree branch, tests where the change can be tested (else the proof the ask names), PR, review loop (`ship/review-loop.md`); never in session | PR reviewed and fixed by that subagent → the user merges (2026-10-15: one brief to four sessions, two PRs went out unreviewed) |
+| an explicit command | as given; one that opens a PR takes the row above | — |
 
 ## Human gates
 
