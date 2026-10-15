@@ -16,6 +16,7 @@ The project lead session runs in the repo with the vault protocol and the projec
 | an issue with the ask settled | `/plan`, in session | plan `ready` → the user approves → ship; questions → the user |
 | an approved plan | `/ship <ISSUE>`, **one subagent per issue**, prompt exactly `Run /ship <ISSUE>` plus the decisions this session holds | PR opened and reviewed inside ship → the user merges |
 | a PR to look at | `/review <url>`, fresh subagent | report relayed, in the PR's language |
+| a PR with a human review: ours reviewed by a teammate or the user, or a teammate's the user reviewed | `/learn <PR>`, in session | the kept rules applied, the ledger updated |
 | Monday, or drift suspected | `/verify maintain`, subagent | outcome in the check-in |
 | an explicit command | as given | — |
 
