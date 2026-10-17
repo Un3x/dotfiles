@@ -16,9 +16,10 @@
       "Read(**/.env.*)",
       "Read(**/config/credentials/*.key)",
       "Read(**/config/master.key)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "opus",
   "hooks": {
     "Stop": [
       {
@@ -212,10 +213,10 @@
   },
   "enabledPlugins": {
     "playwright-skill@playwright-skill": true,
-    "dsfr@dsfr-skill": true,
-    "compound-engineering@every-marketplace": false,
+    "dsfr@dsfr-skill": false,
     "ruby-lsp@claude-plugins-official": true,
-    "accessibility@rgaa-toolkit": true
+    "accessibility@rgaa-toolkit": true,
+    "dsfr-skill@dsfr-skill": true
   },
   "extraKnownMarketplaces": {
     "rgaa-toolkit": {
