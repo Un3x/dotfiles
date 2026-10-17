@@ -2,6 +2,8 @@
 
 Read at step 3. **Nothing without evidence.** A recommendation that cites no session, PR, review file or ticket is an opinion, and you keep it to yourself.
 
+Evidence has to be countable: whatever the harness produces (round files, reports, commit subjects) keeps one fixed shape a script can count. A decision taken to gather data names the data and where it lands.
+
 ## The window
 
 Since the last audit (`ls ~/Documents/mylife_in_a_vault/reviews/harness/*.md | tail -1`), else seven days, else what you are given. A session opened before the window but still active inside it counts.
@@ -29,7 +31,7 @@ jq -r 'select(.type=="user") | .message.content
 
 `scripts/scan-corrections.py [DAYS] [--project SUBSTRING]` runs the first query over every project and keeps the lines that look like a correction. Triage by hand: most hits are false positives.
 
-Model routing data (decided 2026-09-30): the `Model:` line of review reports and the model of the fresh-eyes subagent in `.notes/*/plan.md`, against the round count and the asked verdict, say whether the smaller model held.
+Model routing data: the `Model:` line of review reports and the model of the fresh-eyes subagent in `.notes/*/plan.md`, against the round count and the asked verdict, say whether the smaller model held.
 
 What you look for, by yield:
 

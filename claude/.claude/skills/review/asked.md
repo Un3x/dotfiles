@@ -1,6 +1,6 @@
 # Asked versus built
 
-Read at step 2 of `/review`. Code review checks whether the change is sound; this pass checks whether it is the change that was asked for. Bangun CRE-278 (2026-09-25): three review rounds found the PR clean, and only the sub-assistant noticed afterwards that the labelled history count was computed and rendered nowhere.
+Read at step 2 of `/review`. Code review checks whether the change is sound; this pass checks whether it is the change that was asked for. A PR can pass every review round and still miss a behaviour the issue promised.
 
 1. **Find the ask.** The PR body's `Closes` / `Suite de` link → the issue body in the project's tracker (read an issue, [`../tracker.md`](../tracker.md)), and the brief the project lead session gave when there is one. The PR body itself is a claim to verify, never a source for the checklist. No issue and no brief → skip the pass, write `Asked: no source found` in the report, nothing else.
 2. **Write the ask as a checklist** before reading the diff: every behaviour the issue promises, every limit it states (« does not », « stays »), every acceptance line. From the issue's words, not the plan's: the plan is the author's reading, the same one the diff came from.

@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Manual PR review
 
-`/manual-review-pr <PR> [first remarks]`, typed by the user only. A review done with the user, not for them: the agent brings facts and a second opinion, the user decides, and the page at the end records the target design and every decision with its justification. Where responsibilities live is the point, not line-level nitpicks. Adapted from Loïc's `manual-review-pr` (skelz0r/dotfiles), which produced the Apistration #505 review page; it replaces `/review design` (2026-10-15). `/review` is the agent reviewing alone; here the user reviews a PR with the agent.
+`/manual-review-pr <PR> [first remarks]`, typed by the user only. A review done with the user, not for them: the agent brings facts and a second opinion, the user decides, and the page at the end records the target design and every decision with its justification. Where responsibilities live is the point, not line-level nitpicks. `/review` is the agent reviewing alone; here the user reviews a PR with the agent.
 
 **Never post on the PR** (comment, review, suggestion, label), even when asked: the user posts.
 

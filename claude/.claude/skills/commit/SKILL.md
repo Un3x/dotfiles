@@ -21,5 +21,7 @@ Read [`pull-request.md`](pull-request.md) at `gh pr create`.
 ## Rules
 
 - The why is written once, in the message: the plan, the issue and the PR are not files the log reader can open.
-- The message speaks the repo's language (Simplifions: French; Bangun, Apistration: English), whatever language the session runs in.
-- A subject past 72 characters is a subject carrying its body: cut it, do not wrap it (2026-08 → 09-30: 89 of 368 subjects on Bangun and Simplifions ran past 72).
+- The message speaks the repo's language, the one of its recent commits, whatever language the session runs in.
+- A subject past 72 characters is a subject carrying its body: cut it, do not wrap it.
+- Code meant to go away later (a gate bypass, a shim, scaffolding waiting on another issue) gets its own commit, so the cleanup is one revert. Its SHA and files go on the cleanup issue.
+- A real fix found while rewriting history stays a visible commit, announced as a change: a rewrite announced as "same diff" is not read again.

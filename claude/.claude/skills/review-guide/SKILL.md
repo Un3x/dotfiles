@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Review guide for a large PR
 
-`/review-guide <PR or branch>`, typed by the user only: the user decides which PR needs one. Model: Loïc's guide for Apistration #395 (545 files, 46 000 lines, 2026-09), https://assets.delmai.re/apistration-pr-395/.
+`/review-guide <PR or branch>`, typed by the user only: the user decides which PR needs one. Model: https://assets.delmai.re/apistration-pr-395/.
 
 Run from the repo. A PR number resolves to its branch and commits with `gh pr view <n> --json headRefName,commits`. Read the commits in order (`git show`) before writing a line.
 
@@ -18,7 +18,7 @@ The guide is a Claude artifact, never a local `.md`: an HTML page in the session
 4. **Gardes-fous** — the tests that keep the pieces from diverging, what they cover, what they do not.
 5. **Commits & tests** — the commits in reading order, each with « ce qu'il faut lire » (the files and the idea, not the diff), and the commands to run locally. Split the essential hand-written lines from the skimmable generated ones, with the counts.
 
-Rules, from Loïc's iterations on his guides (skelz0r/dotfiles, `pr-review-guide`):
+Rules:
 
 - **Executive first.** The overview answers « what is this PR and what must I read »; the rest is one click away.
 - **Say what can be skipped, with numbers.** Generated and mechanical files are most of a large diff: count them from `git diff --numstat` and name the check that guarantees them, so the reader trusts skipping them.

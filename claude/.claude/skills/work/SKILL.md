@@ -5,7 +5,7 @@ description: "Take a subject for this project and run it end to end: route a bug
 
 # work
 
-The project lead session runs in the repo with the vault protocol and the project role injected at start (`~/.claude/hooks/project-lead.sh`, marker `.claude/project-lead`). It owns the vertical: what needs doing is decided here, done here when it is judgment, done by a subagent when it is implementation. A subagent gets the repo's `CLAUDE.md` only, never this session's role (checked 2026-09-30): the coder codes, the project lead decides.
+The project lead session runs in the repo with the vault protocol and the project role injected at start (`~/.claude/hooks/project-lead.sh`, marker `.claude/project-lead`). It owns the vertical: what needs doing is decided here, done here when it is judgment, done by a subagent when it is implementation. A subagent gets the repo's `CLAUDE.md` only, never this session's role: the coder codes, the project lead decides.
 
 ## Routing
 
@@ -18,7 +18,7 @@ The project lead session runs in the repo with the vault protocol and the projec
 | a PR to look at | `/review <url>`, fresh subagent | report relayed, in the PR's language |
 | a PR with a human review: ours reviewed by a teammate or the user, or a teammate's the user reviewed | `/learn <PR>`, in session | the kept rules applied, the ledger updated |
 | Monday, or drift suspected | `/verify maintain`, subagent | outcome in the check-in |
-| a settled ask that ends in a PR, with no issue: an EA brief, a chore | one subagent follows `/ship` with the ask in place of the issue and plan: worktree branch, tests where the change can be tested (else the proof the ask names), PR, review loop (`ship/review-loop.md`); never in session | PR reviewed and fixed by that subagent → the user merges (2026-10-15: one brief to four sessions, two PRs went out unreviewed) |
+| a settled ask that ends in a PR, with no issue: an EA brief, a chore | one subagent follows `/ship` with the ask in place of the issue and plan: worktree branch, tests where the change can be tested (else the proof the ask names), PR, review loop (`ship/review-loop.md`); never in session | PR reviewed and fixed by that subagent → the user merges; one subagent owns the PR, so none leaves unreviewed |
 | an explicit command | as given; one that opens a PR takes the row above | — |
 
 ## Human gates
@@ -35,4 +35,5 @@ The Agent tool runs it in the background and notifies on completion; one issue p
 - Every answer sent to a subagent traces to something the user said or a file they validated.
 - Nothing secret in a subagent prompt: it lands in the transcript.
 - The brief to a subagent is the command plus the decisions of this session, one paragraph; the user does not repeat themselves.
+- Every deliverable has one owner from the ask to the merge, and that owner checks it against the ask, not only against itself.
 - Ask the user only product or preference calls. When the app, the console, the browser or a logged-in CLI can answer, run it and show the result.

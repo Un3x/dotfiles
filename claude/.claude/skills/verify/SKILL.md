@@ -5,7 +5,7 @@ description: "Drive the real app the way a user does and prove a behaviour: laun
 
 # verify
 
-An agent that has to start the app, find the admin login and click to a screen rebuilds a throwaway script every session. The map ends that: one project-local skill, `.claude/skills/verify-<app>/`, holds the launch recipe and one file per feature saying how a user reaches it and what proves it works. Idea and contract from Lauren Tan's pstack (vault: `docs/pstack-feature-map/`).
+An agent that has to start the app, find the admin login and click to a screen rebuilds a throwaway script every session. The map ends that: one project-local skill, `.claude/skills/verify-<app>/`, holds the launch recipe and one file per feature saying how a user reaches it and what proves it works.
 
 ## Use the map (every session that drives the app)
 

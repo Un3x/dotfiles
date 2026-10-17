@@ -1,8 +1,8 @@
 # Output format
 
-The report says what is wrong and how to see it, never how to fix it. Its reader is the author or the next agent, who finds the code and the fix on their own: a finding is a behaviour, the steps that reproduce it, and the result. No `file:line`, no class or method names, no « Fix: » line (the one path allowed is the file a missed rule lives in) (Passemarche PR #562, 2026-10-09: the findings were right, Thomas rewrote every one before posting). A finding that only exists in the code (a missing index, an unrelated reformatting) names the screen, the data or the change it touches in plain words.
+The report says what is wrong and how to see it, never how to fix it. Its reader is the author or the next agent, who finds the code and the fix on their own: a finding is a behaviour, the steps that reproduce it, and the result. No `file:line`, no class or method names, no « Fix: » line (the one path allowed is the file a missed rule lives in). The user posts it without rewriting it. A finding that only exists in the code (a missing index, an unrelated reformatting) names the screen, the data or the change it touches in plain words.
 
-The report is written in the language of the PR (title, commits, description), whatever language the session runs in: it is relayed to the team as is (2026-09-18 Passemarche, 2026-09-21 Apistration: two reports rewritten in French on request).
+The report is written in the language of the PR (title, commits, description), whatever language the session runs in: it is relayed to the team as is.
 
 A link is always whole: a PR, an issue or a URL in full; the file a missed rule lives in by its full path, never its basename.
 

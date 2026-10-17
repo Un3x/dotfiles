@@ -1,6 +1,6 @@
 # The project's tracker
 
-Read by any skill or session that reads or writes an issue. Skills say « the tracker », never a product: each project picks its own, so a tracker can be tried on one project, or replaced, without touching the skills (decided 2026-10-09).
+Read by any skill or session that reads or writes an issue. Skills say « the tracker », never a product: each project picks its own, so a tracker can be tried on one project, or replaced, without touching the skills.
 
 ## Which tracker
 

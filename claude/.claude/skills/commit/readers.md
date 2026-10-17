@@ -10,4 +10,4 @@ Read from `commit` step 1, from `/ship` phase 2 and 4, and from any session that
 | Issue comment | the same readers, in a thread | a scope question needs an answer | one question, open or closed, whose answer splits, merges or bounds the issue; or the answer | a few lines | — |
 | Plan | Thomas, the coding agent | before and during `/ship` | the steps, the diagram, the size estimate | as long as it needs | attached to the issue as a file, never as a comment |
 
-What does not go on the tracker: plans, shipping logs, review rounds, rebase notes, file counts, class names. Bangun CRE-278 (2026-09-24 → 25) carried four comments and 9 000 characters of that, for one reader who asked for none of it. The technical how lives in the code, which is meant to read at a glance; the plan is a file on the issue for whoever wants the detail.
+What does not go on the tracker: plans, shipping logs, review rounds, rebase notes, file counts, class names. The issue's reader asked for none of it. The technical how lives in the code, which is meant to read at a glance; the plan is a file on the issue for whoever wants the detail.

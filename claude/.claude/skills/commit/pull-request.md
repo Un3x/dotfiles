@@ -3,7 +3,8 @@
 Read at `gh pr create`, and at phase 4 of `/ship`. The reader is the reviewer, then the developer who lands here from a commit months later when the issue is archived ([`readers.md`](readers.md)): the why must stand without the tracker.
 
 - **One PR = one functionality**: the grain is in [`../challenge/slices.md`](../challenge/slices.md).
-- **Title**: the story of the branch in under 70 characters, shaped like a commit subject. A one-commit PR takes its commit subject verbatim.
+- **Stacked PRs** (a series where each builds on the one before) go through `gh stack` (`init`, `add`, `submit`, `rebase`), never PRs based on each other by hand.
+- **Title**: the story of the branch, shaped like a commit subject and held to its length (`SKILL.md` step 1). A one-commit PR takes its commit subject verbatim.
 - **Body**, this shape and nothing else:
 
   ```
@@ -12,5 +13,5 @@ Read at `gh pr create`, and at phase 4 of `/ship`. The reader is the reviewer, t
   Closes <ISSUE-ID> → <issue URL>
   ```
   The third line, when the change is user-facing, is the evidence path of the verify drive (`tmp/verify/<feature>/`), so the reviewer's asked pass starts from a proof instead of redoing it. The last line becomes `Suite de`, `Related` or a sha for a follow-up without an issue. A screenshot when the change is visible. Numbered steps to test by hand only when the diff does not make them obvious. The commits are the reading path: when their order matters, one line says « à lire commit par commit » with the first one to open; when the user has published a review guide for it (`/review-guide`), the third line links it.
-- Nothing else: no headers, no test plan (CI and the diff), no proof essay (Apistration #439, 2026-09-24: 21 lines of `git grep` to prove a field was dead, when the two specs pinning it were the proof), no restating of the issue.
+- Nothing else: no headers, no test plan (CI and the diff), no proof essay (the tests that pin the change are the proof), no restating of the issue.
 - Review replies and follow-ups: assistants never post on PR threads (guardrail). A follow-up that changes the scope goes on the issue as a question; a technical leftover becomes its own one-line issue or stays in `.notes/`; Thomas talks to the team.

@@ -17,7 +17,7 @@ Kind: trivial | fills <system> | new system | isolated — <why, one line>   ←
 2. ...
 
 ## Size
-~X lines, Y files, N commits in reading order   ← an estimate, not a cap (user, 2026-09-30): the PR's grain is `../challenge/slices.md`; the commits are the reviewer's path. Sized from the issue's appetite when /challenge wrote one.
+~X lines, Y files, N commits in reading order   ← an estimate, not a cap: the PR's grain is `../challenge/slices.md`; the commits are the reviewer's path. Sized from the issue's appetite when /challenge wrote one.
 
 Entry points: <the routes, jobs or commands that reach the objects this plan changes>
 Design: grid — ok | <finding> → <change in the steps>
@@ -40,4 +40,4 @@ After the steps are written, list on the `Entry points:` line every route, job o
 
 ## Fresh-eyes check (non-trivial plans only)
 
-Before marking `ready`, spawn a subagent on `sonnet` with only the issue + draft plan: "Propose a design with half the moving parts." If it finds a simpler shape, that becomes the plan. If its shape contradicts a rule (`one-rule.md`, the project `CLAUDE.md`), never reject it on the rule alone: put the conflict under Questions, both shapes in one line each and the recommended one, and let the user decide. Exploration and fresh-eyes run on the smaller model on purpose (routing decided 2026-09-30, not for limits but to have the data when they bind); judgment stays on the main one.
+Before marking `ready`, spawn a subagent on `sonnet` with only the issue + draft plan: "Propose a design with half the moving parts." If it finds a simpler shape, that becomes the plan. If its shape contradicts a rule (`one-rule.md`, the project `CLAUDE.md`), never reject it on the rule alone: put the conflict under Questions, both shapes in one line each and the recommended one, and let the user decide. Exploration and fresh-eyes run on the smaller model on purpose (not for limits: to have the data before they bind); judgment stays on the main one.

@@ -21,7 +21,7 @@ esac
 P=$(head -1 "$M"); P="${P/#\~/$HOME}"
 [ -d "$P" ] || { echo "project-lead: vault project folder not found: $P" >&2; exit 0; }
 V=$(cd "$P/../.." && pwd)
-echo "# Project lead session — vault project folder: $P (STATUS.md, LOG.md, memory/ live there; the repo is this directory)"
+echo "# Project lead session — vault project folder: $P (STATUS.md, LOG.md and memory/MEMORY.md live there, read MEMORY.md if it did not load; the repo is this directory)"
 cat "$V/systems/sub-assistant-protocol.md"
 echo
 cat "$P/CLAUDE.md"

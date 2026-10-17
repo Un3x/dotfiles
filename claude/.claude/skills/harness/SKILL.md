@@ -20,7 +20,7 @@ Ask each defect the three questions; it almost always has one answer, and the an
 
 1. **Context** — did the agent have the right thing in front of it when it needed it? The remedy is to *move* or *shorten*, rarely to write more: the rule was in a file the agent had not loaded, or drowned in a file too long, or written three times of which one false.
 2. **Constraints** — what does the prose forbid that nothing enforces? A rule broken twice despite its prose asks for a control (`hooks/guardrails.sh`, `permissions.deny`, a script that fails), not one more sentence.
-3. **Entropy** — what stopped being true? A path that no longer exists, a file named two ways, a rule whose anecdote is fixed, two tables that diverge.
+3. **Entropy** — what stopped being true? A path that no longer exists, a file named two ways, a rule whose defect no longer occurs, two tables that diverge.
 
 ## The pass
 
@@ -39,4 +39,4 @@ Ask each defect the three questions; it almost always has one answer, and the an
 - **You write only under `~/.claude` (via `~/Project/dotfiles`), the vault's `systems/`, `templates/`, `reviews/harness/`, root `CLAUDE.md` and `projects/*/CLAUDE.md`, and the EA memory.** Project code, STATUS/LOG and tickets are the sub-assistants' files.
 - **Move sections, cut — do not rewrite sentences.** The register proves each paragraph has a fate.
 - **A memory is repatriated in two steps**: the fact enters the versioned file and the memory keeps its content with a `> Canonical version: <path>` first line; it is deleted only after the merge, listed in the report.
-- **Evals: one skill a month at most**, the one where the return is best: its output can be checked and a wrong one costs most (decided 2026-10-01). A suite lives in the vault, `systems/evals/<skill>-skill/`, and runs with `claude plugin eval . --ablation none --scaffold --no-publish` before and after a wording change. The mechanical checks decide; a judged check only points at the outputs worth reading. No hard cap as a check: ask whether the case demands the extra.
+- **Evals: about one skill a month**, the one where the return is best: its output can be checked and a wrong one costs most. A suite lives in the vault, `systems/evals/<skill>-skill/`, and runs with `claude plugin eval . --ablation none --scaffold --no-publish` before and after a wording change. The mechanical checks decide; a judged check only points at the outputs worth reading. No hard cap as a check: ask whether the case demands the extra.

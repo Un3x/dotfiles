@@ -2,11 +2,11 @@
 
 Read at phase 5 (review) of `/ship`.
 
-- Spawn a review subagent (fresh context, main model: review is judgment) whose prompt is exactly:
+- Spawn a review subagent (fresh context, main model: review is judgment, `isolation: "worktree"` so its `gh pr checkout` never switches the branch under you) whose prompt is exactly:
   ```
   Run /review <pull_request_link>
   ```
-  Nothing else — the reviewer forms its own view from the PR alone. `/review` carries the checklist, the four passes, the Codex second opinion and the layered-rails reviewer, so this phase adds nothing on top of it. Save the subagent's report **verbatim** to `.notes/<branch_name>/review-round-N.md` (the `review/output.md` shape, headings and numbering kept), then append `## Triage` with one line per finding: `N. fixed | rebutted: <why> | deferred: <where>`. A paraphrased round file cannot be counted (72 round files by 2026-09-30, a dozen heading shapes, no recurrence measurable).
+  Nothing else — the reviewer forms its own view from the PR alone. `/review` carries the checklist, the four passes, the Codex second opinion and the layered-rails reviewer, so this phase adds nothing on top of it. Save the subagent's report **verbatim** to `.notes/<branch_name>/review-round-N.md` (the `review/output.md` shape, headings and numbering kept), then append `## Triage` with one line per finding: `N. fixed | rebutted: <why> | deferred: <where>`. A paraphrased round file cannot be counted: a finding that recurs across rounds stops being measurable.
 - Triage the report (ASKED vs BUILT lines marked missing, deviates or extra, then RULES MISSED, CRITICAL, DESIGN, SIMPLICITY, Readability, confirmed CODEX and LAYERED RAILS findings; a "not run" line is noted in the session file `## Notes` and does not block the loop):
   - **No actionable findings** → mark the session `shipped`, phase `done` (record the round count)
   - **Actionable findings** → fix on the same branch:
