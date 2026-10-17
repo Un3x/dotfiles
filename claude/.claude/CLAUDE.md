@@ -22,7 +22,8 @@
 - Issue comments, handoff notes: a pointer plus the minimum that orients the reader. If it needs a paragraph, question whether it needs to exist.
 - Prefer a 5-line diagram over 5 paragraphs when explaining a flow.
 - Anything handed to someone (a review, a PR, an issue, a message) is ready to pass on as is. If Thomas has to rewrite it, it failed.
-- A number in a rule is a goal that holds for about 95% of usual cases, never a limit to enforce: say what is necessary and sufficient, then stop.
+- A number in a rule is a goal that holds for about 95% of usual cases, never a limit to enforce: say what is necessary and sufficient, then stop. Reality checks the goal: when a scan shows it missed often, challenge the goal or the way we write. The exception is a stop that signals a deeper problem, like ship's three review rounds.
+- A PR, issue or ticket (GitHub, Linear…) named in a message to the user or in a subagent report comes with its full URL, never a bare `#133` or `SIM-257`.
 
 ## Coding Behavior
 

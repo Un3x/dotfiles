@@ -15,5 +15,5 @@ Read at phase 5 (review) of `/ship`.
     3. **Re-ship**: implement the new steps with the [red-green-commit](red-green-commit.md) cycle, push to the same branch (the PR updates). A fix goes into the commit whose story it tells (`commit` skill step 3: `--fixup`, autosquash, `--force-with-lease`) and into the file whose behaviour it covers, never into a file because its setup happens to make the test pass
     4. Spawn a **fresh** review subagent on the updated PR with the same prompt, repeat
 - **A RULES MISSED finding** is fixed like any other, and logged as a repeat in the lessons ledger ([`../learn/SKILL.md`](../learn/SKILL.md) § Ledger row).
-- **Round cap: 3.** If findings remain after round 3, stop looping: note the open findings in the session file `## Notes` and surface them to the user — don't ping-pong indefinitely.
+- **Round cap: 3.** If findings remain after round 3, stop looping: note the open findings in the session file `## Notes` and surface them to the user. Past three rounds the problem is likely the design or the scope, not the fixes: say which you suspect.
 - Update the session's Review round after each pass so resumption re-enters the loop correctly
