@@ -1,6 +1,6 @@
 # Output format
 
-The report says what is wrong and how to see it, never how to fix it. Its reader is the author or the next agent, who finds the code and the fix on their own: a finding is a behaviour, the steps that reproduce it, and the result. No `file:line`, no class or method names, no « Fix: » line (the one path allowed is the file a missed rule lives in). The user posts it without rewriting it. A finding that only exists in the code (a missing index, an unrelated reformatting) names the screen, the data or the change it touches in plain words.
+The report says what is wrong and how to see it, never how to fix it. Its reader is the author or the next agent, who finds the code and the fix on their own: a finding is a behaviour, the steps that reproduce it, and the result, in plain words. Its references in the code come after the explanation, on a `Where:` line (full repo-relative path and line), never inside it. No « Fix: » line. The user posts it without rewriting it. A finding that only exists in the code (a missing index, an unrelated reformatting) names the screen, the data or the change it touches in plain words.
 
 The report is written in the language of the PR (title, commits, description), whatever language the session runs in: it is relayed to the team as is.
 
@@ -25,16 +25,20 @@ Reproduce:
 1. [step]
 2. [step]
 Result: [what happens, against what should]
+Class: [the kind of bug, when the diff holds more than one instance]
+Where: [path:line, path:line]
 
 ### DESIGN
 
 **1. [Who decides or holds what today, and who should, in plain words]**
 [What disappears if it moves: a second path, a list, a copy]
+Where: [path:line, path:line]
 
 ### SIMPLICITY (over-engineering)
 
 **1. [What is heavier than it needs to be]**
 [What it costs]
+Where: [path:line]
 
 ### RULES MISSED
 1. [the rule, quoted] — [its file] — [where the diff breaks it, in plain words]
@@ -49,6 +53,10 @@ Rejected: [finding — why]
 Confirmed: [findings the layered-rails reviewer raised that you verified and did not have, written like the ones above]
 Rejected: [finding — why]
 (or: "not run — <reason>"; left out when the app is not Rails)
+
+### PRE-EXISTING (not this PR's)
+1. [a bug in code the diff did not change, written like the ones above] — Where: [path:line]
+(not in the verdict, not fixed in this PR)
 
 ### INFORMATIONAL (worth knowing)
 
