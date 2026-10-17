@@ -1,6 +1,6 @@
 # The one rule
 
-Read by `/plan` before writing a plan, by `/ship` when re-planning after a review round, and by `/review` (Pass 4 and design reviews). The global `CLAUDE.md` points here before any planning or coding.
+Read by `/plan` before writing a plan, by `/ship` when re-planning after a review round, and by `/review` (Pass 4). The global `CLAUDE.md` points here before any planning or coding.
 
 **The plan is the simplest design that fits what we are building: simple, readable, never over-engineered.**
 

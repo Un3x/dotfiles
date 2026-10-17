@@ -4,7 +4,7 @@ Read at step 4 of the pass, for every memory, correction and new rule. **A fact 
 
 | The fact says… | It goes in | Examples |
 | --- | --- | --- |
-| how one thing is done, at one step | the skill that does that step — `SKILL.md` if every run reads it, a sibling file if one step reads it | "PR body is ≤6 lines" → `commit/pull-request.md`; "follow a shipping subagent" → `work/SKILL.md` § Following |
+| how one thing is done, at one step | the skill that does that step — `SKILL.md` if every run reads it, a sibling file if one step reads it | "PR body: one to three lines + `Closes`" → `commit/pull-request.md`; "follow a shipping subagent" → `work/SKILL.md` § Following |
 | a gesture two skills perform | one skill both call with the Skill tool | `/simplify` from `/ship`; `/review` from `/ship`'s review loop; `/ship` from `work` |
 | a fact two skills read | a sibling in the skill that owns it; the others link its relative path, one level deep | the one rule → `plan/one-rule.md`, linked by `ship` and `review` |
 | a convention valid for any work, any repo | `~/.claude/CLAUDE.md` — and remove as much as you add | prose diet, the coding rungs |
@@ -14,9 +14,9 @@ Read at step 4 of the pass, for every memory, correction and new rule. **A fact 
 | what a control could enforce instead of a sentence | `hooks/guardrails.sh` + `settings.json`, or a `permissions.deny` — **proposed in the report**, applied by the user | `--no-gpg-sign`, PR thread replies, force-push |
 | how the user wants to be worked with, across projects | EA memory (`feedback_*`) | "no recurring meetings", "programme = user's voice" |
 | a project fact: decision, baseline, partner context | the project's STATUS / LOG / `memory/INDEX.md` in the vault | prod version, partner's constraints |
-| a machine quirk | `~/.claude/CLAUDE.md` § machine, or a `reference_*` memory | SSH agent socket, RAM pressure |
+| a machine quirk | a `reference_*` memory, or a local settings file | SSH agent socket, RAM pressure |
 | a measured number | the audit that measured it, dated; a skill points to it | lines per SKILL.md, corrections per week |
-| a rule about writing the harness itself | `harness/writing.md` — `/harness` is the only role that edits these files | thresholds, "one anecdote per rule" |
+| a rule about writing the harness itself | `harness/writing.md` — `/harness` and `/learn` are the roles that edit these files | thresholds, "one anecdote per rule" |
 
 Two tie-breakers:
 

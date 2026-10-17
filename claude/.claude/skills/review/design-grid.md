@@ -1,6 +1,6 @@
 # Design grid
 
-Read by `/review` Pass 3 on the diff, and by `/plan` on the draft plan before it is marked `ready`. Adapted from the design pass of a teammate's review skill (skelz0r/dotfiles, `manual-review-pr` §4), which produced the Apistration PR #500 review.
+Read by `/review` Pass 3 on the diff, and by `/plan` on the draft plan before it is marked `ready`.
 
 Before walking the grid, read what the change plugs into: base classes, callers, every other user of the classes it touches, how the same problem is solved elsewhere in the repository. An object shared by two entry points changes where a responsibility can live.
 
@@ -20,7 +20,7 @@ Report only what the code shows. An empty family is a fine outcome.
 
 ## Rails health
 
-From layered-rails' review list (`~/.claude/skills/layered-rails/commands/review.md`); its layer checks are « Layer direction » above.
+The in-review subset of layered-rails' checks. Its layer checks are « Layer direction » above. The dedicated layered-rails reviewer ([`SKILL.md`](SKILL.md) step 4) goes deeper.
 
 - **Callbacks**: a callback doing work outside the record (charging, syncing another system) instead of keeping the record consistent; a flag to skip a callback (`skip_*`, `unless: :flag`).
 - **Concerns**: a concern that groups code by kind (all the validations, all the scopes) instead of carrying one behaviour testable on its own; a concern grown past one screen.

@@ -5,10 +5,7 @@ Read at step 3 of `/review` when the project has no `.claude/review-checklist.md
 ## Pass 1: CRITICAL
 Issues that will break production, lose data, or create security holes.
 
-For each finding:
-- Describe the problem with file:line reference
-- Explain the failure scenario (when does this blow up?)
-- Suggest a fix
+Each finding is the failure scenario as steps and result, in the shape of [`output.md`](output.md): no fix.
 
 Categories:
 - **SQL safety**: Raw queries, missing indexes on new columns, N+1 queries, missing transactions where needed
@@ -30,7 +27,7 @@ Categories:
 - **Performance**: Unbounded queries, missing pagination, loading associations unnecessarily
 - **Dead code**: Unused variables, unreachable branches, commented-out code
 - **Naming/clarity**: Misleading names, magic numbers, unclear intent (only when it could cause bugs; test names and readable code: see Readability)
-- **Readability** (app code and specs, no bug risk needed; the cost is a reviewer's time; RSpec/Ruby examples): double-negative or vague `describe`/`context` names; several cases driven by a data table and metaprogramming instead of one `context` per case with its stub in a `before` and a `shared_examples` taking the expected value; helpers returning tuples to destructure; vague assertions (`be >= 400` where the status is known); memoized readers with an inline block instead of `@x ||= build_x`; a sequence of steps whose purpose only the commit message explains, instead of a method that names it
+- **Readability** (app code and specs, no bug risk needed; the cost is a reviewer's time; RSpec/Ruby examples): double-negative or vague `describe`/`context` names; several cases driven by a data table and metaprogramming (a table of lambdas, `instance_exec`) instead of one `context` per case with its stub in a `before` and a `shared_examples` taking the expected value; helpers returning tuples to destructure; vague assertions (`be >= 400` where the status is known); memoized readers with an inline block (`begin…end`) instead of `@x ||= build_x`; a sequence of steps whose purpose only the commit message explains, instead of a method that names it
 
 ## Pass 3: DESIGN
 Walk [`design-grid.md`](design-grid.md) on the diff and on what it plugs into (callers, base classes, every other user of the classes it changes). Open the section with the families checked, even when nothing is found.
@@ -46,9 +43,9 @@ Categories:
 - **Single-caller indirection**: a class/service/method with exactly one call site that could be inlined (a `build_x` behind an `@x ||=` memo, or a `shared_examples`, is readability, not indirection)
 - **Impossible-state defense**: guards/rescues for states that cannot occur given the actual callers
 - **Homeless abstraction**: new class/module created where existing code had a natural home
-
-A construct that removes a mechanism (a second path, a list, a copy), named as such in the plan, is neither single-caller indirection nor a homeless abstraction.
 - **Kind mismatch**: the shape does not match what is being built (`one-rule.md` § What are we building): a system built for a trivial change, or a graft where an existing system needed widening
 - **Plan drift**: diff significantly larger than the plan's size estimate (`.notes/<branch>/plan.md`) — name where the growth happened. Lines added by a readability rewrite are not drift
+
+A construct that removes a mechanism (a second path, a list, a copy), named as such in the plan, is neither single-caller indirection nor a homeless abstraction.
 
 Each finding states the deletion payoff ("inlining this removes 40 lines and one file"). Never flag a Readability rewrite in this pass.

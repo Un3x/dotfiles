@@ -1,6 +1,6 @@
 # Split granularity
 
-Read at step 6 of the challenge framework, only when recommending a split. The global `CLAUDE.md` points here whenever work is split into issues or PRs.
+Read at step 6 of the challenge framework, only when recommending a split. The global `CLAUDE.md` points here whenever work is split into issues or PRs. `/plan` sizing, `/ship` and `commit/pull-request.md` point here for the grain of a PR.
 
 Splitting an oversized issue is correct — but the right grain is **the smallest change that still delivers coherent, reviewable functionality**, not the smallest change possible. A PR must let the reviewer see the global purpose; over-atomic splits destroy that.
 
@@ -9,3 +9,5 @@ Splitting an oversized issue is correct — but the right grain is **the smalles
 - A PR that brings no observable behavior on its own is a sliver, not a slice. Prefer fewer, story-telling PRs over many mechanical ones.
 - Sequencing dependencies (slice B builds on slice A) is fine and expected — that's phasing, not atomizing.
 - A PR should tell one story.
+- A PR is self-sufficient and shippable on its own (user, 2026-09-30). A reader needs no other PR to understand it. Merging it leaves the app with something usable.
+- Size is not a reason to split. Unreadability is a reason to guide (`/review-guide`).

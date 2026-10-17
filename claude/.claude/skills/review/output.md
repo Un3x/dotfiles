@@ -4,6 +4,8 @@ The report says what is wrong and how to see it, never how to fix it. Its reader
 
 The report is written in the language of the PR (title, commits, description), whatever language the session runs in: it is relayed to the team as is (2026-09-18 Passemarche, 2026-09-21 Apistration: two reports rewritten in French on request).
 
+A link is always whole: a PR, an issue or a URL in full; the file a missed rule lives in by its full path, never its basename.
+
 A section with nothing in it is left out. The data flow diagram of step 8 is a working tool, not part of the report.
 
 ```
@@ -42,6 +44,11 @@ Effort: [rung] ([the signals, or "none"])
 Confirmed: [findings Codex raised that you verified and did not have, written like the ones above]
 Rejected: [finding — why]
 (or: "not run — <reason>"; agreements are tagged "(also Codex)" on your own finding and need no line here)
+
+### LAYERED RAILS
+Confirmed: [findings the layered-rails reviewer raised that you verified and did not have, written like the ones above]
+Rejected: [finding — why]
+(or: "not run — <reason>"; left out when the app is not Rails)
 
 ### INFORMATIONAL (worth knowing)
 

@@ -48,7 +48,7 @@ Ledger: `~/Documents/mylife_in_a_vault/systems/lessons.md`, one row per lesson.
 
 A page review: the PR it reviews, with the page link after the reviewer.
 
-The Repeats cell lists the PRs where the same miss came back. Two PRs in it: the next `/learn` flags the rule, to move or rewrite.
+The Repeats cell lists the PRs where the same miss came back. When `/ship`'s review loop triages a RULES MISSED finding, it adds the PR there; a missed rule with no row gets one. Two PRs in it: the next `/learn` flags the rule, to move or rewrite.
 
 ## Rules
 

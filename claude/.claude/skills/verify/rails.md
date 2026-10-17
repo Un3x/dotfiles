@@ -10,7 +10,7 @@ Read at `/verify create` step 1. Where to find each answer in a Rails repo, and 
 | Drive | `test/system/`, `test/application_system_test_case.rb`, `app/views` labels, `app/javascript/controllers` `data-action` keydown | Capybara steps in a scratch system test under `tmp/verify/`, run with `bin/rails test tmp/verify/<file>`; Playwright only for what Capybara cannot reach |
 | Evidence | existing `page.save_screenshot` calls, `tmp/screenshots` | `tmp/verify/<feature>/` : screenshot + the read-back command and its output |
 | Isolation | `config/database.yml`, `Procfile.dev` | own port; the dev database is shared, so restore seeded data after a mutation and never `db:reset` |
-| Browsers | `application_system_test_case.rb` `driven_by` | Chromium and Firefox both, the user browses with Firefox (2026-09) |
+| Browsers | `application_system_test_case.rb` `driven_by` | Chromium and Firefox both, the user browses with Firefox; watch console warnings too: on an importmap app, Firefox drops a module script loaded outside the map with only a warning |
 
 Keyboard shortcuts: grep `keydown` in `app/javascript` and `data-action="keydown` in views; a shortcut that fires only outside inputs is a Gotcha.
 

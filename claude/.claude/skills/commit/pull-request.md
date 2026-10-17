@@ -2,7 +2,7 @@
 
 Read at `gh pr create`, and at phase 4 of `/ship`. The reader is the reviewer, then the developer who lands here from a commit months later when the issue is archived ([`readers.md`](readers.md)): the why must stand without the tracker.
 
-- **One PR = one functionality**, self-sufficient and shippable on its own (user, 2026-09-30): a reader must not need another PR to understand it, and merging it must leave the app with something usable. Size is not a reason to split; unreadability is a reason to guide.
+- **One PR = one functionality**: the grain is in [`../challenge/slices.md`](../challenge/slices.md).
 - **Title**: the story of the branch in under 70 characters, shaped like a commit subject. A one-commit PR takes its commit subject verbatim.
 - **Body**, this shape and nothing else:
 

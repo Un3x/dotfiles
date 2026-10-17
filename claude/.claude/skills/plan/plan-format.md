@@ -15,10 +15,9 @@ Kind: trivial | fills <system> | new system | isolated — <why, one line>   ←
 ## Steps
 1. <failing test to write> → <change that makes it pass>
 2. ...
-N. Simplify: after green, what can be deleted, inlined, or collapsed?
 
 ## Size
-~X lines, Y files, N commits in reading order   ← an estimate, not a cap (user, 2026-09-30): one PR per functionality, self-sufficient; the commits are the reviewer's path. Sized from the issue's appetite when /challenge wrote one.
+~X lines, Y files, N commits in reading order   ← an estimate, not a cap (user, 2026-09-30): the PR's grain is `../challenge/slices.md`; the commits are the reviewer's path. Sized from the issue's appetite when /challenge wrote one.
 
 Entry points: <the routes, jobs or commands that reach the objects this plan changes>
 Design: grid — ok | <finding> → <change in the steps>

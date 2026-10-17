@@ -1,9 +1,9 @@
 ---
 name: review
-description: "Paranoid two-pass code review of a branch, PR, or files. Use whenever the user asks to review a PR, a pull request URL, a branch, or files (\"can you review…\", \"est-ce qu'on peut review…\")."
+description: "Paranoid code review of a branch, PR, or files. Use whenever the user asks to review a PR, a pull request URL, a branch, or files (\"can you review…\", \"est-ce qu'on peut review…\")."
 ---
 
-Paranoid code review. Two-pass structural audit of changes, designed to catch bugs that pass CI but blow up in production.
+Paranoid code review. It checks what was built against what was asked, checks the diff against the written rules, runs four passes (critical, informational, design, simplicity), and merges second opinions from Codex and the layered-rails reviewer. It is designed to catch bugs that pass CI but blow up in production.
 
 ## Usage
 - `/review` - Review current branch changes against main
@@ -18,7 +18,7 @@ This is the **paranoid staff engineer brain**. Not a style review, not a linting
 
 1. **Gather the diff**
    - No args: `git diff main...HEAD` (all changes on current branch)
-   - PR number or URL: fetch PR diff via `gh pr diff <number-or-url>`; past a handful of commits read them in order (`gh pr view --json commits`, then `git show` each) and follow the review guide when the body links one, since the commits are the author's reading path; and the author via `gh pr view <number-or-url> --json author -q .author.login` — the report prints it, so whoever relays the findings knows whether the fix is ours to delegate or the author's (Apistration PR #383, 2026-09-15: a team PR framed as ours to fix)
+   - PR number or URL: fetch PR diff via `gh pr diff <number-or-url>`; past a handful of commits read them in order (`gh pr view --json commits`, then `git show` each) and follow the review guide when the body links one, since the commits are the author's reading path; and the author via `gh pr view <number-or-url> --json author -q .author.login` — the report prints it, so whoever relays the findings knows whether the fix is ours to delegate or the author's
    - Specific files: `git diff main -- <files>`
 2. **Asked versus built**: [`asked.md`](asked.md) — the ask as a checklist from the issue, then the diff marked against it. Done when every line carries delivered / missing / deviates and the extras are listed.
 3. **Read the checklist**: `.claude/review-checklist.md` if the project has one (project-specific overrides), else [`checklist.md`](checklist.md).
@@ -28,9 +28,10 @@ This is the **paranoid staff engineer brain**. Not a style review, not a linting
    - Specific files: `codex exec review -c model_reasoning_effort=<rung> --base main "Only review: <files>"`
    The rung: start at `medium`, one rung up per signal, capped at `xhigh`; anything irreversible is `xhigh` whatever the count. Signals: hand-written SQL or aggregates; an invariant several layers must agree on; concurrency, retries, idempotency; auth, permissions, money, personal data, proofs and attestations; migrations; a public contract (API, webhook, email); caches or derived state; a changed method with many callers. A single file, a rename or a config bump with no signal is `low`; a purely mechanical change skips Codex (`not run — mechanical`).
    Run it with `run_in_background`; collect the file after Pass 4. If `codex` is missing or fails (quota, login, "Review blocked … sandbox could not start"), say so under CODEX SECOND OPINION and continue — the second opinion is additive, never blocking. Never pass `--dangerously-bypass-approvals-and-sandbox` to get past a sandbox error: review mode then runs commands unsandboxed (it will happily run the test suite).
-5. **Rules check**: list the written rules that govern this diff: the repo's `CLAUDE.md` files nearest each changed path, its `.claude/skills`, and the rows of the lessons ledger (`~/Documents/mylife_in_a_vault/systems/lessons.md`) whose Home column names one of those files or a skill (`plan/`, `ship/`, `tdd/`, `review/`, `commit/`); no ledger on this machine: skip it and say so. Check the diff against each rule whose area it touches. A broken rule is a finding under RULES MISSED, the rule quoted with the file it lives in; a rule that does not apply is not listed. Done when every rule touching the diff was checked.
+   **Rails app** (`rails` in the `Gemfile`): also spawn the layered-rails reviewer, a background subagent whose prompt is exactly `Read ~/.claude/skills/layered-rails/SKILL.md, then review <the same target> per its commands/review.md. Read-only. Each finding as a behaviour, its steps and its result.` Collect its report after Pass 4. If it fails or times out, write `not run — <reason>` under LAYERED RAILS and continue.
+5. **Rules check**: list the written rules that govern this diff: the repo's `CLAUDE.md` files nearest each changed path, its `.claude/skills`, and the rows of the lessons ledger (`~/Documents/mylife_in_a_vault/systems/lessons.md`) whose Home column names one of those files or a skill (`plan/`, `ship/`, `review/`, `commit/`); no ledger on this machine: skip it and say so. Check the diff against each rule whose area it touches. A broken rule is a finding under RULES MISSED, the rule quoted with the file it lives in; a rule that does not apply is not listed. Done when every rule touching the diff was checked.
 6. **Run the four passes** of the checklist in order: CRITICAL, INFORMATIONAL, DESIGN, SIMPLICITY. A pass is done when every category has been checked against the whole diff.
-7. **Merge the Codex opinion**. Read `codex-review.md`. For each Codex finding: verify it against the code (same bar as your own — concrete failure scenario or drop it). Agreements get a "(also Codex)" tag on your finding; new confirmed findings go under CODEX SECOND OPINION; findings you reject get a one-line rebuttal there so the user sees the disagreement, not silence.
+7. **Merge the Codex and layered-rails opinions**. Read `codex-review.md` and the layered-rails report. For each of their findings: verify it against the code (same bar as your own — concrete failure scenario or drop it). Agreements get an "(also Codex)" or "(also layered-rails)" tag on your finding; new confirmed findings go under CODEX SECOND OPINION or LAYERED RAILS; findings you reject get a one-line rebuttal there so the user sees the disagreement, not silence.
 8. **Diagram the data flow** (if the diff touches a data pipeline, request handler, or multi-step process): ASCII diagram, mark where validation happens (or doesn't), mark where errors can occur and how they're handled.
 9. **Write the report** in the format of [`output.md`](output.md).
 

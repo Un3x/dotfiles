@@ -17,7 +17,7 @@ A report is a claim until the app shows it. Agents patch bugs that are already f
 3. **Launch and drive** per the map: Launch, Doctor, Enter as the report's role, then the feature's driving bullets with the report's inputs. **Twice.** A Sentry event is a crash to trigger: replay its route, params and role until the same exception appears in the log, or does not.
 4. **Cross-check the state, read only**: the row, the file, the queue entry, the log line that the screen claims. Evidence under `tmp/verify/reproduce-<slug>/`: screenshots, the read-back, the log excerpt, the drive script.
 5. **Verdict**, exactly one: `reproduced` · `not reproduced` · `already fixed` (on main `<sha>` or PR #N) · `could not verify` (what was missing) · `flaky <n>/<m>`. Never a sixth.
-6. **Post it where the report lives**, shaped by [`comment.md`](comment.md): on the issue when one exists, the reporter's own words on whether it reproduced and how; otherwise to the sub-assistant, which decides whether a ticket exists at all. Then stop: no fix, no branch, no PR. A `reproduced` verdict hands the drive script to `/challenge` or `/plan` as the failing start.
+6. **Post it where the report lives**, shaped by [`comment.md`](comment.md): on the issue when one exists, the reporter's own words on whether it reproduced and how; otherwise to the user in the project lead session, who decides whether a ticket exists at all. Then stop: no fix, no branch, no PR. A `reproduced` verdict hands the drive script to `/challenge` or `/plan` as the failing start.
 
 ## Rules
 

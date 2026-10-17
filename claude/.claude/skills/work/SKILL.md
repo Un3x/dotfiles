@@ -5,7 +5,7 @@ description: "Take a subject for this project and run it end to end: route a bug
 
 # work
 
-The project lead session runs in the repo with the vault protocol and the project role injected at start (`~/.claude/hooks/project-lead.sh`, marker `.claude/project-lead`). It owns the vertical: what needs doing is decided here, done here when it is judgment, done by a subagent when it is implementation. A subagent gets the repo's `CLAUDE.md` only, never this session's role (checked 2026-09-30): the coder codes, the project lead decides. Replaces `/delegate` and the tmux code window (retired 2026-09-30: two sessions meant the user carried every fact between them by hand).
+The project lead session runs in the repo with the vault protocol and the project role injected at start (`~/.claude/hooks/project-lead.sh`, marker `.claude/project-lead`). It owns the vertical: what needs doing is decided here, done here when it is judgment, done by a subagent when it is implementation. A subagent gets the repo's `CLAUDE.md` only, never this session's role (checked 2026-09-30): the coder codes, the project lead decides.
 
 ## Routing
 
