@@ -23,5 +23,5 @@ Expected: [what should]
 ```
 
 - One acceptance line is one behaviour someone can check by using the app or reading the data. « Works well » is not a line.
-- No file, class or method names, no solution: the same rule as a review finding (`review/output.md`).
+- No file, class or method names, no solution.
 - An issue written by someone else (a PO, a teammate) is never rewritten. The lines it lacks are added under a heading of their own, « Critères ajoutés au challenge » or « Added at challenge », once the user has agreed to them.

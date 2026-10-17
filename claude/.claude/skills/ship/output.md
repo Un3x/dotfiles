@@ -14,6 +14,7 @@ Shipped FAS-124 -> PR: https://github.com/org/repo/pull/124 (review clean after 
 ```
 FAS-124 -> PR: https://github.com/org/repo/pull/124 — 3 review rounds done, findings still open:
   - [finding]
+Suspect: design | scope — [why]
 Session saved. Fix manually or answer here to continue.
 ```
 
