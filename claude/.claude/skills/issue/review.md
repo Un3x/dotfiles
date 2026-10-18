@@ -1,6 +1,6 @@
 # Reviewing an issue
 
-Read by the `issue` skill's Review. The input is an issue (id, url, or a draft file), the sources it rests on, and on a later round the earlier reports with what the writer did with each finding: a finding already answered or rejected is not raised again, unless the draft changed what it rests on. The review checks that every reader understands it on one read and that nothing in it, or around it, says otherwise. It reports; the author fixes.
+Read by the `issue` skill's Review. The input is an issue (id, url, or a draft file), the sources it rests on, and on a later round the earlier reports with what the writer did with each finding: a finding already answered or rejected is not raised again, unless the draft changed what it rests on. A round after `prête` reviews the change alone. The review checks that every reader understands it on one read and that nothing in it, or around it, says otherwise. It reports; the author fixes.
 
 A reviewer model misses much of what an expert finds and is weakest at « is this needed, is this right? ». So it flags, and the user decides what the issue should say.
 
