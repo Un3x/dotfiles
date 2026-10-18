@@ -25,6 +25,6 @@ Read [`template.md`](template.md) for the shape and the language, then follow [`
 
 ## Rules
 
-- An issue someone else wrote (a PO, a teammate) is never rewritten: the lines it lacks go under a heading of their own, « Ajouté après relecture », once the user agreed.
-- A decision taken after the issue was written changes the lines it touches in place, and a comment says what changed and why. No section appended below that contradicts the criteria above.
+- An issue someone else wrote (a PO, a teammate) is never touched: what it lacks is appended under a heading of its own, « Ajouté après relecture », or said in a comment, once the user agreed. A later decision on it is a comment that quotes the line it changes.
+- On an issue we wrote, a decision taken after it was written changes the lines it touches in place, and a comment says what changed and why. No section appended below that contradicts the criteria above.
 - What ships, how it was built and the review rounds go on the PR, never on the issue.

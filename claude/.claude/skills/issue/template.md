@@ -33,7 +33,7 @@ Reproduire                                      (Bug only)
 1. [step, as a role, on a screen]
 Résultat : [what happens]   Attendu : [what should]
 
-Hors périmètre                                  (only what a reader would expect)
+Hors périmètre                                  (the challenge no-gos, and what a reader would expect)
 - [what stays as it is] — [why, or the issue that handles it]
 
 ────────
@@ -53,6 +53,6 @@ partner, a config) and who confirms it.]
 - **The top is for the PO and holds on one read.** No dev word above the line (endpoint, payload, modal, a class or file name, a size in bytes): the app's own words, the ones on the screen. A dev word the PO needs is explained in the sentence that uses it.
 - **One criterion, one check.** Someone can verify it by using the app or reading the data, without asking the author. A list of eight elements in one line is eight lines, or a link to the design that shows them. « Works well » is not a criterion.
 - **No how above the line.** The issue says what must be true; the plan finds how. Below the line it points to where (files, patterns, constraints), never to the steps: those are the plan, attached to the issue as a file.
-- **Every exclusion carries its reason.** An « Out of scope » line nobody would have expected is a fence for the agent, and the PO reads it as a riddle: leave it out, or say what it prevents.
+- **Every exclusion carries its reason.** A no-go decided at `/challenge` always goes on the issue, with its reason: `/review` checks the change against it. A fence the writer adds on their own, that nobody would have expected, reads as a riddle to the PO: leave it out, or say what it prevents.
 - **A question to the PO is a question,** numbered, with its proposed answer and who decides, before the criteria it changes. An issue with an open question is not ready for `/plan`.
 - **Nothing contradicts anything else**: the criteria, the decisions, the out-of-scope lines and the linked brief or parent say the same thing. When a choice changes a criterion, the criterion is rewritten.
