@@ -10,7 +10,7 @@ Read by any skill or session that reads or writes an issue. Skills say « the tr
 
 ## Verbs
 
-A skill names the verb; this table gives the call. A tracker can serve a project only once every row of its column is filled. Trying a new one starts by adding its column.
+A skill names the verb; this table gives the call. Writing the description or creating an issue goes through the `issue` skill first. A tracker can serve a project only once every row of its column is filled. Trying a new one starts by adding its column.
 
 | Verb | Linear (`linear-<workspace>` MCP) |
 | --- | --- |

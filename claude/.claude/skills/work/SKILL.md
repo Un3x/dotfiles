@@ -11,7 +11,7 @@ The project lead session runs in the repo with the vault protocol and the projec
 
 | Input | First step | Then |
 | --- | --- | --- |
-| a bug report: email, message, screenshot, Sentry event | `/reproduce`, in session | `reproduced` or `flaky` → ticket shaped by `challenge/issue.md` → challenge; `already fixed` or `not reproduced` → answer the reporter, stop |
+| a bug report: email, message, screenshot, Sentry event | `/reproduce`, in session | `reproduced` or `flaky` → ticket written with the `issue` skill → challenge; `already fixed` or `not reproduced` → answer the reporter, stop |
 | an issue with no command | `/challenge`, in session | `CHALLENGE: GO` → plan; `RESHAPE` or `DROP` → the user |
 | an issue with the ask settled | `/plan`, in session | plan `ready` → the user approves → ship; questions → the user |
 | an approved plan | `/ship <ISSUE>`, **one subagent per issue**, prompt exactly `Run /ship <ISSUE>` plus the decisions this session holds | PR opened and reviewed inside ship → the user merges |

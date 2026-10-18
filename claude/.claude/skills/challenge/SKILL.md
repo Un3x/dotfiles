@@ -47,7 +47,7 @@ For each feature/issue, think through these in order:
 **Opportunity cost**: [what we're trading off]
 
 **Appetite**: [the size the outcome is worth: a morning, a day, a week — /plan's size estimate starts from it]
-**Acceptance**: [the lines the issue lacks, shaped by [`issue.md`](issue.md); "already in the issue" when it has them — /review's asked pass checks the change against them]
+**Acceptance**: [the lines the issue lacks, shaped by `../issue/template.md`; "already in the issue" when it has them — /review's asked pass checks the change against them]
 **No-gos**: [what this issue will not do, one line each — /review's asked pass reads them as limits]
 **Rabbit holes**: [where the work could sink time, and the way around]
 **Rejected alternatives**: [what was considered and why not, one line each]
@@ -60,7 +60,7 @@ For each feature/issue, think through these in order:
 
 After presenting findings, ask the user whether they agree with the recommendation. Then update the issue so downstream commands (`/plan`, `/ship`) read the post-challenge truth instead of the original issue:
 
-- **Agreed (proceed / rethink with changes)**: update the issue description in the shape of [`issue.md`](issue.md) — reframed problem, acceptance lines, limits (the no-gos), appetite, spike flag if applicable. An issue someone else wrote gets its missing lines added under their own heading, never rewritten. The description should reflect what we actually decided to build, in the words of `commit/readers.md`: why, scope, limits, for a non-technical reader. Rejected alternatives and rabbit holes stay in the challenge output, not on the issue.
+- **Agreed (proceed / rethink with changes)**: write the issue with the `issue` skill (Skill tool), from the reframed problem, the acceptance lines, the no-gos and the appetite: it carries the template, the review and the rule for an issue someone else wrote. Rejected alternatives and rabbit holes stay in the challenge output, not on the issue.
 - **Last line of every challenge, verbatim**: `CHALLENGE: GO` (proceed as is or with agreed changes), `CHALLENGE: RESHAPE` (split or rethink, the user decides), or `CHALLENGE: DROP`. `/work` reads that line and nothing else.
 - **Disagreed or killed**: leave a comment with the verdict and the user's decision, so the reasoning survives the next time the issue surfaces.
 - **No issue** (conversation-mode challenge): offer to create one capturing the agreed scope.
