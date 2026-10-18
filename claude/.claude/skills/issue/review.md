@@ -10,7 +10,7 @@ The issue and its comments, then everything it links that carries the ask: the p
 
 ## 2. Contradictions
 
-Two statements that cannot both hold. Inside the issue: title against criteria, a criterion against an out-of-scope line, a criterion against a « choice made » or a question below it, the why against what the criteria deliver. Against the sources: the issue against its brief, its parent, the design, the decision it cites. Each is BLOQUANT, both sides quoted. Criteria under a heading saying they follow the proposed answer do not contradict the open question.
+Two statements that cannot both hold. Inside the issue: title against criteria, a criterion against an out-of-scope line, a criterion against a « choice made » or a question below it, the why against what the criteria deliver. Against the sources: the issue against its brief, its parent, the design, the decision it cites. Each is BLOQUANT, both sides quoted. Criteria under a heading saying they follow the proposed answer do not contradict the open question. Nor does the title of someone else's issue once the addition asks its author for a new one, with a proposed title.
 
 ## 3. The PO reads it once
 
@@ -34,7 +34,7 @@ A question with no answer is BLOQUANT, and so is a read that breaks: a title tha
 
 ## 4. The other readers
 
-Each reads the whole issue. A gap that stops the reader is BLOQUANT, one that slows them PAS CLAIR. The code is read only to check a fact the issue states; how to build it is the plan's question, never a finding here. An edge case the issue's rule already answers is not a finding, and a missing one goes below the line, PAS CLAIR at most: it is BLOQUANT only when the PO would answer it differently from the rule (template.md). Each criterion added makes the issue harder for the PO to read.
+Each reads the whole issue. A gap that stops the reader is BLOQUANT, one that slows them PAS CLAIR. The code is read only to check a fact the issue states; how to build it is the plan's question, never a finding here. An edge case the rule or a recorded decision answers is not a finding, and a missing one goes below the line, PAS CLAIR at most. One the PO would answer differently from the rule, or one the writer answered below the line with neither behind it, is a hidden question: BLOQUANT. Each criterion added makes the issue harder for the PO to read.
 
 - **Dev**: can estimate it; the constraints and the external dependencies are named, with who confirms them; a size past the appetite, or past the priority when none is set, is a Question, never BLOQUANT.
 - **Tester**: each criterion has a starting state, an action and a visible result; each user the change touches has a criterion for their usual path; the bug's steps reproduce from a clean account.
