@@ -9,6 +9,7 @@ Paranoid code review. It checks what was built against what was asked, checks th
 - `/review` - Review current branch changes against main
 - `/review <PR-number>` or `/review <PR URL>` - Review a specific PR (also triggered by a plain request such as "peux-tu review https://github.com/org/repo/pull/504")
 - `/review <file1> <file2> ...` - Review specific files
+- `/review split <target>` - Trial: one agent per domain, merged here ([`split.md`](split.md)); only when asked, until the trial decides
 
 ## Purpose
 
