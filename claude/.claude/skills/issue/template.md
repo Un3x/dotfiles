@@ -1,6 +1,6 @@
 # What an issue holds
 
-Read at step 2 of `/issue`, and by `review.md` as the shape to check against. The issue is written in French on the `linear-opi` workspace; elsewhere, in the language the project's issues already use, headings translated.
+Read at step 2 of Write, and by Review as the shape to check against. The issue is written in French on the `linear-opi` workspace; elsewhere, in the language the project's issues already use, headings translated.
 
 ## Types
 
@@ -38,7 +38,9 @@ Hors périmètre                                  (only what a reader would expe
 
 ────────
 Pour le dev
-[Links: the design, the PR of the mockup, the related tickets.
+[Appétit : what the outcome is worth (a morning, a day, a week), when
+/challenge set one: /plan sizes from it.
+Links: the design, the PR of the mockup, the related tickets.
 Constraints found while investigating, with the measure behind them.
 Where in the code, when known: files and existing patterns to follow.
 External dependencies: what must be true outside the repo (a host, a

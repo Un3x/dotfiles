@@ -2,7 +2,7 @@
 
 Read by the `issue` skill's Review. The input is an issue (id, url, or a draft file) and the sources it rests on. The review checks that every reader understands it on one read and that nothing in it, or around it, says otherwise. It reports; the author fixes.
 
-A reviewer model finds about half of what an expert finds and is weakest at « is this needed, is this right? ». So it flags, and the user decides what the issue should say.
+A reviewer model misses much of what an expert finds and is weakest at « is this needed, is this right? ». So it flags, and the user decides what the issue should say.
 
 ## 1. Read the sources
 
@@ -43,7 +43,7 @@ Each reads the whole issue. A gap that stops the reader is BLOQUANT, one that sl
 
 ## Output
 
-In the issue's language (`template.md`), headings translated. Each finding explains first, then quotes the issue on a `Where:` line; it says what is wrong, never the rewrite.
+In the issue's language, headings translated. Each finding explains first, then quotes the issue on a `Where:` line; it says what is wrong, never the rewrite.
 
 ```
 ## Revue d'issue : [ISSUE-ID — titre, lien complet] — [prête | à reprendre]
@@ -67,4 +67,4 @@ Où : « ... »
 1. [Une décision dont l'issue a besoin, finie par « ? »] → proposé : [réponse]
 ```
 
-The report is read by the user, who passes it on as is: about five findings in all, the ones that change what gets built or checked, and five questions at most. Smells that repeat are one finding with their quotes. A section with nothing in it is left out. `prête` when nothing is BLOQUANT.
+The report is read by the user, who passes it on as is: about five findings in all, the ones that change what gets built or checked, and about five questions. Smells that repeat are one finding with their quotes. A section with nothing in it is left out. `prête` when nothing is BLOQUANT.

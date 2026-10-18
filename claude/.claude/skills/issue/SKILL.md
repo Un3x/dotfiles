@@ -15,16 +15,16 @@ An issue is read by several people who all need it: the PO who decides, the dev 
 ## Write
 
 1. **Gather the sources**: the issue and its comments if it exists (read an issue, [`../tracker.md`](../tracker.md)), the tickets, briefs, designs and decisions it links, the challenge or reproduce verdict, what the user said in this session. Done when every fact the issue will state traces to one of them.
-2. **Pick the type and write it** with [`template.md`](template.md), in the language it sets. Done when the top holds on one screen.
-3. **Review the draft**: a fresh subagent, prompt exactly `Use the issue skill: review <path of the draft file>` plus the paths or links of the sources of step 1. Fix every BLOQUANT finding; a PAS CLAIR one is fixed or answered in the report to the user.
-4. **Show the user** the draft and the open questions, then post on their go (write the description or create an issue, `../tracker.md`). The tracker is never written before the user has weighed in.
+2. **Pick the type and write it** with [`template.md`](template.md), in the language it sets, into a draft file in the scratchpad. Done when the top holds on one screen.
+3. **Review the draft**: a fresh subagent, prompt exactly `Use the issue skill: review <absolute path of the draft file>` plus the paths or links of the sources of step 1. Fix every BLOQUANT finding; a PAS CLAIR one is fixed or answered in the report to the user. Done when the review says `prête`.
+4. **Show the user** the draft and the open questions, then post on their go (write the description or create an issue, `../tracker.md`). The tracker is never written before the user has weighed in. Done when the tracker holds the draft as shown.
 
 ## Review
 
-Follow [`review.md`](review.md). The review reports; it never edits the issue.
+Read [`template.md`](template.md) for the shape and the language, then follow [`review.md`](review.md). The review reports; it never edits the issue.
 
 ## Rules
 
-- An issue someone else wrote (a PO, a teammate) is never rewritten: the lines it lacks go under a heading of their own, « Ajouté par Thomas », once the user agreed.
+- An issue someone else wrote (a PO, a teammate) is never rewritten: the lines it lacks go under a heading of their own, « Ajouté après relecture », once the user agreed.
 - A decision taken after the issue was written changes the lines it touches in place, and a comment says what changed and why. No section appended below that contradicts the criteria above.
 - What ships, how it was built and the review rounds go on the PR, never on the issue.
