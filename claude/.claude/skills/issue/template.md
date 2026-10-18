@@ -24,7 +24,7 @@ decision, with its link.]
 1. [The question, ending with « ? »] → proposé : [the answer we recommend]
    Décide : [who]
 
-Critères
+Critères                                        (« si la réponse proposée est retenue » while a question is open)
 - Étant donné [the starting state] / Quand [the action] / Alors [what the
   user sees, or what the data holds]
 - ...
@@ -38,11 +38,12 @@ Hors périmètre                                  (the challenge no-gos, and wha
 
 ────────
 Pour le dev
-[Appétit : what the outcome is worth (a morning, a day, a week), when
-/challenge set one: /plan sizes from it.
+[Appétit : what the outcome is worth (a morning, a day, a week), set by
+/challenge or by the PO's answer: /plan sizes from it.
 Links: the design, the PR of the mockup, the related tickets.
 Constraints found while investigating, with the measure behind them.
 Where in the code, when known: files and existing patterns to follow.
+Edge cases the tester and the agent need, the ones the rule above answers.
 External dependencies: what must be true outside the repo (a host, a
 partner, a config) and who confirms it.]
 ```
@@ -51,8 +52,9 @@ partner, a config) and who confirms it.]
 
 - **Simplicity first.** The why is told so that a twelve-year-old who has never seen the product follows it: short sentences, one idea each, everyday words, an example rather than a rule. When it reads simple, it is understood.
 - **The top is for the PO and holds on one read.** No dev word above the line (endpoint, payload, modal, a class or file name, a size in bytes): the app's own words, the ones on the screen. A dev word the PO needs is explained in the sentence that uses it.
-- **One criterion, one check.** Someone can verify it by using the app or reading the data, without asking the author. A list of eight elements in one line is eight lines, or a link to the design that shows them. « Works well » is not a criterion.
+- **One criterion, one check; a rule beats the list of its cases.** Someone can verify each criterion by using the app or reading the data, without asking the author; « Works well » is not one. When many cases share an answer, the first criterion states it (« Alors la page montre ce qu'elle montrerait après un rechargement »), one or two more show it, and the other cases go below the line, under the edge cases. A case goes above only when the PO would answer it differently from the rule. When one screen and one check per criterion pull apart, write fewer criteria, never longer ones.
 - **No how above the line.** The issue says what must be true; the plan finds how. Below the line it points to where (files, patterns, constraints), never to the steps: those are the plan, attached to the issue as a file.
 - **Every exclusion carries its reason.** A no-go decided at `/challenge` always goes on the issue, with its reason: `/review` checks the change against it. A fence the writer adds on their own, that nobody would have expected, reads as a riddle to the PO: leave it out, or say what it prevents.
-- **A question to the PO is a question,** numbered, with its proposed answer and who decides, before the criteria it changes. An issue with an open question is not ready for `/plan`.
+- **A question to the PO is a question,** numbered, with its proposed answer and who decides, before the criteria it changes. An issue with an open question is not ready for `/plan`. A question never reopens what the requester's text or a recorded decision already settles: asking again is what makes the PO reread. While it is open, the title says what is true whatever the answer, and the criteria follow the proposed answer under a heading that says so.
+- **Size is a question too.** Bigger than it is worth (no appetite, criteria that outgrow a low priority): a question proposes what to cut, or asks for an appetite. Several stories in one: the split is a question, each part named by its title and cut by [`../challenge/slices.md`](../challenge/slices.md), created once the user agreed; Hors périmètre points to them.
 - **Nothing contradicts anything else**: the criteria, the decisions, the out-of-scope lines and the linked brief or parent say the same thing. When a choice changes a criterion, the criterion is rewritten.
