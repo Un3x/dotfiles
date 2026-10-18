@@ -16,7 +16,7 @@ An issue is read by several people who all need it: the PO who decides, the dev 
 
 1. **Gather the sources**: the issue and its comments if it exists (read an issue, [`../tracker.md`](../tracker.md)), the tickets, briefs, designs and decisions it links, the challenge or reproduce verdict, the notes where the project records its decisions (a status file, a memory), what the user said in this session. Done when every fact the issue will state traces to one of them.
 2. **Pick the type and write it** with [`template.md`](template.md), in the language it sets, into a draft file in the scratchpad. Done when the top holds on one screen.
-3. **Review the draft**: a fresh subagent, prompt exactly `Use the issue skill: review <absolute path of the draft file>` plus the paths or links of the sources of step 1 and, from round two, the earlier reports with what was done with each finding. Check each finding before applying it: a reviewer can be wrong. Fix every BLOQUANT finding; a PAS CLAIR one is fixed or answered in the report to the user. A change made after `prête` gets one more review. Done when the review says `prête`. Past three rounds the issue is likely too big or a question is still open: stop, show the user what still blocks and say which you suspect.
+3. **Review the draft**: a fresh subagent, prompt exactly `Use the issue skill: review <absolute path of the draft file>` plus the paths or links of the sources of step 1 and, from round two, the earlier reports and a triage file next to the draft: each finding, and what was done with it. A reply written only in a prompt is lost by the next round. Check each finding before applying it: a reviewer can be wrong. Fix every BLOQUANT finding; a PAS CLAIR one is fixed or answered in the report to the user. A change made after `prête` gets one more review. Done when the review says `prête`. Past three rounds the issue is likely too big or a question is still open: stop, show the user what still blocks and say which you suspect.
 4. **Show the user** the draft and the open questions, then post on their go (write the description or create an issue, `../tracker.md`). The tracker is never written before the user has weighed in. Done when the tracker holds the draft as shown.
 
 ## Review
@@ -25,6 +25,6 @@ Read [`template.md`](template.md) for the shape and the language, then follow [`
 
 ## Rules
 
-- An issue someone else wrote (a PO, a teammate) is never touched: what it lacks is appended under a heading of its own, « Ajouté après relecture », or said in a comment, once the user agreed. A later decision on it is a comment that quotes the line it changes.
+- An issue someone else wrote (a PO, a teammate) is never touched: what it lacks is appended under a heading of its own, « Ajouté après relecture », or said in a comment, once the user agreed. A later decision on it is a comment that quotes the line it changes. A title that no longer says what the issue asks is a question to its author in the addition, with a proposed title.
 - On an issue we wrote, a decision taken after it was written changes the lines it touches in place, and a comment says what changed and why. No section appended below that contradicts the criteria above.
 - What ships, how it was built and the review rounds go on the PR, never on the issue.
