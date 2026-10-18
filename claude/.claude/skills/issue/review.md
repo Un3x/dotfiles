@@ -6,7 +6,7 @@ A reviewer model misses much of what an expert finds and is weakest at « is thi
 
 ## 1. Read the sources
 
-The issue and its comments, then everything it links that carries the ask: the parent issue, the brief, the design ticket and its comments, the decision cited (a committee, a meeting note). A comment newer than the description is where a PO's answer usually sits: an answer the description does not reflect is a contradiction. Read an issue, [`../tracker.md`](../tracker.md). A source it names but does not link is a finding (PAS CLAIR): the reader cannot reach it either. Decisions taken outside the tracker live in the notes the writer passes, wherever the project records them (a status file, a memory): read them before calling something unsettled. A fact about the code or a decision is checked (the code, `git log`, the notes) before it becomes a finding, and a fact recalled from memory is not checked: a wrong finding gets written into the draft and costs a round.
+The issue and its comments, then everything it links that carries the ask: the parent issue, the brief, the design ticket and its comments, the decision cited (a committee, a meeting note). A comment newer than the description is where a PO's answer usually sits: an answer the description does not reflect is a contradiction. Read an issue, [`../tracker.md`](../tracker.md). A source it names but does not link is a finding (PAS CLAIR): the reader cannot reach it either. Decisions taken outside the tracker live in the notes the writer passes, wherever the project records them (a status file, a memory): read them before calling something unsettled. A fact about the code or a decision is checked (the code, `git log`, the notes) before it becomes a finding, and a fact the reviewer only remembers, with no source opened, is not checked: a wrong finding gets written into the draft and costs a round.
 
 ## 2. Contradictions
 
@@ -37,7 +37,7 @@ A question with no answer is BLOQUANT, and so is a read that breaks: a title tha
 Each reads the whole issue. A gap that stops the reader is BLOQUANT, one that slows them PAS CLAIR. The code is read only to check a fact the issue states; how to build it is the plan's question, never a finding here. An edge case the issue's rule already answers is not a finding, and a missing one goes below the line, PAS CLAIR at most: it is BLOQUANT only when the PO would answer it differently from the rule (template.md). Each criterion added makes the issue harder for the PO to read.
 
 - **Dev**: can estimate it; the constraints and the external dependencies are named, with who confirms them; a size past the appetite, or past the priority when none is set, is a Question, never BLOQUANT.
-- **Tester**: each criterion has a starting state, an action and a visible result; the bug's steps reproduce from a clean account.
+- **Tester**: each criterion has a starting state, an action and a visible result; each user the change touches has a criterion for their usual path; the bug's steps reproduce from a clean account.
 - **Agent running `/ship`**: the scope is bounded; each criterion is a check it can run (a test, a drive of the app); the files or patterns are pointed to when known; nothing it needs sits outside the repo without a named way to get it.
 - **The requester**, when the ask came from outside: they would recognise their request in the why and the criteria.
 
