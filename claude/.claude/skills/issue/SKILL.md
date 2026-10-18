@@ -26,5 +26,6 @@ Read [`template.md`](template.md) for the shape and the language, then follow [`
 ## Rules
 
 - An issue someone else wrote (a PO, a teammate) is never touched: what it lacks is appended under a heading of its own, « Ajouté après relecture », or said in a comment, once the user agreed. A later decision on it is a comment that quotes the line it changes. A title that does not say what the issue asks is a question to its author, in the addition or the comment, with a proposed title.
+- A rewrite changes the structure and the words, never what the issue said: before posting, every point of the old description is found in the new one, below the line if it is for the dev. Shortening tends to drop the constraints and the leads nobody reread. A point dropped because it was wrong is said in the comment.
 - On an issue we wrote, a decision taken after it was written changes the lines it touches in place, and a comment says what changed and why. No section appended below that contradicts the criteria above.
 - What ships, how it was built and the review rounds go on the PR, never on the issue.
