@@ -25,7 +25,9 @@ Bash)
   if printf '%s' "$CMD" | grep -qE -- "${START}git +push\b[^;&|]*( --force\b| -f\b| \+[A-Za-z0-9_./-]+)" && ! printf '%s' "$CMD" | grep -q -- '--force-with-lease'; then
     block "force-push only with --force-with-lease, and only on your own branch after autosquash."
   fi
-  if printf '%s' "$CMD" | grep -qE -- "${START}gh +pr +(comment|review)\b" || { printf '%s' "$CMD" | grep -qE -- "${START}gh +api\b[^;&|]*pulls/[^ ]*/(comments|reviews)" && printf '%s' "$CMD" | grep -qE -- " (-X|--method) +(POST|PATCH|PUT|DELETE)| -[fF] | --(raw-)?field | --input "; }; then
+  PR_POSTS=$(printf '%s' "$CMD" | grep -oE -- "${START}gh +pr +(comment|review)\b[^;&|]*" | grep -vE -- "gh +pr +comment\\b.* (--body|-b) +[\"']?@dependabot ")
+  API_POSTS=$(printf '%s' "$CMD" | grep -oE -- "${START}gh +api\b[^;&|]*" | grep -E -- "pulls/[^ ]*/(comments|reviews)" | grep -E -- " (-X|--method) +(POST|PATCH|PUT|DELETE)| -[fF] | --(raw-)?field | --input ")
+  if [ -n "$PR_POSTS$API_POSTS" ]; then
     block "assistants never post on PR threads. Put it on the Linear issue or hand the words to the user."
   fi
   if printf '%s' "$CMD" | grep -qE -- "${START}(command +)?herdr +agent +prompt" && [ "$(printf '%s' "$CMD" | grep -oE '/(plan|ship|review|challenge)\b' | wc -l)" -ge 2 ]; then

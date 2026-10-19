@@ -17,7 +17,7 @@
       "Read(**/config/credentials/*.key)",
       "Read(**/config/master.key)"
     ],
-    "defaultMode": "auto"
+    "defaultMode": "bypassPermissions"
   },
   "model": "opus",
   "hooks": {
