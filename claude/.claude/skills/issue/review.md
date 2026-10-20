@@ -16,7 +16,7 @@ Having read the sources, the reviewer cannot get lost where the PO does. A fresh
 
 > Tu es la PO : tu connais le site et ses écrans, pas le code. Tu n'as que ce texte : n'ouvre aucun lien, n'utilise aucun outil. Lis-le une fois. 1. Redis avec tes mots, en trois phrases au plus, ce qui se passe aujourd'hui et ce qui doit changer. 2. Cite chaque phrase que tu ne pourrais pas expliquer à un collègue sans deviner, et ce que tu as deviné. 3. Le titre décrit-il un mauvais comportement ou une nouvelle fonctionnalité, et lequel ? 4. Quelles phrases pourrais-tu retirer sans rien perdre de ce que tu dois décider ou vérifier ?
 
-- BLOQUANT: a restatement that differs from the issue; a guess on what changes or on the first sentence; a title read the wrong way; a bug in the story's shape.
+- BLOQUANT: a restatement that differs from the issue; a guess on what changes or on the first sentence; a title read the wrong way; a bug in the story's shape, or two wrong behaviours in one bug.
 - PAS CLAIR: another guess that changes what gets built or checked; each sentence it could remove (cut it).
 - A fact missing from the top is a finding only when the PO needs it to decide or check; one for the dev goes to `/plan`.
 - Not reported: a guess on a detail that changes neither.
