@@ -18,14 +18,15 @@ Having read the sources, the reviewer cannot get lost where the PO does. A fresh
 
 - BLOQUANT: a restatement that differs from the issue; a guess on what changes or on the first sentence; a title read the wrong way; a bug in the story's shape.
 - PAS CLAIR: another guess that changes what gets built or checked; each sentence it could remove (cut it).
+- A fact missing from the top is a finding only when the PO needs it to decide or check; one for the dev goes to `/plan`.
 - Not reported: a guess on a detail that changes neither.
 
 Then check against [`template.md`](template.md): the rules there are the smells (a dev word, a criterion with two checks, a vague word, an exclusion without its reason, a hidden question, the top past its goal).
 
 ## 4. The other readers
 
-- **Dev**: can estimate from the top and the links; decisions and outside dependencies named, with who confirms. Code detail below the line is PAS CLAIR: it is `/plan`'s.
-- **Tester and `/ship`**: the scope is bounded; each criterion is a check they can run; each user the change touches has one for their usual path; the bug's steps reproduce from a clean account; nothing needed sits outside the repo without a named way to get it.
+- **Dev**: can estimate from the top and the links; each decision said as what was decided. Code detail below the line, a screen detail in the expected behaviour, or a decision that repeats the top or says who, when or how, is PAS CLAIR.
+- **Tester and `/ship`**: the scope is bounded; each criterion is a check they can run; each user the change touches has one for their usual path; the bug's steps reproduce from a clean account; nothing needed sits outside the repo unsaid.
 - **The requester**: they recognise their request.
 
 An edge case the rule or a decision answers is `/plan`'s, not a finding; one the PO would answer differently is a hidden question, BLOQUANT.
