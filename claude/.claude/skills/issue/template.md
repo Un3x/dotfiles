@@ -10,7 +10,7 @@ Read at step 2 of Write, and by Review as the shape to check against. The issue 
 | Technical task | `TS —` | nothing changes on screen, or a change the user never asked for (a removal, a migration, a fix in the setup) |
 | Bug | `Bug —` | something that worked, or should work, does not |
 
-The title says what will be true once it is done, in the user's words: « Voir les données intégrées par une solution depuis sa carte », not the cause (« sprockets incompatible avec json 3 ») nor the task (« Lire le DSN depuis les credentials »). No negation: « ne la met plus en ligne aussitôt » reads as the defect and the fix at once.
+The title is in the user's words. A story or a task says what will be true once it is done: « Voir les données intégrées par une solution depuis sa carte », not the cause (« sprockets incompatible avec json 3 ») nor the task (« Lire le DSN depuis les credentials »). A bug says the wrong behaviour, as the user sees it: « Bug — Une donnée utile modifiée part en ligne sans attendre sa démarche », not the cause. No negation: « ne la met plus en ligne aussitôt » reads as the defect and the fix at once.
 
 ## Shape
 
