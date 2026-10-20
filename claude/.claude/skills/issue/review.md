@@ -6,7 +6,7 @@ A reviewer model misses much of what an expert finds and is weakest at « is thi
 
 ## 1. Read the sources
 
-The issue and its comments, then everything it links that carries the ask: the parent issue, the brief, the design ticket and its comments, the decision cited (a committee, a meeting note). A comment newer than the description is where a PO's answer usually sits: an answer the description does not reflect is a contradiction. Read an issue, [`../tracker.md`](../tracker.md). A source it names but does not link is a finding (PAS CLAIR): the reader cannot reach it either. Decisions taken outside the tracker live in the notes the writer passes, wherever the project records them (a status file, a memory): read them before calling something unsettled. A fact about the code or a decision is checked (the code, `git log`, the notes) before it becomes a finding, and a fact the reviewer only remembers, with no source opened, is not checked: a wrong finding gets written into the draft and costs a round.
+The issue and its comments, then everything it links that carries the ask: the parent issue, the brief, the design ticket and its comments, the decision cited (a committee, a meeting note). A comment newer than the description is where a PO's answer usually sits: an answer the description does not reflect is a contradiction. Read an issue, [`../tracker.md`](../tracker.md). A design is looked at: its images opened, the mockup run when it can be; a screen criterion that differs from it without saying so is a contradiction. A source it names but does not link is a finding (PAS CLAIR): the reader cannot reach it either. Decisions taken outside the tracker live in the notes the writer passes, wherever the project records them (a status file, a memory): read them before calling something unsettled. A fact about the code or a decision is checked (the code, `git log`, the notes) before it becomes a finding, and a fact the reviewer only remembers, with no source opened, is not checked: a wrong finding gets written into the draft and costs a round.
 
 ## 2. Contradictions
 
@@ -14,7 +14,11 @@ Two statements that cannot both hold. Inside the issue: title against criteria, 
 
 ## 3. The PO reads it once
 
-Read only the top, above the line, once, as the PO: someone who knows the product and the users, not the code. Answer the four questions in the PO's words, or write where the read broke:
+Having read the sources, the reviewer cannot get lost where the PO does. So a fresh subagent, the blind reader, gets the title and the top above the line, nothing else: no source, no link opened, no tool. Prompt:
+
+> Tu es la PO : tu connais le site et ses écrans, pas le code. Tu n'as que ce texte : n'ouvre aucun lien, n'utilise aucun outil. Lis-le une fois. 1. Redis avec tes mots, en trois phrases au plus, ce qui se passe aujourd'hui et ce qui doit changer. 2. Cite chaque phrase que tu ne pourrais pas expliquer à un collègue sans deviner, et ce que tu as deviné. 3. Le titre décrit-il le problème ou le résultat attendu ?
+
+Each guess is a finding, quoted with what was guessed: BLOQUANT when it is on what changes or on the first sentence of the why, or when the title reads the wrong way; PAS CLAIR otherwise. A restatement that differs from the issue is BLOQUANT. Then answer the four questions from the blind reader's restatement, or write where the read broke:
 
 1. What will change for the user?
 2. Why now, and who asked?
