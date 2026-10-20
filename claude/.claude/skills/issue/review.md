@@ -38,11 +38,11 @@ A question with no answer is BLOQUANT, and so is a read that breaks: a bug writt
 
 ## 4. The other readers
 
-Each reads the whole issue. A gap that stops the reader is BLOQUANT, one that slows them PAS CLAIR. The code is read only to check a fact the issue states; how to build it is the plan's question, never a finding here. An edge case the rule or a recorded decision answers is not a finding, and a missing one goes below the line, PAS CLAIR at most. One the PO would answer differently from the rule, or one the writer answered below the line with neither behind it, is a hidden question: BLOQUANT. Each criterion added makes the issue harder for the PO to read.
+Each reads the whole issue. A gap that stops the reader is BLOQUANT, one that slows them PAS CLAIR. The code is read only to check a fact the issue states; how to build it is the plan's question, never a finding here. An edge case the rule or a recorded decision answers is not a finding: it is `/plan`'s. One the PO would answer differently from the rule is a hidden question: BLOQUANT. Each criterion added makes the issue harder for the PO to read.
 
-- **Dev**: can estimate it; the constraints and the external dependencies are named, with who confirms them; a size past the appetite, or past the priority when none is set, is a Question, never BLOQUANT.
+- **Dev**: can estimate it from the top and the links; the decisions taken outside the tracker and the dependencies outside the repo are named, with who confirms them; a size past the priority is a Question, never BLOQUANT. Code detail below the line (cause, files, edge cases) is a PAS CLAIR finding: it is `/plan`'s job.
 - **Tester**: each criterion has a starting state, an action and a visible result; each user the change touches has a criterion for their usual path; the bug's steps reproduce from a clean account.
-- **Agent running `/ship`**: the scope is bounded; each criterion is a check it can run (a test, a drive of the app); the files or patterns are pointed to when known; nothing it needs sits outside the repo without a named way to get it.
+- **Agent running `/ship`**: the scope is bounded; each criterion is a check it can run (a test, a drive of the app); nothing it needs sits outside the repo without a named way to get it.
 - **The requester**, when the ask came from outside: they would recognise their request in the why and the criteria.
 
 ## Output

@@ -17,7 +17,7 @@ Kind: trivial | fills <system> | new system | isolated — <why, one line>   ←
 2. ...
 
 ## Size
-~X lines, Y files, N commits in reading order   ← an estimate, not a cap: the PR's grain is `../challenge/slices.md`; the commits are the reviewer's path. Sized from the issue's appetite when /challenge wrote one.
+~X lines, Y files, N commits in reading order   ← an estimate, not a cap: the PR's grain is `../challenge/slices.md`; the commits are the reviewer's path.
 
 Entry points: <the routes, jobs or commands that reach the objects this plan changes>
 Design: grid — ok | <finding> → <change in the steps>

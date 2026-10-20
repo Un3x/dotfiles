@@ -60,7 +60,7 @@ For each feature/issue, think through these in order:
 
 After presenting findings, ask the user whether they agree with the recommendation. Then update the issue so downstream commands (`/plan`, `/ship`) read the post-challenge truth instead of the original issue:
 
-- **Agreed (proceed / rethink with changes)**: write the issue with the `issue` skill (Skill tool), from the reframed problem, the acceptance lines, the no-gos and the appetite: it carries the template, the review and the rule for an issue someone else wrote. Rejected alternatives and rabbit holes stay in the challenge output, not on the issue.
+- **Agreed (proceed / rethink with changes)**: write the issue with the `issue` skill (Skill tool), from the reframed problem, the acceptance lines, the no-gos: it carries the template, the review and the rule for an issue someone else wrote. Rejected alternatives and rabbit holes stay in the challenge output, not on the issue.
 - **Last line of every challenge, verbatim**: `CHALLENGE: GO` (proceed as is or with agreed changes), `CHALLENGE: RESHAPE` (split or rethink, the user decides), or `CHALLENGE: DROP`. `/work` reads that line and nothing else.
 - **Disagreed or killed**: leave a comment with the verdict and the user's decision, so the reasoning survives the next time the issue surfaces.
 - **No issue** (conversation-mode challenge): offer to create one capturing the agreed scope.

@@ -67,28 +67,24 @@ Hors périmètre
 ```
 ────────
 Pour le dev
-[Appétit : what the outcome is worth (a morning, a day, a week), set by
-/challenge or by the PO's answer: /plan sizes from it.
-Links: the design, the PR of the mockup, the related tickets.
-Bug: the cause, when known, with the code that shows it.
-Constraints found while investigating, with the measure behind them.
-Where in the code, when known: files and existing patterns to follow.
-Edge cases the tester and the agent need, each with the answer the rule
-above or a recorded decision gives; one with no such answer is a question.
-External dependencies: what must be true outside the repo (a host, a
-partner, a config) and who confirms it.]
+Liens : the mockup, the related tickets, the meeting note.
+Décisions : what was decided outside the tracker (a meeting, a message), a
+measure taken in production, what must be true outside the repo and who
+confirms it.
 ```
+
+Nothing else: the cause, the files, the patterns and the edge cases are what `/plan` finds in the code. Written in the issue, they plan before the plan and go stale when the code moves. An edge case the PO would answer differently from the rule is a question at the top.
 
 ## Rules
 
 - **Simplicity first.** The why is told so that a twelve-year-old who has never seen the product follows it: short sentences, one idea each, everyday words, an example rather than a rule. An action names what it acts on: « le clic sur « Publier » de la démarche », never « la publication » alone, which the writer reads with its object and the PO without. When it reads simple, it is understood.
 - **Necessary and sufficient.** The top holds what the PO needs to decide and to check, nothing more: about five sentences for the why or what goes wrong, about three criteria. A finding is fixed by rewording or cutting, never by adding a sentence: a review loop that adds a sentence per finding doubles the issue in a few rounds. What the dev and the tester need beyond that goes below the line.
 - **The top is for the PO and holds on one read.** No dev word above the line (endpoint, payload, modal, a class or file name, a size in bytes): the app's own words, the ones on the screen. A dev word the PO needs is explained in the sentence that uses it.
-- **One criterion, one check; a rule beats the list of its cases.** Someone can verify each criterion by using the app or reading the data, without asking the author; « Works well » is not one. When many cases share an answer, the first criterion states it (« Alors la page montre ce qu'elle montrerait après un rechargement »), one or two more show it, and the other cases go below the line, under the edge cases. A case goes above only when the PO would answer it differently from the rule. When one screen and one check per criterion pull apart, write fewer criteria, never longer ones. Each user the change touches (the visitor, the person who enters the content) keeps a criterion for their usual path: cutting criteria tends to keep the refusals and drop what people do.
+- **One criterion, one check; a rule beats the list of its cases.** Someone can verify each criterion by using the app or reading the data, without asking the author; « Works well » is not one. When many cases share an answer, the first criterion states it (« Alors la page montre ce qu'elle montrerait après un rechargement »), one or two more show it, and the other cases are `/plan`'s to find. A case goes above only when the PO would answer it differently from the rule. When one screen and one check per criterion pull apart, write fewer criteria, never longer ones. Each user the change touches (the visitor, the person who enters the content) keeps a criterion for their usual path: cutting criteria tends to keep the refusals and drop what people do.
 - **Show how it works before what breaks.** When the reader needs a mechanism to follow the why (how drafts work, a rule set by another ticket), the why (« Ce qui ne va pas » for a bug) tells it as what the user does and sees, step by step. A link is where it comes from, never the explanation: « une recommandation modifiée attend la publication (SIM-232) » lost the PO at its first line.
 - **The mockup is the spec for the screen.** When a design exists, a screen criterion says « comme la maquette » and points to the capture, instead of describing the screen again. A difference from the mockup is a question settled with the user before the issue is posted, never asked of the person who drew it: she answers by repeating her mockup.
 - **No how above the line.** The issue says what must be true; the plan finds how. Below the line it points to where (files, patterns, constraints), never to the steps: those are the plan, attached to the issue as a file.
 - **Every exclusion carries its reason.** A no-go decided at `/challenge` always goes on the issue, with its reason: `/review` checks the change against it. A fence the writer adds on their own, that nobody would have expected, reads as a riddle to the PO: leave it out, or say what it prevents.
 - **A question to the PO is a question,** numbered, with its proposed answer and who decides, before the criteria it changes. An issue with an open question is not ready for `/plan`. A requester's word that is also a word of the product is a question when their examples do not fit the product's sense, with the sense their examples give as the proposed answer: reading it in the product's sense decides for them. A question never reopens what the requester's text, her mockup or a recorded decision already settles: asking again is what makes the PO reread. While it is open, the title says what is true whatever the answer, and the criteria follow the proposed answer under a heading that says so.
-- **Size is a question too.** Bigger than it is worth (no appetite, criteria that outgrow a low priority): a question proposes what to cut, or asks for an appetite. Several stories in one: the split is a question, each part named by its title and cut by [`../challenge/slices.md`](../challenge/slices.md), created once the user agreed; Hors périmètre points to them.
+- **Size is a question too.** Bigger than it is worth (criteria that outgrow a low priority): a question proposes what to cut. Several stories in one: the split is a question, each part named by its title and cut by [`../challenge/slices.md`](../challenge/slices.md), created once the user agreed; Hors périmètre points to them.
 - **Nothing contradicts anything else**: the criteria, the decisions, the out-of-scope lines and the linked brief or parent say the same thing. When a choice changes a criterion, the criterion is rewritten.
