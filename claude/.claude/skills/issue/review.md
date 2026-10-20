@@ -18,19 +18,19 @@ Having read the sources, the reviewer cannot get lost where the PO does. So a fr
 
 > Tu es la PO : tu connais le site et ses écrans, pas le code. Tu n'as que ce texte : n'ouvre aucun lien, n'utilise aucun outil. Lis-le une fois. 1. Redis avec tes mots, en trois phrases au plus, ce qui se passe aujourd'hui et ce qui doit changer. 2. Cite chaque phrase que tu ne pourrais pas expliquer à un collègue sans deviner, et ce que tu as deviné. 3. Le titre décrit-il un mauvais comportement ou une nouvelle fonctionnalité, et lequel ?
 
-Each guess is a finding, quoted with what was guessed: BLOQUANT when it is on what changes or on the first sentence of the why, or when the title reads the wrong way (a bug read as the expected result, or the reverse); PAS CLAIR otherwise. A restatement that differs from the issue is BLOQUANT. Then answer the four questions from the blind reader's restatement, or write where the read broke:
+Each guess is a finding, quoted with what was guessed: BLOQUANT when it is on what changes or on the first sentence of the why, or when the title reads the wrong way (a bug read as the expected result, or the reverse); PAS CLAIR otherwise. A restatement that differs from the issue is BLOQUANT. Then answer the four questions from the blind reader's restatement, or write where the read broke (for a bug, question 1 is what goes wrong and what should happen instead):
 
 1. What will change for the user?
 2. Why now, and who asked?
 3. What do I have to decide, and what is proposed?
 4. How will I check that it is done?
 
-A question with no answer is BLOQUANT, and so is a read that breaks: a story or task title that names the defect or the task instead of what will be true, a bug title that does not say the wrong behaviour, a question that assumes its answer. Then the smells that slow the read, each PAS CLAIR:
+A question with no answer is BLOQUANT, and so is a read that breaks: a bug written in the story's shape (the change before the wrong behaviour and its steps), a story or task title that names the defect or the task instead of what will be true, a bug title that does not say the wrong behaviour, a question that assumes its answer. Then the smells that slow the read, each PAS CLAIR:
 
 - a why a twelve-year-old who has never seen the product would not follow: long sentences, several ideas in one, abstract words where an example would do;
 - a dev word above the line, unexplained;
 - a criterion that checks several things (the fix is fewer criteria, not longer ones), or that only the author can check;
-- a vague word that hides a choice: « correctement », « si besoin », « etc. », « gérer », a « it » with two possible referents;
+- a vague word that hides a choice: « correctement », « si besoin », « etc. », « gérer », a « it » with two possible referents, an action without what it acts on (« attend la publication »: of what?);
 - an out-of-scope line without its reason, or one nobody would have expected;
 - a question hidden in a sentence (no « ? », no proposed answer, no one named to decide);
 - a why that needs a link opened to make sense;

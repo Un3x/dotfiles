@@ -14,12 +14,16 @@ The title is in the user's words. A story or a task says what will be true once 
 
 ## Shape
 
+The story and the task share one shape; the bug has its own, because its reader first needs to see what goes wrong.
+
+### Story and technical task
+
 ```
 Pourquoi
-[Who, what they do and see in the app today, in order, then what goes wrong
-or what they cannot do, and what it costs them. Two or three sentences that
-stand without opening a link. The request's source: who asked, or the
-decision, with its link.]
+[Who, what they do and see in the app today, in order, then what they cannot
+do, and what it costs them. Two or three sentences that stand without
+opening a link. The request's source: who asked, or the decision, with its
+link.]
 
 À trancher                                      (only while open)
 1. [The question, ending with « ? »] → proposé : [the answer we recommend]
@@ -30,18 +34,42 @@ Critères                                        (« si la réponse proposée es
   user sees, or what the data holds]
 - ...
 
-Reproduire                                      (Bug only)
+Hors périmètre                                  (the challenge no-gos, and what a reader would expect)
+- [what stays as it is] — [why, or the issue that handles it]
+```
+
+### Bug
+
+```
+Ce qui ne va pas
+[What the user does and sees, in order, up to the wrong behaviour; then what
+should happen instead, and what it costs. When the reader needs a mechanism
+to see why it is wrong (how drafts work), it is told here, as what the user
+does and sees. Who found it, when.]
+
+Reproduire
 1. [step, as a role, on a screen]
 Résultat : [what happens]   Attendu : [what should]
 
-Hors périmètre                                  (the challenge no-gos, and what a reader would expect)
-- [what stays as it is] — [why, or the issue that handles it]
+À trancher                                      (only while open)
+1. [The question, ending with « ? »] → proposé : [...]   Décide : [who]
 
+Ce qui doit changer                             (« si la réponse proposée est retenue » while a question is open)
+- Étant donné / Quand / Alors, as for a story
+
+Hors périmètre
+- [what stays as it is] — [why]
+```
+
+### Below the line, every type
+
+```
 ────────
 Pour le dev
 [Appétit : what the outcome is worth (a morning, a day, a week), set by
 /challenge or by the PO's answer: /plan sizes from it.
 Links: the design, the PR of the mockup, the related tickets.
+Bug: the cause, when known, with the code that shows it.
 Constraints found while investigating, with the measure behind them.
 Where in the code, when known: files and existing patterns to follow.
 Edge cases the tester and the agent need, each with the answer the rule
@@ -52,10 +80,10 @@ partner, a config) and who confirms it.]
 
 ## Rules
 
-- **Simplicity first.** The why is told so that a twelve-year-old who has never seen the product follows it: short sentences, one idea each, everyday words, an example rather than a rule. When it reads simple, it is understood.
+- **Simplicity first.** The why is told so that a twelve-year-old who has never seen the product follows it: short sentences, one idea each, everyday words, an example rather than a rule. An action names what it acts on: « le clic sur « Publier » de la démarche », never « la publication » alone, which the writer reads with its object and the PO without. When it reads simple, it is understood.
 - **The top is for the PO and holds on one read.** No dev word above the line (endpoint, payload, modal, a class or file name, a size in bytes): the app's own words, the ones on the screen. A dev word the PO needs is explained in the sentence that uses it.
 - **One criterion, one check; a rule beats the list of its cases.** Someone can verify each criterion by using the app or reading the data, without asking the author; « Works well » is not one. When many cases share an answer, the first criterion states it (« Alors la page montre ce qu'elle montrerait après un rechargement »), one or two more show it, and the other cases go below the line, under the edge cases. A case goes above only when the PO would answer it differently from the rule. When one screen and one check per criterion pull apart, write fewer criteria, never longer ones. Each user the change touches (the visitor, the person who enters the content) keeps a criterion for their usual path: cutting criteria tends to keep the refusals and drop what people do.
-- **Show how it works before what breaks.** When the reader needs a mechanism to follow the why (how drafts work, a rule set by another ticket), the why tells it as what the user does and sees, step by step. A link is where it comes from, never the explanation: « une recommandation modifiée attend la publication (SIM-232) » lost the PO at its first line.
+- **Show how it works before what breaks.** When the reader needs a mechanism to follow the why (how drafts work, a rule set by another ticket), the why (« Ce qui ne va pas » for a bug) tells it as what the user does and sees, step by step. A link is where it comes from, never the explanation: « une recommandation modifiée attend la publication (SIM-232) » lost the PO at its first line.
 - **The mockup is the spec for the screen.** When a design exists, a screen criterion says « comme la maquette » and points to the capture, instead of describing the screen again. A difference from the mockup is a question settled with the user before the issue is posted, never asked of the person who drew it: she answers by repeating her mockup.
 - **No how above the line.** The issue says what must be true; the plan finds how. Below the line it points to where (files, patterns, constraints), never to the steps: those are the plan, attached to the issue as a file.
 - **Every exclusion carries its reason.** A no-go decided at `/challenge` always goes on the issue, with its reason: `/review` checks the change against it. A fence the writer adds on their own, that nobody would have expected, reads as a riddle to the PO: leave it out, or say what it prevents.
