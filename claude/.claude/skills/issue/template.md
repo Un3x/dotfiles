@@ -30,8 +30,9 @@ link.]
    Décide : [who]
 
 Critères                                        (« si la réponse proposée est retenue » while a question is open)
-- Étant donné [the starting state] / Quand [the action] / Alors [what the
-  user sees, or what the data holds]
+- [One sentence: what the user sees, or what the data holds, once it is done.]
+  Étant donné [the starting state] / Quand [the action] / Alors [...] only when
+  the starting state is not obvious from the why
 - ...
 
 Hors périmètre                                  (the challenge no-gos, and what a reader would expect)
@@ -55,7 +56,7 @@ Résultat : [what happens]   Attendu : [what should]
 1. [The question, ending with « ? »] → proposé : [...]   Décide : [who]
 
 Ce qui doit changer                             (« si la réponse proposée est retenue » while a question is open)
-- Étant donné / Quand / Alors, as for a story
+- One sentence per check, as for a story
 
 Hors périmètre
 - [what stays as it is] — [why]
@@ -81,6 +82,7 @@ partner, a config) and who confirms it.]
 ## Rules
 
 - **Simplicity first.** The why is told so that a twelve-year-old who has never seen the product follows it: short sentences, one idea each, everyday words, an example rather than a rule. An action names what it acts on: « le clic sur « Publier » de la démarche », never « la publication » alone, which the writer reads with its object and the PO without. When it reads simple, it is understood.
+- **Necessary and sufficient.** The top holds what the PO needs to decide and to check, nothing more: about five sentences for the why or what goes wrong, about three criteria. A finding is fixed by rewording or cutting, never by adding a sentence: a review loop that adds a sentence per finding doubles the issue in a few rounds. What the dev and the tester need beyond that goes below the line.
 - **The top is for the PO and holds on one read.** No dev word above the line (endpoint, payload, modal, a class or file name, a size in bytes): the app's own words, the ones on the screen. A dev word the PO needs is explained in the sentence that uses it.
 - **One criterion, one check; a rule beats the list of its cases.** Someone can verify each criterion by using the app or reading the data, without asking the author; « Works well » is not one. When many cases share an answer, the first criterion states it (« Alors la page montre ce qu'elle montrerait après un rechargement »), one or two more show it, and the other cases go below the line, under the edge cases. A case goes above only when the PO would answer it differently from the rule. When one screen and one check per criterion pull apart, write fewer criteria, never longer ones. Each user the change touches (the visitor, the person who enters the content) keeps a criterion for their usual path: cutting criteria tends to keep the refusals and drop what people do.
 - **Show how it works before what breaks.** When the reader needs a mechanism to follow the why (how drafts work, a rule set by another ticket), the why (« Ce qui ne va pas » for a bug) tells it as what the user does and sees, step by step. A link is where it comes from, never the explanation: « une recommandation modifiée attend la publication (SIM-232) » lost the PO at its first line.

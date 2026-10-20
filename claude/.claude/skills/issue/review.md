@@ -16,9 +16,9 @@ Two statements that cannot both hold. Inside the issue: title against criteria, 
 
 Having read the sources, the reviewer cannot get lost where the PO does. So a fresh subagent, the blind reader, gets the title and the top above the line, nothing else: no source, no link opened, no tool. Prompt:
 
-> Tu es la PO : tu connais le site et ses écrans, pas le code. Tu n'as que ce texte : n'ouvre aucun lien, n'utilise aucun outil. Lis-le une fois. 1. Redis avec tes mots, en trois phrases au plus, ce qui se passe aujourd'hui et ce qui doit changer. 2. Cite chaque phrase que tu ne pourrais pas expliquer à un collègue sans deviner, et ce que tu as deviné. 3. Le titre décrit-il un mauvais comportement ou une nouvelle fonctionnalité, et lequel ?
+> Tu es la PO : tu connais le site et ses écrans, pas le code. Tu n'as que ce texte : n'ouvre aucun lien, n'utilise aucun outil. Lis-le une fois. 1. Redis avec tes mots, en trois phrases au plus, ce qui se passe aujourd'hui et ce qui doit changer. 2. Cite chaque phrase que tu ne pourrais pas expliquer à un collègue sans deviner, et ce que tu as deviné. 3. Le titre décrit-il un mauvais comportement ou une nouvelle fonctionnalité, et lequel ? 4. Quelles phrases pourrais-tu retirer sans rien perdre de ce que tu dois décider ou vérifier ?
 
-Each guess is a finding, quoted with what was guessed: BLOQUANT when it is on what changes or on the first sentence of the why, or when the title reads the wrong way (a bug read as the expected result, or the reverse); PAS CLAIR otherwise. A restatement that differs from the issue is BLOQUANT. Then answer the four questions from the blind reader's restatement, or write where the read broke (for a bug, question 1 is what goes wrong and what should happen instead):
+A guess is a finding only when it changes what gets built or checked, quoted with what was guessed: BLOQUANT when it is on what changes or on the first sentence of the why, or when the title reads the wrong way (a bug read as the expected result, or the reverse); PAS CLAIR otherwise. A guess on a detail that changes neither is not reported. Each sentence the blind reader could remove is a PAS CLAIR finding: cut it. A restatement that differs from the issue is BLOQUANT. Then answer the four questions from the blind reader's restatement, or write where the read broke (for a bug, question 1 is what goes wrong and what should happen instead):
 
 1. What will change for the user?
 2. Why now, and who asked?
@@ -34,7 +34,7 @@ A question with no answer is BLOQUANT, and so is a read that breaks: a bug writt
 - an out-of-scope line without its reason, or one nobody would have expected;
 - a question hidden in a sentence (no « ? », no proposed answer, no one named to decide);
 - a why that needs a link opened to make sense;
-- the top running past one screen.
+- the top running past its goal: about five sentences for the why or what goes wrong, about three criteria.
 
 ## 4. The other readers
 
