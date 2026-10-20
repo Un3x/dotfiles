@@ -46,7 +46,7 @@ Bug — Une donnée utile modifiée part en ligne sans attendre sa démarche
 
 Ce qui ne va pas
 Quand on modifie une démarche déjà publiée, la modification passe d'abord en
-brouillon, puis part en ligne au clic sur « Publier ». Or les données utiles
+brouillon, puis part en ligne à la publication de la démarche. Or les données utiles
 (tableau « Endpoints utiles de l'API ») sautent l'étape du brouillon : elles
 sont publiées directement.
 
@@ -75,7 +75,7 @@ déploiement.
 ## Rules
 
 - **Necessary and sufficient.** The top holds what the PO needs to decide and to check: about five sentences for the why, about three criteria. A finding is fixed by rewording or cutting, never by adding a sentence: a loop that adds one per finding doubled SIM-244 in eight rounds. Each thing is said once: a section that repeats another is cut. The issue says what, never who, when or how.
-- **Simple.** Written as one says it to a colleague. Short sentences, one idea each, the words on the screen, an example rather than a rule. No dev word above the line (endpoint, modal, a class name); one the PO needs is explained where it is used. An action names its object: « le clic sur « Publier » de la démarche », never « la publication ».
+- **Simple.** Written as one says it to a colleague. Short sentences, one idea each, the words on the screen, an example rather than a rule. No dev word above the line (endpoint, modal, a class name); one the PO needs is explained where it is used. An action names its object, in everyday words: « la publication de la démarche », never « la publication » alone. A button's name belongs in the steps to follow, not in the why or the expected behaviour.
 - **Show how it works before what breaks.** A mechanism the reader needs is named with the product's word, in one sentence (« la modification passe d'abord en brouillon »), then what escapes it, and nothing on why. A second problem gets its own sentence, and its own « constater que » step. The expected behaviour is that rule restored, in a sentence or two; what it implies on a screen (a button gone, a badge) is a decision below the line. A link is a source, never the explanation.
 - **The mockup is the spec for the screen.** A screen criterion says « comme la maquette » with the capture. A difference from it is settled with the user before posting, never asked of the person who drew it.
 - **A criterion is one check** anyone can run in the app or the data. One sentence; « Étant donné / Quand / Alors » only when the starting state is not obvious. A rule beats its list of cases; a case goes above only when the PO would answer it differently. Each user the change touches keeps a criterion for their usual path.
