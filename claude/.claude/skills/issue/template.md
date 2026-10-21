@@ -35,7 +35,7 @@ Pour le dev
   above, said as the decision itself.
 ```
 
-A bug has no Critères: its steps and its expected behaviour are the check. Nothing else below the line: the cause, the files and the edge cases are what `/plan` finds in the code. A decision is its content, never who took it, when, or how; it is there because the dev would otherwise get it wrong, about three.
+Each section is a level-2 heading with its emoji: `## 💡 Pourquoi`, `## 🐞 Ce qui ne va pas`, `## 🔁 Reproduire`, `## 🎯 Comportement attendu`, `## 🤔 À trancher` (each question a `### Question N`), `## ✅ Critères`, `## 🚫 Hors périmètre`, `## 🛠️ Pour le dev`. A bug has no Critères: its steps and its expected behaviour are the check. Nothing else below the line: the cause, the files and the edge cases are what `/plan` finds in the code. A decision is its content, never who took it, when, or how; it is there because the dev would otherwise get it wrong, about three.
 
 ## Example
 
@@ -44,7 +44,7 @@ SIM-244, after the PO stopped at the first line of its earlier version; the wron
 ```
 Bug — Une donnée utile modifiée est publiée immédiatement
 
-Ce qui ne va pas
+## 🐞 Ce qui ne va pas
 Dans l'admin, une modification d'une démarche publiée passe d'abord en
 brouillon : le site garde l'ancienne version jusqu'à la publication de la
 démarche. Ses recommandations suivent la même règle.
@@ -52,7 +52,7 @@ démarche. Ses recommandations suivent la même règle.
 Les données utiles ne respectent pas ce processus et sont immédiatement
 publiées après avoir été modifiées.
 
-Reproduire
+## 🔁 Reproduire
 1. Sur le site, ouvrir la page d'une démarche publiée. Dans la carte d'une
    solution recommandée, repérer une ligne du tableau « Endpoints utiles de
    l'API ».
@@ -60,14 +60,15 @@ Reproduire
    donnée utile, enregistrer.
 3. Recharger la page sur le site : constater que la nouvelle description est
    déjà en ligne.
-Comportement attendu : une donnée utile modifiée attend la publication de sa
+## 🎯 Comportement attendu
+Une donnée utile modifiée attend la publication de sa
 démarche, comme toute recommandation.
 
-Hors périmètre
+## 🚫 Hors périmètre
 - Supprimer une donnée utile reste immédiat, comme pour une solution recommandée.
 
 ────────
-Pour le dev
+## 🛠️ Pour le dev
 Décisions : une donnée utile n'a plus ses propres boutons « Publier » et
 « Masquer ». Les 286 données utiles en ligne aujourd'hui le restent après le
 déploiement.
