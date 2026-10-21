@@ -231,5 +231,6 @@
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "verbose": false,
+  "switchModelsOnFlag": false,
   "agentPushNotifEnabled": true
 }
