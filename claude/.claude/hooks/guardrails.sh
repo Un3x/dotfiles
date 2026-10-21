@@ -25,8 +25,8 @@ Bash)
   if printf '%s' "$CMD" | grep -qE -- "${START}git +push\b[^;&|]*( --force\b| -f\b| \+[A-Za-z0-9_./-]+)" && ! printf '%s' "$CMD" | grep -q -- '--force-with-lease'; then
     block "force-push only with --force-with-lease, and only on your own branch after autosquash."
   fi
-  PR_POSTS=$(printf '%s' "$CMD" | tr '\n' ';' | grep -oE -- "${START}gh +(pr +(comment|review)|issue +comment)\b[^;&|]*" | grep -vE -- "gh +pr +comment( +(-R|--repo)[ =][^ ]+)? +[^ -][^ ]*( +(-R|--repo)[ =][^ ]+)? +(--body|-b)( +|=)(\"@dependabot (merge|squash and merge|rebase|recreate)\"|'@dependabot (merge|squash and merge|rebase|recreate)') *$")
-  API_POSTS=$(printf '%s' "$CMD" | grep -oE -- "${START}gh +api\b[^;&|]*" | grep -E -- "(pulls|issues)/[^ ]*/(comments|reviews)" | grep -E -- " (-X|--method) +(POST|PATCH|PUT|DELETE)| -[fF] | --(raw-)?field | --input ")
+  PR_POSTS=$(printf '%s' "$CMD" | tr '\n' ';' | grep -oE -- "${START}gh( +(-R|--repo)[ =][^ ]+)? +((pr|issue) +comment|pr +review|(pr|issue) +close\b[^;&|]* (-c|--comment)\b)[^;&|]*" | grep -vE -- "gh +pr +comment( +(-R|--repo)[ =][^ ]+)? +[^ -][^ ]*( +(-R|--repo)[ =][^ ]+)? +(--body|-b)( +|=)(\"@dependabot (merge|squash and merge|rebase|recreate)\"|'@dependabot (merge|squash and merge|rebase|recreate)') *$")
+  API_POSTS=$(printf '%s' "$CMD" | grep -oE -- "${START}gh +api\b[^;&|]*" | grep -E -- "(pulls|issues)/[^ ]*(comments|reviews)|graphql\b.*mutation" | grep -E -- " (-X|--method)[ =]?(POST|PATCH|PUT|DELETE)| -[fF]| --(raw-)?field| --input" | grep -vE -- " (-X|--method)[ =]?GET\b")
   if [ -n "$PR_POSTS$API_POSTS" ]; then
     block "assistants never post on GitHub PR or issue threads. Put it on the Linear issue or hand the words to the user."
   fi
