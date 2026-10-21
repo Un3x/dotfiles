@@ -25,10 +25,10 @@ Bash)
   if printf '%s' "$CMD" | grep -qE -- "${START}git +push\b[^;&|]*( --force\b| -f\b| \+[A-Za-z0-9_./-]+)" && ! printf '%s' "$CMD" | grep -q -- '--force-with-lease'; then
     block "force-push only with --force-with-lease, and only on your own branch after autosquash."
   fi
-  PR_POSTS=$(printf '%s' "$CMD" | tr '\n' ';' | grep -oE -- "${START}gh +pr +(comment|review)\b[^;&|]*" | grep -vE -- "gh +pr +comment( +(-R|--repo)[ =][^ ]+)? +[^ -][^ ]*( +(-R|--repo)[ =][^ ]+)? +(--body|-b)( +|=)(\"@dependabot (merge|squash and merge|rebase|recreate)\"|'@dependabot (merge|squash and merge|rebase|recreate)') *$")
-  API_POSTS=$(printf '%s' "$CMD" | grep -oE -- "${START}gh +api\b[^;&|]*" | grep -E -- "pulls/[^ ]*/(comments|reviews)" | grep -E -- " (-X|--method) +(POST|PATCH|PUT|DELETE)| -[fF] | --(raw-)?field | --input ")
+  PR_POSTS=$(printf '%s' "$CMD" | tr '\n' ';' | grep -oE -- "${START}gh +(pr +(comment|review)|issue +comment)\b[^;&|]*" | grep -vE -- "gh +pr +comment( +(-R|--repo)[ =][^ ]+)? +[^ -][^ ]*( +(-R|--repo)[ =][^ ]+)? +(--body|-b)( +|=)(\"@dependabot (merge|squash and merge|rebase|recreate)\"|'@dependabot (merge|squash and merge|rebase|recreate)') *$")
+  API_POSTS=$(printf '%s' "$CMD" | grep -oE -- "${START}gh +api\b[^;&|]*" | grep -E -- "(pulls|issues)/[^ ]*/(comments|reviews)" | grep -E -- " (-X|--method) +(POST|PATCH|PUT|DELETE)| -[fF] | --(raw-)?field | --input ")
   if [ -n "$PR_POSTS$API_POSTS" ]; then
-    block "assistants never post on PR threads. Put it on the Linear issue or hand the words to the user."
+    block "assistants never post on GitHub PR or issue threads. Put it on the Linear issue or hand the words to the user."
   fi
   if printf '%s' "$CMD" | grep -qE -- "${START}(command +)?herdr +agent +prompt" && [ "$(printf '%s' "$CMD" | grep -oE '/(plan|ship|review|challenge)\b' | wc -l)" -ge 2 ]; then
     block "one slash command per delegated brief. Chaining is /work's job."
