@@ -50,5 +50,8 @@ Où : « [citation] » ; « [l'autre côté] »
 Où : « ... »
 
 ### Questions
-1. [Décision nécessaire ?] → proposé : [réponse]
+**Question 1**
+[contexte]
+**[Décision nécessaire ?]**
+> **Proposé :** [réponse]
 ```

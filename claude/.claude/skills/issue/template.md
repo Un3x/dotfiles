@@ -22,9 +22,9 @@ Pourquoi                            Ce qui ne va pas
   then what they cannot do;           then what does not follow it;
                                       one wrong behaviour per bug
 À trancher        (while open)      Reproduire
-  1. Question ? → proposé : …          steps ending on « constater que … »
-     Décide : …                       Comportement attendu: the rule
-                                       that must hold, not the screen
+  **Question 1**, its context,        steps ending on « constater que … »
+  the question in bold,               Comportement attendu: the rule
+  > **Proposé :** …                   that must hold, not the screen
                                     À trancher        (while open)
 Critères
 Hors périmètre                      Hors périmètre
@@ -80,7 +80,7 @@ déploiement.
 - **Show how it works before what breaks.** A mechanism the reader needs is named with the product's word, in one sentence (« la modification passe d'abord en brouillon »), then what does not follow it, said in full (« ne respectent pas ce processus et sont immédiatement publiées »), never with a pronoun that points back (« y échappent »), and nothing on why. A second wrong behaviour is its own bug, linked: two in one issue blur both and their steps. The expected behaviour is that rule restored, in a sentence or two; what it implies on a screen (a button gone, a badge) is a decision below the line. A link is a source, never the explanation.
 - **The mockup is the spec for the screen.** A screen criterion says « comme la maquette » with the capture, and nothing more: prose only for what a capture cannot show (a click, a sort, an empty case). The requester and the mockup's author go in Liens, not above. A difference from it is settled with the user before posting, never asked of the person who drew it.
 - **A criterion is one check** anyone can run in the app or the data. One sentence; « Étant donné / Quand / Alors » only when the starting state is not obvious. A rule beats its list of cases; a case goes above only when the PO would answer it differently. Each user the change touches keeps a criterion for their usual path.
-- **A question to the PO** is numbered, with a proposed answer and who decides, before the criteria it changes; while open, the criteria say « si la réponse proposée est retenue ». It never assumes its answer, and never reopens what the requester's text, her mockup or a recorded decision settles. A requester's word the product uses differently is a question.
+- **A question to the PO** is a « Question N » heading, its context, the question in bold, then « > **Proposé :** » and the answer, before the criteria it changes; never who decides; while open, the criteria say « si la réponse proposée est retenue ». It never assumes its answer, and never reopens what the requester's text, her mockup or a recorded decision settles. A requester's word the product uses differently is a question.
 - **Every exclusion carries its reason.** Only what the PO could expect to be included; often there is none. A `/challenge` no-go always goes on the issue.
 - **Size is a question**: too big for its priority, propose what to cut; several stories, propose the split ([`../challenge/slices.md`](../challenge/slices.md)).
 - **Nothing contradicts anything else**: title, criteria, exclusions, decisions and the linked sources say the same thing.
