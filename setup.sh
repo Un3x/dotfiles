@@ -116,6 +116,7 @@ main() {
     fi
 
     info "Packages: ${packages[*]}"
+    mkdir -p "$HOME/.config" "$HOME/.local/bin"
     for pkg in "${packages[@]}"; do
         stow_package "$pkg"
     done
