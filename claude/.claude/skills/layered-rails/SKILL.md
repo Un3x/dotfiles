@@ -41,6 +41,8 @@ Rails applications are organized into four architecture layers with **unidirecti
 
 **Core Rule:** Lower layers must never depend on higher layers.
 
+Where a project's CLAUDE.md declares `app/services/` legacy, services are code waiting to fold into models, not a layer above them: a model calling one is debt tracked by an issue, not a reverse dependency.
+
 ## What Would You Like To Do?
 
 1. **Analyze codebase** - Run `/layers:analyze` for full analysis or `/layers:analyze:callbacks`, `/layers:analyze:gods` for specific checks

@@ -22,7 +22,7 @@ Pourquoi                            Ce qui ne va pas
   then what they cannot do;           then what does not follow it;
                                       one wrong behaviour per bug
 À trancher        (while open)      Reproduire
-  **Question 1**, its context,        steps ending on « constater que … »
+  ### Question 1, its context,        steps ending on « constater que … »
   the question in bold,               Comportement attendu: the rule
   > **Proposé :** …                   that must hold, not the screen
                                     À trancher        (while open)
@@ -30,7 +30,8 @@ Critères
 Hors périmètre                      Hors périmètre
 ────────
 Pour le dev
-  Liens : the mockup, the related tickets, the meeting note.
+  Liens : the requester, the mockup and its author, the related
+  tickets, the meeting note.
   Décisions : what was decided outside the tracker and is not already
   above, said as the decision itself.
 ```
@@ -76,8 +77,8 @@ déploiement.
 
 ## Rules
 
-- **Necessary and sufficient.** The top holds what the PO needs to decide and to check: about five sentences for the why, about three criteria. A finding is fixed by rewording or cutting, never by adding a sentence: a loop that adds one per finding doubled SIM-244 in eight rounds. Each thing is said once: a section that repeats another is cut. The issue says what, never who, when or how.
-- **Simple.** Written as one says it to a colleague. Short sentences, one idea each, the words on the screen, an example rather than a rule. No dev word above the line (endpoint, modal, a class name); one the PO needs is explained where it is used. An action names its object, in everyday words: « la publication de la démarche », never « la publication » alone. A button's name belongs in the steps to follow, not in the why or the expected behaviour.
+- **Necessary and sufficient.** The top holds what the PO needs to decide and to check: about five sentences for the why, about three criteria. A finding is fixed by rewording or cutting; only what the PO needs to decide or check is added (a fact, a question, a criterion), never an explanation: a loop that adds one per finding doubled SIM-244 in eight rounds. Each thing is said once: a section that repeats another is cut. The issue says what, never who, when or how.
+- **Simple.** Written as one says it to a colleague. Short sentences, one idea each, the words on the screen, an example rather than a rule. No dev word above the line (endpoint, modal, a class name), except a label quoted as the screen shows it; one the PO needs is explained where it is used. An action names its object, in everyday words: « la publication de la démarche », never « la publication » alone. A button's name belongs in the steps to follow, not in the why or the expected behaviour.
 - **Show how it works before what breaks.** A mechanism the reader needs is named with the product's word, in one sentence (« la modification passe d'abord en brouillon »), then what does not follow it, said in full (« ne respectent pas ce processus et sont immédiatement publiées »), never with a pronoun that points back (« y échappent »), and nothing on why. A second wrong behaviour is its own bug, linked: two in one issue blur both and their steps. The expected behaviour is that rule restored, in a sentence or two; what it implies on a screen (a button gone, a badge) is a decision below the line. A link is a source, never the explanation.
 - **The mockup is the spec for the screen.** A screen criterion says « comme la maquette » with the capture, and nothing more: prose only for what a capture cannot show (a click, a sort, an empty case). The requester and the mockup's author go in Liens, not above. A difference from it is settled with the user before posting, never asked of the person who drew it.
 - **A criterion is one check** anyone can run in the app or the data. One sentence; « Étant donné / Quand / Alors » only when the starting state is not obvious. A rule beats its list of cases; a case goes above only when the PO would answer it differently. Each user the change touches keeps a criterion for their usual path.

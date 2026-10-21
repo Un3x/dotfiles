@@ -46,7 +46,6 @@ For each feature/issue, think through these in order:
 
 **Opportunity cost**: [what we're trading off]
 
-**Appetite**: [the size the outcome is worth: a morning, a day, a week — /plan's size estimate starts from it]
 **Acceptance**: [the lines the issue lacks, shaped by `../issue/template.md`; "already in the issue" when it has them — /review's asked pass checks the change against them]
 **No-gos**: [what this issue will not do, one line each — /review's asked pass reads them as limits]
 **Rabbit holes**: [where the work could sink time, and the way around]
