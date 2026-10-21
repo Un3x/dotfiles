@@ -108,7 +108,6 @@ eval "$(rbenv init - zsh)"
 
 alias python=python3
 
-export PATH="$PATH:/opt/nvim-linux64/bin"
 
 alias n="nvim"
 alias vi="nvim"

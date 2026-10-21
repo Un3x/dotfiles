@@ -4,6 +4,7 @@ vim.g.maplocalleader = ' '
 -- disable netrw at the very start
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_ruby_provider = 0
 
 -- Add file type association for yml files
 vim.filetype.add({

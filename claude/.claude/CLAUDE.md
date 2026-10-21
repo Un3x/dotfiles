@@ -4,7 +4,7 @@
 
 - To show the user a note from an Obsidian vault, open it directly instead of pasting a path: `xdg-open 'obsidian://open?vault=<vault-dir-name>&file=<vault-relative-path-URL-encoded-no-.md>'`
 - A folder symlinked into the vault after Obsidian started is "not found" until the user reloads it (Ctrl+P → "Reload app without saving"). Ask for the reload; don't replace the link with a copy.
-- Inside herdr (`$HERDR_ENV` set), open the note as an nvim tab of the current workspace instead: `P=$(herdr tab create --workspace "$HERDR_WORKSPACE_ID" --cwd <vault> --label "<short name>" --focus | jq -r '.result.root_pane.pane_id')`, then `herdr pane run "$P" "/opt/nvim-linux64/bin/nvim <vault-relative path>"`.
+- Inside herdr (`$HERDR_ENV` set), open the note as an nvim tab of the current workspace instead: `P=$(herdr tab create --workspace "$HERDR_WORKSPACE_ID" --cwd <vault> --label "<short name>" --focus | jq -r '.result.root_pane.pane_id')`, then `herdr pane run "$P" "nvim <vault-relative path>"`.
 
 ## Servers and secrets
 
