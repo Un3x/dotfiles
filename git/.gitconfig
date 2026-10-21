@@ -1,0 +1,29 @@
+[user]
+	name = Thomas COMES
+	email = thomas.comes.tech@gmail.com
+	signingkey = A509CC07258FB36A
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[diff "ansible-vault"]
+	textconv = ansible-vault view
+[alias]
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  last = log -1 HEAD
+  dc = diff --cached
+  cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d"
+
+
+
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://git.heroku.com"]
+	helper = !heroku git:credentials
