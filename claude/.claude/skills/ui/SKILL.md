@@ -1,6 +1,6 @@
 ---
 name: ui
-description: "Produce a screen for one of our projects: a mockup, a redesign, an alternative page, a canvas. Use before drawing any screen, whether `/challenge` step 7 asks for it, a ticket needs one, or the user wants to explore or challenge a design."
+description: "Produce a screen for one of our projects: a mockup, a redesign, an alternative page, a canvas. Use before drawing any screen, whether `/challenge` step 7 asks for it, a ticket needs one, or the user wants to explore, critique or redraw a design."
 ---
 
 # UI production
@@ -31,7 +31,7 @@ An issue that changes a screen among other things takes the screen rows.
 2. **No design system: the wireframe.** In ASCII, one per state that differs (filled, empty, error), with the layout and what each zone holds. The user approves it before any HTML: a layout fixed in ASCII costs a line, in HTML a round. The look (palette, type) is picked with the user at the same time, never invented alone.
 3. **The mockup**, one static HTML page in the repo's `.notes/<branch>/maquette/`, the branch named by the issue (no issue: `.notes/maquettes/<subject>/`). With a design system: its real stylesheet and components, nothing hand-made where a component exists, and the screens next to the one that changes as the model, so the new one looks like it already belonged. Without one: the approved wireframe and look. No app code, no logic: a page the PO opens in a browser.
 4. **Critique from captures.** Screenshot it at desktop and phone width (`/verify`'s browser or Playwright), look at it, cut one thing. Quality floor without announcing it: readable on a phone, visible keyboard focus, a label on every field.
-5. **Approve**: the captures go to the user. With an issue: approved, they are attached to it as its mockup when it is written (the `issue` skill), and the screen criteria say « comme la maquette »; not yet approved, no `CHALLENGE: GO`.
+5. **Approve**: the captures go to the user. With an issue: approved, they are attached to it as its mockup when it is written (the `issue` skill), and the screen criteria say « comme la maquette »; not yet approved, no `CHALLENGE: GO`. Without an issue, the approval ends it: the captures stay beside the mockup.
 
 ## Words on the screen
 
