@@ -41,6 +41,7 @@ This is the **paranoid staff engineer brain**. Not a style review, not a linting
 
 - No style nits a linter catches. Pass 2 Readability is not a nit.
 - Every critical finding must include a concrete failure scenario ("when X happens, Y breaks because Z").
+- No finding without a trace: the entry point that reaches it, the values that get there, the line that misbehaves. A doubt is something to investigate, not to report: prove it or cut it, never « potential », « may », « risky ». A maybe handed to the reader bills them for the work skipped, and six maybes cost the trust in the one proven finding.
 - Don't flag things that are already covered by existing tests (read the test files).
 - If the diff is clean, say "no issues found, ship it" — don't invent problems. Clean code that misses a line of the ask is not clean: the verdict is `partial`.
 - Be specific. "This could be a problem" is useless. "This N+1 fires on the index page with 50+ records and will timeout" is useful.

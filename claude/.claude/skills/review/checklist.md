@@ -14,6 +14,8 @@ Categories:
 - **Silent failures**: Bare rescue/catch blocks, swallowed errors, missing error handling on external calls
 - **Data loss**: Destructive migrations without backfill, cascade deletes, missing null checks on critical paths
 - **Auth/authz gaps**: Missing authorization checks, privilege escalation paths, exposed endpoints
+- **Removed behaviour**: every route, branch, field, button, job or side effect the diff deletes with no replacement elsewhere in it. Nothing fails to compile and no test goes red: the feature is just gone. A removal the issue or the PR names is intended; any other one is a finding when something still reaches it (a caller in the tree, a name dispatched by string, an external client, data at rest still holding the removed value). A deleted test is the tell.
+- **Unhealed bad state**: a wrong value written by an unattended trigger (job, cron, webhook, retry) that no path restores. Name the only way out (manual fix, delete and re-add). One that heals on the next run is INFORMATIONAL.
 - **Untested new code paths**: New methods, branches, or behaviors introduced without a corresponding test. This is not "low coverage" hand-wringing — flag only when a specific new path has zero direct test exercising it. TDD was violated; bugs will ship. (Exception: spike PRs explicitly flagged as such.)
 - **Unproven premise**: Name the one fact the change is safe or effective because of, and how it is proven (test, drive, measurement, or assumed). If that fact is unproven for the case that motivated the PR, it is CRITICAL and the verdict cannot be ship it.
 
