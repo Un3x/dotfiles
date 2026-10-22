@@ -29,7 +29,7 @@ For each feature/issue, think through these in order:
 4. **Risk & Reversibility** — Is this a one-way door or two-way door? What's the blast radius if this is wrong? Can we ship a smaller version first to validate?
 5. **Opportunity Cost** — What are we NOT doing by spending time on this? Is this the highest-leverage thing right now? Does this compound (builds future value) or is it a one-off?
 6. **Split Granularity** (only if recommending a split) — [`slices.md`](slices.md): vertical slices, one-sentence test, one story per PR.
-7. **Screen** — the issue changes what a user sees and shows no screen: produce the mockup with [`ui.md`](ui.md) (from the design system, or a wireframe first when the project has none), approved by the user before `CHALLENGE: GO`.
+7. **Screen** — the issue changes what a user sees and shows no screen: produce the mockup with the `ui` skill (from the design system, or a wireframe first when the project has none), approved by the user before `CHALLENGE: GO`.
 
 ## Output Format
 
