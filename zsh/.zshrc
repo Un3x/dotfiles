@@ -74,7 +74,7 @@ ZSH_THEME="agnoster" # set by `omz`
 # sessions via start-project-session.sh
 ZSH_TMUX_DEFAULT_SESSION_NAME="vault"
 
-plugins=(git aliases colored-man-pages colorize tmux docker)
+plugins=(git aliases colored-man-pages colorize docker)
 
 source $ZSH/oh-my-zsh.sh
 
