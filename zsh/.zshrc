@@ -102,8 +102,6 @@ export EDITOR='nvim'
 
 alias docker-compose="docker compose"
 
-. "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
 eval "$(rbenv init - zsh)"
 
 alias python=python3
