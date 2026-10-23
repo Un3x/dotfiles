@@ -82,6 +82,7 @@ ssh() {
   if [[ $TERM == xterm-kitty && " $* " == *" vps "* ]]; then kitten ssh "$@"; else command ssh "$@"; fi
 }
 alias vps="ssh vps"
+alias vh="ssh vps -t .local/bin/herdr"
 
 if [[ $HOST != SHIPIT ]]; then
   prompt_context() { prompt_segment red white " ${HOST:u} " }
