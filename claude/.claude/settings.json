@@ -1,6 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "includeCoAuthoredBy": false,
+  "env": {
+    "DISABLE_SPRING": "1"
+  },
   "permissions": {
     "deny": [
       "Bash(ansible-vault decrypt:*)",
