@@ -134,7 +134,7 @@ alias ra="rubocop -A"
 PATH="/home/unex/.local/share/gem/ruby/3.0.0/bin:$PATH"
 PATH="/home/unex/.node_modules_global/bin:$PATH"
 
-export PATH=$PATH:/home/unex/.local/bin
+export PATH=$HOME/.local/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
