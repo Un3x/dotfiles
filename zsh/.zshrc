@@ -78,6 +78,10 @@ plugins=(git aliases colored-man-pages colorize docker)
 
 source $ZSH/oh-my-zsh.sh
 
+if [[ $HOST != SHIPIT ]]; then
+  prompt_context() { prompt_segment red white " ${HOST:u} " }
+fi
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
