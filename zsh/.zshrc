@@ -78,7 +78,10 @@ plugins=(git aliases colored-man-pages colorize docker)
 
 source $ZSH/oh-my-zsh.sh
 
-[[ $TERM == xterm-kitty ]] && alias vps="kitten ssh vps"
+ssh() {
+  if [[ $TERM == xterm-kitty && " $* " == *" vps "* ]]; then kitten ssh "$@"; else command ssh "$@"; fi
+}
+alias vps="ssh vps"
 
 if [[ $HOST != SHIPIT ]]; then
   prompt_context() { prompt_segment red white " ${HOST:u} " }
