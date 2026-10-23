@@ -1,7 +1,7 @@
 #!/bin/bash
 cd "$1" 2>/dev/null || exit 0
 git rev-parse -q --git-dir >/dev/null 2>&1 || exit 0
-git fetch -q origin 2>/dev/null
+git fetch -q --prune origin 2>/dev/null
 left=()
 
 pushed() { [ -n "$(git -C "$1" branch -r --contains HEAD 2>/dev/null)" ]; }
@@ -25,6 +25,7 @@ if [ -d "$D" ]; then
         w=$PWD/${w%/}
         git -C "$w" rev-parse -q --verify HEAD >/dev/null 2>&1 || continue
         if grep -qxF "$w" <<<"$locked"; then left+=("$(basename "$w") (locked)"); continue; fi
+        [ -n "$(find "$w" -maxdepth 0 -mmin -30)" ] && continue
         if clean "$w" && pushed "$w" && ! busy "$w"; then
             b=$(git -C "$w" symbolic-ref -q --short HEAD)
             if git worktree remove "$w"; then
