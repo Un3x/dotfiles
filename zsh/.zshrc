@@ -83,6 +83,7 @@ ssh() {
 }
 alias vps="ssh vps"
 alias vh="ssh vps -t .local/bin/herdr"
+export GPG_TTY=$(tty)
 
 if [[ $HOST != SHIPIT ]]; then
   prompt_context() { prompt_segment red white " ${HOST:u} " }
