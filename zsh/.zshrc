@@ -70,20 +70,16 @@ ZSH_THEME="agnoster" # set by `omz`
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# bare `tmux` creates/attaches the vault (EA) session; projects get named
-# sessions via start-project-session.sh
-ZSH_TMUX_DEFAULT_SESSION_NAME="vault"
-
 plugins=(git aliases colored-man-pages colorize docker)
 
 source $ZSH/oh-my-zsh.sh
 
 ssh() {
-  if [[ $TERM == xterm-kitty && " $* " == *" vps "* ]]; then kitten ssh "$@"; else command ssh "$@"; fi
+  if [[ $TERM == xterm-kitty && $1 == vps && -t 0 && -t 1 ]]; then kitten ssh "$@"; else command ssh "$@"; fi
 }
 alias vps="ssh vps"
 alias vh="ssh vps -t .local/bin/herdr"
-export GPG_TTY=$(tty)
+[[ -t 0 ]] && export GPG_TTY=$TTY
 
 if [[ $HOST != SHIPIT ]]; then
   prompt_context() { prompt_segment red white " ${HOST:u} " }
