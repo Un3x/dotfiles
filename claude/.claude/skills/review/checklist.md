@@ -11,7 +11,7 @@ Categories:
 - **SQL safety**: Raw queries, missing indexes on new columns, N+1 queries, missing transactions where needed
 - **Race conditions**: TOCTOU bugs, concurrent access without locking, shared mutable state
 - **Trust boundaries**: User input flowing into queries/commands without validation, LLM output treated as trusted, external API responses used without verification
-- **Silent failures**: Bare rescue/catch blocks, swallowed errors, missing error handling on external calls
+- **Silent failures**: Bare rescue/catch blocks, swallowed errors, missing error handling on external calls. An HTTP client that only reports a non-2xx (Sentry, log) and neither raises nor returns a failure: its caller goes on as if the call succeeded. A Sentry event someone must act on for each record, sent with a fixed message and no per-record `fingerprint`, groups every record into one issue, so an alert that fires on new issues notifies only for the first record
 - **Data loss**: Destructive migrations without backfill, cascade deletes, missing null checks on critical paths
 - **Auth/authz gaps**: Missing authorization checks, privilege escalation paths, exposed endpoints
 - **Removed behaviour**: every route, branch, field, button, job or side effect the diff deletes with no replacement elsewhere in it. Nothing fails to compile and no test goes red: the feature is just gone. A removal the issue or the PR names is intended; any other one is a finding when something still reaches it (a caller in the tree, a name dispatched by string, an external client, data at rest still holding the removed value). A deleted test is a signal.
