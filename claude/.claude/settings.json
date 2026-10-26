@@ -24,16 +24,6 @@
   },
   "model": "opus",
   "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/home/unex/.local/bin/claude-usage --refresh >/dev/null 2>&1"
-          }
-        ]
-      }
-    ],
     "SessionStart": [
       {
         "matcher": "",
