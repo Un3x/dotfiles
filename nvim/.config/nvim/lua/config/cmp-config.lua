@@ -1,12 +1,15 @@
 require'cmp'.setup {
   sources = {
-    { name = 'copilot' },
     { name = 'nvim_lsp' },
     { name = 'buffer' },
     { name = 'path' }
   },
   mapping = {
     ['<CR>'] = require('cmp').mapping.confirm({ select = false }),
+    ['<C-y>'] = require('cmp').mapping.confirm({ select = false }),
+    ['<C-e>'] = require('cmp').mapping.abort(),
+    ['<Up>'] = require('cmp').mapping.select_prev_item({ behavior = 'select' }),
+    ['<Down>'] = require('cmp').mapping.select_next_item({ behavior = 'select' }),
     ['<C-Space>'] = require('cmp').mapping.complete(),
     ['<C-n>'] = require('cmp').mapping.select_next_item(),
     ['<C-p>'] = require('cmp').mapping.select_prev_item(),

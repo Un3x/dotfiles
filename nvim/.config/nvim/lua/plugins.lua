@@ -52,7 +52,6 @@ return {
   -- LSP
   {'williamboman/mason.nvim'},
   {'williamboman/mason-lspconfig.nvim'},
-  {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x', lazy = true, config= false },
   {'neovim/nvim-lspconfig'},
 
   -- Completion
@@ -122,14 +121,6 @@ return {
         server_opts_overrides = {},
       })
     end,
-    dependencies = {
-      {
-        "zbirenbaum/copilot-cmp",
-        config = function()
-          require("copilot_cmp").setup()
-        end
-      }
-    }
   },
   
   -- Leap
