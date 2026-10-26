@@ -25,7 +25,7 @@ Issues worth knowing about but not blocking.
 Categories:
 - **Conditional complexity**: Nested conditions that hide logic bugs, boolean expressions that could be simplified
 - **Missing edge cases**: Nil/null/empty/zero handling, unicode, timezone, pagination boundaries
-- **Test gaps**: Happy-path-only tests, missing error case tests, weak assertions, a test that still passes with the behaviour broken or fails on an internals-only change (promoted to CRITICAL if an entire new code path has zero tests)
+- **Test gaps**: Happy-path-only tests, missing error case tests, weak assertions, an assertion that something deleted is absent or a spy repeating what the outcome assertions prove ([`../ship/red-green-commit.md`](../ship/red-green-commit.md) step 1), a test that still passes with the behaviour broken or fails on an internals-only change (promoted to CRITICAL if an entire new code path has zero tests)
 - **Performance**: Unbounded queries, missing pagination, loading associations unnecessarily
 - **Dead code**: Unused variables, unreachable branches, commented-out code
 - **Naming/clarity**: Misleading names, magic numbers, unclear intent (only when it could cause bugs; test names and readable code: see Readability)
