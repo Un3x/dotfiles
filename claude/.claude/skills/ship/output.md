@@ -7,7 +7,7 @@ Resuming FAS-124 (started YYYY-MM-DD), phase implement, step 3/5.
 
 ### When shipped:
 ```
-Shipped FAS-124 -> PR: https://github.com/org/repo/pull/124 (review clean after 2 rounds)
+Shipped FAS-124 -> PR: https://github.com/org/repo/pull/124 (review clean after 2 rounds) — proof: worktrees/FAS-124/tmp/verify/<feature>/
 ```
 
 ### When the review cap is hit:

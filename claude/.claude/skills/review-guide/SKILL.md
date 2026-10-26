@@ -30,4 +30,4 @@ Rules:
 - **Show the safety nets' real failure messages**: they tell a future contributor what to do.
 - **Numbers come from commands** run on the head commit, identical wherever they appear.
 
-Done when the artifact is published: report its URL and stop. It is private; the user shares it and links it from the PR body's third line. A new round of commits republishes to the same URL: the same file path in this session, the artifact's `url` from another. Never post it on the PR, push it or edit the PR. It never replaces the commits: it tells the reviewer which one to open next.
+Done when the artifact is published: report its URL and stop. It is private; the user shares it and links it under `Closes` in the PR body. A new round of commits republishes to the same URL: the same file path in this session, the artifact's `url` from another. Never post it on the PR, push it or edit the PR. It never replaces the commits: it tells the reviewer which one to open next.
