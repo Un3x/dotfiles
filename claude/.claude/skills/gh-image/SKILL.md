@@ -74,8 +74,8 @@ issues), then edit the file.
 
 gh rewrites matching markdown destinations to the uploaded URLs and keeps
 their alt text; unreferenced attachments are appended at the end. Use
-absolute paths: relative ones resolve from the command's working directory,
-including those written in the body file. For appended images, give alt
+absolute paths: relative ones in the body file resolve from its directory,
+then from the command's working directory. For appended images, give alt
 text after `#` and quote paths with spaces. Videos render as players and
 take no alt text: let gh generate their reference.
 
