@@ -78,7 +78,11 @@ ssh() {
   if [[ $TERM == xterm-kitty && $1 == vps && -t 0 && -t 1 ]]; then kitten ssh "$@"; else command ssh "$@"; fi
 }
 alias vps="ssh vps"
-alias vh="ssh vps -t .local/bin/herdr"
+vh() {
+  [[ $TERM == xterm-kitty ]] && printf '\e]11;#3b0d18\a'
+  herdr --remote vps "$@"
+  [[ $TERM == xterm-kitty ]] && printf '\e]111\a'
+}
 [[ -t 0 ]] && export GPG_TTY=$TTY
 
 if [[ $HOST != SHIPIT ]]; then
