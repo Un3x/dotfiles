@@ -2,7 +2,7 @@
 
 The report says what is wrong and how to see it, never how to fix it. Its reader is the author or the next agent, who finds the fix on their own: a finding is a behaviour, the steps that reproduce it, and the result, in plain words. Its references in the code come after the explanation, on a `Where:` line (full repo-relative path and line), never inside it. No « Fix: » line. The user posts it without rewriting it. A finding that only exists in the code (a missing index, an unrelated reformatting) names the screen, the data or the change it touches in plain words.
 
-The report is written in the language of the PR (title, commits, description), whatever language the session runs in: it is relayed to the team as is.
+The report is written in French, whatever the language of the PR or the session: the user reads it and posts it on GitHub as is. The section headings and the `Reproduce:`, `Result:`, `Class:`, `Where:` labels stay as written below, since `/ship` counts the findings by them.
 
 A link is always whole: a PR, an issue or a URL in full; the file a missed rule lives in by its full path, never its basename.
 
