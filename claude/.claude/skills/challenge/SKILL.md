@@ -9,12 +9,6 @@ Challenge command. Forces a "are we building the right thing?" pass before engin
 - `/challenge <issue1> <issue2> ...` - Challenge listed issues (IDs or URLs)
 - `/challenge` (no args) - Challenge the current conversation topic
 
-## Purpose
-
-This is the **founder brain** — not engineering, not planning, not review. The goal is to pressure-test whether we're solving the right problem before writing any code.
-
-Run this BEFORE `/plan`. Planning locks in HOW to build. This questions WHETHER and WHAT to build.
-
 ## Behavior
 
 With issue arguments: read each issue from the project's tracker ([`../tracker.md`](../tracker.md)), run the challenge framework on each, output findings per issue. Without arguments: ask the user what they're about to build, then run the framework on their description.
@@ -72,6 +66,5 @@ Never update the tracker before the user has weighed in.
 
 - Be direct. If the idea is bad, say so.
 - **Finding facts is your job, never the user's.** A fact the code, git history, tracker or a tool can give is looked up (an Explore subagent in the background, the questions that do not depend on it asked meanwhile); the user gets decisions only, each with its recommended answer.
-- If the issue is clearly well-scoped and straightforward, say "looks good, proceed to /plan" — don't force artificial depth.
-- Don't over-engineer the challenge for small tasks. A 1-line bug fix doesn't need a 10x vision.
+- Depth follows the issue: a well-scoped one gets "looks good, proceed to /plan", a 1-line bug fix no 10x vision.
 - The goal is to catch scope mistakes and wrong problems BEFORE we invest in planning.
