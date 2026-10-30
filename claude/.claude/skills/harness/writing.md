@@ -9,7 +9,7 @@ Read at step 2 for its thresholds, and at step 6 before writing a line in a skil
 - **A gesture two skills perform is a skill both call**; naming the Skill tool gets the call, a `/name` in prose does not. A fact two skills read stays a sibling at its owner. A new skill costs its description on every turn: create one only with two callers observed.
 - **The description is a pointer, not a summary**: what the skill does in one sentence, then the triggers, one per branch. A skill no other skill calls carries `disable-model-invocation: true`: its description then costs nothing per turn and only `/name` typed by the user invokes it.
 - **A rule states its why in general words.** No date, no PR, no ticket, no project name. A story that only explains one case is dropped, or turned into a general rule that covers it. A rule whose defect no longer occurs is removed.
-- **A number lives in the audit that measured it**, dated. A skill that needs an order of magnitude points there; a copied number becomes a false instruction.
+- **Three kinds of number.** A **goal**, most of them, is written as one ("about 60 characters"): it holds for about 95% of usual cases, and comprehension wins when they clash. A **restriction** is a hard cap a project or a best-practice skill sets on purpose (a design system's sizes, timings, contrast), written as a cap. A **measured** number (a count, a size, a rate observed) lives in the audit that measured it, dated; a rule that needs it points there, because a copied measurement goes stale.
 - **No no-op** — an instruction the model already follows by default pays its line for nothing. **No negation of a positive already written** — "don't do X" makes X more present. A rule earns its place by parrying a gesture the model makes willingly and no positive covers.
 - **Move sections, don't rewrite sentences.** A file refined by twenty sessions is cut by moving its paragraphs; the register (`forme.py --register`) proves each one has a fate.
 
@@ -19,7 +19,7 @@ Read at step 2 for its thresholds, and at step 6 before writing a line in a skil
 
 | Threshold | Value | Protects |
 | --- | --- | --- |
-| lines of a `SKILL.md` or a `CLAUDE.md` | 100 (never above 150) | that a rule at § 5.3 weighs as much as at § 1 |
+| lines of a `SKILL.md` or a `CLAUDE.md` | about 100 | that a rule at § 5.3 weighs as much as at § 1 |
 | characters of a model-invoked description | 400 | every turn of every session, where all are loaded |
 | rules / boundaries | 5 | that they stay read |
 | toc on a sibling | from 100 lines | that a partial read sees everything it holds |
