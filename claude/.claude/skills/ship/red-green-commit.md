@@ -4,6 +4,7 @@ Read at phase 3 (implement) of `/ship`, and again at each review round's re-ship
 
 - **First action of this phase**: copy the plan's step list verbatim into your todo list, one todo per step — paraphrasing the plan is how steps get silently dropped
 - A step that only removes code (`remove <what>` in the plan) skips 1–4: remove, run the related tests, then 5–8.
+- A step that changes structure with behaviour unchanged (`refactor <what>` in the plan) skips 1–4: refactor with the existing tests green before and after, then 5–8, in its own commit.
 - At each step, follow the **red-green-commit** cycle:
   1. **Red**: Write the failing test(s) specified in the plan step. Expected values come from an independent source (a known literal, a worked example, the spec), never recomputed the way the code does. When an outside rule drives the change (a provider's calendar, a publication date, a threshold), one example per real case the rule produces, the why in its name (« in March, the February data is not out yet »). A test proves what the change does. It never asserts that something the diff removed is gone (a comment, a field, a method, a route): the diff shows that. A fix that stops a wrong effect tests that effect, in the case that motivated it (the email sent once). No spy (`have_received`) on a call whose result another assertion already checks (the record it creates, the request it sends)
   2. Run the test — confirm it fails for the expected reason (not a typo/syntax error)

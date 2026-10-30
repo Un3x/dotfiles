@@ -27,9 +27,9 @@ Design: grid — ok | <finding> → <change in the steps>
 Flag: ...             ← only if you believe simple is insufficient (one sentence)
 ```
 
-- **TDD is the default.** Each step = failing test + the behavior change that makes it pass, together; a step that only removes code is written `remove <what>`, with no failing test. Never a trailing "add tests" step. Spike exception only if `/challenge` flagged it — note it in the plan.
-- **Steps are vertical slices** ([`../challenge/slices.md`](../challenge/slices.md)). Each step leaves a behaviour observable end to end, through every layer it needs, never a layer alone: no "model" step then "controller" step then "view" step. A `remove` step or the preparatory refactor the kind calls for is the only exception, written as such.
-- **An issue that holds more than one story** (the one-sentence test of `slices.md`) stops the plan: no step written, the split goes under Questions, one sentence of functional value per slice.
+- **TDD is the default.** Each step = failing test + the behavior change that makes it pass, together; a step that only removes code is written `remove <what>`, and a step that changes structure with behaviour unchanged (the preparatory refactor the kind calls for) `refactor <what>`: neither has a failing test. Never a trailing "add tests" step. Spike exception only if `/challenge` flagged it — note it in the plan.
+- **Steps are vertical slices** ([`../challenge/slices.md`](../challenge/slices.md)). Each step leaves a behaviour observable end to end, through every layer it needs, never a layer alone: no "model" step then "controller" step then "view" step. A `remove` or `refactor` step is the only exception.
+- **An issue that holds more than one story** (the one-sentence test of `slices.md`) goes back to `/challenge` (its Split Granularity step): the plan stops there and says so to the user, no step written.
 - Explore the codebase before planning; plans reference real files.
 - A screen with a mockup is built from the mockup: look at it (images, the mockup run) before writing the steps, and name it in the step. A difference from it goes under Questions, never a default component in its place. A screen the issue changes with no mockup goes back to `/challenge` (its Screen step): the plan stops there and says so to the user, no step written.
 - Facts are looked up, never put under Questions ([`../challenge/SKILL.md`](../challenge/SKILL.md) § Rules); only decisions go to the user.
