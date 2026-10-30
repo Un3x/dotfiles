@@ -1,3 +1,14 @@
+claude/.claude/*
+!claude/.claude/CLAUDE.md
+!claude/.claude/RTK.md
+!claude/.claude/hooks/
+!claude/.claude/settings.json
+!claude/.claude/skills/
+!claude/.claude/statusline.sh
 claude/.claude/skills/synced/
 claude/.claude/skills/impeccable/
+
+herdr/.config/herdr/*
+!herdr/.config/herdr/config.toml
+
 __pycache__/
