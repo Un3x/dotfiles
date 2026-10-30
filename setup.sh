@@ -81,6 +81,7 @@ backup_conflicts() {
     while IFS= read -r -d '' file; do
         local rel="${file#"$pkg_dir"/}"
         local target="$HOME/$rel"
+        [[ "$target" -ef "$file" ]] && continue
 
         if [[ -e "$target" && ! -L "$target" ]]; then
             local backup_path="$BACKUP_DIR/$pkg/$rel"
