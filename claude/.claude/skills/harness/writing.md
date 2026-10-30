@@ -1,6 +1,6 @@
 # How the harness is written
 
-Read at step 2 for its thresholds, and at step 6 before writing a line in a skill, a hook or a `CLAUDE.md`. These files are read by agents that have none of the context in which they were written. The method comes from mattpocock's [`writing-for-agents`](https://github.com/mattpocock/skills/blob/main/skills/productivity/writing-for-agents/SKILL.md) and Anthropic's [skill best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices); reopen them rather than remember them.
+Read at step 2 for its thresholds, and at step 6 before writing a line in a skill, a hook or a `CLAUDE.md`. These files are read by agents that have none of the context in which they were written. The method is the `writing-for-agents` skill ([`../writing-for-agents/SKILL.md`](../writing-for-agents/SKILL.md), mattpocock's, kept verbatim but for the line pointing here) and Anthropic's [skill best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices); this file holds only our house rules on top.
 
 ## Shape of a skill
 
@@ -10,12 +10,11 @@ Read at step 2 for its thresholds, and at step 6 before writing a line in a skil
 - **The description is a pointer, not a summary**: what the skill does in one sentence, then the triggers, one per branch. A skill no other skill calls carries `disable-model-invocation: true`: its description then costs nothing per turn and only `/name` typed by the user invokes it.
 - **A rule states its why in general words.** No date, no PR, no ticket, no project name. A story that only explains one case is dropped, or turned into a general rule that covers it. A rule whose defect no longer occurs is removed.
 - **Three kinds of number.** A **goal**, most of them, is written as one ("about 60 characters"): it holds for about 95% of usual cases, and comprehension wins when they clash. A **restriction** is written as a cap: a hard limit a project or a best-practice skill sets on purpose (a design system's sizes, timings, contrast), or a stop that signals a deeper problem (ship's three review rounds). A **measured** number (a count, a size, a rate observed) lives in the audit that measured it, dated; a rule that needs it points there, because a copied measurement goes stale.
-- **No no-op** — an instruction the model already follows by default pays its line for nothing. **No negation of a positive already written** — "don't do X" makes X more present. A rule earns its place by parrying a gesture the model makes willingly and no positive covers.
 - **Move sections, don't rewrite sentences.** A file refined by twenty sessions is cut by moving its paragraphs; the register (`forme.py --register`) proves each one has a fate.
 
 ## Thresholds, and what they protect
 
-They are goals. `scripts/forme.py` marks a file past one with `!`: read it, and it is a finding only when the extra is not needed.
+The "about" rows are goals; the zero duplicates and the two corrections are restrictions. `scripts/forme.py` marks a file past one with `!`: read it, and it is a finding only when the extra is not needed.
 
 | Threshold | Value | Protects |
 | --- | --- | --- |
