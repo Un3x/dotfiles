@@ -14,6 +14,7 @@ The project lead session runs in the repo with the vault protocol and the projec
 | a bug report: email, message, screenshot, Sentry event | `/reproduce`, in session | `reproduced` or `flaky` → ticket written with the `issue` skill → challenge; `already fixed` or `not reproduced` → answer the reporter, stop |
 | an issue with no command | `/challenge`, in session | `CHALLENGE: GO` → plan; `RESHAPE` or `DROP` → the user |
 | an issue with the ask settled | `/plan`, in session | plan `ready` → the user approves → ship; questions → the user |
+| several issues at once (« ship them all ») | § Batch | one brief at the end |
 | an approved plan | `/ship <ISSUE>`, **one subagent per issue**, prompt exactly `Run /ship <ISSUE>` plus the decisions this session holds | PR opened and reviewed inside ship → the user merges |
 | a PR to look at | `/review <url>`, fresh subagent | report relayed, in the PR's language |
 | a PR with a human review: ours reviewed by a teammate or the user, or a teammate's the user reviewed | `/learn <PR>`, in session | the kept rules applied, the ledger updated |
@@ -24,6 +25,15 @@ The project lead session runs in the repo with the vault protocol and the projec
 ## Human gates
 
 The session never crosses these on its own: plan approval before ship; merge; `RESHAPE` or `DROP`; anything irreversible (force-push, migration on data, deploy, a message to a partner).
+
+## Batch
+
+Several issues handed over at once (« ship them all ») run push right: the user is asked once, late, with everything prepared.
+
+- One issue at a time, each to a reviewed PR, no checkpoint in between. Each plan is written and checked like any other; its approval moves from before ship to the PR review, where the user sees plan and code together.
+- A question of the user's (product, design, a contradiction between plan and review, a choice between two shapes) is never settled: it goes under the plan's `## Questions` with its recommended answer, the plan is attached to the issue the way `/ship` step 2 does, that issue stops, the queue goes on.
+- At the end, one brief: per PR, what was produced, why, its link; then every issue stopped on a question, with its plan.
+- A single issue, or anything irreversible, keeps § Human gates as written. Merge stays a human gate in a batch too.
 
 ## Following a subagent
 
