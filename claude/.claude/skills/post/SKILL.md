@@ -10,18 +10,19 @@ Thomas posts on LinkedIn for his audit practice. The post sounds like him, says 
 
 ## Usage
 
-- `/post <subject or link>`: draft a post.
+- `/post` + his dictation (Wispr, rambling allowed): cut it into a post. The default.
 - `/post` + his pasted text: correct it. He wrote it; it stays his.
+- `/post <subject or link>`: draft a post, when he has no time to dictate.
 
 ## Steps
 
 1. **Read the line and the record**: `~/Documents/mylife_in_a_vault/projects/audit/posts.md` (editorial line, what worked, what flopped, drafts, published). Done when you know whether the subject repeats a recent post.
 2. **Read the source in full** when the post rests on one (study, article, CVE): follow [`sources.md`](sources.md). Done when every number and claim you will write traces to a line of the source you read, not a summary of it.
 3. **Pick the angle** and say it in one line before drafting: who it is for (devs: tutoiement, reach; dirigeants: vouvoiement, buyers), the one opinion it defends, the closing line or question.
-4. **Write or correct** with [`voice.md`](voice.md), reading [`corpus.md`](corpus.md) first. Drafting: his words, his rhythm, his practice; an anecdote you do not have is a `[ton anecdote : …]` slot, never invented. Correcting: spelling, grammar, a missing verb, a line that is false or unclear; his slang, jokes and structure stay. Done when every change can be named in one line.
+4. **Write or correct** with [`voice.md`](voice.md), reading `~/Documents/mylife_in_a_vault/projects/audit/paires.md` first: the published text of a « dictée » pair is his voice; the gap between handed and published is what he changes. Drafting: his words, his rhythm, his practice; an anecdote you do not have is a `[ton anecdote : …]` slot, never invented. Correcting: spelling, grammar, a missing verb, a line that is false or unclear; his slang, jokes and structure stay. Cutting a dictation: his words only; cut repetitions and detours, reorder, add a missing verb, never a sentence of yours; a gap the post needs is a `[à dicter : …]` slot. Done when every change can be named in one line.
 5. **Check** against the list at the end of [`voice.md`](voice.md).
-6. **Hand it over**: the post as plain text (no blockquote, no code block), also on the clipboard (`wl-copy` or `xclip -selection clipboard`); then the changes, one line each; then what he must confirm (a claim only he can vouch for, a figure's limit); then the link for the first comment.
-7. **Once he says it is posted**: add it to « Publiés » in `posts.md` and `log_done` it in the audit category of yspassequoi.
+6. **Hand it over**: the post as plain text (no blockquote, no code block), also on the clipboard (`wl-copy` or `xclip -selection clipboard`); then the changes (for a dictation, what was cut), one line each; then what he must confirm (a claim only he can vouch for, a figure's limit); then the link for the first comment.
+7. **Once he says it is posted**: ask for the text as published, unless he pasted it. Append the pair to `~/Documents/mylife_in_a_vault/projects/audit/paires.md`: date, mode (dictée, correction or brouillon), the text you handed over, the text published. Add it to « Publiés » in `posts.md` and `log_done` it in the audit category of yspassequoi.
 
 ## Rules
 

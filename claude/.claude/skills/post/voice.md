@@ -1,6 +1,6 @@
 # La voix de Thomas
 
-Lu à l'étape 4 de `post`, après [`corpus.md`](corpus.md). Les exemples priment sur les règles : en cas de doute, on imite le corpus.
+Lu à l'étape 4 de `post`, après `paires.md`. Les exemples priment sur les règles : en cas de doute, on imite les textes publiés des paires « dictée ».
 
 ## Ce qui marche (posts.md, octobre 2026)
 
@@ -28,24 +28,8 @@ Lu à l'étape 4 de `post`, après [`corpus.md`](corpus.md). Les exemples primen
 
 - Première ligne courte, qui tient seule dans l'aperçu : « Je suis d'accord avec moi même. », « Il y a un truc avec l'IA que je ne comprends pas. », « Les tests unitaires sont morts, vives les tests unitaires. »
 - Une idée par ligne, une ligne vide entre chaque.
-- 6 à 15 lignes. Un post sur une étude peut aller jusqu'à une liste numérotée.
+- Pas de post court sans fond. Une histoire ou une méthode peut aller jusqu'à 2 000 caractères.
 - Fin : une chute ou une question, jamais un résumé.
-
-## Avant / après
-
-Brouillon de Claude, puis ce que Thomas a publié. Ce qu'il change, c'est la voix.
-
-Claude : « Les managers n'ont pas tort. Ils ne regardent pas la même chose. Le manager voit le ticket fermé. »
-Thomas : « Ce qui est frappant au delà des chiffres c'est cette perceptions décalées. On le voit à plein d'endroit, sur l'efficacité de l'IA, s'il faut recruter plus ou non… »
-→ Il part de son constat, pas d'une formule.
-
-Claude : « 79 % des équipes donnent à leurs agents IA un accès au cloud. »
-Thomas : « Il y a un truc avec l'IA que je ne comprends pas. » puis le chiffre, puis « Et là, je suis tombé sur mon petit popotin. »
-→ Une accroche à lui avant le chiffre, une réaction physique, familière.
-
-Claude : « Et avec l'IA, le calcul change. Mais pas assez pour changer la réponse. »
-Thomas : « Et avec l'IA, le calcul change parce que .... ben parce que rien en fait. »
-→ Le suspense cassé par une pirouette orale.
 
 ## Tics d'IA à ne pas écrire
 
