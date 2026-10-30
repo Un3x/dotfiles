@@ -6,7 +6,7 @@ Read at step 4 of the pass, for every memory, correction and new rule. **A fact 
 | --- | --- | --- |
 | how one thing is done, at one step | the skill that does that step — `SKILL.md` if every run reads it, a sibling file if one step reads it | "PR body: one to three lines + `Closes`" → `commit/pull-request.md`; "follow a shipping subagent" → `work/SKILL.md` § Following |
 | a gesture two skills perform | one skill both call with the Skill tool | `/simplify` from `/ship`; `/review` from `/ship`'s review loop; `/ship` from `work` |
-| a fact two skills read | a sibling in the skill that owns it; the others link its relative path, one level deep | the one rule → `plan/one-rule.md`, linked by `ship` and `review` |
+| a fact two skills read | a plain file at the root of `~/.claude/skills/` (as `tracker.md`); what one repository's skills share stays in its `.claude/` | the one rule → `plan/one-rule.md`, linked by `ship` and `review` |
 | a convention valid for any work, any repo | `~/.claude/CLAUDE.md` — and remove as much as you add | prose diet, the coding rungs |
 | a convention valid for one repo | that repo's `CLAUDE.md`, or `.claude/rules/*.md` scoped by path | Firefox + Chromium checks for Bangun UI |
 | a behaviour a coworker's Claude must follow (a non-coder on the repo) | the repo's `CLAUDE.md`, a project skill under `.claude/skills/`, a PR template, a CI gate — never a copy of a dotfiles skill (a copy of a skill only its author runs helps nobody) | Simplifions: commit and PR shape in CLAUDE.md, `new-article`-style contribution skill |

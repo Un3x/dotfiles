@@ -1,6 +1,6 @@
 # What an issue holds
 
-Read at step 2 of Write, and by Review. French on the `linear-opi` workspace; elsewhere, the language the project's issues use, headings translated.
+Read at step 2 of the `issue` skill's Write, and by its Review. French on the `linear-opi` workspace; elsewhere, the language the project's issues use, headings translated.
 
 ## Types and titles
 
@@ -84,5 +84,5 @@ déploiement.
 - **A criterion is one check** anyone can run in the app or the data. One sentence; « Étant donné / Quand / Alors » only when the starting state is not obvious. A rule beats its list of cases; a case goes above only when the PO would answer it differently. Each user the change touches keeps a criterion for their usual path.
 - **A question to the PO** is a « Question N » heading, its context, the question in bold, then « > **Proposé :** » and the answer, before the criteria it changes; never who decides; while open, the criteria say « si la réponse proposée est retenue ». It never assumes its answer, and never reopens what the requester's text, her mockup or a recorded decision settles. A requester's word the product uses differently is a question.
 - **Every exclusion carries its reason.** Only what the PO could expect to be included; often there is none. A `/challenge` no-go always goes on the issue.
-- **Size is a question**: too big for its priority, propose what to cut; several stories, propose the split ([`../challenge/slices.md`](../challenge/slices.md)).
+- **Size is a question**: too big for its priority, propose what to cut; several stories, propose the split ([`slices.md`](slices.md)).
 - **Nothing contradicts anything else**: title, criteria, exclusions, decisions and the linked sources say the same thing.

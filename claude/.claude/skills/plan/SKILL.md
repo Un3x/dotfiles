@@ -11,7 +11,7 @@ Plans one issue of the project's tracker ([`../tracker.md`](../tracker.md)), fir
 
 ## Steps
 
-1. Read [`one-rule.md`](one-rule.md). Every plan is measured against it; a plan that escalates complexity on its own is wrong even when it works.
+1. Read [`../one-rule.md`](../one-rule.md). Every plan is measured against it; a plan that escalates complexity on its own is wrong even when it works.
 2. Read the issue from the tracker → get the branch name → create or replan `.notes/<branch>/plan.md` in the format of [`plan-format.md`](plan-format.md).
 3. Stop the moment the plan has questions or a flag — do NOT guess on ambiguity. Done when the plan is ready, its questions are written in it, or the issue goes back to `/challenge`.
 

@@ -20,7 +20,7 @@ Report only what the code shows. An empty family is a fine outcome.
 
 ## Rails health
 
-The in-review subset of layered-rails' checks. Its layer checks are « Layer direction » above. The dedicated layered-rails reviewer ([`SKILL.md`](SKILL.md) step 4) goes deeper.
+The in-review subset of layered-rails' checks. Its layer checks are « Layer direction » above. The dedicated layered-rails reviewer ([`review/SKILL.md`](review/SKILL.md) step 4) goes deeper.
 
 - **Callbacks**: a callback doing work outside the record (charging, syncing another system) instead of keeping the record consistent; a flag to skip a callback (`skip_*`, `unless: :flag`).
 - **Concerns**: a concern that groups code by kind (all the validations, all the scopes) instead of carrying one behaviour testable on its own; a concern grown past one screen.

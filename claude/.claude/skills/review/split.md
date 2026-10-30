@@ -18,7 +18,7 @@ Read by `/review split <target>`, a trial against the single-agent review: one a
 Each one reads `SKILL.md` § Rules for the bar of a finding, and the repo's `REVIEW.md` files: the root one, plus any in a folder the diff touches. Each writes its findings in the shape of [`output.md`](output.md), with their `Where:` line. With earlier rounds, each checks that the findings of its own domain are fixed and does not raise a triaged one again. Each reviews only its domain and leaves the rest to the specialist who owns it: a narrow brief is what the trial tests.
 
 - **Asked**: [`asked.md`](asked.md), the whole pass, verdict included.
-- **Critical**: [`checklist.md`](checklist.md) Pass 1, then the edge cases and performance of Pass 2.
-- **Design**: `checklist.md` Pass 3, with [`design-grid.md`](design-grid.md). On a Rails app it then applies `~/.claude/skills/layered-rails/SKILL.md` and its `commands/review.md`. In this mode it replaces the separate layered-rails reviewer.
-- **Simplicity**: `checklist.md` Pass 4, then the rest of Pass 2: conditional complexity, test gaps, dead code, naming, readability.
+- **Critical**: [`../review-checklist.md`](../review-checklist.md) Pass 1, then the edge cases and performance of Pass 2.
+- **Design**: `../review-checklist.md` Pass 3, with [`../design-grid.md`](../design-grid.md). On a Rails app it then applies `~/.claude/skills/layered-rails/SKILL.md` and its `commands/review.md`. In this mode it replaces the separate layered-rails reviewer.
+- **Simplicity**: `../review-checklist.md` Pass 4, then the rest of Pass 2: conditional complexity, test gaps, dead code, naming, readability.
 - **Rules**: `SKILL.md` step 5, the written rules and the lessons ledger, findings under RULES MISSED.

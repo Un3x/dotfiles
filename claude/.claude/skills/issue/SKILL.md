@@ -15,13 +15,13 @@ The top of an issue is written for the PO, who decides and checks; below the lin
 ## Write
 
 1. **Gather the sources**: the issue and its comments ([`../tracker.md`](../tracker.md)), what it links, the challenge or reproduce verdict, the project's recorded decisions (status file, memory), what the user said. A design is looked at, not read: open its images and run the mockup, keeping captures. Done when every fact the issue states traces to a source.
-2. **Write it** with [`template.md`](template.md) into a draft file in the scratchpad. Done when the top meets the template's goal.
+2. **Write it** with [`../issue-template.md`](../issue-template.md) into a draft file in the scratchpad. Done when the top meets the template's goal.
 3. **Review it**: a fresh subagent, prompt `Use the issue skill: review <absolute path of the draft>` plus the sources and, from round two, a triage file next to the draft (each finding, what was done with it). Check a finding before applying it. Fix each BLOQUANT by rewording or cutting, adding only what the template allows; a PAS CLAIR is fixed or reported. A change after `prête` is reviewed alone. After the third round, apply nothing more: show the user what still blocks.
 4. **Show the user** the draft and the open questions early; post on their go. Done when the tracker holds the draft as shown.
 
 ## Review
 
-Read [`template.md`](template.md), then follow [`review.md`](review.md). The review reports; it never edits the issue.
+Read [`../issue-template.md`](../issue-template.md), then follow [`review.md`](review.md). The review reports; it never edits the issue.
 
 ## Rules
 

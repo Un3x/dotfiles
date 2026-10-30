@@ -21,7 +21,7 @@ Having read the sources, the reviewer cannot get lost where the PO does. A fresh
 - A fact missing from the top is a finding only when the PO needs it to decide or check; one for the dev goes to `/plan`.
 - Not reported: a guess on a detail that changes neither.
 
-Then check against [`template.md`](template.md): the rules there are the smells (a dev word, a criterion with two checks, a vague word, an exclusion without its reason, a hidden question, the top past its goal).
+Then check against [`../issue-template.md`](../issue-template.md): the rules there are the smells (a dev word, a criterion with two checks, a vague word, an exclusion without its reason, a hidden question, the top past its goal).
 
 ## 4. The other readers
 

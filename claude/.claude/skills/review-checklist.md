@@ -1,11 +1,11 @@
 # Built-in checklist
 
-Read at step 3 of `/review`, before the repo's `REVIEW.md` files. Each pass lists what to look for; the bar for a finding is in `SKILL.md` § Rules.
+Read at step 3 of `/review`, before the repo's `REVIEW.md` files. Each pass lists what to look for; the bar for a finding is in `review/SKILL.md` § Rules.
 
 ## Pass 1: CRITICAL
 Issues that will break production, lose data, or create security holes.
 
-Each finding is the failure scenario as steps and result, in the shape of [`output.md`](output.md): no fix.
+Each finding is the failure scenario as steps and result, in the shape of [`review/output.md`](review/output.md): no fix.
 
 Categories:
 - **SQL safety**: Raw queries, missing indexes on new columns, N+1 queries, missing transactions where needed
@@ -25,7 +25,7 @@ Issues worth knowing about but not blocking.
 Categories:
 - **Conditional complexity**: Nested conditions that hide logic bugs, boolean expressions that could be simplified
 - **Missing edge cases**: Nil/null/empty/zero handling, unicode, timezone, pagination boundaries
-- **Test gaps**: Happy-path-only tests, missing error case tests, weak assertions, an assertion that something deleted is absent or a spy repeating what the outcome assertions prove ([`../ship/red-green-commit.md`](../ship/red-green-commit.md) step 1), a test that still passes with the behaviour broken or fails on an internals-only change (promoted to CRITICAL if an entire new code path has zero tests)
+- **Test gaps**: Happy-path-only tests, missing error case tests, weak assertions, an assertion that something deleted is absent or a spy repeating what the outcome assertions prove ([`red-green-commit.md`](red-green-commit.md) step 1), a test that still passes with the behaviour broken or fails on an internals-only change (promoted to CRITICAL if an entire new code path has zero tests)
 - **Performance**: Unbounded queries, missing pagination, loading associations unnecessarily
 - **Dead code**: Unused variables, unreachable branches, commented-out code
 - **Naming/clarity**: Misleading names, magic numbers, unclear intent (only when it could cause bugs; test names and readable code: see Readability)
@@ -33,11 +33,11 @@ Categories:
 
 ## Pass 3: DESIGN
 Walk [`design-grid.md`](design-grid.md) on the diff and on what it plugs into (callers, base classes, every other user of the classes it changes). Open the section with the families checked, even when nothing is found.
-- A finding says in plain words who decides or holds what today, who should, and what disappears if it moves (`output.md`: no fix, no code names). The target sketch belongs to `/manual-review-pr`.
+- A finding says in plain words who decides or holds what today, who should, and what disappears if it moves (`review/output.md`: no fix, no code names). The target sketch belongs to `/manual-review-pr`.
 - Merge findings into the output under a "DESIGN" section between CRITICAL and INFORMATIONAL
 
 ## Pass 4: SIMPLICITY (over-engineering)
-Complexity that costs more than it pays, measured against [the one rule](../plan/one-rule.md). Same rule as CRITICAL: each finding needs a concrete cost statement, not a vibe.
+Complexity that costs more than it pays, measured against [the one rule](one-rule.md). Same rule as CRITICAL: each finding needs a concrete cost statement, not a vibe.
 
 Categories:
 - **Configuration over convention**: config flags, option hashes, initializers, or custom plumbing where a Rails convention/built-in does the job — name the built-in that replaces it

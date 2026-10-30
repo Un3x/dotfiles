@@ -7,7 +7,7 @@ Reference for writing any document an agent consumes: a skill, an `AGENTS.md` / 
 
 When the document you're writing is a skill, read [`SKILL-MECHANICS.md`](SKILL-MECHANICS.md) for frontmatter, invocation choice, and router skills.
 
-Our house rules on top of this reference (shape of a skill, kinds of number, thresholds, `CLAUDE.md`): [`../harness/writing.md`](../harness/writing.md), read before writing a line.
+Our house rules on top of this reference (shape of a skill, kinds of number, thresholds, `CLAUDE.md`): [`../writing.md`](../writing.md), read before writing a line.
 
 ## Context pointers
 

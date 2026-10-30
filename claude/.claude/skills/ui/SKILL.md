@@ -7,7 +7,7 @@ description: "Produce a screen for one of our projects: a mockup, a redesign, an
 
 Adapted from Anthropic's `frontend-design` skill (Apache 2.0). `/challenge` runs it at its step 7; any other request for a screen runs it as is.
 
-The mockup is the spec for the screen (`../issue/template.md`): `/plan` builds from it, `/review` checks against it. Without one, the dev fills the gaps with default components, and the PO discovers the screen in the PR.
+The mockup is the spec for the screen (`../issue-template.md`): `/plan` builds from it, `/review` checks against it. Without one, the dev fills the gaps with default components, and the PO discovers the screen in the PR.
 
 ## Which case
 

@@ -34,7 +34,7 @@
 - When two implementations are the same size, prefer the one with better edge-case handling.
 - Never lazy about: trust-boundary validation, error handling that prevents data loss, security, accessibility, anything explicitly requested. Minimal means less code, not less correct or less readable.
 - Any push landing on the default branch without a PR review gets a fresh-eyes review subagent before the done report.
-- Splitting work into issues/PRs: vertical slices, one story per PR — the grain is in `~/.claude/skills/challenge/slices.md`.
+- Splitting work into issues/PRs: vertical slices, one story per PR — the grain is in `~/.claude/skills/slices.md`.
 
 ## Contradictions
 
@@ -44,6 +44,6 @@
 
 ## Rails
 
-- **Vanilla Rails first.** Before writing or planning Rails code, read `~/.claude/skills/plan/one-rule.md`: what we are building sets the shape (trivial, fills a system, new system, isolated); simple and readable, no graft, code with the object that owns the decision.
+- **Vanilla Rails first.** Before writing or planning Rails code, read `~/.claude/skills/one-rule.md`: what we are building sets the shape (trivial, fills a system, new system, isolated); simple and readable, no graft, code with the object that owns the decision.
 
 @RTK.md

@@ -17,7 +17,7 @@ Kind: trivial | fills <system> | new system | isolated — <why, one line>   ←
 2. ...
 
 ## Size
-~X lines, Y files, N commits in reading order   ← an estimate, not a cap: the PR's grain is `../challenge/slices.md`; the commits are the reviewer's path.
+~X lines, Y files, N commits in reading order   ← an estimate, not a cap: the PR's grain is `../slices.md`; the commits are the reviewer's path.
 
 Entry points: <the routes, jobs or commands that reach the objects this plan changes>
 Design: grid — ok | <finding> → <change in the steps>
@@ -28,8 +28,8 @@ Flag: ...             ← only if you believe simple is insufficient (one senten
 ```
 
 - **TDD is the default.** Each step = failing test + the behavior change that makes it pass, together; a step that only removes code is written `remove <what>`, and a step that changes structure with behaviour unchanged (the preparatory refactor the kind calls for) `refactor <what>`: neither has a failing test. Never a trailing "add tests" step. Spike exception only if `/challenge` flagged it — note it in the plan.
-- **Steps are vertical slices** ([`../challenge/slices.md`](../challenge/slices.md)). Each step leaves a behaviour observable end to end, through every layer it needs, never a layer alone: no "model" step then "controller" step then "view" step. A `remove` or `refactor` step is the only exception.
-- **An issue that holds more than one story** (the one-sentence test of `slices.md`) goes back to `/challenge` (its Split Granularity step): no `plan.md` is written, and the plan says so to the user.
+- **Steps are vertical slices** ([`../slices.md`](../slices.md)). Each step leaves a behaviour observable end to end, through every layer it needs, never a layer alone: no "model" step then "controller" step then "view" step. A `remove` or `refactor` step is the only exception.
+- **An issue that holds more than one story** (the one-sentence test of `../slices.md`) goes back to `/challenge` (its Split Granularity step): no `plan.md` is written, and the plan says so to the user.
 - Explore the codebase before planning; plans reference real files.
 - A screen with a mockup is built from the mockup: look at it (images, the mockup run) before writing the steps, and name it in the step. A difference from it goes under Questions, never a default component in its place. A screen the issue changes with no mockup goes back to `/challenge` (its Screen step): no `plan.md` is written, and the plan says so to the user.
 - Facts are looked up, never put under Questions ([`../challenge/SKILL.md`](../challenge/SKILL.md) § Rules); only decisions go to the user.
@@ -39,8 +39,8 @@ Flag: ...             ← only if you believe simple is insufficient (one senten
 
 Kind trivial: skip it, `Design: n/a`.
 
-After the steps are written, list on the `Entry points:` line every route, job or command that reaches the objects the plan changes (grep the callers, the routes file, the controllers). Behaviour that belongs to one of them cannot live in an object they share. Then walk [`../review/design-grid.md`](../review/design-grid.md) against the planned changes. A finding changes the steps: it moves code to its owner, removes a second path, or adds the preparatory refactor the kind calls for (`one-rule.md`). Record the result on the `Design:` line.
+After the steps are written, list on the `Entry points:` line every route, job or command that reaches the objects the plan changes (grep the callers, the routes file, the controllers). Behaviour that belongs to one of them cannot live in an object they share. Then walk [`../design-grid.md`](../design-grid.md) against the planned changes. A finding changes the steps: it moves code to its owner, removes a second path, or adds the preparatory refactor the kind calls for (`../one-rule.md`). Record the result on the `Design:` line.
 
 ## Fresh-eyes check (non-trivial plans only)
 
-Before marking `ready`, spawn a subagent on `sonnet` with only the issue + draft plan: "Propose a design with half the moving parts, or the same behaviour owned by a different object." A smaller version of the same shape keeps a wrong owner; asking for another owner is what catches it. If it finds a simpler shape or a better owner, that becomes the plan. If its shape contradicts a rule (`one-rule.md`, the project `CLAUDE.md`), never reject it on the rule alone: put the conflict under Questions, both shapes in one line each and the recommended one, and let the user decide. Exploration and fresh-eyes run on the smaller model on purpose (not for limits: to have the data before they bind); judgment stays on the main one.
+Before marking `ready`, spawn a subagent on `sonnet` with only the issue + draft plan: "Propose a design with half the moving parts, or the same behaviour owned by a different object." A smaller version of the same shape keeps a wrong owner; asking for another owner is what catches it. If it finds a simpler shape or a better owner, that becomes the plan. If its shape contradicts a rule (`../one-rule.md`, the project `CLAUDE.md`), never reject it on the rule alone: put the conflict under Questions, both shapes in one line each and the recommended one, and let the user decide. Exploration and fresh-eyes run on the smaller model on purpose (not for limits: to have the data before they bind); judgment stays on the main one.

@@ -2,7 +2,7 @@
 
 Read at `gh pr create`, and at phase 4 of `/ship`. The reader is the reviewer, then the developer who lands here from a commit months later when the issue is archived ([`readers.md`](readers.md)): the why must stand without the tracker.
 
-- **One PR = one functionality**: the grain is in [`../challenge/slices.md`](../challenge/slices.md).
+- **One PR = one functionality**: the grain is in [`../slices.md`](../slices.md).
 - **Stacked PRs** (a series where each builds on the one before) go through `gh stack` (`init`, `add`, `submit`, `rebase`), never PRs based on each other by hand.
 - **Title**: the story of the branch, shaped like a commit subject and held to its length (`SKILL.md` step 1). A one-commit PR takes its commit subject verbatim.
 - **Body**, this shape and nothing else:
