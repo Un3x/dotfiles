@@ -1,6 +1,6 @@
 # Split granularity
 
-Read at step 6 of the challenge framework, only when recommending a split. The global `CLAUDE.md` points here whenever work is split into issues or PRs. `/plan` sizing, `/ship` and `commit/pull-request.md` point here for the grain of a PR.
+Read at step 6 of the challenge framework, only when recommending a split. The global `CLAUDE.md` points here whenever work is split into issues or PRs. `/plan` steps and sizing, `/ship` and `commit/pull-request.md` point here for the grain of a PR.
 
 Splitting an oversized issue is correct — but the right grain is **the smallest change that still delivers coherent, reviewable functionality**, not the smallest change possible. A PR must let the reviewer see the global purpose; over-atomic splits destroy that.
 
