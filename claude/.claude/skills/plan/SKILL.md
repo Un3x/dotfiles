@@ -19,3 +19,4 @@ Plans one issue of the project's tracker ([`../tracker.md`](../tracker.md)), fir
 
 Questions or flag: show them, so the user can answer inline.
 Ready: the branch name and a copy-pasteable `/ship <issue>` line.
+Back to `/challenge` (several stories, or a screen with no mockup): why, and the `/challenge <issue>` line; no `plan.md`.
