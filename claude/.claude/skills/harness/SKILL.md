@@ -25,12 +25,12 @@ Ask each defect the three questions; it almost always has one answer, and the an
 ## The pass
 
 1. **Impact of the previous pass.** Open the last audit in `reviews/harness/`; remeasure each applied finding with its command. *Held*, *not held*, *not measurable* opens the audit's table. A *not held* is a finding of this pass, remedy = the fallback written in the audit, or mechanize.
-2. **Shape.** `python3 ~/.claude/skills/harness/scripts/forme.py` and `--dups`. A `!` is a finding (pillar context, remedy shorten / move / merge). Thresholds and what they protect: [`writing.md`](writing.md).
+2. **Shape.** `python3 ~/.claude/skills/harness/scripts/forme.py` and `--dups`. A `!` marks a file past a goal: read it, and it is a finding only when the extra is not needed (pillar context, remedy shorten / move / merge). Thresholds and what they protect: [`writing.md`](writing.md).
 3. **Evidence** over the window, with [`evidence.md`](evidence.md): corrections scan, transcripts, weekly reviews, memories. Note each fact with its source before interpreting it.
 4. **Diagnosis.** For each piece of evidence, the three questions, then **one** remedy: write, move, shorten, mechanize, fix, merge, remove, repatriate, measure. Where a fact goes: [`placement.md`](placement.md). **A new rule needs two occurrences**, or one that cost a PR or a redo.
 5. **Write the audit** in the vault, `reviews/harness/YYYY-MM-DD.md`, **before touching a file**, in the format of [`audit-template.md`](audit-template.md). Every applied finding carries its expected impact: measure, dated baseline, threshold, remeasure date, fallback.
 6. **Apply**, on a `harness` branch of `~/Project/dotfiles` (vault edits go on the vault's main), one commit per finding, following [`writing.md`](writing.md). Applies without asking: entropy fixes, moves, shortenings, repatriations. Proposed in the audit, applied by the user: removing a rule, `settings.json`, `hooks/guardrails.sh`.
-7. **Verify** — replay the failure: at the turn where the defect happened, would the edited file have been loaded, and is the rule high enough in it to be read? Then `forme.py` under thresholds, `--register <rev>:<path>` at zero for every file cut, and no dead path (`grep -o '~/.claude/[^ )\`]*'` over the harness, each path tested with `test -e`).
+7. **Verify** — replay the failure: at the turn where the defect happened, would the edited file have been loaded, and is the rule high enough in it to be read? Then every `!` of `forme.py` judged, `--register <rev>:<path>` at zero for every file cut, and no dead path (`grep -o '~/.claude/[^ )\`]*'` over the harness, each path tested with `test -e`).
 8. **Report** in the thread as [`audit-template.md`](audit-template.md) says; the merge of the dotfiles branch waits for the user.
 
 ## Rules

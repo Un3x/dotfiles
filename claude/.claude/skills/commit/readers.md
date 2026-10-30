@@ -2,7 +2,7 @@
 
 Read from `commit` step 1, from `/ship` phase 2 and 4, and from any session that writes on an issue. Each artefact has one reader, and its length is what that reader has time for.
 
-| Artefact | Reader | When | They need | Cap | Links to |
+| Artefact | Reader | When | They need | Goal | Links to |
 | --- | --- | --- | --- | --- | --- |
 | Commit | the developer in a production incident, from `git blame` / `git log -S`; the PR reviewer second | 2 am, no ticket open | what changed, in a word they can grep; the why when the subject cannot carry it | [`SKILL.md`](SKILL.md) steps 1 and 2 | nothing: GitHub resolves the sha to its PR |
 | Pull request | the reviewer; the same developer six months later, when the issue is archived | opening the diff, then the commits in order | one functionality ([`../challenge/slices.md`](../challenge/slices.md)); the high-level why and the one constraint; how to test only when it is not obvious from the diff | 1 to 3 lines + `Closes`; a review guide the user may publish (`/review-guide`) when the commits alone cannot carry the read | the issue, for the whole story; the guide for a large PR |

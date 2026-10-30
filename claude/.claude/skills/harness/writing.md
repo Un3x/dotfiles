@@ -15,13 +15,13 @@ Read at step 2 for its thresholds, and at step 6 before writing a line in a skil
 
 ## Thresholds, and what they protect
 
-`scripts/forme.py` applies them; a `!` is a finding.
+They are goals. `scripts/forme.py` marks a file past one with `!`: read it, and it is a finding only when the extra is not needed.
 
 | Threshold | Value | Protects |
 | --- | --- | --- |
 | lines of a `SKILL.md` or a `CLAUDE.md` | about 100 | that a rule at § 5.3 weighs as much as at § 1 |
-| characters of a model-invoked description | 400 | every turn of every session, where all are loaded |
-| rules / boundaries | 5 | that they stay read |
+| characters of a model-invoked description | about 400 | every turn of every session, where all are loaded |
+| rules / boundaries | about 5 | that they stay read |
 | toc on a sibling | from 100 lines | that a partial read sees everything it holds |
 | duplicated paragraphs (`--dups`) | 0 | that a fact has one home |
 | user corrections on the same rule | 2 → mechanize | that prose broken twice becomes a control ([Fowler](https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html)) |
