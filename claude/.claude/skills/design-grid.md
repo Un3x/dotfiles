@@ -1,6 +1,6 @@
 # Design grid
 
-Read by `/review` Pass 3 on the diff, and by `/plan` on the draft plan before it is marked `ready`.
+Read by `/review` Pass 3 on the diff, by `/plan` on the draft plan before it is marked `ready`, and by `/manual-review-pr`.
 
 Before walking the grid, read what the change plugs into: base classes, callers, every other user of the classes it touches, how the same problem is solved elsewhere in the repository. An object shared by two entry points changes where a responsibility can live.
 

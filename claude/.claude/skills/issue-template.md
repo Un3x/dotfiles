@@ -1,6 +1,6 @@
 # What an issue holds
 
-Read at step 2 of the `issue` skill's Write, and by its Review. French on the `linear-opi` workspace; elsewhere, the language the project's issues use, headings translated.
+Read at step 2 of the `issue` skill's Write and by its Review; `/challenge`, `ui` and `commit/readers.md` point here. French on the `linear-opi` workspace; elsewhere, the language the project's issues use, headings translated.
 
 ## Types and titles
 
