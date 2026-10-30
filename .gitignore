@@ -6,6 +6,7 @@ claude/.claude/*
 !claude/.claude/skills/
 !claude/.claude/statusline.sh
 claude/.claude/skills/synced/
+claude/.claude/skills/.trash/
 claude/.claude/skills/impeccable/
 
 herdr/.config/herdr/*

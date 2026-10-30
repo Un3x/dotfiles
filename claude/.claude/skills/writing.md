@@ -1,6 +1,6 @@
-# How the harness is written
+# How we write for agents
 
-Read at `/harness` step 2 for its thresholds, and at step 6 before writing a line in a skill, a hook or a `CLAUDE.md`. These files are read by agents that have none of the context in which they were written. The method is the `writing-for-agents` skill ([`writing-for-agents/SKILL.md`](writing-for-agents/SKILL.md), mattpocock's, kept verbatim but for the line pointing here) and Anthropic's [skill best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices); this file holds only our house rules on top.
+Read at `/harness` step 2 for its thresholds, and at step 6 before writing a line in a skill, a hook or a `CLAUDE.md`. These files are read by agents that have none of the context in which they were written. The method is the `writing-for-agents` skill ([`writing-for-agents/SKILL.md`](writing-for-agents/SKILL.md), mattpocock's, kept verbatim but for the line pointing here, its upstream checked by `harness/scripts/upstream.sh`) and Anthropic's [skill best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices); this file holds only our house rules on top.
 
 ## Shape of a skill
 
@@ -8,6 +8,7 @@ Read at `/harness` step 2 for its thresholds, and at step 6 before writing a lin
 - **Shared behaviour is factored, at the level it is shared.** A gesture two skills perform is a skill both call, through the Skill tool (a `/name` in prose gets no call). Reference two skills read is a plain file at the root of `~/.claude/skills/` (as `tracker.md`), never one skill's sibling. Our process is shared in our configuration; what the skills of one code repository share stays in that repository's `.claude/`.
 - **Invocation** follows `writing-for-agents`' `SKILL-MECHANICS.md`: model-invoked when the agent must reach the skill on its own or another skill must, typed-only otherwise.
 - **A rule states its why in general words.** No date, no PR, no ticket, no project name. A story that only explains one case is dropped, or turned into a general rule that covers it. A rule whose defect no longer occurs is removed.
+- **A rule is strict, and tested.** No hedge word (« reasonably », « where appropriate », « if needed »): a number, a named case or the target behaviour. « Never » and « always » are for a restriction, beside its positive target. A line in doubt is run with and without it; the one that changes nothing is cut.
 - **Three kinds of number.** A **goal**, most of them, is written as one ("about 60 characters"): it holds for about 95% of usual cases, and comprehension wins when they clash. A **restriction** is written as a cap: a hard limit a project or a best-practice skill sets on purpose (a design system's sizes, timings, contrast), or a stop that signals a deeper problem (ship's three review rounds). A **measured** number (a count, a size, a rate observed) lives in the audit that measured it, dated; a rule that needs it points there, because a copied measurement goes stale.
 - **Move sections, don't rewrite sentences.** A file refined by twenty sessions is cut by moving its paragraphs; the register (`forme.py --register`) proves each one has a fate.
 
