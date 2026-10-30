@@ -1,6 +1,6 @@
 # Sizing captures
 
-Read at step 4 of `gh-image`, and when images already on GitHub are too big.
+Read at steps 2 and 5 of `gh-image`, and when images already on GitHub are too big.
 
 GitHub draws a markdown image at its natural size, capped at the body width (about 880 px): a phone capture (750 × 1334 at 2x) fills more than a screen and before/after can no longer be compared. Check the dimensions before uploading:
 

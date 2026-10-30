@@ -1,6 +1,6 @@
 # Troubleshooting
 
-Read at step 5 of `gh-image` when an attach fails, half succeeds, or the flag is unknown.
+Read at step 4 of `gh-image` when an attach fails, half succeeds, or the flag is unknown.
 
 `--attach` needs gh 2.99.0 or newer (`gh --version`, the flag in the command's `--help`), write access to the repo, and GitHub.com or Enterprise Cloud.
 
