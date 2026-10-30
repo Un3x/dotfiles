@@ -22,7 +22,7 @@ def priced(u):
 
 def ship(path, skill):
     calls, verify_ids, verify_tools, results, first, started = {}, set(), set(), [], None, ''
-    keys = (skill, 'tmp/verify', 'skills/verify/', 'drive')
+    keys = (skill, 'tmp/verify', 'skills/verify/')
     for line in open(path):
         try:
             o = json.loads(line)
@@ -50,16 +50,14 @@ def ship(path, skill):
     if not re.search(r'/([a-z]+-)?ship\b', first):
         return None
     v = [calls[i] for i in verify_ids if i in calls]
-    if not v:
-        return None
-    context = st.mean(u.get('input_tokens', 0) + u.get('cache_creation_input_tokens', 0) + u.get('cache_read_input_tokens', 0) for u in v)
+    context = 0 if not v else st.mean(u.get('input_tokens', 0) + u.get('cache_creation_input_tokens', 0) + u.get('cache_read_input_tokens', 0) for u in v)
     return len(v), sum(map(tokens, v)), context, sum(results), sum(map(priced, v)), sum(map(priced, calls.values())), sum(map(tokens, calls.values()))
 
 
 print(f"/ship subagents since {since}: median per ship, share of all ships' priced tokens")
 for name, (folder, skill) in MAPS.items():
     found = [r for f in glob.glob(os.path.expanduser(f'~/.claude/projects/{folder}/**/subagents/*.jsonl'), recursive=True) if (r := ship(f, skill))]
-    rows = [r for r in found if r[0] != 'prove']
+    rows = [r for r in found if r[0] != 'prove' and r[5]]
     proofs = [r[1] for r in found if r[0] == 'prove']
     if not rows:
         print(f"{name:14} no ship drove the map")
