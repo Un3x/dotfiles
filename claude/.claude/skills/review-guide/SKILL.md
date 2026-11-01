@@ -10,7 +10,7 @@ disable-model-invocation: true
 
 Run from the repo. A PR number resolves to its branch and commits with `gh pr view <n> --json headRefName,commits`. Read the commits in order (`git show`) before writing a line.
 
-The guide is a Claude artifact, never a local `.md`: an HTML page in the session's scratchpad directory (`review-guide-<branch>.html`), published with the Artifact tool, whose rules apply (it loads its design skill first); first publish with icon `guide` and the title `Guide de lecture <PR>`. In the PR's language, these sections in this order, one anchored section each:
+The guide is a Claude artifact, never a local `.md`: an HTML page in the session's scratchpad directory (`review-guide-<branch>.html`), published with the Artifact tool, whose rules apply (it loads its design skill first); first publish with icon `guide` and the title `Guide de lecture <PR>`. In the language of the project's `Language:` line (English when there is none), these sections in this order, one anchored section each:
 
 1. **Vue d'ensemble** — what changed in one sentence, then the deliverables per surface (routes, docs, SDKs, UI…).
 2. **Exemple de bout en bout** — one concrete case followed through every stage the change touches, from declaration to what the caller or the user sees.

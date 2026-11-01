@@ -15,4 +15,4 @@ Then the evidence as one attachment on the issue (attach a file, [`../tracker.md
 
 No issue: the same three lines go to the user in the project lead session, plus the evidence path. A ticket is opened only for `reproduced` and `flaky`.
 
-The language is the project's (`commit/readers.md`).
+Written in the language of the project's `Language:` line (English when there is none).
