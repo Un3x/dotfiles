@@ -16,6 +16,24 @@
 - Do not add comments in code — code should be self-explanatory
 - **NEVER** disable GPG signing (`--no-gpg-sign`). If signing fails, the key is locked: leave the change staged with its message ready, end your message with this line on its own — `GPG locked — run: ! echo | gpg --clearsign >/dev/null, then say go` — and carry on with whatever needs no commit. A subagent hands that line up to the session that spawned it.
 
+## Messages to Thomas
+
+Every message that ends a turn, from any session that talks to Thomas, so he never scrolls back. A subagent reports to its session, which rewrites the report into this shape.
+
+```
+**TL;DR**
+[N · name] outcome ❓
+---
+**[N · name]**
+outcome, then the detail, then what Thomas must do ❓
+```
+
+- **TL;DR**: one line per topic that moved since your last message. One topic that fits in a few lines → its block alone.
+- **Blocks**: one per moved topic, headed by its cockpit subject tag (`[new · name]` until it has one). Topics that did not move stay in the cockpit, their subject lines current.
+- **A background result** (a subagent, a brief, a lead) gets its own block in the next message, written in full so it stands alone.
+- **Icons** close the block and its TL;DR line: ❓ a decision · ▶️ a command to run · 👀 something to read or check · ⏳ waiting on someone else. No icon: nothing for Thomas.
+- **Language**: English. Text handed on (reviews, issues, PR and ticket comments) follows the project's `Language:` line (`CLAUDE.local.md` in the repo, or the project's vault `CLAUDE.md`), written in that language from the start.
+
 ## Prose Diet
 
 - Never create documentation files (README sections, docs/, guides) unless explicitly requested.
