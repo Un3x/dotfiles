@@ -2,7 +2,7 @@
 
 Read at step 6 of `manual-review-pr`, once the user asks for the page.
 
-A Claude artifact: an HTML page in the session's scratchpad (`review-<repo>-pr-<n>.html`), published with the Artifact tool, whose rules apply (it loads its design skill first); first publish with icon `review` and the title `Revue PR <n>`. In the language of the project's `Language:` line (English when there is none), one anchored section per tab, in this order:
+A Claude artifact: an HTML page in the session's scratchpad (`review-<repo>-pr-<n>.html`), published with the Artifact tool, whose rules apply (it loads its design skill first); first publish with icon `review` and the title `Revue PR <n>`. In the language of the project's `Language:` line (English when there is none); its headings, titles and verdict words stay as written, one anchored section per tab, in this order:
 
 1. **Vue d'ensemble**: a one-sentence verdict, what the PR does today (links pinned to the head commit), the axes table (in the PR / constraint / link to its solution), the proposed refactor order, what is kept as is.
 2. **Cible finale**: a callout saying it assembles the recommended options and is illustrative; all the constraints in one list; the whole target at once to show it holds together: who does what (table), the request flow as a text diagram, a sketch of each piece, what the next feature of the same kind has to write, what disappears from the PR.
