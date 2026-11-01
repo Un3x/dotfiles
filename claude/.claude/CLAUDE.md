@@ -33,7 +33,7 @@ outcome, then the detail, then what Thomas must do ❓
 - **A background result** (a subagent, a brief, a lead) gets its own block in the next message, written in full so it stands alone.
 - **Icons** close the block and its TL;DR line: ❓ a decision · ▶️ a command to run · 👀 something to read or check · ⏳ waiting on someone else. One icon per need. No icon: nothing for Thomas.
 - **A skill's own template** (grilling's questions, ship's report) sits inside its block unchanged; the GPG line stays the very last line.
-- **Language**: English, unless the project's own rule says otherwise. Reviews and PR or ticket comments follow the project's `Language:` line (`CLAUDE.local.md` in the repo, or the project's vault `CLAUDE.md`), written in that language from the start; commits and issues follow the repo's own language (`commit`, `issue`). A relayed text is quoted in its own language.
+- **Language**: English, unless the project's own rule says otherwise. Reviews and PR or ticket comments are written in the **project language** from the start: the `Language:` line of `CLAUDE.local.md` in the repo or of the project's vault `CLAUDE.md`, English when there is none. Commits and issues follow the repo's own language (`commit`, `issue`). A relayed text is quoted in its own language.
 
 ## Prose Diet
 

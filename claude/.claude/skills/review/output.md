@@ -2,7 +2,7 @@
 
 The report says what is wrong and how to see it, never how to fix it. Its reader is the author or the next agent, who finds the fix on their own: a finding is a behaviour, the steps that reproduce it, and the result, in plain words. Its references in the code come after the explanation, on a `Where:` line (full repo-relative path and line), never inside it. No « Fix: » line. The user posts it without rewriting it. A finding that only exists in the code (a missing index, an unrelated reformatting) names the screen, the data or the change it touches in plain words.
 
-The report is written in the language of the project's `Language:` line (`CLAUDE.local.md` in the repo, or the project's vault `CLAUDE.md`), English when there is none: the user reads it and posts it on GitHub as is. Only the free text that fills a `[…]` or `<…>` placeholder is in that language; the headings, labels, status words, `not run`, the `(also …)` tags and the verdict picked from its list stay as written below, since `/ship` reads the report by them.
+The report is written in the project language: the user reads it and posts it on GitHub as is. Only the free text that fills a `[…]` or `<…>` placeholder is in that language; the headings, labels, status words, `not run`, the `(also …)` tags and the verdict picked from its list stay as written below, since `/ship` reads the report by them.
 
 A link is always whole: a PR, an issue or a URL in full; the file a missed rule lives in by its full path, never its basename.
 

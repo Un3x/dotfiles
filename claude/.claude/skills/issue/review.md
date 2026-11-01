@@ -33,7 +33,7 @@ An edge case the rule or a decision answers is `/plan`'s, not a finding; one the
 
 ## Output
 
-In the language of the project's `Language:` line (English when there is none); its headings, titles and verdict words stay as written. About five findings, the ones that change what gets built or checked; repeats are one finding. Each says what is wrong, never the rewrite. `prête` when nothing is BLOQUANT; an empty section is left out.
+In the project language; its headings, titles and verdict words stay as written. About five findings, the ones that change what gets built or checked; repeats are one finding. Each says what is wrong, never the rewrite. `prête` when nothing is BLOQUANT; an empty section is left out.
 
 ```
 ## Revue d'issue : [ID — titre, lien complet] — [prête | à reprendre]

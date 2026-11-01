@@ -37,7 +37,7 @@ Several issues handed over at once (« ship them all ») run push right: the use
 
 ## Following a subagent
 
-The Agent tool runs it in the background and notifies on completion; one issue per subagent, at most one shipping subagent at a time on this machine (15 GB, Firefox open). On its report: read it; once the PR's CI is green, check it against the repo's merge rules and apply what they ask (a vouch, a label), then merge it when they allow an agent to; otherwise leave the merge to the user, naming why; update `STATUS.md`, tell the user in one block (`~/.claude/CLAUDE.md` § Messages to Thomas) with the PR link and the open points. A subagent that asks a question the user already settled in this session gets the answer through SendMessage, and the report says what was sent; a design or scope question goes to the user. Cap: 2 h per subagent, then stop and report.
+The Agent tool runs it in the background and notifies on completion; one issue per subagent, at most one shipping subagent at a time on this machine (15 GB, Firefox open). On its report: read it; once the PR's CI is green, check it against the repo's merge rules and apply what they ask (a vouch, a label), then merge it when they allow an agent to; otherwise leave the merge to the user, naming why; log it in the app (`log_done`), tell the user in one block with the PR link and the open points. A subagent that asks a question the user already settled in this session gets the answer through SendMessage, and the report says what was sent; a design or scope question goes to the user. Cap: 2 h per subagent, then stop and report.
 
 ## Rules
 
