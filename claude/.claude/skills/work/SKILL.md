@@ -24,7 +24,7 @@ The project lead session runs in the repo with the vault protocol and the projec
 
 ## Human gates
 
-The session never crosses these on its own: plan approval before ship; merge, unless the repo's own review rules (`REVIEW.md`, its `CLAUDE.md`) let an agent merge that PR: a project rule is stronger than this skill; `RESHAPE` or `DROP`; anything irreversible (force-push, migration on data, deploy, a message to a partner).
+The session never crosses these on its own: plan approval before ship; merge by default, unless the repo's own merge rules (`REVIEW.md`, its `CLAUDE.md`) let an agent merge that PR: they are stronger than this default; `RESHAPE` or `DROP`; anything irreversible (force-push, migration on data, deploy, a message to a partner).
 
 ## Batch
 
@@ -33,11 +33,11 @@ Several issues handed over at once (« ship them all ») run push right: the use
 - One issue at a time, each to a reviewed PR, no checkpoint in between. Each plan is written and checked like any other; its approval moves from before ship to the PR review, where the user sees plan and code together.
 - A question of the user's (product, design, a contradiction between plan and review, a choice between two shapes) is never settled: it goes under the plan's `## Questions` with its recommended answer, the plan is attached to the issue the way `/ship` step 2 does, that issue stops, the queue goes on.
 - At the end, one brief: per PR, what was produced, why, its link; then every issue stopped on a question, with its plan.
-- A single issue, or anything irreversible, keeps § Human gates as written. Merge stays a human gate in a batch too.
+- A single issue, or anything irreversible, keeps § Human gates as written. Merge follows § Human gates in a batch too.
 
 ## Following a subagent
 
-The Agent tool runs it in the background and notifies on completion; one issue per subagent, at most one shipping subagent at a time on this machine (15 GB, Firefox open). On its report: read it; once the PR's CI is green, check it against the repo's review rules and apply what they ask (a vouch, a label), or name the condition that fails; update `STATUS.md`, tell the user in one block (`~/.claude/CLAUDE.md` § Messages to Thomas) with the PR link and the open points. A subagent that asks a question the user already settled in this session gets the answer through SendMessage, and the report says what was sent; a design or scope question goes to the user. Cap: 2 h per subagent, then stop and report.
+The Agent tool runs it in the background and notifies on completion; one issue per subagent, at most one shipping subagent at a time on this machine (15 GB, Firefox open). On its report: read it; once the PR's CI is green, check it against the repo's review rules and apply what they ask (a vouch, a label), then merge it when they allow an agent to; otherwise name the condition that fails; update `STATUS.md`, tell the user in one block (`~/.claude/CLAUDE.md` § Messages to Thomas) with the PR link and the open points. A subagent that asks a question the user already settled in this session gets the answer through SendMessage, and the report says what was sent; a design or scope question goes to the user. Cap: 2 h per subagent, then stop and report.
 
 ## Rules
 
