@@ -15,16 +15,16 @@ The project lead session runs in the repo with the vault protocol and the projec
 | an issue with no command | `/challenge`, in session | `CHALLENGE: GO` → plan; `RESHAPE` or `DROP` → the user |
 | an issue with the ask settled | `/plan`, in session | plan `ready` → the user approves → ship; questions → the user |
 | several issues at once (« ship them all ») | § Batch | one brief at the end |
-| an approved plan | `/ship <ISSUE>`, **one subagent per issue**, prompt exactly `Run /ship <ISSUE>` plus the decisions this session holds | PR opened and reviewed inside ship → the user merges |
+| an approved plan | `/ship <ISSUE>`, **one subagent per issue**, prompt exactly `Run /ship <ISSUE>` plus the decisions this session holds | PR opened and reviewed inside ship → merge per § Human gates |
 | a PR to look at | `/review <url>`, fresh subagent | report relayed, quoted in its own language |
 | a PR with a human review: ours reviewed by a teammate or the user, or a teammate's the user reviewed | `/learn <PR>`, in session | the kept rules applied, the ledger updated |
 | Monday, or drift suspected | `/verify maintain`, subagent | outcome in the check-in |
-| a settled ask that ends in a PR, with no issue: an EA brief, a chore | one subagent follows `/ship` with the ask in place of the issue and plan: worktree branch, tests where the change can be tested (else the proof the ask names), PR, review loop (`ship/review-loop.md`); never in session | PR reviewed and fixed by that subagent → the user merges; one subagent owns the PR, so none leaves unreviewed |
+| a settled ask that ends in a PR, with no issue: an EA brief, a chore | one subagent follows `/ship` with the ask in place of the issue and plan: worktree branch, tests where the change can be tested (else the proof the ask names), PR, review loop (`ship/review-loop.md`); never in session | PR reviewed and fixed by that subagent → merge per § Human gates; one subagent owns the PR, so none leaves unreviewed |
 | an explicit command | as given; one that opens a PR takes the row above | — |
 
 ## Human gates
 
-The session never crosses these on its own: plan approval before ship; merge; `RESHAPE` or `DROP`; anything irreversible (force-push, migration on data, deploy, a message to a partner).
+The session never crosses these on its own: plan approval before ship; merge, unless the repo's own review rules (`REVIEW.md`, its `CLAUDE.md`) let an agent merge that PR: a project rule is stronger than this skill; `RESHAPE` or `DROP`; anything irreversible (force-push, migration on data, deploy, a message to a partner).
 
 ## Batch
 
@@ -37,7 +37,7 @@ Several issues handed over at once (« ship them all ») run push right: the use
 
 ## Following a subagent
 
-The Agent tool runs it in the background and notifies on completion; one issue per subagent, at most one shipping subagent at a time on this machine (15 GB, Firefox open). On its report: read it, update `STATUS.md`, tell the user in one block (`~/.claude/CLAUDE.md` § Messages to Thomas) with the PR link and the open points. A subagent that asks a question the user already settled in this session gets the answer through SendMessage, and the report says what was sent; a design or scope question goes to the user. Cap: 2 h per subagent, then stop and report.
+The Agent tool runs it in the background and notifies on completion; one issue per subagent, at most one shipping subagent at a time on this machine (15 GB, Firefox open). On its report: read it; once the PR's CI is green, check it against the repo's review rules and apply what they ask (a vouch, a label), or name the condition that fails; update `STATUS.md`, tell the user in one block (`~/.claude/CLAUDE.md` § Messages to Thomas) with the PR link and the open points. A subagent that asks a question the user already settled in this session gets the answer through SendMessage, and the report says what was sent; a design or scope question goes to the user. Cap: 2 h per subagent, then stop and report.
 
 ## Rules
 
