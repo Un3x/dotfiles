@@ -53,7 +53,7 @@ Walk the design grid, `~/.claude/skills/design-grid.md`, on the diff and on what
 
 ## 5. Converse
 
-- First message, in the user's language: the user's points one by one (agree / disagree, the fact, the alternative), then the agent's own findings ranked, short, with `file:line` references. No code dump.
+- First message, in English: the user's points one by one (agree / disagree, the fact, the alternative), then the agent's own findings ranked, short, with `file:line` references. No code dump.
 - Then one topic per round, at the user's pace. Asked to explore: two or three approaches with honest costs, one recommended; the chosen one gets a sketch in the repository's idioms.
 - Brutally honest: a cost or a hole in the user's direction is said once, clearly, then their decision is followed.
 - A ledger in `.notes/pr-<n>/manual-review.md`, the page's source, so a later session picks the review up:
