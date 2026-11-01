@@ -33,7 +33,7 @@ Several issues handed over at once (« ship them all ») run push right: the use
 - One issue at a time, each to a reviewed PR, no checkpoint in between. Each plan is written and checked like any other; its approval moves from before ship to the PR review, where the user sees plan and code together.
 - A question of the user's (product, design, a contradiction between plan and review, a choice between two shapes) is never settled: it goes under the plan's `## Questions` with its recommended answer, the plan is attached to the issue the way `/ship` step 2 does, that issue stops, the queue goes on.
 - At the end, one brief: per PR, what was produced, why, its link; then every issue stopped on a question, with its plan.
-- A single issue, or anything irreversible, keeps § Human gates as written. Merge follows § Human gates in a batch too.
+- A single issue, or anything irreversible, keeps § Human gates as written. In a batch the merge stays with the user even where the repo's merge rules allow an agent: it is their only approval of the plan.
 
 ## Following a subagent
 
