@@ -7,6 +7,7 @@
 # the repo needs an interactive approval and stays raw in headless runs (tested 2026-09-30).
 M="$PWD/.claude/project-lead"
 VAULT="$HOME/Documents/mylife_in_a_vault"
+echo "This session runs on host $(hostname)."
 case "$HERDR_PANE_ID" in
     *:p1)
         if [ -f "$M" ]; then L="project manager"
