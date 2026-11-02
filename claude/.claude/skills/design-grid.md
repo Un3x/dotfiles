@@ -8,7 +8,7 @@ Report only what the code shows. An empty family is a fine outcome.
 
 - **Misplaced rule** (tell, don't ask): a caller decides something the object could state itself.
 - **Re-derived knowledge**: a layer rebuilds from an output (a message, a title, a serialized payload, a raw header) what another layer knew as a typed fact. Stringly typed, it breaks silently when the wording changes.
-- **Ad-hoc list**: ask what justifies « this case yes, that one no ». No business rule behind it: the list is the smell. A rule behind it: the rule goes in the code, not the list. Before tagging cases one by one, ask whether an existing type already states the rule: then the rule follows the type, and a case that disagrees has the wrong type.
+- **Ad-hoc list**: ask what justifies « this case yes, that one no ». No business rule behind it: the list is the smell. A rule behind it: the rule goes in the code, not the list. Before tagging cases one by one, ask whether an existing type already states the rule: then the rule follows the type, and a case that disagrees has the wrong type. An HTTP status is not such a type: a rule keyed on it is a **Misplaced rule**.
 - **Wrong owner for the entry point**: behaviour of one route, caller or response in an object several routes share.
 - **Reaching through objects**: reading another object's internals or options instead of asking it.
 - **Stretched inheritance**: refused bequest, a base built for another case, constants borrowed from a sibling.
@@ -46,7 +46,7 @@ Complexity that costs more than it pays, against [`one-rule.md`](one-rule.md). E
 - **Breaks convention over configuration**: config flags, option hashes, initializers or custom plumbing where a Rails convention or built-in does the job: name the built-in.
 - **Single-caller indirection**: a class, service or method with exactly one call site that could be inlined (a `build_x` behind an `@x ||=` memo, or a `shared_examples`, is readability, not indirection).
 - **Impossible-state defense**: guards and rescues for states the actual callers cannot produce.
-- **Plan drift**: a diff much larger than the plan's size estimate (`.notes/<branch>/plan.md`): name where it grew. Lines added by a readability rewrite are not drift.
+- **Plan drift** (on a diff only): a diff much larger than the plan's size estimate (`.notes/<branch>/plan.md`): name where it grew. Lines added by a readability rewrite are not drift.
 
 ## Product and security
 
