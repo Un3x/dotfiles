@@ -1,7 +1,5 @@
 # Built-in checklist
 
-Each pass lists what to look for; the bar for a finding is in `review/SKILL.md` § Rules. Every finding, whatever its pass, is one scored row of the table in [`review/output.md`](review/output.md).
-
 ## Pass 1: CRITICAL
 Issues that will break production, lose data, or create security holes.
 
