@@ -1,9 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "includeCoAuthoredBy": false,
   "env": {
     "DISABLE_SPRING": "1"
   },
+  "includeCoAuthoredBy": false,
   "permissions": {
     "deny": [
       "Bash(ansible-vault decrypt:*)",
@@ -52,6 +52,11 @@
         "hooks": [
           {
             "type": "command",
+            "command": "~/.claude/hooks/vocabulary.sh",
+            "timeout": 5
+          },
+          {
+            "type": "command",
             "command": "date '+Current date/time: %A %Y-%m-%d %H:%M %Z'",
             "timeout": 5
           }
@@ -59,6 +64,15 @@
       }
     ],
     "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/unex/.claude/hooks/writing-reminder.sh"
+          }
+        ]
+      },
       {
         "matcher": "Bash",
         "hooks": [
@@ -103,7 +117,17 @@
   "effortLevel": "medium",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
   "verbose": false,
   "switchModelsOnFlag": false,
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "skillOverrides": {
+    "anthropic-skills:built-in-browser": "off",
+    "anthropic-skills:chrome-browser": "off",
+    "anthropic-skills:computer-use": "off",
+    "anthropic-skills:docs": "off",
+    "anthropic-skills:import-memory": "off",
+    "anthropic-skills:docx": "off",
+    "anthropic-skills:pptx": "off"
+  }
 }
