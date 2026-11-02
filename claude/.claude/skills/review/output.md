@@ -1,6 +1,6 @@
 # Output format
 
-The report says what is wrong and how to see it, never how to fix it. Its reader is the author or the next agent, who finds the fix on their own: a finding is a behaviour, the steps that reproduce it, and the result, in plain words. Its references in the code come after the explanation, on a `Where:` line (full repo-relative path and line), never inside it. No « Fix: » line. It goes on GitHub without rewriting: the user posts it, except under an auto-review brief, where the agent posts it on the PR as one comment whose first line is « review triggered automatically », never an approval or a change request. A finding that only exists in the code (a missing index, an unrelated reformatting) names the screen, the data or the change it touches in plain words.
+The report says what is wrong and how to see it, never how to fix it. Its reader is the author or the next agent, who finds the fix on their own: a finding is a behaviour, the steps that reproduce it, and the result, in plain words. Its references in the code come after the explanation, on a `Where:` line (full repo-relative path and line), never inside it. No « Fix: » line. It goes on GitHub without rewriting: the user posts it, except under an auto-review brief, where the agent posts its § Posted on the PR form. A finding that only exists in the code (a missing index, an unrelated reformatting) names the screen, the data or the change it touches in plain words.
 
 The report is written in the project language, since it goes on GitHub as is. Only the free text that fills a `[…]` or `<…>` placeholder is in that language; the headings, labels, status words, `not run`, the `(also …)` tags and the verdict picked from its list stay as written below, since `/ship` reads the report by them.
 
@@ -63,3 +63,25 @@ Rejected: [finding — why]
 **1. [What to know, in one sentence]**
 [When it shows up, and who it affects]
 ```
+
+## Posted on the PR
+
+Under an auto-review brief, the agent posts the same findings in a table, one comment, never an approval or a change request. A row is the finding's title sentence; its reproduction, reasoning and `Where:` list stay in the full report. Everything is in the project language, labels included. Left out: the delivered lines of ASKED vs BUILT, the Model line, the CODEX and LAYERED RAILS sections, the `(also …)` tags, the families checked, any path outside the repo.
+
+```
+review triggered automatically
+
+**[verdict]** · commit `[short SHA]`
+
+| Type | [Finding] | [Where] |
+|---|---|---|
+| [ticket / bug / design / simplicity / rule / test] | [the finding, one sentence] | `[path:line]` |
+
+<details><summary>[Good to know] ([n])</summary>
+
+| [Finding] | [Where] |
+|---|---|
+| [INFORMATIONAL and PRE-EXISTING findings, one sentence each] | `[path:line]` |
+</details>
+```
+
