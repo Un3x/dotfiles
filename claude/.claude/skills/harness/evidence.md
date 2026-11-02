@@ -4,7 +4,7 @@ Read at step 3. **Nothing without evidence.** A recommendation that cites no ses
 
 Evidence has to be countable: whatever the harness produces (round files, reports, commit subjects) keeps one fixed shape a script can count. A decision taken to gather data names the data and where it lands.
 
-Review noise is read from the `## Triage` lines of the round files: per section (CRITICAL, DESIGN, Codex, layered-rails…), the share of findings fixed, rebutted and deferred. A section rebutted far more than the others is a noisy pass: report it with its rate.
+Review noise is read from the `## Triage` lines of the round files: per type (`bug`, `design`, `simplicity`…), the share of rows fixed, rebutted and deferred. A type rebutted far more than the others is a noisy pass: report it with its rate.
 
 ## The window
 
