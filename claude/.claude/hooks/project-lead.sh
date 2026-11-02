@@ -7,10 +7,11 @@
 # the repo needs an interactive approval and stays raw in headless runs (tested 2026-09-30).
 M="$PWD/.claude/project-lead"
 VAULT="$HOME/Documents/mylife_in_a_vault"
+echo "This session runs on host $(hostname)."
 case "$HERDR_PANE_ID" in
     *:p1)
         if [ -f "$M" ]; then L="project manager"
-        elif [ "$PWD" = "$VAULT" ]; then L="Kyna"
+        elif [ "$PWD" = "$VAULT" ]; then L="Vigie"
         else case "$PWD" in "$VAULT"/projects/*) L="assistant" ;; esac
         fi
         if [ -n "$L" ]; then
