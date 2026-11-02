@@ -39,7 +39,7 @@ Flag: ...             ← only if you believe simple is insufficient (one senten
 
 Kind trivial: skip it, `Design: n/a`.
 
-After the steps are written, list on the `Entry points:` line every route, job or command that reaches the objects the plan changes (grep the callers, the routes file, the controllers). Behaviour that belongs to one of them cannot live in an object they share. Then walk [`../design-grid.md`](../design-grid.md) against the planned changes, and on a Rails app (`rails` in the `Gemfile`) § Review Checklist of `~/.claude/skills/layered-rails/workflows/review.md`, its callback scores in that skill's `SKILL.md` § Extraction Signals. A finding changes the steps: it moves code to its owner, removes a second path, or adds the preparatory refactor the kind calls for (`../one-rule.md`). Record the result on the `Design:` line.
+After the steps are written, list on the `Entry points:` line every route, job or command that reaches the objects the plan changes (grep the callers, the routes file, the controllers). Behaviour that belongs to one of them cannot live in an object they share. Then walk [`../design-grid.md`](../design-grid.md) against the planned changes, and on a Rails app (`rails` in the `Gemfile`) the § Review Checklist of `~/.claude/skills/layered-rails/workflows/review.md`, with that skill's `SKILL.md` § Quick Start for the layers, § Pattern Catalog for where code goes and § Extraction Signals for callback scores. A finding changes the steps: it moves code to its owner, removes a second path, or adds the preparatory refactor the kind calls for (`../one-rule.md`). Record the result on the `Design:` line.
 
 ## Fresh-eyes check (non-trivial plans only)
 
