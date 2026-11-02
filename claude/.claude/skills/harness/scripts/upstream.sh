@@ -5,4 +5,6 @@ while read -r repo path pin local; do
     [ "$last" = "$pin" ] || echo "$local: $repo/$path moved $pin → $last — https://github.com/$repo/compare/$pin...$last"
 done <<'PINS'
 mattpocock/skills skills/productivity/writing-for-agents 3216582 writing-for-agents
+mattpocock/skills skills/engineering/codebase-design 7739eae codebase-design
+mattpocock/skills skills/engineering/domain-modeling d80fa0f domain-modeling
 PINS
