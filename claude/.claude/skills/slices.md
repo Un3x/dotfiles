@@ -7,6 +7,5 @@ Splitting an oversized issue is correct — but the right grain is **the smalles
 - A PR that brings no observable behavior on its own is a sliver, not a slice. Prefer fewer, story-telling PRs over many mechanical ones.
 - Sequencing dependencies (slice B builds on slice A) is fine and expected — that's phasing, not atomizing.
 - A PR should tell one story.
-- The grain holds for commits: each one a vertical step the reader understands on its own. A boy-scout cleanup unrelated to the change gets its own commit, so the reviewer reads it apart.
 - A PR is self-sufficient and shippable on its own. A reader needs no other PR to understand it. Merging it leaves the app with something usable.
 - Size is not a reason to split. Unreadability is a reason to guide (`/review-guide`).
