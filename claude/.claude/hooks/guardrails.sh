@@ -25,6 +25,9 @@ Bash)
   if printf '%s' "$CMD" | grep -qE -- "${START}git +push\b[^;&|]*( --force\b| -f\b| \+[A-Za-z0-9_./-]+)" && ! printf '%s' "$CMD" | grep -q -- '--force-with-lease'; then
     block "force-push only with --force-with-lease, and only on your own branch after autosquash."
   fi
+  if printf '%s' "$CMD" | grep -qE -- "${START}(heroku|scalingo)\b[^;&|]* run\b[^;&|]*[ \"'](env|printenv)([ \"']|$)" || printf '%s' "$CMD" | grep -qE -- "${START}(heroku +config|scalingo\b[^;&|]* env)( |$)"; then
+    block "this prints every config var of the app, secrets included. Pass settings inside the one-off command itself (bin/rails runner …), a value the user needs: hand them the command."
+  fi
   if printf '%s' "$CMD" | grep -qE -- "${START}(command +)?herdr +agent +prompt" && [ "$(printf '%s' "$CMD" | grep -oE '/(plan|ship|review|challenge)\b' | wc -l)" -ge 2 ]; then
     block "one slash command per delegated brief. Chaining is /work's job."
   fi
