@@ -58,7 +58,7 @@ Details item N is the table's row N, in the line of its type:
 - `design`: `[who decides or holds what today] · [who should] · [what disappears if it moves] · Where: [path:line]`, the first three in plain words, no code names
 - `simplicity`, `readability`: `[what it costs] · Where: [path:line]`
 - `rule`: `[the rule, quoted] — [its file] · Where: [path:line]`
-- `ask`: `[the ask line] — missing | deviates: [how] | unclear: [what would settle it] | unproven | extra: [the limit it crosses]`
+- `ask`: `[the ask line] — missing | deviates: [how] | unclear: [what would settle it] | unproven | extra: [the limit it crosses] · Result: [what the user gets instead]`
 
 ## Posted on the PR
 
