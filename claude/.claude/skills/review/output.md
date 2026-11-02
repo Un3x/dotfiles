@@ -9,6 +9,8 @@ From 1 to 10, on fixed anchors:
 - **9–10**: breaks prod, data or security.
 - **7–8**: a user will hit it, or the next feature of the same kind will pay for it.
 - **4–6**: debt, simplicity, a missing test.
+
+A missing announcement (changelog, release note, doc) scores by what it announces: a change in behaviour is 7–8, information only is 4–5.
 - **1–3**: detail.
 
 An `ask` row for a missing or deviating line, or an extra that crosses a stated limit, scores at least 7.
@@ -19,7 +21,7 @@ One of: `ask` (a line of the ask missing, deviating, unclear or unproven, or an 
 
 ## Constat
 
-The **wait-what** pitch of the finding: one or two short sentences, a little context, in ASD-STE100 Simplified Technical English, in the words of the repo's `GLOSSARY.md` when it has one (`GLOSSARY-MAP.md` leads to the right one). It names the behaviour a user or a developer meets. A finding that only exists in the code (a missing index, an unrelated reformatting) names the screen, the data or the change it touches. A `rule` row quotes the rule. File paths and the fix live elsewhere: the paths in § Details, the fix with the author.
+The **wait-what** pitch of the finding: one or two short sentences, a little context, in ASD-STE100 Simplified Technical English, in the words of the repo's `GLOSSARY.md` when it has one (`GLOSSARY-MAP.md` leads to the right one). It names the behaviour a user or a developer meets. A finding that only exists in the code (a missing index, an unrelated reformatting) names the screen, the data or the change it touches. A `rule` row quotes the rule, never its file. File paths and the fix live elsewhere: the paths in § Details, the fix with the author.
 
 ## Verdict
 
