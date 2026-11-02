@@ -6,23 +6,13 @@ Report only what the code shows. An empty family is a fine outcome.
 
 ## Responsibilities
 
-- **Misplaced rule** (tell, don't ask): a caller decides something the object could state itself. A `case` or a table on error types to know which deserve a proof, instead of each error saying so.
+- **Misplaced rule** (tell, don't ask): a caller decides something the object could state itself.
 - **Re-derived knowledge**: a layer rebuilds from an output (a message, a title, a serialized payload, a raw header) what another layer knew as a typed fact. Stringly typed, it breaks silently when the wording changes.
-- **Ad-hoc list**: ask what justifies « this case yes, that one no ». No business rule behind it: the list is the smell. A rule behind it: the rule goes in the code, not the list. Before tagging cases one by one, ask whether an existing type already states the rule: then the rule follows the type, and a case that disagrees has the wrong type. An HTTP status is not such a type: one 404 can mean « not referenced » or « found, not eligible ». A rule keyed on it is a **Misplaced rule**.
+- **Ad-hoc list**: ask what justifies « this case yes, that one no ». No business rule behind it: the list is the smell. A rule behind it: the rule goes in the code, not the list. Before tagging cases one by one, ask whether an existing type already states the rule: then the rule follows the type, and a case that disagrees has the wrong type.
 - **Wrong owner for the entry point**: behaviour of one route, caller or response in an object several routes share.
 - **Reaching through objects**: reading another object's internals or options instead of asking it.
 - **Stretched inheritance**: refused bequest, a base built for another case, constants borrowed from a sibling.
-- **Layer direction** (Rails): a model reading `Current` or the request, a service taking `params`, a controller computing a business rule, a view querying the database, a mailer sent from a model callback.
-- **Two classes in one**: most methods of a class open on the same branch (`if not_found?`). It holds two objects: split them and pick one where it is built.
-
-## Rails health
-
-The in-review subset of layered-rails' checks. Its layer checks are « Layer direction » above. The dedicated layered-rails reviewer ([`review/SKILL.md`](review/SKILL.md) step 4) goes deeper.
-
-- **Callbacks**: a callback doing work outside the record (charging, syncing another system) instead of keeping the record consistent; a flag to skip a callback (`skip_*`, `unless: :flag`).
-- **Concerns**: a concern that groups code by kind (all the validations, all the scopes) instead of carrying one behaviour testable on its own; a concern grown past one screen.
-- **Services**: an anemic domain model, its logic moved into a service.
-- **God object**: a class the diff grows that already changes often and holds several unrelated jobs (unlike « Two classes in one », where one job splits on a branch).
+- **Two classes in one**: most methods of a class open on the same branch. It holds two objects: split them and pick one where it is built.
 
 ## Control flow
 
@@ -62,4 +52,4 @@ Complexity that costs more than it pays, against [`one-rule.md`](one-rule.md). E
 
 - **What the feature lets a user prove, forge, skip or learn**: a document obtained with chosen inputs, a response revealing whether a record exists.
 - **Personal data**: minimization, who sees what.
-- **Invented value**: a missing value replaced by a default the code cannot know is right, in a param or in a rendered document (the most common provider printed as the data source when the real one is unknown). Unknown is written as unknown, or the call fails fast.
+- **Invented value**: a missing value replaced by a default the code cannot know is right, in a param or in a rendered document. Unknown is written as unknown, or the call fails fast.
