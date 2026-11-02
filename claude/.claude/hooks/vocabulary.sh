@@ -1,6 +1,8 @@
 #!/bin/bash
 WORDS='nicer|better|cleaner|clean up|improve|sucks|modern|beautiful|polish|optimi[sz]e|mieux|plus joli|plus propre|améliorer|amélioration|sympa|moderne'
-HITS=$(jq -r '.prompt // empty' | LC_ALL=C.UTF-8 grep -oiwE "$WORDS" | LC_ALL=C.UTF-8 sed 's/.*/\L&/' | sort -u | paste -sd, | sed 's/,/, /g')
+P=$(jq -r '.prompt // empty')
+case "$P" in *'<task-notification>'*) exit 0 ;; esac
+HITS=$(printf '%s' "$P" | LC_ALL=C.UTF-8 grep -oiwE "$WORDS" | LC_ALL=C.UTF-8 sed 's/.*/\L&/' | sort -u | paste -sd, | sed 's/,/, /g')
 [ -n "$HITS" ] || exit 0
 jq -n --arg h "$HITS" '{
   systemMessage: ("Generic words: " + $h),
