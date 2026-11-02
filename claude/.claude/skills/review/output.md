@@ -55,7 +55,7 @@ Layered rails: Rejected: [finding — why] (or: not run — <reason>; left out w
 Details item N is the table's row N, in the line of its type:
 
 - `bug`, `test`, `pre-existing`: `Reproduce: [steps] · Result: [what happens, against what should] · Class: [the kind of bug, when the diff holds several instances] · Where: [path:line, path:line]`
-- `design`, in plain words, no code names: `[who holds what today] · [who should] · [what disappears if it moves] · Where: [path:line]`
+- `design`: `[who decides or holds what today] · [who should] · [what disappears if it moves] · Where: [path:line]`, the first three in plain words, no code names
 - `simplicity`, `readability`: `[what it costs] · Where: [path:line]`
 - `rule`: `[the rule, quoted] — [its file] · Where: [path:line]`
 - `ask`: `[the ask line] — missing | deviates: [how] | unclear: [what would settle it] | unproven | extra: [the limit it crosses]`
