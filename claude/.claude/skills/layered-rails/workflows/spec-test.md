@@ -1,16 +1,18 @@
-# /layers:spec-test
+# Spec-Test Workflow
 
 Run the specification test on files to evaluate layer responsibility alignment.
 
 The specification test works by generating a **test skeleton** — the describe/context structure that would be needed to fully test the code. This skeleton makes layer violations immediately visible: if you see `context "when HTTP response fails"` inside a domain model spec, something is wrong.
 
-## Usage
+## Contents
 
-```
-/layers:spec-test [file_path]
-/layers:spec-test app/controllers/orders_controller.rb
-/layers:spec-test app/services/
-```
+- [Process](#process)
+- [Layer Primary Responsibilities](#layer-primary-responsibilities)
+- [Output Format](#output-format)
+- [Existing Test Analysis](#existing-test-analysis)
+- [Extraction Recommendations](#extraction-recommendations)
+- [Example](#example)
+- [Automation Level](#automation-level)
 
 ## Process
 
@@ -272,7 +274,7 @@ end
 
 ## Automation Level
 
-This command runs with mid-to-high automation:
+This workflow runs with mid-to-high automation:
 
 1. **Automatic:** Layer identification, test skeleton generation, annotation
 2. **Automatic:** Search for existing tests, structure extraction, symptom analysis

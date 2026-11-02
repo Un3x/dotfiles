@@ -5,6 +5,19 @@ Framework for building AI agents in Rails applications.
 **GitHub**: https://github.com/activeagents/activeagent
 **Layer**: Infrastructure (LLM calls) / Application (orchestration)
 
+## Contents
+
+- Installation
+- Basic Usage
+- Agents with Tools
+- System Prompts
+- Structured Output
+- Service Integration
+- Background Processing
+- Configuration
+- Testing
+- Error Handling
+
 ## Installation
 
 ```ruby
@@ -260,8 +273,3 @@ class AIService
   end
 end
 ```
-
-## Related
-
-- [AI Integration Topic](../topics/ai-integration.md)
-- [Service Objects Pattern](../patterns/service-objects.md)

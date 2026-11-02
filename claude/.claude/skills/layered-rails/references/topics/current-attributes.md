@@ -1,5 +1,17 @@
 # Current Attributes
 
+## Contents
+
+- Summary
+- Layer Placement
+- Key Principles
+- Implementation
+- Acceptable Uses of Current
+- Anti-Patterns
+- Where Current IS Appropriate
+- Testing with Current
+- Current vs Explicit Parameters
+
 ## Summary
 
 `Current` is Rails' built-in thread-local storage for request-scoped context like current user, tenant, or request metadata. It enables implicit context passing but must be used carefully to avoid coupling layers.
@@ -104,7 +116,7 @@ ProcessOrderJob.perform_later(
 )
 ```
 
-## Acceptable Uses
+## Acceptable Uses of Current
 
 ### Audit Logging
 
@@ -293,7 +305,3 @@ end
 | Explicit | Clear dependencies, easy testing | More verbose, must pass through layers |
 
 **Recommendation**: Default to explicit parameters. Use Current only for cross-cutting infrastructure concerns (logging, audit, time zone).
-
-## Related
-
-- [Anti-Patterns: Current in Models](../anti-patterns.md#current-in-models)

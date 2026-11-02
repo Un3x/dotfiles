@@ -19,6 +19,6 @@ Each one reads `SKILL.md` § Rules for the bar of a finding, and the repo's `REV
 
 - **Asked**: [`asked.md`](asked.md), the whole pass, verdict included.
 - **Critical**: [`../review-checklist.md`](../review-checklist.md) Pass 1, then the edge cases and performance of Pass 2.
-- **Design**: `../review-checklist.md` Pass 3, with [`../design-grid.md`](../design-grid.md). On a Rails app it then applies `~/.claude/skills/layered-rails/SKILL.md` and its `commands/review.md`. In this mode it replaces the separate layered-rails reviewer.
+- **Design**: `../review-checklist.md` Pass 3, with [`../design-grid.md`](../design-grid.md). On a Rails app it then applies `~/.claude/skills/layered-rails/SKILL.md` and its `workflows/review.md`. In this mode it replaces the separate layered-rails reviewer.
 - **Simplicity**: `../review-checklist.md` Pass 4, then the rest of Pass 2: conditional complexity, test gaps, dead code, naming, readability.
 - **Rules**: `SKILL.md` step 5, the written rules and the lessons ledger, its findings `rule` rows.

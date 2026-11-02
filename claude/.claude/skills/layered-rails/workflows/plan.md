@@ -1,35 +1,39 @@
----
-name: layered-rails-gradual
-description: "Use this agent when planning incremental adoption of layered architecture for Rails codebases. Creates phased roadmaps for introducing patterns like authorization (policies), callback extraction, god object decomposition, or ViewComponent adoption. Analyzes current state, finds existing patterns to build upon, and produces specific before/after code examples with 'stop here if' guidance."
-model: inherit
----
+# Gradual Layerification Workflow
 
-# Layered Rails Gradual Adoption Agent
+Plan incremental adoption of layered architecture for Rails codebases. Create a practical, low-risk roadmap for introducing layered patterns to an existing codebase without big-bang rewrites.
 
-Plan incremental adoption of layered architecture for Rails codebases.
+## Contents
 
-## Purpose
-
-Create a practical, low-risk roadmap for introducing layered patterns to an existing codebase without big-bang rewrites.
+- [Inputs](#inputs)
+- [Process](#process)
+- [Output Format](#output-format)
+- [Guidelines](#guidelines)
+- [Related](#related)
 
 ## Inputs
 
-- **Goal** (optional): Specific focus area. If not specified, create full roadmap.
+- **Goal** (optional): Specific focus area. If not specified, create a full roadmap.
 
 ## Process
 
 ### 1. Understand the Goal
 
-Parse the user's goal to determine focus:
+Parse the user's goal to determine focus and identify the canonical refactoring scenario for it:
 
-| Goal keywords | Focus area | Key patterns |
-|---------------|------------|--------------|
-| authorization, permissions, policies | Authorization layer | Policy objects, Action Policy |
-| fat controllers, controller logic | Controller extraction | Form objects, filter objects |
-| callbacks, after_create, side effects | Callback extraction | Services, move to callers |
-| god object, large model, User model | Model decomposition | Concerns, associated objects |
-| notifications, mailers, deliveries | Notification extraction | Move to orchestrators |
-| (none specified) | Full assessment | Prioritized roadmap |
+| Goal keywords | Focus area | Key patterns | Reference scenario |
+|---------------|------------|--------------|--------------------|
+| authorization, permissions, policies | Authorization layer | Policy objects, Action Policy | [Extract authorization to policy](../examples/authorization-to-policy.md) |
+| fat controllers, controller logic | Controller extraction | Form objects, filter objects | [Complex input to form object](../examples/complex-input-to-form-object.md) |
+| callbacks, after_create, side effects | Callback extraction | Services, move to callers | [Callbacks to service](../examples/callbacks-to-service.md) |
+| god object, large model, User model | Model decomposition | Concerns, associated objects | [God object decomposition](../examples/god-object-decomposition.md) |
+| Current.user, current_user in models | Context extraction | Policy + controller seams | [Extract Current from model](../examples/current-from-model.md) |
+| state machine, status, workflow | Explicit state machine | Workflow gem | [Implicit to explicit state machine](../examples/implicit-to-explicit-state-machine.md) |
+| query, scopes, reports | Query extraction | Query objects | [Query to query object](../examples/query-to-query-object.md) |
+| presenter, view logic, helpers | View extraction | Presenters, ViewComponents | [View logic to presenter](../examples/view-logic-to-presenter.md) |
+| notifications, mailers, deliveries | Notification extraction | Move to orchestrators | (no canonical scenario yet — derive from caller context) |
+| (none specified) | Full assessment | Prioritized roadmap | (consult scenarios per phase) |
+
+When a phase matches a Reference Scenario, **read the scenario file before drafting before/after code.** The scenarios are canonical templates — adapt them to the user's actual class names and call sites, don't re-derive the structure from scratch. Always cite the scenario file in the phase output so the user can see the full template.
 
 ### 2. Assess Current State
 
@@ -44,7 +48,12 @@ grep -r "class Application" app/
 
 # Check for gem usage
 grep -E "action_policy|dry-|pundit|reform" Gemfile
+
+# Check for architecture enforcement
+ls Archspec.rb 2>/dev/null
 ```
+
+When a roadmap phase establishes a boundary (e.g., "no more `Current` in models"), add a closing step that locks it in with an executable check — the archspec setup workflow (`/layered-rails:archspec`) generates the config; never recommend "add a CI guard" without it.
 
 Determine architectural style:
 - **DHH/37signals**: Fat models, thin controllers, minimal abstractions
@@ -146,7 +155,8 @@ Order by value/risk ratio:
 For each phase include:
 - Specific files to change
 - Pattern to apply with reference link
-- Before/after code examples
+- Reference scenario link (when one applies — see step 1)
+- Before/after code examples adapted from the scenario
 - Dependencies on other phases
 - Estimated scope (small/medium/large)
 - "Stop here if..." guidance
@@ -176,25 +186,26 @@ For each phase include:
 **File:** `app/models/user.rb`
 
 **Current:**
-```ruby
+` ` `ruby
 class User < ApplicationRecord
   def can_administer?(message)
     administrator? || message.creator == self
   end
 end
-```
+` ` `
 
 **After:**
-```ruby
+` ` `ruby
 # app/policies/message_policy.rb
 class MessagePolicy < ApplicationPolicy
   def administer?
     user.administrator? || record.creator == user
   end
 end
-```
+` ` `
 
-**Pattern:** [Policy Objects](../references/patterns/policy-objects.md)
+**Pattern:** Policy Objects (see references/patterns/policy-objects.md)
+**Scenario:** Extract Authorization to Policy (see examples/authorization-to-policy.md)
 
 ### Change 2: ...
 
@@ -220,7 +231,7 @@ end
 
 ## Next Steps
 
-1. Run `/layers:review` after implementing each phase
+1. Run the review workflow after implementing each phase
 2. Add tests for new abstractions before refactoring
 3. Consider [specific gem] for [specific pattern]
 ```
@@ -233,3 +244,11 @@ end
 - **Provide escape hatches** - "stop here if..." lets teams choose their depth
 - **Be specific** - name actual files and show real code transformations
 - **Respect the existing style** - acknowledge DHH-style as valid choice
+
+## Related
+
+- [Policy Objects](../references/patterns/policy-objects.md)
+- [Service Objects](../references/patterns/service-objects.md)
+- [Form Objects](../references/patterns/form-objects.md)
+- [Concerns](../references/patterns/concerns.md)
+- [Extraction signals](../references/core/extraction-signals.md)

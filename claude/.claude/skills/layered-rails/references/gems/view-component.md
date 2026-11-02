@@ -5,6 +5,17 @@ Framework for building reusable, testable view components.
 **GitHub**: https://github.com/viewcomponent/view_component
 **Layer**: Presentation
 
+## Contents
+
+- Installation
+- Basic Usage
+- Slots
+- Collections
+- Inline Components
+- Stimulus Integration
+- Previews
+- Testing
+
 ## Installation
 
 ```ruby
@@ -210,8 +221,3 @@ RSpec.describe UserAvatarComponent, type: :component do
   end
 end
 ```
-
-## Related
-
-- [View Components Topic](../topics/view-components.md)
-- [Presenters Pattern](../patterns/presenters.md)

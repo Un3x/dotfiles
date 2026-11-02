@@ -7,4 +7,5 @@ done <<'PINS'
 mattpocock/skills skills/productivity/writing-for-agents 3216582 writing-for-agents
 mattpocock/skills skills/engineering/codebase-design 7739eae codebase-design
 mattpocock/skills skills/engineering/domain-modeling d80fa0f domain-modeling
+palkan/layered-rails-skills layered-rails/skills/layered-rails 34cac30 layered-rails
 PINS

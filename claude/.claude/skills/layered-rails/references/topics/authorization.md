@@ -1,5 +1,16 @@
 # Authorization
 
+## Contents
+
+- Summary
+- Layer Placement
+- Key Principles
+- Implementation with Action Policy
+- Error Handling
+- Anti-Patterns
+- Testing
+- N+1 Authorization
+
 ## Summary
 
 Authorization determines what authenticated users can do. It belongs in the application layer as policy objects, enforced at presentation layer entry points, never leaking into domain models.
@@ -385,8 +396,3 @@ end
 # In view
 <% if @editable_ids.include?(post.id) %>
 ```
-
-## Related
-
-- [Policy Objects Pattern](../patterns/policy-objects.md)
-- [Action Policy Gem](../gems/action-policy.md)

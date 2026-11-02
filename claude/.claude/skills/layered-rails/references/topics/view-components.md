@@ -1,5 +1,19 @@
 # View Components
 
+## Contents
+
+- Summary
+- Layer Placement
+- When to Use
+- When NOT to Use
+- Key Principles
+- Implementation
+- Testing Components
+- Common Component Patterns
+- When to Extract a Component
+- Anti-Patterns
+- File Organization
+
 ## Summary
 
 View components are Ruby objects that encapsulate view logic, replacing complex partials with testable, reusable units. They bridge the presentation layer's need for logic with proper object-oriented design.
@@ -236,7 +250,7 @@ class UserAvatarComponentPreview < ViewComponent::Preview
 end
 ```
 
-## Component Patterns
+## Common Component Patterns
 
 ### Collection Component
 
@@ -296,7 +310,7 @@ end
 </div>
 ```
 
-## Extraction Signals
+## When to Extract a Component
 
 ### From Helpers
 
@@ -438,8 +452,3 @@ app/components/
     ├── avatar_component.rb
     └── profile_card_component.rb
 ```
-
-## Related
-
-- [ViewComponent Gem](../gems/view-component.md)
-- [Presenters Pattern](../patterns/presenters.md)

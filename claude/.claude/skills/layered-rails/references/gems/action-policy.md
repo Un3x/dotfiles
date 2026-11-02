@@ -5,6 +5,21 @@ Authorization framework for Ruby and Rails applications.
 **GitHub**: https://github.com/palkan/action_policy
 **Layer**: Application
 
+## Contents
+
+- Installation
+- Basic Usage
+- Scoping
+- Rule Aliases
+- Minimal CRUD Rules
+- Reason Tracking with `check?`
+- Policy Composition
+- Pre-Checks
+- Authorization Context
+- Error Handling
+- Gotchas
+- Testing
+
 ## Installation
 
 ```ruby
@@ -420,8 +435,3 @@ class WebhooksControllerTest < ActionDispatch::IntegrationTest
   end
 end
 ```
-
-## Related
-
-- [Policy Objects Pattern](../patterns/policy-objects.md)
-- [Authorization Topic](../topics/authorization.md)

@@ -1,19 +1,14 @@
-# /layers:analyze-gods
+# God Object Analysis Workflow
 
-Identify and analyze god objects in the codebase using churn × complexity metrics.
+Identify and analyze god objects in the codebase using churn × complexity metrics. Find models that have grown too large and complex, then provide actionable recommendations for decomposition.
 
-## Purpose
+## Contents
 
-Find models that have grown too large and complex, then provide actionable recommendations for decomposition.
-
-## Usage
-
-```
-/layers:analyze-gods [threshold]
-```
-
-- Without threshold: Uses default (250 lines)
-- With threshold: Custom line count threshold
+- [God Object Indicators](#god-object-indicators)
+- [Analysis Process](#analysis-process)
+- [Output Format](#output-format)
+- [Decomposition Strategies](#decomposition-strategies)
+- [Related](#related)
 
 ## God Object Indicators
 
@@ -73,8 +68,8 @@ For each god object candidate:
 
 3. **Check for layer violations**
    - Presentation logic (formatting, view helpers)
-   - Infrastructure concerns (API calls, mailers)
-   - Application logic (orchestration, authorization)
+   - Infrastructure concerns (direct API/SDK calls)
+   - Application logic (orchestration, notifications/mailers, authorization)
 
 4. **Map dependencies**
    - What other models does it touch?
@@ -277,7 +272,8 @@ end
 
 ## Related
 
-- [Extraction Signals](/skill/references/core/extraction-signals.md)
-- [Service Objects Pattern](/skill/references/patterns/service-objects.md)
-- [Concerns Pattern](/skill/references/patterns/concerns.md)
-- [Value Objects Pattern](/skill/references/patterns/value-objects.md)
+- [Extraction signals](../references/core/extraction-signals.md)
+- [Service Objects pattern](../references/patterns/service-objects.md)
+- [Concerns pattern](../references/patterns/concerns.md)
+- [Value Objects pattern](../references/patterns/value-objects.md)
+- [God object decomposition example](../examples/god-object-decomposition.md)

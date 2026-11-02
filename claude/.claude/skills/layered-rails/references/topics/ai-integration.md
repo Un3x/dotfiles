@@ -1,5 +1,17 @@
 # AI Integration
 
+## Contents
+
+- Summary
+- Layer Placement
+- Key Principles
+- Implementation with Active Agent
+- Without Active Agent
+- Embeddings and Vector Search
+- Testing AI Features
+- Anti-Patterns
+- Background Processing
+
 ## Summary
 
 AI features (LLM calls, embeddings, agents) should be treated as infrastructure concerns, wrapped in abstractions that keep domain logic AI-agnostic. This enables testing, provider switching, and graceful degradation.
@@ -358,8 +370,3 @@ class ArticlesController < ApplicationController
   end
 end
 ```
-
-## Related
-
-- [Active Agent Gem](../gems/active-agent.md)
-- [Service Objects Pattern](../patterns/service-objects.md)

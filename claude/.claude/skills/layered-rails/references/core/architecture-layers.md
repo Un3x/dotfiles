@@ -1,21 +1,29 @@
 # Architecture Layers
 
-## The Four Layers
+## Contents
+
+- The Four Layers (Presentation, Application, Domain, Infrastructure)
+- The Four Layering Rules
+- Mapping Rails Components to Layers
+- Applying Layered Architecture in Practice
+- Common Layering Mistakes
+
+## The Four Layers (Presentation, Application, Domain, Infrastructure)
 
 Rails applications are organized into four architecture layers with unidirectional data flow:
 
 | Layer | Responsibility | Rails Examples |
 |-------|----------------|----------------|
-| **Presentation** | Handle user interactions, present information | Controllers, Views, Channels, Mailers |
-| **Application** | Organize domain objects for use cases | Service objects, Form objects, Policy objects |
-| **Domain** | Entities, rules, invariants, application state | Models, Value objects, Domain events |
+| **Presentation** | Handle user interactions, present information; all inbound entry points | Controllers, Views, Channels, Jobs (internal inbound), Form objects, Presenters |
+| **Application** | Organize domain objects for use cases | Service objects, Policy objects, Mailers, Deliveries |
+| **Domain** | Entities, rules, invariants, application state | Models, Value objects, Query objects, Domain events |
 | **Infrastructure** | Supporting technologies | Active Record, API clients, File storage |
 
 ```
 Presentation → Application → Domain → Infrastructure
 ```
 
-## The Four Rules
+## The Four Layering Rules
 
 ### Rule 1: Unidirectional Data Flow
 
@@ -105,7 +113,7 @@ class FindPostService
 end
 ```
 
-## Layer Mapping
+## Mapping Rails Components to Layers
 
 ### Presentation Layer
 
@@ -115,7 +123,8 @@ end
 - Controllers (HTTP request/response)
 - Views (HTML rendering)
 - Channels (WebSocket connections)
-- Mailers (email composition)
+- Mailboxes (inbound email)
+- Jobs (**internal inbound** entry points — same design rules as controllers, minus authentication and user-input handling)
 - API serializers
 - Form objects (user input handling)
 - Filter objects (request parameter transformation)
@@ -126,6 +135,7 @@ end
 - Authentication
 - Response formatting
 - User interface logic
+- Building execution contexts for units of work (web requests and background jobs alike)
 
 ### Application Layer
 
@@ -133,13 +143,16 @@ end
 
 **Includes:**
 - Service objects (business operations)
-- Policy objects (authorization)
+- Policy objects (authorization rules; enforcement stays in presentation)
 - Interactors/Commands
+- Mailers, deliveries, notifiers (notification orchestration; the delivery adapters they use — SMTP, push drivers — are infrastructure)
 
 **Primary concerns:**
 - Orchestrating domain objects
 - Transaction boundaries
 - Use-case specific logic
+
+**Sub-layers:** The application layer is sometimes split into **Business** (framework-agnostic rules — e.g., policies) and **Services** (implementation-aware orchestration — e.g., mailers, deliveries). Either way, the invariant holds: mailers always belong to a layer above the domain layer — they are neither presentation (no user interaction) nor infrastructure (no transport details).
 
 **Warning:** This layer is often overused. Don't strip all logic from models into services (anemic models anti-pattern).
 
@@ -151,8 +164,9 @@ end
 - Models (business entities)
 - Value objects (immutable concepts)
 - Domain events
-- Query objects (data retrieval logic)
+- Query objects and repositories (data retrieval logic — the **domain services** sub-layer sitting above domain models)
 - Concerns (shared behaviors)
+- Configuration classes (schema objects; their data sources — ENV, YAML, credentials — are infrastructure)
 
 **Primary concerns:**
 - Business rules and invariants
@@ -169,6 +183,8 @@ end
 - API clients (external services)
 - File storage adapters
 - Message queue adapters
+- Mail/notification delivery adapters (SMTP, push drivers)
+- Configuration sources (ENV, YAML, credentials)
 - Cache implementations
 
 **Primary concerns:**
@@ -176,7 +192,7 @@ end
 - External communication
 - Technical implementations
 
-## Using These Principles
+## Applying Layered Architecture in Practice
 
 When designing or refactoring code:
 
@@ -185,12 +201,12 @@ When designing or refactoring code:
 3. **Apply specification test** — do tests verify appropriate responsibilities?
 4. **Extract if needed** — move code to the correct layer
 
-## Common Mistakes
+## Common Layering Mistakes
 
 | Mistake | Problem | Solution |
 |---------|---------|----------|
 | Current in models | Hidden dependency on presentation context | Pass as explicit parameter |
 | Request in services | Service depends on HTTP layer | Extract value object from request |
-| Mailer in callbacks | Model triggers presentation-layer code | Use events or move to controller |
+| Mailer in callbacks | Domain calls upward into the application layer | Move the notification to the service/delivery layer |
 | SQL in controllers | Presentation doing infrastructure work | Use model scopes or query objects |
 | Business logic in views | Presentation doing domain work | Use presenters or model methods |

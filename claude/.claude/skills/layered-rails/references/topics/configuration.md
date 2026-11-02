@@ -1,5 +1,17 @@
 # Configuration
 
+## Contents
+
+- Summary
+- Layer Placement
+- Key Principles
+- Implementation with Anyway Config
+- Without Anyway Config
+- Testing Configuration
+- Anti-Patterns
+- File Organization
+- Configuration Sources (Priority)
+
 ## Summary
 
 Configuration management extracts settings from code into structured, environment-aware objects. Anyway Config provides type-safe, validated configuration with multiple source support.
@@ -8,12 +20,18 @@ Configuration management extracts settings from code into structured, environmen
 
 ```
 ┌─────────────────────────────────────────┐
+│ Domain Layer                            │
+│  └─ Configuration classes (schema)      │
+└─────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────┐
 │ Infrastructure Layer                    │
-│  └─ Configuration classes               │
-│  └─ Environment variables               │
-│  └─ YAML files                          │
+│  └─ Configuration sources               │
+│     (ENV, YAML files, credentials)      │
 └─────────────────────────────────────────┘
 ```
+
+Configuration providers (ENV, YAML, credentials stores) are implementation details — infrastructure. By separating the schema from its data sources, config classes are promoted to the domain layer: upper layers depend on the typed config object, never on ENV/YAML directly.
 
 ## Key Principles
 
@@ -369,7 +387,3 @@ config/
 # 3. config/stripe.yml[environment]
 # 4. attr_config default value
 ```
-
-## Related
-
-- [Anyway Config Gem](../gems/anyway-config.md)

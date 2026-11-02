@@ -1,7 +1,7 @@
 ---
 name: layered-rails
 disable-model-invocation: true
-description: Design and review Rails applications using layered architecture principles from "Layered Design for Ruby on Rails Applications". Use when analyzing Rails codebases, reviewing PRs for architecture violations, planning feature implementations, or implementing patterns like authorization, view components, or AI integration. Triggers on "layered design", "architecture layers", "abstraction", "specification test", "layer violation", "extract service", "fat controller", "god object".
+description: Write, refactor, and review Rails code using layered architecture principles from "Layered Design for Ruby on Rails Applications". Use when writing or refactoring Rails code — models, controllers, services, jobs, mailers, policies, forms, query objects, presenters, view components, state machines, serializers, or AI/LLM features — to apply correct patterns and avoid layer violations; and when reviewing Rails code, PRs, or diffs for layer violations, fat controllers/models, anemic models, callback misuse, god objects, or specification-test failures. Triggers on "layered design", "architecture layers", "abstraction layer", "specification test", "layer violation", "fat controller/model", "god object", "anemic model", "extract service/callback/policy/concern", "service object", "form/policy/query/value object", "presenter", "view component", "state machine", "Active Delivery", "callback scoring", "Rails refactor/review", "Rails patterns/best practices", "archspec", "architecture linter/enforcement".
 allowed-tools:
   - Grep
   - Glob
@@ -20,37 +20,59 @@ Rails applications are organized into four architecture layers with **unidirecti
 ```
 ┌─────────────────────────────────────────┐
 │           PRESENTATION LAYER            │
-│  Controllers, Views, Channels, Mailers  │
+│   Controllers, Views, Channels, Jobs*   │
+│ Forms, Filters, Presenters, Serializers │
 └─────────────────────────────────────────┘
                     ↓
 ┌─────────────────────────────────────────┐
 │           APPLICATION LAYER             │
-│   Service Objects, Form Objects, etc.   │
+│ Services, Policies, Mailers, Deliveries │
 └─────────────────────────────────────────┘
                     ↓
 ┌─────────────────────────────────────────┐
 │             DOMAIN LAYER                │
-│  Models, Value Objects, Domain Events   │
+│  Models, Value Objects, Query Objects   │
 └─────────────────────────────────────────┘
                     ↓
 ┌─────────────────────────────────────────┐
 │          INFRASTRUCTURE LAYER           │
-│  Active Record, APIs, File Storage      │
+│  Active Record, API Clients, Storage    │
 └─────────────────────────────────────────┘
 ```
+
+\* Jobs are **internal inbound** entry points: design-wise they follow the same rules as controllers, minus authentication and user-input handling.
 
 **Core Rule:** Lower layers must never depend on higher layers.
 
 Where a project's CLAUDE.md declares `app/services/` legacy, services are code waiting to fold into models, not a layer above them: a model calling one is debt tracked by an issue, not a reverse dependency.
 
-## What Would You Like To Do?
+See [Architecture Layers Reference](references/core/architecture-layers.md) for the full layer responsibilities and the Four Rules deep-dive.
 
-1. **Analyze codebase** - Run `/layers:analyze` for full analysis or `/layers:analyze:callbacks`, `/layers:analyze:gods` for specific checks
-2. **Review code changes** - Run `/layers:review` for layered architecture review
-3. **Run specification test** - Run `/layers:spec-test` on specific files
-4. **Plan gradual adoption** - Run `/layers:gradual [goal]` to plan incremental layerification
-5. **Plan feature implementation** - I'll guide you using layered principles
-6. **Implement specific pattern** - I'll help with authorization, notifications, view components, AI integration, etc.
+## What this skill is for
+
+Use this skill when:
+
+1. **Analyzing a codebase** — apply the [architecture analysis](workflows/analyze.md) for a full audit, or zoom in with the [service-layer audit](workflows/analyze-services.md), [callback analysis](workflows/analyze-callbacks.md), or [god-object analysis](workflows/analyze-gods.md).
+2. **Reviewing code changes** — run the [code review workflow](workflows/review.md) on a diff, file, or branch.
+3. **Running the specification test** — use the [spec-test workflow](workflows/spec-test.md) on a single file or directory to evaluate whether code belongs in its current layer.
+4. **Planning gradual adoption** — generate a phased roadmap with the [layerification plan workflow](workflows/plan.md), focused on a goal like "introduce authorization" or "decompose god objects."
+5. **Planning a feature** — I'll apply the layered principles below to whichever code you're about to write.
+6. **Implementing a specific pattern** — authorization, notifications, view components, AI integration, etc. — see the Pattern Catalog and Topic References below.
+
+In Claude Code with this skill installed as a plugin (`/plugin install layered-rails@layered-rails-skills`), each workflow above is also reachable as a slash command — see [Slash Commands](#slash-commands). Natural-language requests ("review this file with layered-rails", "run the specification test on `app/models/order.rb`") work in any environment that has the skill loaded.
+
+## Workflows
+
+Reusable procedures bundled inside this skill. Read the file and apply it to the target code:
+
+- [Architecture analysis](workflows/analyze.md) — full layered-architecture audit of a Rails codebase
+- [Code review](workflows/review.md) — review a diff or file set for layer violations
+- [Specification test](workflows/spec-test.md) — evaluate whether code belongs in its current layer
+- [Service-layer audit](workflows/analyze-services.md) — deep audit of `app/services/` and service-like classes (per-cluster proposals, contracts, layer hygiene)
+- [Callback analysis](workflows/analyze-callbacks.md) — score Active Record callbacks and find extraction candidates
+- [God-object analysis](workflows/analyze-gods.md) — identify oversized models and recommend decomposition
+- [Gradual layerification plan](workflows/plan.md) — incremental roadmap for adopting layered patterns
+- [ArchSpec setup](workflows/archspec.md) — generate and verify a tailored `Archspec.rb` enforcing the layer boundaries in CI
 
 ## Core Principles
 
@@ -70,7 +92,15 @@ Where a project's CLAUDE.md declares `app/services/` legacy, services are code w
 | Controller has business logic | Pricing calculations in action | Extract to service or model |
 | Anemic models | All logic in services | Keep domain logic in models |
 
-See [Anti-Patterns Reference](references/anti-patterns.md) for complete list.
+| Category | Reference |
+|----------|-----------|
+| Layer violations (Current in models, request in services, notifications in models, business logic in controllers) | [layer-violations.md](references/anti-patterns/layer-violations.md) |
+| Service objects (anemic models, bag of random objects, premature abstraction) | [service-objects.md](references/anti-patterns/service-objects.md) |
+| Callbacks (operation callbacks, skip callbacks, control flags) | [callbacks.md](references/anti-patterns/callbacks.md) |
+| Concerns (code-slicing, overgrown) | [concerns.md](references/anti-patterns/concerns.md) |
+| Helpers (HTML construction in helpers) | [helpers.md](references/anti-patterns/helpers.md) |
+| Jobs (anemic jobs) | [jobs.md](references/anti-patterns/jobs.md) |
+| Testing (testing wrong layer) | [testing.md](references/anti-patterns/testing.md) |
 
 ### The Specification Test
 
@@ -95,8 +125,10 @@ See [Specification Test Reference](references/core/specification-test.md) for de
 | Serializer | Presentation | API response formatting | [serializers.md](references/patterns/serializers.md) |
 | Policy Object | Application | Authorization decisions | [policy-objects.md](references/patterns/policy-objects.md) |
 | Value Object | Domain | Immutable, identity-less concepts | [value-objects.md](references/patterns/value-objects.md) |
+| Collaborator Object | Domain | A slice of one model's behavior in a typed delegate | [collaborator-objects.md](references/patterns/collaborator-objects.md) |
 | State Machine | Domain | States, events, transitions | [state-machines.md](references/patterns/state-machines.md) |
 | Concern | Domain | Shared behavioral extraction | [concerns.md](references/patterns/concerns.md) |
+| Repository | Domain | **Last resort** — returning custom domain objects mapped from AR data, after AR scopes (simple) and query objects (query building) are insufficient | [repositories.md](references/patterns/repositories.md) |
 
 ### Pattern Selection Guide
 
@@ -114,16 +146,35 @@ See [Specification Test Reference](references/core/specification-test.md) for de
 
 **Remember:** Services are a "waiting room" for code until proper abstractions emerge. Don't let `app/services` become a bag of random objects.
 
-## Commands Reference
+## Refactoring Scenarios
 
-| Command | Purpose |
-|---------|---------|
-| `/layers:review` | Review code changes from layered architecture perspective |
-| `/layers:spec-test` | Run specification test on specific files |
-| `/layers:analyze` | Full codebase abstraction layer analysis |
-| `/layers:analyze:callbacks` | Score model callbacks, find extraction candidates |
-| `/layers:analyze:gods` | Find God objects via churn × complexity |
-| `/layers:gradual [goal]` | Plan gradual adoption of layered patterns |
+Canonical before/after transformations for the most common layerification moves. The [layerification plan workflow](workflows/plan.md) uses these as reference templates when proposing phases.
+
+| Scenario | Goal area | Reference |
+|----------|-----------|-----------|
+| Extract callbacks to service | callbacks, after_create chains | [callbacks-to-service.md](examples/callbacks-to-service.md) |
+| Extract authorization to policy | authorization, permissions | [authorization-to-policy.md](examples/authorization-to-policy.md) |
+| Extract query logic to query object | complex scopes, reporting queries | [query-to-query-object.md](examples/query-to-query-object.md) |
+| Extract Current from model | Current.* in domain | [current-from-model.md](examples/current-from-model.md) |
+| Decompose god object with associated objects | god model, large User/Account | [god-object-decomposition.md](examples/god-object-decomposition.md) |
+| Replace implicit state machine | timestamp-based status | [implicit-to-explicit-state-machine.md](examples/implicit-to-explicit-state-machine.md) |
+| Extract view logic to presenter | template logic, formatting | [view-logic-to-presenter.md](examples/view-logic-to-presenter.md) |
+| Form object for complex input | fat controllers, multi-model forms | [complex-input-to-form-object.md](examples/complex-input-to-form-object.md) |
+
+## Slash Commands
+
+These slash commands are available **only when this skill is installed as a Claude Code plugin** (`/plugin install layered-rails@layered-rails-skills`). When the skill is installed via [skills.sh](https://skills.sh/) or any other path that delivers `skills/layered-rails/` without the surrounding plugin, the commands won't be present — invoke the corresponding workflow directly (see [Workflows](#workflows)) or just ask in plain language.
+
+| Command | Workflow | Purpose |
+|---------|----------|---------|
+| `/layered-rails:review` | [review](workflows/review.md) | Review code changes from a layered architecture perspective |
+| `/layered-rails:spec-test` | [spec-test](workflows/spec-test.md) | Run specification test on specific files |
+| `/layered-rails:analyze` | [analyze](workflows/analyze.md) | Full codebase abstraction-layer analysis |
+| `/layered-rails:analyze-services` | [analyze-services](workflows/analyze-services.md) | Audit `app/services/` and service-like classes — conventions, clusters, layer hygiene, test consequences |
+| `/layered-rails:analyze-callbacks` | [analyze-callbacks](workflows/analyze-callbacks.md) | Score model callbacks, find extraction candidates |
+| `/layered-rails:analyze-gods` | [analyze-gods](workflows/analyze-gods.md) | Find god objects via churn × complexity |
+| `/layered-rails:plan [goal]` | [plan](workflows/plan.md) | Plan gradual adoption of layered patterns |
+| `/layered-rails:archspec` | [archspec](workflows/archspec.md) | Generate and verify an `Archspec.rb` enforcing layer boundaries in CI |
 
 ## Topic References
 
@@ -155,6 +206,7 @@ For library-specific guidance:
 | rubanok | Filter/transformation DSL | [rubanok.md](references/gems/rubanok.md) |
 | active_agent | AI agent framework | [active-agent.md](references/gems/active-agent.md) |
 | active_job-performs | Eliminate anemic jobs | [active-job-performs.md](references/gems/active-job-performs.md) |
+| archspec | Enforce layer boundaries in CI (reference `Archspec.rb` config) | [archspec.md](references/gems/archspec.md) |
 
 ## Extraction Signals
 

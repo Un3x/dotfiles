@@ -1,19 +1,14 @@
-# /layers:analyze-callbacks
+# Callback Analysis Workflow
 
-Deep analysis of Active Record callbacks in the codebase.
+Deep analysis of Active Record callbacks. Audits callbacks using a 5-tier scoring system, identifies extraction candidates, and recommends moving operation callbacks to explicit service objects.
 
-## Purpose
+## Contents
 
-Audit callbacks using the scoring system, identifying candidates for extraction to explicit service objects.
-
-## Usage
-
-```
-/layers:analyze-callbacks [path]
-```
-
-- Without path: Analyzes all models in `app/models/`
-- With path: Analyzes specific file or directory
+- [Callback Scoring System](#callback-scoring-system)
+- [Analysis Process](#analysis-process)
+- [Output Format](#output-format)
+- [Extraction Patterns](#extraction-patterns)
+- [Related](#related)
 
 ## Callback Scoring System
 
@@ -254,6 +249,7 @@ end
 
 ## Related
 
-- [Callbacks Topic](/skill/references/topics/callbacks.md)
-- [Service Objects Pattern](/skill/references/patterns/service-objects.md)
-- [Extraction Signals](/skill/references/core/extraction-signals.md)
+- [Callbacks topic](../references/topics/callbacks.md)
+- [Service Objects pattern](../references/patterns/service-objects.md)
+- [Extraction signals](../references/core/extraction-signals.md)
+- [Callbacks-to-service example](../examples/callbacks-to-service.md)

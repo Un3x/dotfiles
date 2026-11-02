@@ -1,24 +1,18 @@
-# /layers:analyze
+# Architecture Analysis Workflow
 
-Comprehensive layered architecture analysis of a Rails codebase or specific directory.
-
-## Purpose
-
-Evaluate how well the codebase follows layered architecture principles, identifying:
+Comprehensive layered architecture analysis of a Rails codebase or specific directory. Evaluates how well the codebase follows layered architecture principles, identifying:
 - Layer violations
 - Abstraction opportunities
 - God objects
 - Callback concerns
 - Missing patterns
 
-## Usage
+## Contents
 
-```
-/layers:analyze [path]
-```
-
-- Without path: Analyzes entire `app/` directory
-- With path: Analyzes specific directory (e.g., `app/models`, `app/services`)
+- [Analysis Process](#analysis-process)
+- [Reporting Principles](#reporting-principles)
+- [Output Format](#output-format)
+- [Severity Levels](#severity-levels)
 
 ## Analysis Process
 
@@ -33,42 +27,75 @@ Presentation Layer:
   - app/components/
   - app/helpers/
   - app/presenters/
+  - app/serializers/
+  - app/forms/
+  - app/filters/
+  - app/channels/
+  - app/jobs/        # internal inbound — same design rules as controllers,
+                     # minus authentication and user-input handling
 
 Application Layer:
   - app/services/
   - app/operations/
   - app/policies/
-  - app/forms/
-  - app/queries/
+  - app/mailers/
   - app/deliveries/
+  - app/notifiers/
 
 Domain Layer:
   - app/models/
+  - app/queries/
+  - app/values/
+  - app/configs/     # config schema objects; their sources (ENV/YAML/credentials)
+                     # are infrastructure
 
 Infrastructure Layer:
-  - app/mailers/
-  - app/jobs/
-  - app/channels/
-  - app/configs/
+  - app/clients/
+  - queue/storage/delivery adapters (usually gems, not app code)
 ```
 
-**Service Layer Structural Assessment** (when `app/services/` exists):
+Also record whether `Archspec.rb` exists at the repo root. If it doesn't, include a recommendation in the report: enforce the layer boundaries in CI via the archspec setup workflow (`/layered-rails:archspec`).
 
-- **Organization check:**
-  - Flat vs namespaced? Count top-level files vs files in subdirectories
-  - What naming patterns exist? (`*Creator`, `*Updater`, `*Query`, `*Form`, `*Processor`, `*Handler`)
-  - Are there groups that suggest dedicated abstractions? (e.g., many query-like services → introduce query objects)
+**Service Layer Brief** (when `app/services/` exists OR `app/models/` shows service-like classes):
 
-- **"Waiting room" assessment** (see [Service Objects](../skills/layered-rails/references/patterns/service-objects.md)):
-  - Services should decompose into specialized patterns as they accumulate
-  - A flat `app/services/` with many files is a "bag of random objects" risk
-  - Check if services follow consistent conventions (base class, interface, naming)
+This sub-step runs a *lite version* of the service-layer audit and produces a single short section in the final report (see Output Format → "## Service Layer Brief"). The brief stays under ~25 lines; it does not include per-cluster proposal blocks, contracts, current-pain prose, or test-win paragraphs — those live in the dedicated service-layer audit. **Recommend running the service-layer audit (`analyze-services` workflow) whenever the brief surfaces a non-trivial finding.**
 
-- **Scoring guidance:**
-  - Never label a large service directory (100+ files) as "Strong" or "Excellent" without verifying organization
-  - A well-namespaced service layer with clear decomposition patterns can be healthy even at high counts
-  - A flat `app/services/` with 200+ files is a red flag regardless of count
-  - Produce specific assessments like: "271 services across 15 namespaces — well-organized but consider extracting 23 query-like services to `app/queries/`"
+What to compute, in order:
+
+1. **Waiting-room gate.** Count files and LOC under `app/services/`; compute service share of `app/`. If `service_count < 10` OR `service_share < 0.10`, set tier to `Waiting room (gate fired)` and skip cluster detection — but still scan `app/models/` for service-like classes (next step).
+
+2. **Empirical mirror — one sentence.** Sample 5–10 representative service files (most-recently-modified + largest + a few short ones) and synthesize the team's implicit design pattern for a service: class shape, call interface, parameter style, return shape. The brief reports exactly **one sentence**, no code or numbers. Even when no convention has emerged, name the pattern that has: *"any Ruby object placed under `app/services/`"* is a definition. Never write "not defined".
+
+3. **Hidden services in `app/models/`.** Scan for non-AR classes with action interfaces and service-like names (`*_service`, `*_command`, `*_sync`, `*_importer`, `*_processor`, `*_notifier`, `*_calculator`, `*_resolver`, `*_query`, `*_finder`). Classify each as **domain** (calculators, queries, resolvers — pure derivation from domain data) or **application** (notifiers, syncs, importers — orchestrate side effects).
+
+4. **Architecture tier.** Pick one:
+   - **Mature decomposition** — `app/services/` is small (gate fires) AND ≥3 specialization folders exist (`forms/`, `queries/`, `policies/`, `deliveries/`, `presenters/`, `operations/`).
+   - **Mature decomposition (models-first variant)** — `app/services/` intentionally absent AND deep model namespacing carries the orchestration.
+   - **Mixed** — some specializations promoted, others still in services.
+   - **Pre-decomposition** — `app/services/` is large AND zero specialization folders.
+
+5. **Convention strength — one word per axis, no percentages in the brief.** For base class, call interface, parameter style, naming suffix/form, return value: classify as Strong / Mixed / Weak. Roll up into a single overall verdict (Strong / Mixed / Weak / "bag of random objects").
+
+6. **Cluster headlines — top 3 only.** Tokenize service basenames; group by suffix/prefix. Surface the three largest clusters as one-liners: `<pattern> (N services) — <promote candidate / demote candidate / strong cluster / borderline>`. **No proposal blocks in the brief.** If the codebase has a clearly *healthy* cluster (shared base, single deferral surface, infra separated), name it as the **healthy reference** so the team has an anchor.
+
+7. **Specialization folder verdicts.** For each of `app/forms/`, `app/queries/`, `app/policies/`, `app/deliveries/`, `app/notifiers/`, `app/presenters/`, `app/components/`, `app/operations/`, `app/clients/`: emit ✓ healthy / ⚠ ghost (folder exists but <3 files OR no base OR same-shape candidates hidden elsewhere) / ✗ absent. Ghosts are more actionable than absences — flag them.
+
+8. **Cross-cutting smell counts.** One line each, with counts only:
+   - Naming smells (`-er` suspects, tautological pairs, scheduling-frequency names) — count.
+   - Layer-hygiene issues (`request`/`params`/`flash`/`render` in services, authorization leaks) — count.
+   - Implicit-workflow chains of length ≥3 — count.
+   - Misplaced code (non-services, mixed-layer files, console/CLI utilities) — count.
+
+9. **Anemic-model risk.** Count models heavily referenced from services that have <3 substantive instance methods. A non-zero count flips the brief's diagnosis from "promote services" to "the domain is too thin."
+
+**Scoring guidance:**
+
+- Never label a large service directory (100+ files) as "Strong" or "Excellent" without verifying organization. A flat `app/services/` with 200+ files is a red flag regardless of count.
+- A well-namespaced service layer with clear decomposition patterns can be healthy even at high counts.
+- The brief must stay short. If any of the per-cluster proposals would take >2 lines to summarize honestly, that's the signal to defer to the service-layer audit — not to inline a longer brief.
+- The brief always closes with: *"For per-cluster proposals (contracts, current pain, test wins, placement options), run the analyze-services workflow."*
+
+For the full audit framework — empirical-mirror rationale, classification rules, cluster proposal blocks, and the reporting principles that govern the headline content — see the analyze-services workflow.
 
 ### 2. Layer Violation Detection
 
@@ -119,7 +146,7 @@ grep -rn "Current\." app/models/
 - If concerning patterns found → report those specifically as violations
 - If no Current usage → omit entirely
 
-See [Current Attributes](../skills/layered-rails/references/topics/current-attributes.md) for the full "Where Current IS Appropriate" table.
+See [Current Attributes](../references/topics/current-attributes.md) for the full "Where Current IS Appropriate" table.
 
 **Request Objects in Services**
 ```bash
@@ -176,7 +203,7 @@ Score all callbacks in models:
 
 ### 5. Coupling Analysis via Specification Test
 
-Apply the [specification test](../skills/layered-rails/references/core/specification-test.md) to the top 3-5 suspicious entities identified during analysis:
+Apply the [specification test](../references/core/specification-test.md) to the top 3-5 suspicious entities identified during analysis:
 
 **Pick candidates from:**
 - Controllers with complex actions (business logic detected in Step 2)
@@ -214,7 +241,7 @@ For each concern, verify:
 
 ### 7. Anti-Pattern Detection
 
-Check for common anti-patterns (see [Anti-Patterns Reference](../skills/layered-rails/references/anti-patterns.md)):
+Check for common anti-patterns. The SKILL.md "Common Violations" table groups them by category and links to detailed references — consult it for the full taxonomy.
 
 **Anemic Jobs**
 ```bash
@@ -268,6 +295,26 @@ Identify missing abstractions:
 - God object candidates: [count]
 - Callback concerns: [count]
 - Anti-patterns detected: [count]
+- Service layer tier: [Mature decomposition | Mature decomposition (models-first) | Mixed | Pre-decomposition | Waiting room]
+
+## Service Layer Brief
+
+**In this project, a Service Object is:** <one sentence — the empirical mirror>
+
+- **Architecture tier:** Mature decomposition | Mature decomposition (models-first variant) | Mixed | Pre-decomposition | Waiting room
+- **Convention strength:** Strong | Mixed | Weak (bag of random objects)
+- **Specialization folders:** forms ✓ | queries ⚠ ghost (2 files, no base) | policies ✓ | deliveries ✗ | presenters ✗
+- **Top clusters (3):**
+  1. `*Importer` (8 services) — promote candidate
+  2. `*Notifier` (6 services) — strong cluster, healthy reference
+  3. `*Processor` (4 services) — borderline; watch for premature consolidation
+- **Hidden in `app/models/`:** N service-like classes (D domain candidates / A application leaks)
+- **Cross-cutting smells:** K naming, M layer-hygiene, J implicit workflows, P misplaced
+- **Anemic-model risk:** Q models with <3 substantive methods
+
+> For per-cluster proposals (contracts, current pain, test wins, placement options), run the analyze-services workflow.
+
+Omit any bullet whose finding is zero. Skip the entire section only when `app/services/` is intentionally absent AND the `app/models/` scan finds no application-layer leaks AND no demote candidates — in which case the Summary's tier line carries the verdict.
 
 ## Layer Violations
 
@@ -303,7 +350,7 @@ Identify missing abstractions:
 | Anemic Job | `NotifyRecipientsJob` | Use `performs` gem |
 | Helper HTML | `messages_helper.rb` | Extract to ViewComponent |
 
-See [Anti-Patterns Reference](../skills/layered-rails/references/anti-patterns.md) for details.
+The SKILL.md "Common Violations" section has the per-category references.
 
 ## Pattern Recommendations
 
@@ -337,10 +384,3 @@ See [Anti-Patterns Reference](../skills/layered-rails/references/anti-patterns.m
 - Overly complex scopes
 - Anemic jobs (single-delegation wrappers)
 - Helper HTML construction (candidates for ViewComponents)
-
-## Related Commands
-
-- `/layers:analyze-callbacks` - Deep callback analysis
-- `/layers:analyze-gods` - Detailed god object analysis
-- `/layers:spec-test` - Apply specification test to specific code
-- `/layers:review` - Review specific changes

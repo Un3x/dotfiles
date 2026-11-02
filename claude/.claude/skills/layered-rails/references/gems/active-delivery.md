@@ -3,7 +3,18 @@
 Abstraction layer over delivery mechanisms (email, push, SMS, etc.).
 
 **GitHub**: https://github.com/palkan/active_delivery
-**Layer**: Application (delivery classes) / Infrastructure (notifiers)
+**Layer**: Application (delivery, mailer, and notifier classes) / Infrastructure (delivery drivers and adapters)
+
+## Contents
+
+- Installation
+- Basic Usage
+- Multiple Channels
+- Conditional Delivery
+- User Preferences
+- Custom Delivery Lines
+- Testing
+- Inline Mode (Development)
 
 ## Installation
 
@@ -208,7 +219,3 @@ end
 # config/environments/development.rb
 config.active_delivery.deliver_later_queue_adapter = :inline
 ```
-
-## Related
-
-- [Notifications Topic](../topics/notifications.md)
