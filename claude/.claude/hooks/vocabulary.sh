@@ -1,6 +1,6 @@
 #!/bin/bash
-WORDS='nicer|better|cleaner|clean up|improve|sucks|good|great|modern|beautiful|pretty|polish|optimi[sz]e|mieux|plus joli|propre|améliorer|amélioration|beau|sympa|moderne|nul'
-HITS=$(jq -r '.prompt // empty' | grep -oiwE "$WORDS" | tr 'A-Z' 'a-z' | sort -u | paste -sd, | sed 's/,/, /g')
+WORDS='nicer|better|cleaner|clean up|improve|sucks|modern|beautiful|polish|optimi[sz]e|mieux|plus joli|plus propre|améliorer|amélioration|sympa|moderne'
+HITS=$(jq -r '.prompt // empty' | LC_ALL=C.UTF-8 grep -oiwE "$WORDS" | LC_ALL=C.UTF-8 sed 's/.*/\L&/' | sort -u | paste -sd, | sed 's/,/, /g')
 [ -n "$HITS" ] || exit 0
 jq -n --arg h "$HITS" '{
   systemMessage: ("Generic words: " + $h),
