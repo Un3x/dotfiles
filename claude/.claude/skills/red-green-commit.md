@@ -1,7 +1,5 @@
 # Red-green-commit
 
-Read at phase 3 (implement) of `/ship`, and again at each review round's re-ship.
-
 - **First action of this phase**: copy the plan's step list verbatim into your todo list, one todo per step — paraphrasing the plan is how steps get silently dropped
 - A step that only removes code (`remove <what>` in the plan) skips 1–4: remove, run the related tests, then 5–8.
 - A step that changes structure with behaviour unchanged (`refactor <what>` in the plan) skips 1–4: refactor with the existing tests green before and after, then 5–8.
@@ -9,10 +7,10 @@ Read at phase 3 (implement) of `/ship`, and again at each review round's re-ship
   1. **Red**: Write the failing test(s) specified in the plan step. Expected values come from an independent source (a known literal, a worked example, the spec), never recomputed the way the code does. When an outside rule drives the change (a provider's calendar, a publication date, a threshold), one example per real case the rule produces, the why in its name (« in March, the February data is not out yet »). A test proves what the change does. It never asserts that something the diff removed is gone (a comment, a field, a method, a route): the diff shows that. A fix that stops a wrong effect tests that effect, in the case that motivated it (the email sent once). No spy (`have_received`) on a call whose result another assertion already checks (the record it creates, the request it sends)
   2. Run the test — confirm it fails for the expected reason (not a typo/syntax error)
   3. **Green**: Implement the minimum code needed to make the test pass
-  4. Run the test — confirm it passes. Then the two-edit check: break the behaviour the step adds (revert its key line, flip its condition) and the test must fail, then undo the edit; change only the internals and it must still pass. A test that survives the first edit is hollow and reaches review as a critical finding, so tighten it now
+  4. Run the test — confirm it passes. Then the two-edit check: a hand mutation of the behaviour the step adds (revert its key line, flip its condition) turns the test red, then undo it; an internals-only change keeps it green. A test that survives the mutation is hollow and reaches review as a critical finding, so tighten it now
   5. **Refactor = less indirection, not fewer lines**: each test and each method reads top to bottom without jumping around. If this step wrote a pattern from the Readability list of [`review-checklist.md`](review-checklist.md) Pass 2, rewrite it. Never introduce an abstraction the plan doesn't name (a `shared_examples` or a `build_x` memo reader is readability, not an abstraction); if one feels necessary mid-step, stop and flag it instead of improvising. Re-run tests to confirm still green
   6. Run broader quality checks (rubocop, related test files)
-  7. **Commit**: tests and implementation ship in the same commit (never separate "add tests" commits), with the message written by the `commit` skill: the plan step is context the log reader does not have
+  7. **Commit**: tests and implementation ship in the same commit, with the message written by the `commit` skill: the plan step is context the log reader does not have
   8. Update the session's Plan step
 - **Spike exception**: If the plan was flagged as a spike during `/challenge`, the red-green cycle is optional — but note skipped tests in the plan file so review catches them.
 - **A change the plan names but the step could do without gets its own commit**, before the commit that uses it: a boy-scout cleanup, a new hook in a base class, a rename. Folded into a feature commit, it reads as a required change.

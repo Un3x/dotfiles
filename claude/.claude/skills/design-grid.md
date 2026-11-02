@@ -14,7 +14,6 @@ Report only what the code shows. An empty family is a fine outcome.
 - **Stretched inheritance**: refused bequest, a base built for another case, constants borrowed from a sibling.
 - **Layer direction** (Rails): a model reading `Current` or the request, a service taking `params`, a controller computing a business rule, a view querying the database, a mailer sent from a model callback.
 - **Two classes in one**: most methods of a class open on the same branch (`if not_found?`). It holds two objects: split them and pick one where it is built.
-- **Wrong level of abstraction**: speculative generality, or a copy of an existing variant where the system already has a seam for it. Check with the deletion test, and ask what the next feature of the same kind would have to write.
 
 ## Rails health
 
@@ -47,6 +46,17 @@ The in-review subset of layered-rails' checks. Its layer checks are « Layer dir
 
 - **Public contract**: response shape, error format, SDKs, generated docs, compatibility for existing clients. A change in a shared parent class reaches every subclass's output: document and mock it for each, or move it down to the subclass.
 - **Overspecified tests and docs**: they encode a sorting rule, not a need, and flip the day the rule changes.
+
+## Simplicity
+
+Complexity that costs more than it pays, against [`one-rule.md`](one-rule.md). Each finding states its deletion payoff (« inlining this removes 40 lines and one file »). A construct the plan names as removing a mechanism (a graft, a list, a copy) is neither single-caller indirection nor a new class without a reason. A Readability rewrite (`review-checklist.md` Pass 2) is never a finding here.
+
+- **Kind mismatch**: the shape does not match the kind (`one-rule.md` § What are we building), as a system built for a trivial change.
+- **Wrong level of abstraction**: speculative generality (params, options, flags or branches nothing uses today), a new class where existing code had a natural home, or a copy of an existing variant where the system already has a seam for it. Check with the deletion test, and ask what the next feature of the same kind would have to write.
+- **Breaks convention over configuration**: config flags, option hashes, initializers or custom plumbing where a Rails convention or built-in does the job: name the built-in.
+- **Single-caller indirection**: a class, service or method with exactly one call site that could be inlined (a `build_x` behind an `@x ||=` memo, or a `shared_examples`, is readability, not indirection).
+- **Impossible-state defense**: guards and rescues for states the actual callers cannot produce.
+- **Plan drift**: a diff much larger than the plan's size estimate (`.notes/<branch>/plan.md`): name where it grew. Lines added by a readability rewrite are not drift.
 
 ## Product and security
 

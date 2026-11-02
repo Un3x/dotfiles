@@ -1,6 +1,6 @@
 # Built-in checklist
 
-Read at step 3 of `/review`, before the repo's `REVIEW.md` files. Each pass lists what to look for; the bar for a finding is in `review/SKILL.md` § Rules. Every finding, whatever its pass, is one scored row of the table in [`review/output.md`](review/output.md).
+Each pass lists what to look for; the bar for a finding is in `review/SKILL.md` § Rules. Every finding, whatever its pass, is one scored row of the table in [`review/output.md`](review/output.md).
 
 ## Pass 1: CRITICAL
 Issues that will break production, lose data, or create security holes.
@@ -16,7 +16,7 @@ Categories:
 - **Auth/authz gaps**: Missing authorization checks, privilege escalation paths, exposed endpoints
 - **Removed behaviour**: every route, branch, field, button, job or side effect the diff deletes with no replacement elsewhere in it. Nothing fails to compile and no test goes red: the feature is just gone. A removal the issue or the PR names is intended; any other one is a finding when something still reaches it (a caller in the tree, a name dispatched by string, an external client, data at rest still holding the removed value). A deleted test is a signal.
 - **Unhealed bad state**: a wrong value written by an unattended trigger (job, cron, webhook, retry) that no path restores. The Result line names the only way out (manual fix, delete and re-add). One that heals on the next run is scored by the harm until then.
-- **Untested new code paths**: New methods, branches, or behaviors introduced without a corresponding test. This is not "low coverage" hand-wringing — flag only when a specific new path has zero direct test exercising it. TDD was violated; bugs will ship. (Exception: spike PRs explicitly flagged as such.)
+- **Untested new code paths**: a new method, branch or behaviour no test exercises directly, spike PRs flagged as such excepted.
 - **Unproven premise**: Name the one fact the change is safe or effective because of, and how it is proven (test, drive, measurement, or assumed). If that fact is unproven for the case that motivated the PR, the row scores at least 7.
 
 ## Pass 2: INFORMATIONAL
@@ -32,21 +32,8 @@ Categories:
 - **Readability** (app code and specs, no bug risk needed; the cost is a reviewer's time; RSpec/Ruby examples): double-negative or vague `describe`/`context` names; several cases driven by a data table and metaprogramming (a table of lambdas, `instance_exec`) instead of one `context` per case with its stub in a `before` and a `shared_examples` taking the expected value; helpers returning tuples to destructure; vague assertions (`be >= 400` where the status is known); memoized readers with an inline block (`begin…end`) instead of `@x ||= build_x`; a sequence of steps whose purpose only the commit message explains, instead of a method that names it
 
 ## Pass 3: DESIGN
-Walk [`design-grid.md`](design-grid.md) on the diff and on what it plugs into (callers, base classes, every other user of the classes it changes).
+Walk [`design-grid.md`](design-grid.md) on the diff, all but § Simplicity.
 - A `design` row says in plain words who decides or holds what today, who should, and what disappears if it moves: no fix, no code names. The target sketch belongs to `/manual-review-pr`.
 
-## Pass 4: SIMPLICITY (over-engineering)
-Complexity that costs more than it pays, measured against [the one rule](one-rule.md). Each finding needs a concrete cost statement, not a vibe.
-
-Categories:
-- **Configuration over convention**: config flags, option hashes, initializers, or custom plumbing where a Rails convention/built-in does the job — name the built-in that replaces it
-- **Speculative generality**: params, options, config flags, or branches nothing uses today
-- **Single-caller indirection**: a class/service/method with exactly one call site that could be inlined (a `build_x` behind an `@x ||=` memo, or a `shared_examples`, is readability, not indirection)
-- **Impossible-state defense**: guards/rescues for states that cannot occur given the actual callers
-- **Homeless abstraction**: new class/module created where existing code had a natural home
-- **Kind mismatch**: the shape does not match what is being built (`one-rule.md` § What are we building): a system built for a trivial change, or a graft where an existing system needed widening
-- **Plan drift**: diff significantly larger than the plan's size estimate (`.notes/<branch>/plan.md`) — name where the growth happened. Lines added by a readability rewrite are not drift
-
-A construct that removes a mechanism (a second path, a list, a copy), named as such in the plan, is neither single-caller indirection nor a homeless abstraction.
-
-Each finding states the deletion payoff ("inlining this removes 40 lines and one file"). Never flag a Readability rewrite in this pass.
+## Pass 4: SIMPLICITY
+Walk [`design-grid.md`](design-grid.md) § Simplicity on the diff.
