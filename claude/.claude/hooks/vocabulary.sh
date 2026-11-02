@@ -4,5 +4,5 @@ HITS=$(jq -r '.prompt // empty' | LC_ALL=C.UTF-8 grep -oiwE "$WORDS" | LC_ALL=C.
 [ -n "$HITS" ] || exit 0
 jq -n --arg h "$HITS" '{
   systemMessage: ("Generic words: " + $h),
-  hookSpecificOutput: {hookEventName: "UserPromptSubmit", additionalContext: ("The prompt uses generic words (" + $h + "). Where one carries the request, ask what it means in precise terms (which property, against what reference) before acting on it.")}
+  hookSpecificOutput: {hookEventName: "UserPromptSubmit", additionalContext: ("Reminder: the prompt holds words that are often too generic (" + $h + "). Judge each: when one carries the request and its meaning is not clear from context, ask for the precise term (which property, against what reference); otherwise carry on.")}
 }'
