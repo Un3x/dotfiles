@@ -6,11 +6,11 @@ Report only what the code shows. An empty family is a fine outcome.
 
 ## Responsibilities
 
-- **Misplaced rule** (tell, don't ask): a `case` or a table on error types to know which deserve a proof. Replace the conditional with polymorphism: each error says so.
+- **Misplaced rule** (tell, don't ask): a caller decides something the object could state itself. A `case` or a table on error types to know which deserve a proof, instead of each error saying so.
 - **Re-derived knowledge**: a layer rebuilds from an output (a message, a title, a serialized payload, a raw header) what another layer knew as a typed fact. Stringly typed, it breaks silently when the wording changes.
 - **Ad-hoc list**: ask what justifies « this case yes, that one no ». No business rule behind it: the list is the smell. A rule behind it: the rule goes in the code, not the list. Before tagging cases one by one, ask whether an existing type already states the rule: then the rule follows the type, and a case that disagrees has the wrong type. An HTTP status is not such a type: one 404 can mean « not referenced » or « found, not eligible ». A rule keyed on it is a **Misplaced rule**.
-- **Misplaced responsibility**: behaviour of one route, caller or response in an object several routes share.
-- **Law of Demeter**: another object's internals or options read instead of asked.
+- **Wrong owner for the entry point**: behaviour of one route, caller or response in an object several routes share.
+- **Reaching through objects**: reading another object's internals or options instead of asking it.
 - **Stretched inheritance**: refused bequest, a base built for another case, constants borrowed from a sibling.
 - **Layer direction** (Rails): a model reading `Current` or the request, a service taking `params`, a controller computing a business rule, a view querying the database, a mailer sent from a model callback.
 - **Two classes in one**: most methods of a class open on the same branch (`if not_found?`). It holds two objects: split them and pick one where it is built.
@@ -46,7 +46,7 @@ The in-review subset of layered-rails' checks. Its layer checks are « Layer dir
 ## Contracts
 
 - **Public contract**: response shape, error format, SDKs, generated docs, compatibility for existing clients. A change in a shared parent class reaches every subclass's output: document and mock it for each, or move it down to the subclass.
-- **Overspecified tests and docs**: they encode a sorting rule, not a need.
+- **Overspecified tests and docs**: they encode a sorting rule, not a need, and flip the day the rule changes.
 
 ## Product and security
 
