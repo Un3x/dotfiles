@@ -49,7 +49,7 @@ The rung, the failures and the sandbox rule are `/review` step 4's. Its findings
 
 ## 4. The local pass, design first
 
-Walk the design grid, `~/.claude/skills/design-grid.md`, on the diff and on what it plugs into (on a Rails app, `rails` in the `Gemfile`, also the checklist of `~/.claude/skills/layered-rails/workflows/review.md`, after its `SKILL.md`), and measure the shape against what is being built (`~/.claude/skills/one-rule.md`). Check every claim against the code before saying it. A user remark can rest on a wrong fact (« it runs once per request » when it runs once per item): say so, then answer the concern behind it.
+Walk the design grid, `~/.claude/skills/design-grid.md`, on the diff and on what it plugs into (on a Rails app, `rails` in the `Gemfile`, also the § Review Checklist of `~/.claude/skills/layered-rails/workflows/review.md`, its callback scores in that skill's `SKILL.md` § Extraction Signals), and measure the shape against what is being built (`~/.claude/skills/one-rule.md`). Check every claim against the code before saying it. A user remark can rest on a wrong fact (« it runs once per request » when it runs once per item): say so, then answer the concern behind it.
 
 ## 5. Converse
 
