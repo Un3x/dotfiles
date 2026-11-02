@@ -1,6 +1,6 @@
 # How we write for agents
 
-Read at `/harness` step 2 for its thresholds, and at step 6 before writing a line in a skill, a hook or a `CLAUDE.md`. These files are read by agents that have none of the context in which they were written. The method is the `writing-for-agents` skill ([`writing-for-agents/SKILL.md`](writing-for-agents/SKILL.md), mattpocock's, kept verbatim but for the line pointing here, its upstream checked by `harness/scripts/upstream.sh`) and Anthropic's [skill best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices); this file holds only our house rules on top.
+Our house rules on top of [`SKILL.md`](SKILL.md) (mattpocock's, kept verbatim but for its line pointing here; upstream checked by `harness/scripts/upstream.sh`) and Anthropic's [skill best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices). The files they shape are read by agents that have none of the context in which they were written.
 
 ## Shape of a skill
 

@@ -16,7 +16,7 @@ Read at step 4 of the pass, for every memory, correction and new rule. **A fact 
 | a project fact: decision, baseline, partner context | the project's STATUS / LOG, or its native memory (`projects/<name>/memory/` in the vault) | prod version, partner's constraints |
 | a machine quirk | a `reference_*` memory, or a local settings file | SSH agent socket, RAM pressure |
 | a measured number | the audit that measured it, dated; a skill points to it | lines per SKILL.md, corrections per week |
-| a rule about writing the harness itself | `writing.md` at the skills root — `/harness` and `/learn` are the roles that edit these files | thresholds, "a rule states its why" |
+| a rule about writing the harness itself | `writing-for-agents/house-rules.md` — `/harness` and `/learn` are the roles that edit these files | thresholds, "a rule states its why" |
 
 Two tie-breakers:
 

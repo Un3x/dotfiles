@@ -5,4 +5,4 @@ case "$F" in
     *) exit 0 ;;
 esac
 
-jq -n --arg f "$F" '{hookSpecificOutput: {hookEventName: "PreToolUse", additionalContext: ("\($f) is read by agents: load the writing-for-agents skill (and ~/.claude/skills/writing.md) before this edit, unless it is already loaded in this session.")}}'
+jq -n --arg f "$F" '{hookSpecificOutput: {hookEventName: "PreToolUse", additionalContext: ("\($f) is read by agents: load the writing-for-agents skill before this edit, unless it is already loaded in this session.")}}'
