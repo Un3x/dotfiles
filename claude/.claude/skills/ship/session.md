@@ -22,4 +22,4 @@ Phases: `setup` → `post-plan` → `implement` → `push-pr` → `review` → `
 
 `/ship` with no args: scan the main checkout's `.notes/*/ship-session.md` (`git worktree list` gives its path) for Status `in-progress`. Several: report the list and stop, the project lead session reruns `/ship <issue>`. When the branch has a worktree, continue there, from its Phase:
 - `implement`: from its Plan step
-- `review`: read the latest `.notes/<branch_name>/review-round-N.md`; unfixed findings → resume the fix cycle; all fixed → spawn the next review subagent
+- `review`: read the latest `.notes/<branch_name>/review-round-N.md`; open rows (`review-loop.md`) → resume the fix cycle; none → spawn the next review subagent

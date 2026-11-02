@@ -11,6 +11,8 @@ From 1 to 10, on fixed anchors:
 - **4–6**: debt, simplicity, a missing test.
 - **1–3**: detail.
 
+An `ask` row for a missing or deviating line, or an extra that crosses a stated limit, scores at least 7.
+
 ## Type
 
 One of: `ask` (a line of the ask missing, deviating, unclear or unproven, or an extra that crosses a limit), `bug`, `test`, `design`, `simplicity`, `readability`, `rule` (a written rule the diff breaks), `pre-existing` (a bug in code the diff did not change, left out of the verdict).
@@ -21,7 +23,7 @@ The **wait-what** pitch of the finding: one or two short sentences, a little con
 
 ## Verdict
 
-From the scores, `pre-existing` rows left out: `ship it` (no row from 4), `clean up first` (highest row 4–6), `fix first` (a row from 7), `needs rethink` (the ask is `off-target`, or a `design` row from 7 questions the approach itself).
+From the scores, `pre-existing` rows left out; the first that matches: `needs rethink` (the ask is `off-target`, or a `design` row from 7 questions the approach itself), `fix first` (a row from 7), `clean up first` (a row from 4), `ship it`.
 
 ## Language
 
@@ -41,14 +43,20 @@ Ask: [ISSUE-ID and title, or "no source found"] — delivered | partial | off-ta
 | [1–10] | [type] | [constat] |
 
 ### Details
-1. Reproduce: [steps] · Result: [what happens, against what should] · Class: [the kind of bug, when the diff holds several instances] · Where: [path:line, path:line]
+1. [the line of row 1's type, below]
 
 ### Second opinions
 Codex: effort [rung] ([the signals, or "none"]) · Rejected: [finding — why] (or: not run — <reason>)
 Layered rails: Rejected: [finding — why] (or: not run — <reason>; left out when the app is not Rails)
 ```
 
-Details item N is the table's row N. A `design` row gives who holds what today and who should; a `simplicity` row its cost; a `rule` row the rule's file; an `ask` row the ask line and its mark.
+Details item N is the table's row N, in the line of its type:
+
+- `bug`, `test`, `pre-existing`: `Reproduce: [steps] · Result: [what happens, against what should] · Class: [the kind of bug, when the diff holds several instances] · Where: [path:line, path:line]`
+- `design`: `[who holds what today] · [who should] · [what disappears if it moves] · Where: [path:line]`
+- `simplicity`, `readability`: `[what it costs] · Where: [path:line]`
+- `rule`: `[the rule, quoted] — [its file] · Where: [path:line]`
+- `ask`: `[the ask line] — missing | deviates: [how] | unclear: [what would settle it] | unproven | extra: [the limit it crosses]`
 
 ## Posted on the PR
 

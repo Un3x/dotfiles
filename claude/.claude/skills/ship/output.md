@@ -12,8 +12,8 @@ Shipped FAS-124 -> PR: https://github.com/org/repo/pull/124 (review clean after 
 
 ### When the review cap is hit:
 ```
-FAS-124 -> PR: https://github.com/org/repo/pull/124 — 3 review rounds done, findings still open:
-  - [finding]
+FAS-124 -> PR: https://github.com/org/repo/pull/124 — 3 review rounds done, rows still open:
+  - [constat]
 Suspect: design | scope — [why]
 Session saved. Fix manually or answer here to continue.
 ```
