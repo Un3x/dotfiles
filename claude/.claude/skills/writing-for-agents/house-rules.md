@@ -1,6 +1,6 @@
 # How we write for agents
 
-Our house rules on top of [`SKILL.md`](SKILL.md) (mattpocock's, kept verbatim but for its line pointing here; upstream checked by `harness/scripts/upstream.sh`) and Anthropic's [skill best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices). The files they shape are read by agents that have none of the context in which they were written.
+Our house rules on top of [`SKILL.md`](SKILL.md) (mattpocock's, kept verbatim but for its line pointing here; upstream checked by the vault's `systems/upstream.sh`) and Anthropic's [skill best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices). The files they shape are read by agents that have none of the context in which they were written.
 
 ## Shape of a skill
 
@@ -9,11 +9,11 @@ Our house rules on top of [`SKILL.md`](SKILL.md) (mattpocock's, kept verbatim bu
 - **A rule states its why in general words.** No date, no PR, no ticket, no project name. A story that only explains one case is dropped, moved to that project's own rules, or turned into a general rule that covers it. A rule whose defect no longer occurs is removed.
 - **A rule is strict, and tested.** No hedge word (« reasonably », « where appropriate », « if needed »): a number, a named case or the target behaviour. A line in doubt gets the **no-op** test. A term replaces a sentence only when its definition covers exactly the same cases, no fewer and no more; on this point it overrides SKILL.md § Leading words.
 - **Three kinds of number.** A **goal**, most of them, is written as one ("about 60 characters"): it holds for about 95% of usual cases, and comprehension wins when they clash. A **restriction** is written as a cap: a hard limit a project or a best-practice skill sets on purpose (a design system's sizes, timings, contrast), or a stop that signals a deeper problem (ship's three review rounds). A **measured** number (a count, a size, a rate observed) lives in the audit that measured it, dated; a rule that needs it points there, because a copied measurement goes stale.
-- **Move sections, don't rewrite sentences.** A file refined by twenty sessions is cut by moving its paragraphs; the register (`forme.py --register`) proves each one has a fate.
+- **Move sections, don't rewrite sentences.** A file refined by twenty sessions is cut by moving its paragraphs, each one given a fate.
 
 ## Thresholds, and what they protect
 
-The "about" rows are goals; the zero duplicates and the two corrections are restrictions. `harness/scripts/forme.py` marks a file past one with `!`: read it, and it is a finding only when the extra is not needed.
+The "about" rows are goals; the zero duplicates and the two corrections are restrictions. A file past a goal is read: it is a finding only when the extra is not needed.
 
 | Threshold | Value | Protects |
 | --- | --- | --- |
@@ -22,7 +22,7 @@ The "about" rows are goals; the zero duplicates and the two corrections are rest
 | rules / boundaries | about 5 | that they stay read |
 | toc on a sibling | from 100 lines | that a partial read sees everything it holds |
 | duplicated paragraphs (`--dups`) | 0 | a single source of truth |
-| user corrections on the same rule | 2 → mechanize | that prose broken twice becomes a control ([Fowler](https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html)) |
+| user corrections on the same rule | 2 → mechanize; a new rule waits for its second occurrence, or one that cost a PR or a redo | that prose broken twice becomes a control ([Fowler](https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html)) |
 
 ## `CLAUDE.md`
 
