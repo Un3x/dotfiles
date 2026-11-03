@@ -7,7 +7,6 @@ Plans one issue of the project's tracker ([`../tracker.md`](../tracker.md)), fir
 
 ## Usage
 - `/plan <issue>` - Create or replan the plan for that issue (ID or URL)
-- `/plan` (no args) - Scan `.notes/*/plan.md` for unanswered questions or FIXMEs and replan those, one at a time
 
 ## Steps
 

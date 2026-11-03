@@ -1,6 +1,6 @@
 # Plan format — one screen max
 
-Read at step 2 of `/plan`, when writing or replanning `.notes/<branch_name>/plan.md` (strip prefix before `/` in branch names).
+`.notes/<branch_name>/plan.md`, the prefix before `/` stripped from the branch name.
 
 ```markdown
 # <ISSUE-ID> — <title>
@@ -27,7 +27,7 @@ Design: grid — ok | <finding> → <change in the steps>
 Flag: ...             ← only if you believe simple is insufficient (one sentence)
 ```
 
-- **TDD is the default.** Each step = failing test + the behavior change that makes it pass, together; a step that only removes code is written `remove <what>`, and a step that changes structure with behaviour unchanged (the preparatory refactor the kind calls for) `refactor <what>`: neither has a failing test. Never a trailing "add tests" step. Spike exception only if `/challenge` flagged it — note it in the plan.
+- **TDD is the default.** Each step = failing test + the behavior change that makes it pass, together; a step that only removes dead code is written `remove <what>` (a removal the user sees gets a failing test, like any other change), and a step that changes structure with behaviour unchanged (the preparatory refactor the kind calls for) `refactor <what>`: neither has a failing test. A step with no unit test (CSS, JS) names its red: a system test, or a `/verify` check that fails before the change. Never a trailing "add tests" step. Spike exception only if `/challenge` flagged it — note it in the plan.
 - **Steps are vertical slices** ([`../slices.md`](../slices.md)). Each step leaves a behaviour observable end to end, through every layer it needs, never a layer alone: no "model" step then "controller" step then "view" step. A `remove` or `refactor` step is the only exception.
 - **An issue that holds more than one story** (the one-sentence test of `../slices.md`) goes back to `/challenge` (its Split Granularity step): no `plan.md` is written, and the plan says so to the user.
 - Explore the codebase before planning; plans reference real files.
