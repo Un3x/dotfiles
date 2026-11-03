@@ -16,7 +16,7 @@ Each runs one agent per domain, merged here: [`split.md`](split.md). `/review so
 
 1. **Gather the diff**
    - No args: `git diff main...HEAD` (all changes on current branch)
-   - PR number or URL: fetch PR diff via `gh pr diff <number-or-url>`; past a handful of commits read them in order (`gh pr view --json commits`, then `git show` each) and follow the review guide when the body links one, since the commits are the author's reading path; and the author via `gh pr view <number-or-url> --json author -q .author.login` — the report prints it, so whoever relays the findings knows whether the fix is ours to delegate or the author's
+   - PR number or URL: fetch PR diff via `gh pr diff <number-or-url>`, then the PR body and every commit message (`gh pr view <number-or-url> --json body,commits`): they hold the author's why. Past a handful of commits read them in order (`git show` each) and follow the review guide when the body links one, since the commits are the author's reading path; and the author via `gh pr view <number-or-url> --json author -q .author.login` — the report prints it, so whoever relays the findings knows whether the fix is ours to delegate or the author's
    - Specific files: `git diff main -- <files>`
    - **Earlier rounds** given in the prompt (a review loop past round 1): read them, then review only what changed since the `Head:` of the latest one (`git diff <Head>..HEAD`; after a force-push, `git range-diff`). A finding already triaged `rebutted` or `deferred` is not raised again; a fixed one is checked as fixed.
 2. **Asked versus built**: [`asked.md`](asked.md) — the ask as a checklist from the issue, then the diff marked against it. Done when every line carries delivered / missing / deviates and the extras are listed.
@@ -34,6 +34,7 @@ Each runs one agent per domain, merged here: [`split.md`](split.md). `/review so
 - No style nits a linter catches. Pass 2 Readability is not a nit.
 - Every `bug`, `test` and `ask` row from 7 includes a concrete failure scenario ("when X happens, Y breaks because Z"); a `design` row states who holds what, and an `unclear` or `unproven` ask line its missing proof.
 - No finding without a trace: the entry point that reaches it, the values that get there, the line that misbehaves. A doubt is something to investigate, not to report: prove it or cut it, never « potential », « may », « risky ». A maybe handed to the reader bills them for the work skipped, and six maybes cost the trust in the one proven finding. An Unproven premise and an ask line marked `unproven` or `unclear` state a missing proof, which is itself the fact: they keep their place.
+- A choice the PR body or a commit message explains is raised only when the explanation does not hold, and the row says why, quoting it.
 - Read the tests before raising a `bug` or `test` row: a behaviour a test already pins is not a finding.
 - If the diff is clean, say "no issues found, ship it" — don't invent problems. Clean code that misses a line of the ask is not clean: the verdict is `partial`.
 - Every claim is grounded in code you read, and its paths go on the row's `Where:` in § Details.
