@@ -72,8 +72,8 @@ Findings are numbered once across both tables, most severe first. Details item N
 
 One GitHub review, event `COMMENT`, never an approval or a change request. Asked for: posted by the agent once the user says go, every finding. Automatic, under an auto-review brief: posted by the agent on its own, the `critical` and `important` findings only, its first line `review triggered automatically`. Everything in the project language, labels included; no path outside the repo; § Details and § Second opinions stay local, but a line comment carries its finding's `Reproduce` and `Result` in plain words.
 
-- **Body**: `**[verdict]** · commit [short SHA]`, the `Ask:` line, then the summary findings as a table (severity, type, constat). Nothing else.
+- **Body**: `**[verdict]** · commit [short SHA]`, the `Ask:` line, the summary findings as a table (severity, type, constat), then any line finding whose line is not in the diff, as `path:line — constat`. Nothing else.
 - **Line comments**: one per line finding, `[severity] · [type] — [constat]`, its direction sentence, then for a `bug` or `test` its `Reproduce` and `Result`.
-- **Post**: `gh api repos/<owner>/<repo>/pulls/<n>/reviews --input review.json`, the file holding `commit_id` (the head SHA), `event: "COMMENT"`, `body`, and `comments: [{path, line, side: "RIGHT", body}]`.
+- **Post**: `gh api repos/<owner>/<repo>/pulls/<n>/reviews --input review.json`, the file holding `commit_id` (the head SHA), `event: "COMMENT"`, `body`, and `comments: [{path, line, side: "RIGHT", body}]`. A line is in the diff when `gh pr diff` shows it as an added or context line of a hunk. A `422` rejects the whole review: move the comments it names (or all of them) into the body and post again, and an auto-review brief's Result says so.
 
 No finding left after the filter: the automatic review posts the body alone, saying in the project language that nothing of importance was found (FR: « Revue automatique : rien d'important relevé. »).
