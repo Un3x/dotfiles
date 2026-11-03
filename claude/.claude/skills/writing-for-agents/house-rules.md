@@ -21,7 +21,7 @@ The "about" rows are goals; the two corrections are a restriction, and a duplica
 | characters of a model-invoked description | about 400 | every turn of every session, where all are loaded |
 | rules / boundaries | about 5 | that they stay read |
 | toc on a sibling | from 100 lines | that a partial read sees everything it holds |
-| duplicated paragraphs (`--dups`) | 0 | a single source of truth |
+| duplicated paragraphs | 0 | a single source of truth |
 | user corrections on the same rule | 2 → mechanize; a new rule waits for its second occurrence, or one that cost a PR or a redo | that prose broken twice becomes a control ([Fowler](https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html)) |
 
 ## `CLAUDE.md`
