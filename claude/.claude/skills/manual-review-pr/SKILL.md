@@ -1,6 +1,6 @@
 ---
 name: manual-review-pr
-description: "Review a PR with the user at the design level, then publish the review as a Claude artifact and draft the comment the user posts; typed by the user only."
+description: "Review a PR with the user at the design level, then publish the review as a Claude artifact and post the comment on the user's go; typed by the user only."
 disable-model-invocation: true
 ---
 
@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 `/manual-review-pr <PR> [first remarks]`, typed by the user only. A review done with the user, not for them: the agent brings facts and a second opinion, the user decides, and the page at the end records the target design and every decision with its justification. Where responsibilities live is the point, not line-level nitpicks. `/review` is the agent reviewing alone; here the user reviews a PR with the agent.
 
-**Never post on the PR** (comment, review, suggestion, label), even when asked: the user posts.
+**Nothing goes on the PR before the user's go** (comment, review, suggestion, label): the agent shows it, the user says go, the agent posts it.
 
 ## 1. Inputs
 
@@ -68,6 +68,6 @@ Offer the page when the axes have converged; build it when asked.
 
 When the user asks for it: build and publish it following [`page.md`](page.md). Done when published: give the URL.
 
-## 7. The comment the user posts
+## 7. The comment
 
-With the URL, draft the comment the user will post with their review: the page link first, then a few short prose paragraphs on what does not suit them, conclusions only, by weight: design to rework, bugs, product points, the non-blocking flagged as such. It says what is wrong and why, not how to fix it: no option name or sketch from the page, which would anchor the author on one solution. No headings, bold, tables or checklists; in the project language; the same leak check as the page, since the comment is as public as the repository. Shown in the conversation; the user posts it.
+With the URL, draft the comment that goes with their review: the page link first, then a few short prose paragraphs on what does not suit them, conclusions only, by weight: design to rework, bugs, product points, the non-blocking flagged as such. It says what is wrong and why, not how to fix it: no option name or sketch from the page, which would anchor the author on one solution. No headings, bold, tables or checklists; in the project language; the same leak check as the page, since the comment is as public as the repository. Shown in the conversation; on the user's go, posted with `gh pr comment <PR> --body-file <file>`.
