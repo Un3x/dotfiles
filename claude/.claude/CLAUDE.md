@@ -11,7 +11,7 @@
 ## Commit Conventions
 
 - Commit messages and PR title/body: the `commit` skill, read before every `git commit` and `gh pr create`.
-- Code carries no comments: its names and structure say what it does.
+- Code carries no comments: its names and structure say what it does. A script's header is the one exception: what it does and how to call it, nothing else.
 - **NEVER** disable GPG signing (`--no-gpg-sign`). If signing fails, the key is locked: leave the change staged with its message ready, end your message with this line on its own — `GPG locked — run: ! echo | gpg --clearsign >/dev/null, then say go` — and carry on with whatever needs no commit. A subagent hands that line up to the session that spawned it.
 
 ## Messages to Thomas

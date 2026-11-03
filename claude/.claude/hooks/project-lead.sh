@@ -1,10 +1,7 @@
 #!/bin/bash
-# SessionStart hook, user level: the one place a session gets its role. The vault root gets the EA role
-# (systems/ea-role.md); a vault project folder gets the shared protocol; a repo whose .claude/project-lead
-# names a vault project folder gets the vault rules (the repo is outside the vault, so its CLAUDE.md never
-# loads there), the protocol and that project's vault CLAUDE.md. Subagents never get
-# this output, only the repo's CLAUDE.md (tested 2026-11-01). Imports cannot do this: an @ import outside
-# the repo needs an interactive approval and stays raw in headless runs (tested 2026-09-30).
+# SessionStart hook, user level: gives a session its role. The vault root gets the EA role (systems/ea-role.md);
+# a vault project folder gets the shared protocol; a repo whose .claude/project-lead names a vault project
+# folder gets the vault rules, the protocol and that project's vault CLAUDE.md.
 M="$PWD/.claude/project-lead"
 VAULT="$HOME/Documents/mylife_in_a_vault"
 echo "This session runs on host $(hostname)."
