@@ -7,14 +7,14 @@ description: "Produce a screen for one of our projects: a mockup, a redesign, an
 
 Adapted from Anthropic's `frontend-design` skill (Apache 2.0). The craft lives in Emil's design-engineering skills, `~/Documents/mylife_in_a_vault/docs/aiforui-skills/emil-<name>/SKILL.md`, read by path: their rules about components translate to the project's stack, their numbers apply as written.
 
-The mockup is the spec for the screen (`../issue-template.md`): `/plan` builds from it, `/review` checks against it. Without one, the dev fills the gaps with default components, and the PO discovers the screen in the PR.
+The mockup is the spec for the screen (`../issue-template.md`): `/plan` builds from it (after a prototype run, from the code it landed), `/review` checks against it. Without one, the dev fills the gaps with default components, and the PO discovers the screen in the PR.
 
 ## Which case
 
 | The issue or the request | The project | What we do |
 |---|---|---|
 | shows the screen in every state it changes (a mockup, a capture, a drawing) | any | nothing: it is the spec. A difference from it goes to the user, never into a new mockup |
-| asks for options, directions or alternatives | any | `emil-prototype`, run to its end: the picked variant lands in the code, and its written decision with the variant's captures stands for the mockup at step 5 |
+| asks for options, directions or alternatives | any | `emil-prototype`, run to its end. Step 4 runs on the picked variant before it lands in the code; its written decision and captures are then the mockup at step 5 |
 | changes a screen, shows none | has a design system: a stylesheet or component library its screens already use (the DSFR on a State site, its own components, a `DESIGN.md`) | the mockup, straight from that system and the screens next to it |
 | changes a screen, shows none | has none | a wireframe first, approved by the user, then the mockup |
 | changes nothing on screen | any | `Screen: n/a` |
