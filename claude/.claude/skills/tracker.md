@@ -20,7 +20,7 @@ A skill names the verb; this table gives the call. Writing the description or cr
 | list a team's statuses and their types | `list_issue_statuses` with the issue's team |
 | change the status | `save_issue` with `id` and `state` |
 | create an issue | `save_issue` without `id` |
-| comment | `save_comment` |
+| comment | `save_comment`, written as § Comments says |
 | attach a file | `prepare_attachment_upload` → `curl -X PUT --data-binary` with the signed headers, within 60 seconds → `create_attachment_from_upload` |
 | link a PR | `Closes <ISSUE-ID>` in the PR body; the tracker's GitHub integration links it |
 | is it done? | `get_issue`, status type `completed` or `canceled` |
