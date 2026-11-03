@@ -45,7 +45,7 @@ git worktree add --detach "$SCRATCH/wt" "${SHA}"
 git worktree remove --force "$SCRATCH/wt"
 ```
 
-The rung, the failures and the sandbox rule are `/review` step 4's. Its findings are checked against the code and triaged into the same list.
+The rung, the failures and the sandbox rule are `~/.claude/skills/review/codex.md`'s. Its findings are checked against the code and triaged into the same list.
 
 ## 4. The local pass, design first
 
