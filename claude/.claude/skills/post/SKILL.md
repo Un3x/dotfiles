@@ -10,7 +10,7 @@ Thomas posts on LinkedIn for his audit practice. The post sounds like him, says 
 
 ## Usage
 
-- `/post` + his dictation (Wispr, rambling allowed), pasted or saved in the Wispr folder « linkedin thoughts » (read it as a meeting: `list_folders`, `list_folder_meetings`, then `get_meeting` with the transcript, not the summary): cut it into a post. The default.
+- `/post` + his dictation (Wispr, rambling allowed), pasted or saved in the Wispr folder « linkedin thoughts » (read it as a meeting: `list_folders`, `list_folder_meetings`, then `get_meeting` with `view_transcript`, not the summary, and its continuation until the end of a long dictation): cut it into a post. The default.
 - `/post` + his pasted text: correct it. He wrote it; it stays his.
 - `/post <subject or link>`: draft a post, when he has no time to dictate.
 
