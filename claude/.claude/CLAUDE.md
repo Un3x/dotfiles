@@ -2,7 +2,7 @@
 
 ## Showing a file
 
-- To show the user a file, run `~/Documents/mylife_in_a_vault/systems/show-file.sh <path>` rather than pasting a path: it opens a new tab of this session's herdr space, Markdown in glow, the rest in nvim. A page to look at rather than edit (captures, a mockup, a report) is published as an Artifact instead: a terminal shows no image.
+- To show the user a file, run `~/Documents/mylife_in_a_vault/systems/show-file.sh <path>` rather than pasting a path: a new tab of this session's herdr space, in glow for a file to read, in nvim with `--edit` for a file to edit. A page to look at rather than edit (captures, a mockup, a report) is published as an Artifact instead: a terminal shows no image.
 
 ## Servers and secrets
 
