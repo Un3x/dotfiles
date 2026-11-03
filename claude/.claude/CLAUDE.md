@@ -11,7 +11,7 @@
 ## Commit Conventions
 
 - Commit messages and PR title/body: the `commit` skill, read before every `git commit` and `gh pr create`.
-- Do not add comments in code — code should be self-explanatory
+- Code carries no comments: its names and structure say what it does.
 - **NEVER** disable GPG signing (`--no-gpg-sign`). If signing fails, the key is locked: leave the change staged with its message ready, end your message with this line on its own — `GPG locked — run: ! echo | gpg --clearsign >/dev/null, then say go` — and carry on with whatever needs no commit. A subagent hands that line up to the session that spawned it.
 
 ## Messages to Thomas
@@ -35,11 +35,9 @@ outcome, then the detail, then what Thomas must do ❓
 
 ## Prose Diet
 
-- Never create documentation files (README sections, docs/, guides) unless explicitly requested.
 - Issue comments, handoff notes: a pointer plus the minimum that orients the reader. If it needs a paragraph, question whether it needs to exist.
 - Prefer a 5-line diagram over 5 paragraphs when explaining a flow.
 - Anything handed to someone (a review, a PR, an issue, a message) is ready to pass on as is. If Thomas has to rewrite it, it failed.
-- A number in a rule is a goal by default: it holds for about 95% of usual cases, and comprehension wins when they clash: say what is necessary and sufficient, then stop. Reality checks the goal: when a scan shows it missed often, challenge the goal or the way we write. A restriction is the exception, written as a cap: a hard limit a project or a best-practice skill sets on purpose (a design system's sizes, timings, contrast), or a stop that signals a deeper problem, like ship's three review rounds.
 - A PR, issue or ticket (GitHub, Linear…) named in a message to the user or in a subagent report comes with its full URL, never a bare `#133` or `SIM-257`.
 
 ## Coding Behavior
@@ -61,6 +59,6 @@ outcome, then the detail, then what Thomas must do ❓
 
 ## Rails
 
-- **Vanilla Rails first.** Before writing or planning Rails code, read `~/.claude/skills/one-rule.md`: what we are building sets the shape (fills a system, new system, isolated); simple and readable, no graft, code with the object that owns the decision.
+- **Vanilla Rails first.** Before writing or planning Rails code, read `~/.claude/skills/one-rule.md`.
 
 @RTK.md
