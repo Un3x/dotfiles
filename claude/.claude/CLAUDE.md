@@ -11,7 +11,6 @@
 ## Commit Conventions
 
 - Commit messages and PR title/body: the `commit` skill, read before every `git commit` and `gh pr create`.
-- Code carries no comments: its names and structure say what it does. A script's header is the one exception: what it does and how to call it, nothing else.
 - **NEVER** disable GPG signing (`--no-gpg-sign`). If signing fails, the key is locked: leave the change staged with its message ready, end your message with this line on its own — `GPG locked — run: ! echo | gpg --clearsign >/dev/null, then say go` — and carry on with whatever needs no commit. A subagent hands that line up to the session that spawned it.
 
 ## Messages to Thomas
@@ -46,6 +45,7 @@ outcome, then the detail, then what Thomas must do ❓
 - Before writing code on an ambiguous task, state the interpretation you're committing to. If two reasonable interpretations exist, ask first.
 - If a go-ahead carries no acceptance criterion, state the one you'll verify against in one line before starting.
 - Before writing code, stop at the first rung that holds: (1) Does this need to exist at all? (YAGNI) (2) Does the standard library do it? (3) Does a native platform feature cover it? (4) Does an already-installed dependency solve it? (5) Can it be one line? (6) Only then: the minimum that works. The escalation past a rung is itself a complexity opt-in — surface it, don't take it silently.
+- Code carries no comments: its names and structure say what it does. A script's header is the one exception: what it does and how to call it, nothing else.
 - Deletion over addition. Boring over clever. Fewest files possible. No abstraction, dependency, or boilerplate that wasn't requested.
 - When two implementations are the same size, prefer the one with better edge-case handling.
 - Never lazy about: trust-boundary validation, error handling that prevents data loss, security, accessibility, anything explicitly requested. Minimal means less code, not less correct or less readable.
