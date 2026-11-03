@@ -10,6 +10,8 @@ French on the `linear-opi` workspace; elsewhere, the language the project's issu
 | Technical task | `TS —` | nothing changes on screen, or a change nobody asked for | what will be true once done |
 | Bug | `Bug —` | something that should work does not | the wrong behaviour, as the user sees it |
 
+The prefix takes the punctuation the team's existing issues use (`TS - ` or `TS —`), so titles stay uniform in its tracker; a team with no habit gets the em dash.
+
 In the user's words, never the cause or the task, and without negation: « ne la met plus en ligne aussitôt » reads as the defect and the fix at once.
 
 ## Shapes
