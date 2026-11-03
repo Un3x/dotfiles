@@ -5,7 +5,7 @@ description: "Write or review a tracker issue so every reader understands it on 
 
 # issue
 
-The top of an issue is written for the PO, who decides and checks; below the line, links and decisions for the dev. The reference reader is a PO who always needs to understand: an issue she must reread has failed. An agent's `prête` is not her verdict, she is.
+The top of an issue is written for the PO, who decides and checks; below the line, links and decisions for the dev. The reference reader is a PO who always needs to understand: an issue they must reread has failed. An agent's `prête` is not their verdict, they are.
 
 ## When
 
@@ -21,7 +21,7 @@ The top of an issue is written for the PO, who decides and checks; below the lin
 
 ## Review
 
-Read [`../issue-template.md`](../issue-template.md), then follow [`review.md`](review.md). The review reports; it never edits the issue.
+Read [`../issue-template.md`](../issue-template.md), then follow [`review.md`](review.md).
 
 ## Rules
 
