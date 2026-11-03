@@ -18,7 +18,7 @@ The project lead session runs in the repo with the vault protocol and the projec
 | an approved plan | `/ship <ISSUE>`, **one subagent per issue**, prompt exactly `Run /ship <ISSUE>` plus the decisions this session holds | PR opened and reviewed inside ship → merge per § Human gates |
 | a PR to look at | `/review <url>`, fresh subagent | report relayed, quoted in its own language |
 | a PR with a human review: ours reviewed by a teammate or the user, or a teammate's the user reviewed | `/learn <PR>`, in session | the kept rules applied, the ledger updated |
-| the EA's Monday brief | `/clean` on `.notes/`, `/verify maintain` in a subagent, `/learn since <last Monday>` up to its table | the outcomes and the table in the brief's Result |
+| the EA's Monday brief | do `~/.claude/skills/clean/SKILL.md` for `.notes/`, `/verify maintain` in a subagent, `/learn since <last Monday>` up to its step 5 | the outcomes and the table in the brief's Result |
 | drift suspected in the verify map | `/verify maintain`, subagent | outcome in the check-in |
 | a settled ask that ends in a PR, with no issue: an EA brief, a chore | one subagent follows `/ship` with the ask in place of the issue and plan: worktree branch, tests where the change can be tested (else the proof the ask names), PR, review loop (`ship/review-loop.md`); never in session | PR reviewed and fixed by that subagent → merge per § Human gates; one subagent owns the PR, so none leaves unreviewed |
 | an explicit command | as given; one that opens a PR takes the row above | — |
@@ -38,7 +38,7 @@ Several issues handed over at once (« ship them all ») run push right: the use
 
 ## Following a subagent
 
-The Agent tool runs it in the background and notifies on completion; one issue per subagent. Before spawning a shipping subagent, check the machine's available memory (`free -g`, column `available`): under about 4 GB, wait and check again, since other sessions ship on the same machine. On its report: read it; once the PR's CI is green, check it against the repo's merge rules and apply what they ask (a vouch, a label), then merge it when they allow an agent to; otherwise leave the merge to the user, naming why; log it in the app (`log_done`), tell the user in one block with the PR link and the open points. A subagent that asks a question the user already settled in this session gets the answer through SendMessage, and the report says what was sent; a design or scope question goes to the user. Cap: 2 h per subagent, then stop and report.
+The Agent tool runs it in the background and notifies on completion; one issue per subagent. Before spawning a shipping subagent, check the machine's available memory (`free -m`, column `available`): under about 4000 MB, check again every 5 minutes, since other sessions ship on the same machine; after 30 minutes, tell the user. On its report: read it; once the PR's CI is green, check it against the repo's merge rules and apply what they ask (a vouch, a label), then merge it when they allow an agent to; otherwise leave the merge to the user, naming why; log it in the app (`log_done`), tell the user in one block with the PR link and the open points. A subagent that asks a question the user already settled in this session gets the answer through SendMessage, and the report says what was sent; a design or scope question goes to the user. Cap: 2 h per subagent, then stop and report.
 
 ## Rules
 
