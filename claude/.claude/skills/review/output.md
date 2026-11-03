@@ -1,19 +1,21 @@
 # Output format
 
-The report is one table of **rows**, every finding of every pass and second opinion, sorted by score, highest first. It says what is wrong, never how to fix it: its reader is the author or the next agent, who finds the fix on their own. It goes on GitHub without rewriting: the user posts it, except under an auto-review brief, where the agent posts its § Posted on the PR form.
+The review is one list of findings, every one proven (`SKILL.md` § Rules), ranked by severity, most severe first. It goes on GitHub as one review, the same shape whether it was asked for or triggered automatically: the automatic one only keeps the `critical` and `important` findings. Its reader is the author or the next agent, who finds the fix on their own.
 
-## Score
+A finding lives where its reader meets it:
 
-From 1 to 10, on fixed anchors:
+- **Summary findings**, the high-level ones: `ask`, `design`, `rule`, `pre-existing`. They go in the review's body.
+- **Line findings**, the code-level ones: `bug`, `test`, `simplicity`, `readability`. Each goes as a comment on its first `Where:` line; one whose line is not in the diff goes in the body with the summary findings.
 
-- **9–10**: breaks prod, data or security.
-- **7–8**: a user will hit it, or the next feature of the same kind will pay for it.
-- **4–6**: debt, simplicity, a missing test.
-- **1–3**: detail.
+Each says what is wrong. It may end with one sentence of direction in plain words (« Deleting the rules from there would solve it », « Inverting the dependency would comply with X »), never code.
 
-A missing announcement (changelog, release note, doc) scores by what it announces: a change in behaviour is 7–8, information only is 4–5.
+## Severity
 
-An `ask` row for a missing or deviating line, or an extra that crosses a stated limit, scores at least 7.
+- **critical**: breaks prod, data or security.
+- **important**: a user will hit it, or the next feature of the same kind will pay for it. An `ask` finding for a missing or deviating line, or an extra that crosses a stated limit, is at least important.
+- **minor**: debt, simplicity, a missing test, a detail.
+
+A missing announcement (changelog, release note, doc) ranks by what it announces: a change in behaviour is important, information only is minor.
 
 ## Type
 
@@ -21,38 +23,44 @@ One of: `ask` (a line of the ask missing, deviating, unclear or unproven, or an 
 
 ## Constat
 
-The **wait-what** pitch of the finding: one or two short sentences, a little context, in ASD-STE100 Simplified Technical English, in the words of the repo's `GLOSSARY.md` when it has one (`GLOSSARY-MAP.md` leads to the right one). It names the behaviour a user or a developer meets. A finding that only exists in the code (a missing index, an unrelated reformatting) names the screen, the data or the change it touches. A `rule` row quotes the rule, never its file. File paths and the fix live elsewhere: the paths in § Details, the fix with the author.
+The **wait-what** pitch of the finding: one or two short sentences, a little context, in ASD-STE100 Simplified Technical English, in the words of the repo's `GLOSSARY.md` when it has one (`GLOSSARY-MAP.md` leads to the right one). It names the behaviour a user or a developer meets. A finding that only exists in the code (a missing index, an unrelated reformatting) names the screen, the data or the change it touches. A `rule` finding quotes the rule, never its file. File paths live in § Details, the fix with the author.
 
 ## Verdict
 
-From the scores, `pre-existing` rows left out; the first that matches: `needs rethink` (the ask is `off-target`, or a `design` row from 7 questions the approach itself), `fix first` (a row from 7), `clean up first` (a row from 4), `ship it`.
+From the findings, `pre-existing` left out; the first that matches: `needs rethink` (the ask is `off-target`, or a `critical` or `important` `design` finding questions the approach itself), `fix first` (a `critical` or `important` finding), `clean up first` (a `minor` one), `ship it`.
 
 ## Language
 
-Constats and placeholders are in the project language. The labels, type words, verdict words, `Ask:` marks and `not run` stay as written below in the local report, since `/ship` and the harness read it by them; the posted form translates them. A link is always whole: a PR, an issue or a URL in full; a rule's file by its full path.
+Constats and placeholders are in the project language. In the local report, the labels, type words, severity words, verdict words, `Ask:` marks and `not run` stay as written below, since `/ship` reads it by them; the posted review translates them. A link is always whole: a PR, an issue or a URL in full; a rule's file by its full path.
 
 ## Local report
 
-The full report, every row. § Details and § Second opinions stay local. A section with nothing in it is left out. The data flow diagram of step 8 is a working tool, not part of the report.
+Every finding. § Details and § Second opinions stay local. A section with nothing in it is left out. The data flow diagram of step 8 is a working tool, not part of the report.
 
 ```
 ## Code Review: [PR title or branch] — [verdict]
 Author: [PR author login, or the branch owner] · Model: [the model this review ran on] · Head: [the commit SHA reviewed]
 Ask: [ISSUE-ID and title, or "no source found"] — delivered | partial | off-target
 
-| Score | Type | Constat |
-|---|---|---|
-| [1–10] | [type] | [constat] |
+### Summary
+| # | Severity | Type | Constat |
+|---|---|---|---|
+| [n] | [critical / important / minor] | [type] | [constat] |
+
+### Lines
+| # | Severity | Type | Where | Constat |
+|---|---|---|---|---|
+| [n] | [severity] | [type] | [path:line] | [constat, then its direction sentence if any] |
 
 ### Details
-1. [the line of row 1's type, below]
+[n]. [the line of finding n's type, below]
 
 ### Second opinions
 Codex: effort [rung] ([the signals, or "none"]) · Rejected: [finding — why] (or: not run — <reason>)
 Layered rails: Rejected: [finding — why] (or: not run — <reason>; left out when the app is not Rails)
 ```
 
-Details item N is the table's row N, in the line of its type:
+Findings are numbered once across both tables, most severe first. Details item N is finding N, in the line of its type:
 
 - `bug`, `test`, `pre-existing`: `Reproduce: [steps] · Result: [what happens, against what should] · Class: [the kind of bug, when the diff holds several instances] · Where: [path:line, path:line]`
 - `design`: `[who decides or holds what today] · [who should] · [what disappears if it moves] · Where: [path:line]`, the first three in plain words, no code names
@@ -62,16 +70,10 @@ Details item N is the table's row N, in the line of its type:
 
 ## Posted on the PR
 
-Under an auto-review brief, the agent posts one comment, never an approval or a change request: only the rows from 7, everything in the project language, labels included. Nothing outside the table and its two lines above, and no path outside the repo.
+One GitHub review, event `COMMENT`, never an approval or a change request. Asked for: posted by the agent once the user says go, every finding. Automatic, under an auto-review brief: posted by the agent on its own, the `critical` and `important` findings only, its first line `review triggered automatically`. Everything in the project language, labels included; no path outside the repo; § Details and § Second opinions stay local, but a line comment carries its finding's `Reproduce` and `Result` in plain words.
 
-```
-review triggered automatically
+- **Body**: `**[verdict]** · commit [short SHA]`, the `Ask:` line, then the summary findings as a table (severity, type, constat). Nothing else.
+- **Line comments**: one per line finding, `[severity] · [type] — [constat]`, its direction sentence, then for a `bug` or `test` its `Reproduce` and `Result`.
+- **Post**: `gh api repos/<owner>/<repo>/pulls/<n>/reviews --input review.json`, the file holding `commit_id` (the head SHA), `event: "COMMENT"`, `body`, and `comments: [{path, line, side: "RIGHT", body}]`.
 
-**[verdict]** · commit `[short SHA]`
-
-| Score | Type | Constat |
-|---|---|---|
-| [7–10] | [type] | [constat] |
-```
-
-No row from 7: the comment is `review triggered automatically` and one line in the project language saying nothing of importance was found (FR: « Revue automatique : rien d'important relevé. »).
+No finding left after the filter: the automatic review posts the body alone, saying in the project language that nothing of importance was found (FR: « Revue automatique : rien d'important relevé. »).

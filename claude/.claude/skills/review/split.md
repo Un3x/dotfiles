@@ -15,7 +15,7 @@ The default `/review`: one agent carrying every pass gives the last ones less at
 
 ## Specialists
 
-Each one reads `SKILL.md` § Rules for the bar of a finding, and the repo's `REVIEW.md` files: the root one, plus any in a folder the diff touches. Each writes its findings as scored rows in the shape of [`output.md`](output.md), with their details. With earlier rounds, each checks that the findings of its own domain are fixed and does not raise a triaged one again. Each reviews only its domain and leaves the rest to the specialist who owns it: a narrow brief keeps its attention on one domain.
+Each one reads `SKILL.md` § Rules for the bar of a finding, and the repo's `REVIEW.md` files: the root one, plus any in a folder the diff touches. Each writes its findings, ranked by severity, in the shape of [`output.md`](output.md), with their details. With earlier rounds, each checks that the findings of its own domain are fixed and does not raise a triaged one again. Each reviews only its domain and leaves the rest to the specialist who owns it: a narrow brief keeps its attention on one domain.
 
 - **Asked**: [`asked.md`](asked.md), the whole pass, verdict included.
 - **Critical**: [`../review-checklist.md`](../review-checklist.md) Pass 1, then the edge cases and performance of Pass 2.

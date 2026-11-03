@@ -3,7 +3,7 @@ name: review
 description: "Paranoid code review of a branch, PR, or files. Use whenever the user asks to review a PR, a pull request URL, a branch, or files (\"can you review…\", \"est-ce qu'on peut review…\")."
 ---
 
-Paranoid code review. It checks what was built against what was asked, checks the diff against the written rules, runs four passes (critical, informational, design, simplicity), and merges second opinions from Codex and the layered-rails reviewer, every finding a scored row of one table. It is designed to catch bugs that pass CI but blow up in production.
+Paranoid code review. It checks what was built against what was asked, checks the diff against the written rules, runs four passes (critical, informational, design, simplicity), and merges second opinions from Codex and the layered-rails reviewer, every finding proven and ranked by severity. It is designed to catch bugs that pass CI but blow up in production.
 
 ## Usage
 - `/review` - Review current branch changes against main
@@ -27,12 +27,12 @@ Each runs one agent per domain, merged here: [`split.md`](split.md). `/review so
 6. **Run the four passes** of the checklist in order: CRITICAL, INFORMATIONAL, DESIGN, SIMPLICITY. A pass is done when every category has been checked against the whole diff.
 7. **Merge the Codex and layered-rails opinions**. Read `codex-review.md` and the layered-rails report. A finding already triaged in an earlier round is dropped. For each of the others: verify it against the code at the bar of § Rules, or drop it. A confirmed finding becomes a row like your own, merged into yours when it is the same; a rejected one gets a one-line rebuttal in § Second opinions, so the user sees the disagreement, not silence.
 8. **Diagram the data flow** (if the diff touches a data pipeline, request handler, or multi-step process): ASCII diagram, mark where validation happens (or doesn't), mark where errors can occur and how they're handled.
-9. **Write the report** in the format of [`output.md`](output.md): every finding scored on its anchors, the table sorted by score. Done when every row has its details.
+9. **Write the report** in the format of [`output.md`](output.md): every finding ranked by severity and placed as a summary or a line finding. Done when every finding has its details. Asked for by the user: show the report, and post it as `output.md` § Posted on the PR once they say go. Under an auto-review brief: post it at once, the brief is the go. Run inside `/ship`'s loop: never posted, the report is the round file.
 
 ## Rules
 
 - No style nits a linter catches. Pass 2 Readability is not a nit.
-- Every `bug`, `test` and `ask` row from 7 includes a concrete failure scenario ("when X happens, Y breaks because Z"); a `design` row states who holds what, and an `unclear` or `unproven` ask line its missing proof.
+- Every `critical` or `important` `bug`, `test` and `ask` row includes a concrete failure scenario ("when X happens, Y breaks because Z"); a `design` row states who holds what, and an `unclear` or `unproven` ask line its missing proof.
 - No finding without a trace: the entry point that reaches it, the values that get there, the line that misbehaves. A doubt is something to investigate, not to report: prove it or cut it, never « potential », « may », « risky ». A maybe handed to the reader bills them for the work skipped, and six maybes cost the trust in the one proven finding. An Unproven premise and an ask line marked `unproven` or `unclear` state a missing proof, which is itself the fact: they keep their place.
 - A choice the PR body or a commit message explains is raised only when the explanation does not hold, and the row says why, quoting it.
 - Read the tests before raising a `bug` or `test` row: a behaviour a test already pins is not a finding.
