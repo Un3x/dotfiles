@@ -14,7 +14,7 @@ The mockup is the spec for the screen (`../issue-template.md`): `/plan` builds f
 | The issue or the request | The project | What we do |
 |---|---|---|
 | shows the screen in every state it changes (a mockup, a capture, a drawing) | any | nothing: it is the spec. A difference from it goes to the user, never into a new mockup |
-| asks for options, directions or alternatives | any | `emil-prototype`; the variant the user picks becomes the mockup, then step 4 |
+| asks for options, directions or alternatives | any | `emil-prototype`, run to its end: the picked variant lands in the code, and its written decision with the variant's captures stands for the mockup at step 5 |
 | changes a screen, shows none | has a design system: a stylesheet or component library its screens already use (the DSFR on a State site, its own components, a `DESIGN.md`) | the mockup, straight from that system and the screens next to it |
 | changes a screen, shows none | has none | a wireframe first, approved by the user, then the mockup |
 | changes nothing on screen | any | `Screen: n/a` |
