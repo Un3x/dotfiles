@@ -1,7 +1,5 @@
 #!/bin/bash
-# PreToolUse guardrails. Each pattern below is a rule the prose failed to hold at least once;
-# Patterns match a command at the start of a shell statement, so prose that mentions a command
-# (a note, a grep) passes, and heredoc bodies are not matched at all.
+# PreToolUse hook: blocks the commands and the edits listed below.
 INPUT=$(cat)
 TOOL=$(printf '%s' "$INPUT" | jq -r '.tool_name')
 
@@ -19,7 +17,7 @@ Bash)
       match($0, /<<-?["'"'"']?[A-Za-z_][A-Za-z0-9_]*/) { tag = substr($0, RSTART, RLENGTH); sub(/^<<-?["'"'"']?/, "", tag) }
       { print }')
   if printf '%s' "$CMD" | grep -qE -- "${START}git\b[^;&|]*(--no-gpg-sign|commit\.gpgsign=false)"; then
-    block "commits stay GPG-signed. If signing fails, stop and ask the user."
+    block "commits stay GPG-signed: if signing fails, leave the change staged and end with the GPG line of the global CLAUDE.md."
   fi
   if printf '%s' "$CMD" | grep -qE -- "${START}git +push\b[^;&|]*( --force\b| -f\b| \+[A-Za-z0-9_./-]+)" && ! printf '%s' "$CMD" | grep -q -- '--force-with-lease'; then
     block "force-push only with --force-with-lease, and only on your own branch after autosquash."
