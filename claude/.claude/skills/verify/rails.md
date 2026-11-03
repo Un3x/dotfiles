@@ -1,6 +1,6 @@
 # Rails answers for the interview
 
-Read at `/verify create` step 1. Where to find each answer in a Rails repo, and the default when the repo is silent.
+Where to find each answer in a Rails repo, and the default when the repo is silent.
 
 | Question | Look at | Default |
 | --- | --- | --- |
@@ -14,4 +14,4 @@ Read at `/verify create` step 1. Where to find each answer in a Rails repo, and 
 
 Keyboard shortcuts: grep `keydown` in `app/javascript` and `data-action="keydown` in views; a shortcut that fires only outside inputs is a Gotcha.
 
-Seed passwords are dev-only and already in the repo; write them in the map. Credentials, `.env` secrets and production accounts never appear (user rule, FORBIDDEN).
+Seed passwords are dev-only and already in the repo; write them in the map. Credentials, `.env` secrets and production accounts never appear.

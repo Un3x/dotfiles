@@ -1,6 +1,6 @@
 # Maintain the map
 
-Read at `/verify maintain`. The unit is the feature file, not every sentence. Outcome is one of `clean`, `changed`, `blocked`, said in the report.
+The unit is the feature file, not every sentence. Outcome is one of `clean`, `changed`, `blocked`, said in the report.
 
 1. **Locate.** `.claude/skills/verify-*/`; several → ask which; none → stop and point at `/verify create`.
 2. **Index hygiene.** `features/README.md` lists exactly the sibling files; fix missing, dead or duplicate entries.

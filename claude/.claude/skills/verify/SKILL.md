@@ -24,7 +24,7 @@ An agent that has to start the app, find the admin login and click to a screen r
 
 ## `/verify maintain` — keep the map honest
 
-[`maintain.md`](maintain.md): one read-only pass per feature file against the source, one live pass driving every feature, outcome `clean`, `changed` (one PR or one vault commit) or `blocked`. Never edits product code.
+[`maintain.md`](maintain.md), outcome `clean`, `changed` or `blocked`.
 
 ## Rules
 

@@ -1,6 +1,6 @@
 # Feature file contract
 
-Read at `/verify create` step 3 and at `/verify maintain` step 1. One file per user-facing feature under `features/`, an H1 and one paragraph on the user-visible behaviour, then exactly four H2 sections in this order.
+One file per user-facing feature under `features/`, an H1 and one paragraph on the user-visible behaviour, then exactly four H2 sections in this order.
 
 1. `Sub-features` — short ids, one line each.
 2. `How to get to it (user POV)` — every entry point: menu path, URL, keyboard shortcut, who can see it.
