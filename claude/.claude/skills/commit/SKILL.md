@@ -22,6 +22,6 @@ Read [`pull-request.md`](pull-request.md) at `gh pr create`.
 
 - The why is written once, in the message: the plan, the issue and the PR are not files the log reader can open.
 - The message speaks the repo's language, the one of its recent commits, whatever language the session runs in.
-- A long subject is often a subject carrying its body: move the why to the body, never wrap the subject. The harness scans real subjects: when many miss the goal, challenge the goal or the way we write them.
+- A long subject is often a subject carrying its body: move the why to the body, never wrap the subject. When many real subjects miss the goal, challenge the goal or the way we write them.
 - Code meant to go away later (a gate bypass, a shim, scaffolding waiting on another issue) gets its own commit, so the cleanup is one revert. Its SHA and files go on the cleanup issue.
 - A real fix found while rewriting history stays a visible commit, announced as a change: a rewrite announced as "same diff" is not read again.

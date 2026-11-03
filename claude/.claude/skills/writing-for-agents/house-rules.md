@@ -13,7 +13,7 @@ Our house rules on top of [`SKILL.md`](SKILL.md) (mattpocock's, kept verbatim bu
 
 ## Thresholds, and what they protect
 
-The "about" rows are goals; the zero duplicates and the two corrections are restrictions. A file past a goal is read: it is a finding only when the extra is not needed.
+The "about" rows are goals; the two corrections are a restriction, and a duplicated paragraph met while reading is removed. A file past a goal is read: it is a finding only when the extra is not needed.
 
 | Threshold | Value | Protects |
 | --- | --- | --- |
