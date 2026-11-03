@@ -1,6 +1,6 @@
 # The verdict, where the report lives
 
-Read at step 6 of `/reproduce`. Readers are the ones of an issue (`commit/readers.md`): non-technical, in a thread.
+Readers are the ones of an issue (`commit/readers.md`): non-technical, in a thread.
 
 ```
 Reproduction — <verdict>
