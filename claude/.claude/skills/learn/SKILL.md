@@ -48,7 +48,7 @@ Ledger: `~/Documents/mylife_in_a_vault/systems/lessons.md`, one row per lesson.
 
 A page review: the PR it reviews, with the page link after the reviewer.
 
-The Repeats cell lists the PRs where the same miss came back. Each `rule` row of `/ship`'s review loop, whatever its score, adds the PR there; a missed rule with no row gets one. Two PRs in it: the next `/learn` flags the rule, to move or rewrite.
+The Repeats cell lists the PRs where the same miss came back. A `since` run also reads the `review-round-*.md` files under `.notes/` for the PRs of its window: each `rule` row, whatever its score, adds its PR there; a missed rule with no row gets one. Two PRs in it: the next `/learn` flags the rule, to move or rewrite.
 
 ## Rules
 

@@ -1,7 +1,5 @@
 # Review loop
 
-Read at phase 5 (review) of `/ship`.
-
 - Spawn a review subagent (fresh context, main model: review is judgment, `isolation: "worktree"` so its `gh pr checkout` never switches the branch under you) whose prompt is exactly:
   ```
   Run /review <pull_request_link>
@@ -14,6 +12,6 @@ Read at phase 5 (review) of `/ship`.
     2. **Re-plan**: append a `## Review round N` section to `.notes/<branch_name>/plan.md` — same format and same one rule as /plan ([`../one-rule.md`](../one-rule.md); one step per standing row: its failing test → fix, `remove <what>` alone for a removal, or `refactor <what>` for a behaviour-preserving fix; simplest fix only, flag rather than escalate). An **extra** the user wants kept is a scope change: ask, do not decide; a **missing** line is never rebutted, it is built or the issue is re-scoped by the user.
     3. **Re-ship**: implement the new steps with the [red-green-commit](../red-green-commit.md) cycle, push to the same branch (the PR updates). A fix goes into the commit whose story it tells (`commit` skill step 3: `--fixup`, autosquash, `--force-with-lease`) and into the file whose behaviour it covers, never into a file because its setup happens to make the test pass
     4. Spawn a **fresh** review subagent on the updated PR with the round-2 prompt, repeat
-- **A `rule` row**, whatever its score, is logged as a repeat in the lessons ledger (triage `logged` under 4); from 4 it is also fixed like any other ([`../learn/SKILL.md`](../learn/SKILL.md) § Ledger row).
+- **A `rule` row** from 4 is fixed like any other; under 4 its triage line reads `logged`. Monday's `/learn since` carries every `rule` row to the lessons ledger.
 - **Round cap: 3.** If open rows remain after round 3, stop looping: note the open rows in the session file `## Notes` and surface them to the user. Past three rounds the problem is likely the design or the scope, not the fixes: say which you suspect.
 - Update the session's Review round after each pass so resumption re-enters the loop correctly
