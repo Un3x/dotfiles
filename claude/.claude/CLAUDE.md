@@ -38,6 +38,7 @@ outcome, then the detail, then what Thomas must do ❓
 - Issue comments, handoff notes: a pointer plus the minimum that orients the reader. If it needs a paragraph, question whether it needs to exist.
 - Prefer a 5-line diagram over 5 paragraphs when explaining a flow.
 - Anything handed to someone (a review, a PR, an issue, a message) is ready to pass on as is. If Thomas has to rewrite it, it failed.
+- A number in a rule or a message is a goal, not a cap: comprehension wins (`~/.claude/skills/writing-for-agents/house-rules.md` § Three kinds of number).
 - A PR, issue or ticket (GitHub, Linear…) named in a message to the user or in a subagent report comes with its full URL, never a bare `#133` or `SIM-257`.
 
 ## Coding Behavior
