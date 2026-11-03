@@ -17,6 +17,7 @@ A skill names the verb; this table gives the call. Writing the description or cr
 | read an issue: title, body, status, branch name | `get_issue` (`gitBranchName` is the branch) |
 | list a project's open issues | `list_issues` |
 | write the description | `save_issue` with `id` and `description` |
+| list a team's statuses and their types | `list_issue_statuses` with the issue's team |
 | change the status | `save_issue` with `id` and `state` |
 | create an issue | `save_issue` without `id` |
 | comment | `save_comment` |
