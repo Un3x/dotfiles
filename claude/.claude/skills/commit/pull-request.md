@@ -5,7 +5,7 @@ The reader is the reviewer, then the developer who lands here from a commit mont
 - **One PR = one functionality**: the grain is in [`../slices.md`](../slices.md).
 - **Stacked PRs** (a series where each builds on the one before) go through `gh stack` (`init`, `add`, `submit`, `rebase`), never PRs based on each other by hand.
 - **Title**: the story of the branch, shaped like a commit subject and held to its length (`SKILL.md` step 1). A one-commit PR takes its commit subject verbatim.
-- **Body**, this shape and nothing else:
+- **Body**, this shape and nothing else (no headers, no test plan: CI and the diff are the test, no restating of the issue):
 
   ```
   <one to three lines: what the reader gets, and the one constraint or trade-off they must know>
