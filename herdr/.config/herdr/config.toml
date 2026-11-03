@@ -153,14 +153,14 @@ switch_workspace = "prefix+alt+1..9"
 [[keys.command]]
 key = "prefix+m"
 type = "popup"
-command = "cd ~/Documents/mylife_in_a_vault && EDITOR=/home/unex/.local/bin/nvim /home/unex/.local/bin/glow -w 100 ."
+command = "cd ~/Documents/mylife_in_a_vault && EDITOR=/home/unex/.local/bin/nvim /usr/bin/glow -w 100 ."
 width = "90%"
 height = "90%"
 
 [[keys.command]]
 key = "prefix+shift+m"
 type = "popup"
-command = "cd ~/Project/dotfiles/claude/.claude/skills && EDITOR=/home/unex/.local/bin/nvim /home/unex/.local/bin/glow -w 100 ."
+command = "cd ~/Project/dotfiles/claude/.claude/skills && EDITOR=/home/unex/.local/bin/nvim /usr/bin/glow -w 100 ."
 width = "90%"
 height = "90%"
 
