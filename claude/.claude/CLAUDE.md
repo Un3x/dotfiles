@@ -2,7 +2,7 @@
 
 ## Showing a file
 
-- To show the user a file, open it as an nvim tab of the current herdr workspace rather than pasting a path: `P=$(herdr tab create --workspace "$HERDR_WORKSPACE_ID" --cwd <dir> --label "<short name>" --focus | jq -r '.result.root_pane.pane_id')`, then `herdr pane run "$P" "nvim <path>"`. A page to look at rather than edit (captures, a mockup, a report) is published as an Artifact instead: a terminal shows no image.
+- To show the user a file, run `~/Documents/mylife_in_a_vault/systems/show-file.sh <path>` rather than pasting a path: it opens a new tab of this session's herdr space, Markdown in glow, the rest in nvim. A page to look at rather than edit (captures, a mockup, a report) is published as an Artifact instead: a terminal shows no image.
 
 ## Servers and secrets
 
