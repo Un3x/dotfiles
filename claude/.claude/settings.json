@@ -91,6 +91,15 @@
             "timeout": 5
           }
         ]
+      },
+      {
+        "matcher": "mcp__linear-.*__save_issue",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/unex/.claude/hooks/issue-reminder.sh"
+          }
+        ]
       }
     ]
   },
