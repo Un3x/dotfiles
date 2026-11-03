@@ -8,8 +8,7 @@ Answer first. The kind sets the level of abstraction, the pattern to follow and 
 
 | Kind | Shape |
 |------|-------|
-| **Trivial**: a field, a label, a guard | Inline in the existing code. No new class. |
-| **Fills an existing system**: a new endpoint in the catalogue, a new case of a mechanism that already exists | Follow the system's pattern. The new code writes only what is specific to it. If the system has no seam for this case, widening it is the work: preparatory refactoring, then the feature. Following the pattern means the same owner, not the same spot: when the new case does not fit where the existing one runs, ask what the code produces (a response, a record, a request) and who owns that, before widening the spot. The existing placement may be the thing to refactor. |
+| **Fills an existing system**: a field, a label, a guard, a new endpoint in the catalogue, a new case of a mechanism that already exists | Follow the system's pattern. The new code writes only what is specific to it. If the system has no seam for this case, widening it is the work: preparatory refactoring, then the feature. Following the pattern means the same owner, not the same spot: when the new case does not fit where the existing one runs, ask what the code produces (a response, a record, a request) and who owns that, before widening the spot. The existing placement may be the thing to refactor. |
 | **A new system**: a mechanism other features will plug into | Name its seam and check it against the next feature of the same kind. The kind goes under Questions (`has-questions`) and the plan stops until the user confirms it. |
 | **Isolated**: a one-off script, an importer, an experiment | Kept apart from the core, simple inside, no reuse expected. |
 

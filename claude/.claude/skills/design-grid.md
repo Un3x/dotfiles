@@ -41,7 +41,7 @@ Report only what the code shows. An empty family is a fine outcome.
 
 Complexity that costs more than it pays, against [`one-rule.md`](one-rule.md). Each finding states its deletion payoff (« inlining this removes 40 lines and one file »). A construct the plan names as removing a mechanism (a graft, a list, a copy) is neither single-caller indirection nor a wrong level of abstraction. A Readability rewrite (`review-checklist.md` Pass 2) is never a finding here.
 
-- **Kind mismatch**: the shape does not match the kind (`one-rule.md` § What are we building), as a system built for a trivial change, or a graft where an existing system needed widening.
+- **Kind mismatch**: the shape does not match the kind (`one-rule.md` § What are we building), as a system built for a field or a guard, or a graft where an existing system needed widening.
 - **Wrong level of abstraction**: speculative generality (params, options, flags or branches nothing uses today), a new class or module where existing code had a natural home, or a copy of an existing variant where the system already has a seam for it. Check with the deletion test, and ask what the next feature of the same kind would have to write.
 - **Breaks convention over configuration**: config flags, option hashes, initializers or custom plumbing where a Rails convention or built-in does the job: name the built-in.
 - **Single-caller indirection**: a class, service or method with exactly one call site that could be inlined (a `build_x` behind an `@x ||=` memo, or a `shared_examples`, is readability, not indirection).

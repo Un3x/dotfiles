@@ -63,6 +63,6 @@ outcome, then the detail, then what Thomas must do ❓
 
 ## Rails
 
-- **Vanilla Rails first.** Before writing or planning Rails code, read `~/.claude/skills/one-rule.md`: what we are building sets the shape (trivial, fills a system, new system, isolated); simple and readable, no graft, code with the object that owns the decision.
+- **Vanilla Rails first.** Before writing or planning Rails code, read `~/.claude/skills/one-rule.md`: what we are building sets the shape (fills a system, new system, isolated); simple and readable, no graft, code with the object that owns the decision.
 
 @RTK.md

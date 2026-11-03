@@ -7,7 +7,7 @@
 
 <one-line restatement of the outcome>
 
-Kind: trivial | fills <system> | new system | isolated — <why, one line>   ← one-rule.md § What are we building
+Kind: fills <system> | new system | isolated — <why, one line>   ← one-rule.md § What are we building
 
 ## Diagram
 <5-line ASCII of the flow: happy path + error path. So a reader grasps the change in a second — describe the design, never justify it.>
@@ -37,10 +37,8 @@ Flag: ...             ← only if you believe simple is insufficient (one senten
 
 ## Design check
 
-Kind trivial: skip it, `Design: n/a`.
-
 After the steps are written, list on the `Entry points:` line every route, job or command that reaches the objects the plan changes (grep the callers, the routes file, the controllers). Behaviour that belongs to one of them cannot live in an object they share. Then walk [`../design-grid.md`](../design-grid.md) against the planned changes, and on a Rails app (`rails` in the `Gemfile`) the § Review Checklist of `~/.claude/skills/layered-rails/workflows/review.md`, with that skill's `SKILL.md` § Quick Start for the layers, § Pattern Catalog for where code goes and § Extraction Signals for callback scores. A finding changes the steps: it moves code to its owner, removes a second path, or adds the preparatory refactor the kind calls for (`../one-rule.md`). Record the result on the `Design:` line.
 
-## Fresh-eyes check (non-trivial plans only)
+## Fresh-eyes check
 
 Before marking `ready`, spawn a subagent on `sonnet` with only the issue + draft plan: "Propose a design with half the moving parts, or the same behaviour owned by a different object." A smaller version of the same shape keeps a wrong owner; asking for another owner is what catches it. If it finds a simpler shape or a better owner, that becomes the plan. If its shape contradicts a rule (`../one-rule.md`, the project `CLAUDE.md`), never reject it on the rule alone: put the conflict under Questions, both shapes in one line each and the recommended one, and let the user decide. Exploration and fresh-eyes run on the smaller model on purpose (not for limits: to have the data before they bind); judgment stays on the main one.
