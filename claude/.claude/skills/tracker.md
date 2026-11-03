@@ -24,3 +24,10 @@ A skill names the verb; this table gives the call. Writing the description or cr
 | attach a file | `prepare_attachment_upload` → `curl -X PUT --data-binary` with the signed headers, within 60 seconds → `create_attachment_from_upload` |
 | link a PR | `Closes <ISSUE-ID>` in the PR body; the tracker's GitHub integration links it |
 | is it done? | `get_issue`, status type `completed` or `canceled` |
+
+## Comments
+
+Teammates read every comment under Thomas's name as addressed to them. Two kinds, never mixed in one comment; one that mixes them is split in two.
+
+- **For the team**, the default: short plain prose for a reader who has neither the plan nor the session.
+- **For the record** (a dated correction, the context to resume): first ask whether it belongs in the vault's `LOG.md` or the repo's `.notes/` instead. When it must live on the issue, its first line says so, in the project language (FR: « 📓 *Note pour mémoire (journal de travail) — rien à lire ni à faire pour l'équipe.* »).
