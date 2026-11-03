@@ -91,7 +91,7 @@ def commits(f, since):
 
 def guardrails(body):
     m = re.search(r"^## (Guardrails|Garde-fous|Boundaries|Rules)\s*$(.*?)(?=^## |\Z)", body, re.S | re.M)
-    return len(re.findall(r"^\s*[-*] ", m.group(1), re.M)) if m else 0
+    return len(re.findall(r"^\s*[-*] ", m.group(2), re.M)) if m else 0
 
 
 def table(roots, since):
