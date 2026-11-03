@@ -1,6 +1,6 @@
 # Split review
 
-Read by `/review split <target>`, a trial against the single-agent review: one agent carrying every pass gives the last ones less attention, so each domain gets its own agent with only its part of the checklist. The report, the bar for a finding and the rounds stay those of [`SKILL.md`](SKILL.md), so the two can be compared on the same PRs.
+The default `/review`: one agent carrying every pass gives the last ones less attention, so each domain gets its own agent with only its part of the checklist. The report, the bar for a finding and the rounds stay those of [`SKILL.md`](SKILL.md).
 
 ## Steps
 
@@ -11,11 +11,11 @@ Read by `/review split <target>`, a trial against the single-agent review: one a
 
    Done when all are launched.
 3. **Merge**, the coordinator's job, as `SKILL.md` step 7 does for Codex. Wait for every report; a specialist that fails or times out is `not run — <reason>`. Each finding is verified against the code at the bar of its pass. That means a failure scenario for a `bug`, `test` or `ask` row, the who-holds-what for `design`, a cost for `simplicity`, and a reading cost for `readability`. Several instances of one kind of bug become one row with its `Class:`. A bug in unchanged code is a `pre-existing` row. A rejected finding keeps its one-line rebuttal in § Second opinions. Done when every finding is kept, merged or rebutted.
-4. **Report** as `SKILL.md` steps 8 and 9. The layered-rails findings are `design` rows of the Design specialist; the Layered rails line is left out. The last line reads `Specialists: <name> <raised>/<kept>, …` (or `not run — <reason>`), so the trial can count who found what. Done when the report is written.
+4. **Report** as `SKILL.md` steps 8 and 9. The layered-rails findings are `design` rows of the Design specialist; the Layered rails line is left out. The last line reads `Specialists: <name> <raised>/<kept>, …` (or `not run — <reason>`), so the harness can count who found what. Done when the report is written.
 
 ## Specialists
 
-Each one reads `SKILL.md` § Rules for the bar of a finding, and the repo's `REVIEW.md` files: the root one, plus any in a folder the diff touches. Each writes its findings as scored rows in the shape of [`output.md`](output.md), with their details. With earlier rounds, each checks that the findings of its own domain are fixed and does not raise a triaged one again. Each reviews only its domain and leaves the rest to the specialist who owns it: a narrow brief is what the trial tests.
+Each one reads `SKILL.md` § Rules for the bar of a finding, and the repo's `REVIEW.md` files: the root one, plus any in a folder the diff touches. Each writes its findings as scored rows in the shape of [`output.md`](output.md), with their details. With earlier rounds, each checks that the findings of its own domain are fixed and does not raise a triaged one again. Each reviews only its domain and leaves the rest to the specialist who owns it: a narrow brief keeps its attention on one domain.
 
 - **Asked**: [`asked.md`](asked.md), the whole pass, verdict included.
 - **Critical**: [`../review-checklist.md`](../review-checklist.md) Pass 1, then the edge cases and performance of Pass 2.

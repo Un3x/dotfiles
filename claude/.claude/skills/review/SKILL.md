@@ -9,13 +9,10 @@ Paranoid code review. It checks what was built against what was asked, checks th
 - `/review` - Review current branch changes against main
 - `/review <PR-number>` or `/review <PR URL>` - Review a specific PR (also triggered by a plain request such as "peux-tu review https://github.com/org/repo/pull/504")
 - `/review <file1> <file2> ...` - Review specific files
-- `/review split <target>` - Trial: one agent per domain, merged here ([`split.md`](split.md)); only when asked, until the trial decides
 
-## Purpose
+Each runs one agent per domain, merged here: [`split.md`](split.md). `/review solo <target>` runs every step below in one agent.
 
-This is the **paranoid staff engineer brain**. Not a style review, not a linting pass. This catches structural bugs: race conditions, N+1 queries, trust boundary violations, silent failures, and logic errors.
-
-## Steps
+## Steps (solo; `split.md` reuses steps 1, 4, 7, 8 and 9)
 
 1. **Gather the diff**
    - No args: `git diff main...HEAD` (all changes on current branch)
@@ -24,28 +21,20 @@ This is the **paranoid staff engineer brain**. Not a style review, not a linting
    - **Earlier rounds** given in the prompt (a review loop past round 1): read them, then review only what changed since the `Head:` of the latest one (`git diff <Head>..HEAD`; after a force-push, `git range-diff`). A finding already triaged `rebutted` or `deferred` is not raised again; a fixed one is checked as fixed.
 2. **Asked versus built**: [`asked.md`](asked.md) — the ask as a checklist from the issue, then the diff marked against it. Done when every line carries delivered / missing / deviates and the extras are listed.
 3. **Read the checklist**: [`../review-checklist.md`](../review-checklist.md), then the repo's `REVIEW.md` files: the root one and any in a folder the diff touches. They add the repo's review rules (what counts as important here, paths to skip, extra checks) on top of the checklist, the same files Claude's managed Code Review reads.
-4. **Launch the Codex second opinion (background)**. Start it before your own passes so it runs in parallel (review mode is read-only by design):
-   - Branch: `codex exec review -c model_reasoning_effort=<rung> --base main > "$(git rev-parse --git-common-dir)/../.notes/<branch>/codex-review.md" 2>&1` (the main checkout's `.notes/`, which a worktree does not have). From round 2, `--base <the latest round's Head>`, and the layered-rails reviewer gets the same range.
-   - PR number or URL: `gh pr checkout <number-or-url>` first, then the same command
-   - Specific files: `codex exec review -c model_reasoning_effort=<rung> --base main "Only review: <files>"`
-   The rung: start at `medium`, one rung up per signal, capped at `xhigh`; anything irreversible is `xhigh` whatever the count. Signals: hand-written SQL or aggregates; an invariant several layers must agree on; concurrency, retries, idempotency; auth, permissions, money, personal data, proofs and attestations; migrations; a public contract (API, webhook, email); caches or derived state; a changed method with many callers. A single file, a rename or a config bump with no signal is `low`; a purely mechanical change skips Codex (`not run — mechanical`).
-   Run it with `run_in_background`; collect the file after Pass 4. If `codex` is missing or fails (quota, login, "Review blocked … sandbox could not start"), say so on the report's Codex line and continue — the second opinion is additive, never blocking. Never pass `--dangerously-bypass-approvals-and-sandbox` to get past a sandbox error: review mode then runs commands unsandboxed (it will happily run the test suite).
-   **Rails app** (`rails` in the `Gemfile`): also spawn the layered-rails reviewer, a background subagent whose prompt is exactly `Read ~/.claude/skills/layered-rails/SKILL.md § Quick Start, § Core Principles and § Extraction Signals, then review <the same target> per its workflows/review.md, skipping § Process step 4, § Anemic Job Detection, § Resolving Violations, § Output Format, § Severity Levels and § Example Review; its § Review Checklist alone judges a non-AR class under app/models/, and its links to analyze-services.md stay unopened. Read-only. Each finding as a behaviour, its steps and its result, then a Where: line with its paths.` Collect its report after Pass 4. If it fails or times out, write `not run — <reason>` on the report's Layered rails line and continue.
+4. **Launch the Codex second opinion** in the background, before your own passes, per [`codex.md`](codex.md): the command per target, the effort rung, what to do when it fails. Collect its file after Pass 4.
+   **Rails app** (`rails` in the `Gemfile`): also spawn the layered-rails reviewer, a background subagent whose prompt is exactly `Read ~/.claude/skills/layered-rails/SKILL.md § Quick Start, § Core Principles and § Extraction Signals, then review <the same target> per its workflows/review.md, skipping § Process step 4, § Anemic Job Detection, § Resolving Violations, § Output Format, § Severity Levels and § Example Review; its § Review Checklist alone judges a non-AR class under app/models/, and its links to analyze-services.md stay unopened. Read-only. Each finding as a behaviour, its steps and its result, then a Where: line with its paths.` It reviews the same range as Codex. Collect its report after Pass 4. If it fails or times out, write `not run — <reason>` on the report's Layered rails line and continue.
 5. **Rules check**: list the written rules that govern this diff: the repo's `CLAUDE.md` files nearest each changed path, its `.claude/skills`, and the rows of the lessons ledger (`~/Documents/mylife_in_a_vault/systems/lessons.md`) whose Home column names one of those files, a skill (`plan/`, `ship/`, `review/`, `commit/`) or a shared file at the skills root (`one-rule.md`, `design-grid.md`, `review-checklist.md`, `red-green-commit.md`, `slices.md`); no ledger on this machine: skip it and say so. Check the diff against each rule whose area it touches. A broken rule is a `rule` row, the rule quoted, its file in the row's details; a rule that does not apply is not listed. Done when every rule touching the diff was checked.
 6. **Run the four passes** of the checklist in order: CRITICAL, INFORMATIONAL, DESIGN, SIMPLICITY. A pass is done when every category has been checked against the whole diff.
-7. **Merge the Codex and layered-rails opinions**. Read `codex-review.md` and the layered-rails report. A finding already triaged in an earlier round is dropped. For each of the others: verify it against the code (same bar as your own — concrete failure scenario or drop it). A confirmed finding becomes a row like your own, merged into yours when it is the same; a rejected one gets a one-line rebuttal in § Second opinions, so the user sees the disagreement, not silence.
+7. **Merge the Codex and layered-rails opinions**. Read `codex-review.md` and the layered-rails report. A finding already triaged in an earlier round is dropped. For each of the others: verify it against the code at the bar of § Rules, or drop it. A confirmed finding becomes a row like your own, merged into yours when it is the same; a rejected one gets a one-line rebuttal in § Second opinions, so the user sees the disagreement, not silence.
 8. **Diagram the data flow** (if the diff touches a data pipeline, request handler, or multi-step process): ASCII diagram, mark where validation happens (or doesn't), mark where errors can occur and how they're handled.
 9. **Write the report** in the format of [`output.md`](output.md): every finding scored on its anchors, the table sorted by score. Done when every row has its details.
 
 ## Rules
 
 - No style nits a linter catches. Pass 2 Readability is not a nit.
-- Every row from 7 includes a concrete failure scenario ("when X happens, Y breaks because Z").
+- Every `bug`, `test` and `ask` row from 7 includes a concrete failure scenario ("when X happens, Y breaks because Z"); a `design` row states who holds what, and an `unclear` or `unproven` ask line its missing proof.
 - No finding without a trace: the entry point that reaches it, the values that get there, the line that misbehaves. A doubt is something to investigate, not to report: prove it or cut it, never « potential », « may », « risky ». A maybe handed to the reader bills them for the work skipped, and six maybes cost the trust in the one proven finding. An Unproven premise and an ask line marked `unproven` or `unclear` state a missing proof, which is itself the fact: they keep their place.
-- Don't flag things that are already covered by existing tests (read the test files).
 - If the diff is clean, say "no issues found, ship it" — don't invent problems. Clean code that misses a line of the ask is not clean: the verdict is `partial`.
-- Be specific. "This could be a problem" is useless. "This N+1 fires on the index page with 50+ records and will timeout" is useful.
-- Read surrounding code for context before flagging — the "bug" might be handled elsewhere.
 - Every claim is grounded in code you read, and its paths go on the row's `Where:` in § Details.
 - When the diff holds several instances of one kind of bug, one row names that class on its `Class:` and lists every instance, so one round fixes them all.
 - A bug in code the diff did not change is a `pre-existing` row: it does not count against the PR.

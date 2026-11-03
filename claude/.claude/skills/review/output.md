@@ -9,9 +9,9 @@ From 1 to 10, on fixed anchors:
 - **9–10**: breaks prod, data or security.
 - **7–8**: a user will hit it, or the next feature of the same kind will pay for it.
 - **4–6**: debt, simplicity, a missing test.
+- **1–3**: detail.
 
 A missing announcement (changelog, release note, doc) scores by what it announces: a change in behaviour is 7–8, information only is 4–5.
-- **1–3**: detail.
 
 An `ask` row for a missing or deviating line, or an extra that crosses a stated limit, scores at least 7.
 
