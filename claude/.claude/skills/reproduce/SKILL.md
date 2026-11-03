@@ -1,6 +1,6 @@
 ---
 name: reproduce
-description: "Reproduce a bug through the real app: find an existing fix, drive the feature from the verify map twice, cross-check the state, post one of five verdicts with evidence where the report lives. Use on a bug report, an error from Sentry, or a failing user path, before anyone writes a ticket or a fix."
+description: "Reproduce a bug through the real app and post a verdict with its evidence. Use on a bug report or an error from Sentry, before anyone writes a ticket or a fix."
 ---
 
 # reproduce
@@ -14,7 +14,7 @@ A report is a claim until the app shows it. Agents often patch a bug that is alr
 
 1. **Read the report** with [`report.md`](report.md): the symptom in one line, the role, the inputs, the screen or route, and the feature file of the verify map (`.claude/skills/verify-<app>/features/`) it lands on. No matching file → the verdict is `could not verify: the map does not cover <screen>`, with the feature file drafted so the next run can.
 2. **Look for an existing fix**: `git log --since='6 weeks ago' -- <feature's files>` and `gh pr list --state open` searched with the report's words and the feature's files. A commit or PR that matches is read before anything is launched. Done when you can say « nothing on main or open touches this » or name the sha or PR.
-3. **Launch and drive** per the map: Launch, Doctor, Enter as the report's role, then the feature's drive, copied to `tmp/verify/reproduce-<slug>/` with the report's inputs in place of its own. **Twice.** Here the evidence is read, not only the result lines: step 4 needs it.
+3. **Launch and drive** per the map: Launch, Doctor, Enter as the report's role, then the feature's drive, copied to `tmp/verify/reproduce-<slug>/` with the report's inputs in place of its own. **Twice.** Here the evidence is read, not only the result lines: step 4 needs it. A Sentry event replays as `report.md` says.
 4. **Cross-check the state, read only**: the row, the file, the queue entry, the log line that the screen claims. Evidence under `tmp/verify/reproduce-<slug>/`: screenshots, the read-back, the log excerpt, the copied drive.
 5. **Verdict**, exactly one: `reproduced` · `not reproduced` · `already fixed` (on main `<sha>` or PR #N) · `could not verify` (what was missing) · `flaky <n>/<m>`.
 6. **Post it where the report lives**, shaped by [`comment.md`](comment.md): on the issue when one exists, the reporter's own words on whether it reproduced and how; otherwise to the user in the project lead session, who decides whether a ticket exists at all. Done when the comment and the evidence file are both on the issue, or with the user when there is none. Then stop: no fix, no branch, no PR. A `reproduced` verdict hands the drive script to `/challenge` or `/plan` as the failing start.
