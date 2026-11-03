@@ -18,7 +18,8 @@ The project lead session runs in the repo with the vault protocol and the projec
 | an approved plan | `/ship <ISSUE>`, **one subagent per issue**, prompt exactly `Run /ship <ISSUE>` plus the decisions this session holds | PR opened and reviewed inside ship → merge per § Human gates |
 | a PR to look at | `/review <url>`, fresh subagent | report relayed, quoted in its own language |
 | a PR with a human review: ours reviewed by a teammate or the user, or a teammate's the user reviewed | `/learn <PR>`, in session | the kept rules applied, the ledger updated |
-| Monday, or drift suspected | `/verify maintain`, subagent | outcome in the check-in |
+| the EA's Monday brief | `/clean` on `.notes/`, `/verify maintain` in a subagent, `/learn since <last Monday>` up to its table | the outcomes and the table in the brief's Result |
+| drift suspected in the verify map | `/verify maintain`, subagent | outcome in the check-in |
 | a settled ask that ends in a PR, with no issue: an EA brief, a chore | one subagent follows `/ship` with the ask in place of the issue and plan: worktree branch, tests where the change can be tested (else the proof the ask names), PR, review loop (`ship/review-loop.md`); never in session | PR reviewed and fixed by that subagent → merge per § Human gates; one subagent owns the PR, so none leaves unreviewed |
 | an explicit command | as given; one that opens a PR takes the row above | — |
 
@@ -37,13 +38,13 @@ Several issues handed over at once (« ship them all ») run push right: the use
 
 ## Following a subagent
 
-The Agent tool runs it in the background and notifies on completion; one issue per subagent, at most one shipping subagent at a time on this machine (15 GB, Firefox open). On its report: read it; once the PR's CI is green, check it against the repo's merge rules and apply what they ask (a vouch, a label), then merge it when they allow an agent to; otherwise leave the merge to the user, naming why; log it in the app (`log_done`), tell the user in one block with the PR link and the open points. A subagent that asks a question the user already settled in this session gets the answer through SendMessage, and the report says what was sent; a design or scope question goes to the user. Cap: 2 h per subagent, then stop and report.
+The Agent tool runs it in the background and notifies on completion; one issue per subagent. Before spawning a shipping subagent, check the machine's available memory (`free -g`, column `available`): under about 4 GB, wait and check again, since other sessions ship on the same machine. On its report: read it; once the PR's CI is green, check it against the repo's merge rules and apply what they ask (a vouch, a label), then merge it when they allow an agent to; otherwise leave the merge to the user, naming why; log it in the app (`log_done`), tell the user in one block with the PR link and the open points. A subagent that asks a question the user already settled in this session gets the answer through SendMessage, and the report says what was sent; a design or scope question goes to the user. Cap: 2 h per subagent, then stop and report.
 
 ## Rules
 
 - Judgment in session, implementation in subagents: the project lead reads app code to shape, challenge and review; it does not edit it. The one exception is the verify map, which is the project lead's own file.
 - Every answer sent to a subagent traces to something the user said or a file they validated.
 - Nothing secret in a subagent prompt: it lands in the transcript.
-- The brief to a subagent is the command plus the decisions of this session, one paragraph; the user does not repeat themselves.
+- The brief to a subagent is the command plus the decisions of this session, one paragraph; the user does not repeat themselves. An environment workaround a brief carries twice (a variable, a driver, a script that fails) goes once into the repo's `CLAUDE.local.md` or its verify map, and leaves the brief.
 - Every deliverable has one owner from the ask to the merge, and that owner checks it against the ask, not only against itself.
 - Ask the user only product or preference calls. When the app, the console, the browser or a logged-in CLI can answer, run it and show the result.
