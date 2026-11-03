@@ -1,6 +1,6 @@
 # Who reads what
 
-Read from `commit` step 1, from `/ship` phase 2 and 4, and from any session that writes on an issue. Each artefact has one reader, and its length is what that reader has time for.
+Each artefact has one reader, and its length is what that reader has time for.
 
 | Artefact | Reader | When | They need | Goal | Links to |
 | --- | --- | --- | --- | --- | --- |

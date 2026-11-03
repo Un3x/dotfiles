@@ -1,6 +1,6 @@
 # Examples
 
-Read from step 1 of `commit` when the shape is in doubt. Loïc's messages first, then rewrites of our own.
+Loïc's messages first, then rewrites of our own.
 
 ## Loïc, verbatim
 

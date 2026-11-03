@@ -1,7 +1,5 @@
 # Troubleshooting
 
-Read at step 4 of `gh-image` when an attach fails, half succeeds, or the flag is unknown.
-
 `--attach` needs gh 2.99.0 or newer (`gh --version`, the flag in the command's `--help`), write access to the repo, and GitHub.com or Enterprise Cloud.
 
 When some uploads fail, the command can still create or update the resource with the others, then exit non-zero. Read stderr and the resource, then retry only the missing files with `edit` on that resource, never a second `create`.
