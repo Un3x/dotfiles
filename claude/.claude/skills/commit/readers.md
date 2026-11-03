@@ -10,4 +10,4 @@ Read from `commit` step 1, from `/ship` phase 2 and 4, and from any session that
 | Issue comment | the same readers, in a thread | a scope question needs an answer | one question, open or closed, whose answer splits, merges or bounds the issue; or the answer | a few lines | — |
 | Plan | Thomas, the coding agent | before and during `/ship` | the steps, the diagram, the size estimate | as long as it needs | attached to the issue as a file, never as a comment |
 
-What does not go on the tracker: plans, shipping logs, review rounds, rebase notes, file counts, and class names above the line. The issue's readers asked for none of it. The technical how lives in the code, which is meant to read at a glance; the plan is a file on the issue for whoever wants the detail.
+What does not go on the tracker: shipping logs, review rounds, rebase notes, file counts, class names above the line, and a plan written in a comment or the body (it goes as an attached file). The issue's readers asked for none of it. The technical how lives in the code, which is meant to read at a glance; the plan is a file on the issue for whoever wants the detail.
