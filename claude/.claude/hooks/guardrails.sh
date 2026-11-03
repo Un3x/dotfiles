@@ -1,6 +1,5 @@
 #!/bin/bash
 # PreToolUse guardrails. Each pattern below is a rule the prose failed to hold at least once;
-# see ~/.claude/skills/harness/SKILL.md for how a rule earns its place here.
 # Patterns match a command at the start of a shell statement, so prose that mentions a command
 # (a note, a grep) passes, and heredoc bodies are not matched at all.
 INPUT=$(cat)
