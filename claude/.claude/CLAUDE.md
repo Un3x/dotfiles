@@ -30,6 +30,7 @@ outcome, then the detail, then what Thomas must do ❓
 - **A background result** (a subagent, a brief, a lead) gets its own block in the next message, written in full so it stands alone.
 - **Icons** close the block and its TL;DR line: ❓ a decision · ▶️ a command to run · 👀 something to read or check · ⏳ waiting on someone else. One icon per need. No icon: nothing for Thomas.
 - **A skill's own template** (grilling's questions, ship's report) sits inside its block unchanged; the GPG line stays the very last line.
+- **Style**: **wait-what** (`~/.claude/skills/wait-what/SKILL.md`): a little context, ASD-STE100 Simplified Technical English, the words of the project's glossary. Thomas reads it once, with no question back.
 - **Language**: English, unless the project's own rule says otherwise. Reviews and PR or ticket comments are written in the **project language** from the start: the `Language:` line of `CLAUDE.local.md` in the repo or of the project's vault `CLAUDE.md`, English when there is none. Commits and issues follow the repo's own language (`commit`, `issue`). A relayed text is quoted in its own language.
 
 ## Prose Diet
@@ -38,7 +39,7 @@ outcome, then the detail, then what Thomas must do ❓
 - Prefer a 5-line diagram over 5 paragraphs when explaining a flow.
 - Anything handed to someone (a review, a PR, an issue, a message) is ready to pass on as is. If Thomas has to rewrite it, it failed.
 - A number in a rule or a message is a goal, not a cap: comprehension wins (`~/.claude/skills/writing-for-agents/house-rules.md` § Three kinds of number).
-- A PR, issue or ticket (GitHub, Linear…) named in a message to the user or in a subagent report comes with its full URL, never a bare `#133` or `SIM-257`.
+- A PR, issue or ticket (GitHub, Linear…) named in a message to the user or in a subagent report comes as a Markdown link, its short tag as the text and its full URL as the target (`[SIM-257](https://linear.app/pole-api/issue/SIM-257)`, `[formulaire-qf#426](https://github.com/etalab/formulaire-qf/pull/426)`), never a bare tag nor a raw URL: herdr makes only the visible part of a wrapped URL clickable.
 
 ## Coding Behavior
 
