@@ -32,8 +32,8 @@ Each runs one agent per domain, merged here: [`split.md`](split.md). `/review so
 ## Rules
 
 - No style nits a linter catches. Pass 2 Readability is not a nit.
-- Every `critical` or `important` `bug`, `test` and `ask` row includes a concrete failure scenario ("when X happens, Y breaks because Z"); a `design` row states who holds what, and an `unclear` or `unproven` ask line its missing proof.
-- No finding without a trace: the entry point that reaches it, the values that get there, the line that misbehaves. A doubt is something to investigate, not to report: prove it or cut it, never « potential », « may », « risky ». A maybe handed to the reader bills them for the work skipped, and six maybes cost the trust in the one proven finding. An Unproven premise and an ask line marked `unproven` or `unclear` state a missing proof, which is itself the fact: they keep their place.
+- Every `critical` or `important` `bug`, `test` and `ask` row includes a concrete failure scenario ("when X happens, Y breaks because Z"); a `design` row states who holds what, and an `unclear` ask line what would settle it.
+- No finding without a trace: the entry point that reaches it, the values that get there, the line that misbehaves. A doubt is something to investigate, not to report: prove it or cut it, never « potential », « may », « risky ». A maybe handed to the reader bills them for the work skipped, and six maybes cost the trust in the one proven finding. An Unproven premise and an ask line marked `unclear` state a missing proof, which is itself the fact: they keep their place.
 - A choice the PR body or a commit message explains is raised only when the explanation does not hold, and the row says why, quoting it.
 - Read the tests before raising a `bug` or `test` row: a behaviour a test already pins is not a finding.
 - If the diff is clean, say "no issues found, ship it" — don't invent problems. Clean code that misses a line of the ask is not clean: the verdict is `partial`.
