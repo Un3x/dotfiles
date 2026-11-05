@@ -12,7 +12,7 @@ Each says what is wrong. It may end with a direction in a few plain words (when 
 ## Severity
 
 - **critical**: breaks prod, data or security.
-- **important**: a user will hit it, or the next feature of the same kind will pay for it. An `ask` finding for a missing or deviating line, or an extra that crosses a stated limit, is at least important.
+- **important**: a user will hit it, or the next feature of the same kind will pay for it. A hollow test (one that survives the mutation of what it covers) is important. An `ask` finding for a missing or deviating line, or an extra that crosses a stated limit, is at least important.
 - **minor**: debt, simplicity, a missing test, a detail.
 
 A missing announcement (changelog, release note, doc) ranks by what it announces: a change in behaviour is important, information only is minor.
