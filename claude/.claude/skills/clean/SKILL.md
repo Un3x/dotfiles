@@ -1,14 +1,16 @@
 ---
 name: clean
-description: "Delete .notes subfolders whose issue is done, auto-review briefs whose PR is merged or closed, and our branches whose PR is merged or closed."
+description: "Delete .notes subfolders whose issue is done, auto-review briefs whose PR is merged or closed, and our branches whose PR is merged."
 disable-model-invocation: true
 ---
 
-The goal is to clean the content of the .notes folder.
+The goal is to clean what finished work leaves: the .notes folder, the briefs, the branches.
 For each subfolder, check the corresponding issue in the project's tracker (« is it done? », [`../tracker.md`](../tracker.md)), and if it is done, clean the corresponding folder.
 Then delete the project's auto-review briefs whose PR is merged or closed: `~/Documents/mylife_in_a_vault/systems/clean-briefs.sh <project>`, the project being the last folder of the path in `.claude/project-lead`.
 Then the branches, after `git fetch --prune origin`:
-- **Local**: each branch whose PR is merged or closed (`gh pr list --state merged` and `--state closed`, their `headRefName`) or whose tip is in `origin/main`, deleted with `git branch -D`. A branch checked out in a worktree stays, and is named in the report.
-- **Remote**: each branch of a PR we authored (`--author @me`) that is merged or closed, deleted with `git push origin --delete`. A teammate's branch and any branch with an open PR stay.
+Our finished branches are the `headRefName` and `headRefOid` of `gh pr list --author @me --state merged --limit 200`. A branch that is the default branch, the base (`baseRefName`) of any PR (`--state all --limit 200`), or the head of more than one PR, is never one of them: it is long-lived.
+- **Local**: each one deleted with `git branch -d`. When git refuses (a squash merge), `git branch -D` only when its tip is the PR's `headRefOid`.
+- **Remote**: each one whose remote tip is still the PR's `headRefOid`, deleted with `git push origin --delete`.
+- Never deleted: the current branch, a branch in a worktree, a branch with an open PR. A closed PR's branch and a teammate's are not finished branches. A finished branch that stays is named in the report (the reply, or the brief's Result).
 
-Done when no local branch and no remote branch of ours belongs to a merged or closed PR.
+Done when each finished branch is deleted or named in the report.
