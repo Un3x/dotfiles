@@ -12,7 +12,7 @@ A report is a claim until the app shows it. Agents often patch a bug that is alr
 
 ## Steps
 
-1. **Read the report** with [`report.md`](report.md): the symptom in one line, the role, the inputs, the screen or route, and the feature file of the verify map (`.claude/skills/verify-<app>/features/`) it lands on. No matching file → the verdict is `could not verify: the map does not cover <screen>`, with the feature file drafted so the next run can.
+1. **Read the report** with [`report.md`](report.md): the symptom in one line, the role, the inputs, the screen or route, and the feature file of the verify map (`.claude/skills/verify-<app>/features/`, or `<app>-verify/features/`) it lands on. No matching file → the verdict is `could not verify: the map does not cover <screen>`, with the feature file drafted so the next run can.
 2. **Look for an existing fix**: `git log --since='6 weeks ago' -- <feature's files>` and `gh pr list --state open` searched with the report's words and the feature's files. A commit or PR that matches is read before anything is launched. Done when you can say « nothing on main or open touches this » or name the sha or PR.
 3. **Launch and drive** per the map: Launch, Doctor, Enter as the report's role, then the feature's drive, copied to `tmp/verify/reproduce-<slug>/` with the report's inputs in place of its own. **Twice.** Here the evidence is read, not only the result lines: step 4 needs it. A Sentry event replays as `report.md` says.
 4. **Cross-check the state, read only**: the row, the file, the queue entry, the log line that the screen claims. Evidence under `tmp/verify/reproduce-<slug>/`: screenshots, the read-back, the log excerpt, the copied drive.

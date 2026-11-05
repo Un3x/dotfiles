@@ -9,7 +9,7 @@ An agent that has to start the app, find the admin login and click to a screen r
 
 ## Use the map (every session that drives the app)
 
-1. Read `.claude/skills/verify-<app>/SKILL.md` and the `features/README.md` index. No such directory → say so and offer `/verify create`; never improvise a launch or a login when a map exists.
+1. Read `.claude/skills/verify-<app>/SKILL.md` (or `<app>-verify/`, the older name) and the `features/README.md` index. No such directory → say so and offer `/verify create`; never improvise a launch or a login when a map exists.
 2. Follow its Launch and Doctor sections literally, then run the feature's drive. Done when the drive printed its result lines and the evidence exists at the path the skill names.
 3. **Read the result lines, not the evidence.** A `PASS` is proof as it stands: the screenshots are for the human reading the PR. Open a screenshot, a log or a read-back only behind a `FAIL`, to say what went wrong.
 4. A step the map describes that the app no longer does is either drift (fix the map in the same PR, or note it if the map is local) or a regression (report it, do not paper over it).
