@@ -14,7 +14,7 @@ A **capture** goes with a finding when it shows its constat faster than words, c
 - **Seen on screen**: a UI bug, a broken layout, a wrong text or state, a screen the PR changes where it should stay the same, captured in the review's own drive of the app.
 - **Visual direction**: the screen or pattern the app already shows (« comme sur les pages « modifier » »).
 
-An ask delivered on a screen gets one capture of that screen. The captures go in one PR comment posted right after the review, for the findings it posts and in its language, attached with the `gh-image` skill: `[n].` and its captures per finding, the ask's under `Ask delivered:`.
+An ask delivered on a screen gets one capture of that screen. The captures go in one PR comment posted right after the review, for the findings it posts and in its language, attached with the `gh-image` skill: `[n]. [constat]` and its captures per finding, the ask's under `Ask delivered:`. It is posted whenever it holds a capture, an automatic review with no finding left included.
 
 ## Severity
 
@@ -47,7 +47,7 @@ Every finding. § Second opinions stays local. A section with nothing in it is l
 ```
 ## Code Review: [PR title or branch] — [verdict]
 Author: [PR author login, or the branch owner] · Model: [the model this review ran on] · Head: [the commit SHA reviewed]
-Ask: [ISSUE-ID and title, or "no source found"] — delivered | partial | off-target
+Ask: [ISSUE-ID and title, or "no source found"] — delivered | partial | off-target · Capture: [path, when delivered on a screen]
 Note: [what the review could not check, or left out]
 
 ### Summary
