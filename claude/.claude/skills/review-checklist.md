@@ -1,5 +1,7 @@
 # Built-in checklist
 
+A pass is a scan order, not a severity: every finding is ranked by [`review/output.md`](review/output.md) § Severity.
+
 ## Pass 1: CRITICAL
 Issues that will break production, lose data, or create security holes.
 
