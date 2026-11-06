@@ -7,7 +7,8 @@ Lu à l'étape 4 de `post`, après `paires.md`. Les exemples priment sur les rè
 - Une expérience à lui + un avis tranché (« L'IA a mal fait TON travail », 10x la portée des autres).
 - L'actualité tech + un avis tranché (PHP, 13 500 impressions, record).
 - Une vraie question à la fin, qui fait commenter. La plus sincère : il avoue ne pas avoir la réponse, puis il demande (« Et moi ? Honnêtement, je n'ai pas la réponse. […] Vous le gérez comment, vous ? »). Quand sa pratique manque, on lui propose ce format plutôt qu'une réponse inventée.
-- Ce qui a fait un flop : la série mèmes, le commentaire d'étude sans actualité.
+- Un mème illustre un post qui a du fond : il aime les mèmes, il travaille avec des gens qu'il aime.
+- Ce qui a fait un flop : la série de posts faits d'un mème seul, le commentaire d'étude sans actualité.
 
 ## Ligne
 
