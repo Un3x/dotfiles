@@ -9,13 +9,13 @@ A finding lives where its reader meets it:
 
 Each says what is wrong. It may end with a direction in a few plain words (when there are two ways, joined by « or ») (« Deleting the rules from there would solve it », « Inverting the dependency would comply with X »), never code: a way to go, not the fix.
 
-A **capture** goes with a finding when it shows its constat faster than words, one per point, cropped to it:
+A **capture** goes with a finding when it shows its constat faster than words, cropped to what it shows (a before / after is two):
 
-- **Seen on screen**: a UI bug, a broken layout, a wrong text or state, captured in the review's own drive of the app (`asked.md` step 4).
+- **Seen on screen**: a UI bug, a broken layout, a wrong text or state, captured in the review's own drive of the app.
 - **Before / after**: a screen the PR changes where it should stay the same, the default branch and the PR side by side.
 - **Visual direction**: the screen or pattern the app already shows (« comme sur les pages « modifier » »).
 
-An ask delivered on a screen gets one capture of that screen. The captures go in one PR comment posted right after the review, attached with the `gh-image` skill: `[n].` and its captures per finding, the ask's under `Ask delivered:`.
+An ask delivered on a screen gets one capture of that screen. The captures go in one PR comment posted right after the review, for the findings it posts and in its language, attached with the `gh-image` skill: `[n].` and its captures per finding, the ask's under `Ask delivered:`.
 
 ## Severity
 
