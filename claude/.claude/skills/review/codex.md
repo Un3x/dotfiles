@@ -1,10 +1,10 @@
 # Codex second opinion
 
-Review mode is read-only by design. Run it with `run_in_background`, before your own passes, so it runs in parallel. In a subagent, run it in the foreground instead (Bash `timeout` 600000): a subagent that waits on a background run ends its turn and the review never finishes. Past the timeout, the Codex line says `not run — timeout`.
+Review mode is read-only by design. Run it with `run_in_background`, before your own passes, so it runs in parallel. In a subagent, run it in the foreground after Pass 4 instead (Bash `timeout` 600000): a subagent that waits on a background run ends its turn and the review never finishes. Past the timeout, the Codex line says `not run — timeout`.
 
 ## Command per target
 
-- Branch: `codex exec review -c model_reasoning_effort=<rung> --base main > "$(git rev-parse --git-common-dir)/../.notes/<branch>/codex-review.md" 2>&1` (the main checkout's `.notes/`, which a worktree does not have). From round 2, `--base <the latest round's Head>`.
+- Branch: `codex exec review -c model_reasoning_effort=<rung> --base main > "$(git rev-parse --git-common-dir)/../.notes/<branch>/codex-review.md" 2>&1` (the main checkout's `.notes/`, which a worktree does not have; when a write to the main checkout is refused, run `mkdir -p .notes/<branch>` in the worktree, write `.notes/<branch>/codex-review.md` there, and name it in the report). From round 2, `--base <the latest round's Head>`.
 - PR number or URL: `gh pr checkout <number-or-url>` first, then the same command.
 - Specific files: `codex exec review -c model_reasoning_effort=<rung> --base main "Only review: <files>"`.
 
