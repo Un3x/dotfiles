@@ -47,4 +47,5 @@ The Agent tool runs it in the background and notifies on completion; one issue p
 - Nothing secret in a subagent prompt: it lands in the transcript.
 - The brief to a subagent is the command plus the decisions of this session, one paragraph; the user does not repeat themselves. An environment workaround a brief carries twice (a variable, a driver, a script that fails) goes once into the repo's `CLAUDE.local.md` or its verify map, and leaves the brief.
 - Every deliverable has one owner from the ask to the merge, and that owner checks it against the ask, not only against itself.
+- Before stating the state of a branch or of prod, `git fetch` and read `origin/<branch>`; for prod, the sha of the last successful production deploy run (`gh run list --workflow <deploy> --status success --limit 1 --json headSha`; no Actions deploy: ask the user where prod's sha shows). A local branch can be days behind.
 - Ask the user only product or preference calls. When the app, the console, the browser or a logged-in CLI can answer, run it and show the result.
