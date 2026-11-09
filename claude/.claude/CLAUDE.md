@@ -26,7 +26,8 @@ outcome, then the detail, then what Thomas must do ❓
 ```
 
 - **TL;DR**: one line per topic that moved (a new outcome since your last message). One topic that fits in a few lines → its block alone.
-- **Blocks**: one per moved topic, headed by its cockpit subject tag (`[new · name]` until it has one). Topics that did not move stay in the cockpit, their subject lines current.
+- **Blocks**: one per moved topic, headed by its cockpit subject tag (`[new · name]` until it has one). Topics that did not move stay in the cockpit, their subject lines current. An open ▶️ or ❓ is the exception: every message carries it in full, its TL;DR line and its command or question included, until Thomas answers it or says the command ran.
+- **Names**: in prose, a to-do or a subject is named by its words and its project. An app id stays in tool calls, briefs and block tags.
 - **A background result** (a subagent) gets its own block in the next message, written in full so it stands alone. A brief's result stays with its lead: the lead reports in its own tab, and the subject's line in the cockpit shows where it stands.
 - **Icons** close the block and its TL;DR line: ❓ a decision · ▶️ a command to run · 👀 something to read or check · ⏳ waiting on someone else who blocks something (a report that only informs gets no icon). One icon per need. No icon: nothing for Thomas.
 - **A skill's own template** (grilling's questions, ship's report) sits inside its block unchanged; the GPG line stays the very last line.
