@@ -37,7 +37,7 @@ Ledger: `~/Documents/mylife_in_a_vault/systems/lessons.md`, one row per lesson.
 5. **Show the user** a table: comment (link), reviewer, fix count, lesson / preference / repeat, draft rule, home. The user keeps, rewords or cuts. Nothing is written before.
 6. **Apply what was kept**:
    - dotfiles skills: edited and committed (`commit` skill), pushed after a fresh-eyes review subagent (global `CLAUDE.md`);
-   - repo rules: one PR per repo and session, opened by that project's session; a repo where the user is the sole reviewer still goes through a PR the user merges;
+   - repo rules: each rule alone, in the next PR whose diff the rule governs, or in a PR of its own, added by that project's session (Loïc, apistration#641: « mieux vaut l'ajouter seul, dans la PR qui le rencontre »); a repo where the user is the sole reviewer still goes through a PR the user merges;
    - ledger: one row per new lesson, the PR added to the Repeats cell of a repeat, committed in the vault.
 
 ## Ledger row
