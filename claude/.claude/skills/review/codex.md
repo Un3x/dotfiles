@@ -1,6 +1,6 @@
 # Codex second opinion
 
-Review mode is read-only by design. Run it with `run_in_background`, before your own passes, so it runs in parallel.
+Review mode is read-only by design. Run it with `run_in_background`, before your own passes, so it runs in parallel. In a subagent, run it in the foreground instead (Bash `timeout` 600000): a subagent that waits on a background run ends its turn and the review never finishes. Past the timeout, the Codex line says `not run — timeout`.
 
 ## Command per target
 

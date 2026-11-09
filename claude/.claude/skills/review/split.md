@@ -5,7 +5,7 @@ The default `/review`: one agent carrying every pass gives the last ones less at
 ## Steps
 
 1. **Gather the diff** as in `SKILL.md` step 1. A PR is checked out here (`gh pr checkout`), before anything starts. Fix the range every specialist reviews: `main...HEAD`, the latest round's `Head:` onwards, or the files given. Done when the tree and the range are set.
-2. **Launch in parallel, in the background**:
+2. **Launch in parallel, in the background** (when this review runs in a subagent: one after the other, in the foreground, since a subagent that waits on a background run ends its turn):
    - Codex, as in `SKILL.md` step 4, without its checkout.
    - One subagent per specialist below, on the model this session runs on. Prompt exactly `Read ~/.claude/skills/review/split.md § Specialists, then review <target> on <range> as the <name> specialist. Never edit code.` plus the earlier rounds when there are some.
 
