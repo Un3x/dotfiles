@@ -1,6 +1,6 @@
 # Output format
 
-The review is one list of findings, every one proven (`SKILL.md` § Rules), ranked by severity, most severe first. It goes on GitHub as one review, the same shape whether it was asked for or triggered automatically: the automatic one only keeps the `critical` and `important` findings. Its reader is the author or the next agent, who finds the fix on their own.
+The review is one list of findings, every one proven (`SKILL.md` § Rules), ranked by severity, most severe first. It goes on GitHub as one review, the same shape whether it was asked for or triggered automatically: the automatic one only keeps the `critical` and `important` findings, and is posted only when one is left. Its reader is the author or the next agent, who finds the fix on their own.
 
 A finding lives where its reader meets it:
 
@@ -14,7 +14,7 @@ A **capture** goes with a finding when it shows its constat faster than words, c
 - **Seen on screen**: a UI bug, a broken layout, a wrong text or state, a screen the PR changes where it should stay the same, captured in the review's own drive of the app.
 - **Visual direction**: the screen or pattern the app already shows (« comme sur les pages « modifier » »).
 
-An ask delivered on a screen gets one capture of that screen. The captures go in one PR comment posted right after the review, for the findings it posts and in its language, attached with the `gh-image` skill: `[n]. [constat]` and its captures per finding, the ask's under `Ask delivered:`. It is posted whenever it holds a capture, an automatic review with no finding left included.
+An ask delivered on a screen gets one capture of that screen, kept in the local report. On the PR, the captures of a posted finding, of either kind above, go in one comment right after the review, in its language, attached with the `gh-image` skill (a review takes no attachment). Above each capture, one line of text: the finding it belongs to, named by its `path:line` or its number in the body's table, then what the screen shows (the page, the action done, the browser). The finding's sentence stays in the review, where its reader already has it. With no such capture, no comment is posted.
 
 ## Severity
 
@@ -84,4 +84,4 @@ One GitHub review, event `COMMENT`, never an approval or a change request. Asked
 - **Line comments**: one per line finding, short lines: `**[Severity]** · [type] — [constat]`, then its `Direction: …` when it has one, then for a `bug` or `test` `Reproduce: …`, the action only, with no values and no error text. Then its `Details` block.
 - **Post**: `gh api repos/<owner>/<repo>/pulls/<n>/reviews --input review.json`, the file holding `commit_id` (the head SHA), `event: "COMMENT"`, `body`, and `comments: [{path, line, side: "RIGHT", body}]`. A line is in the diff when `gh pr diff` shows it as an added or context line of a hunk. A `422` rejects the whole review: move the comments it names (or all of them) into the body and post again, and an auto-review brief's Result says so.
 
-No finding left after the filter: the automatic review posts the body alone, saying in the project language that nothing of importance was found (FR: « Revue automatique : rien d'important relevé. »).
+No finding left after the filter: the automatic review posts nothing on the PR, since a post gives its readers something to act on.
