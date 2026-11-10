@@ -8,6 +8,7 @@
 <one-line restatement of the outcome>
 
 Kind: fills <system> | new system | isolated — <why, one line>   ← one-rule.md § What are we building
+Level: 1 | 2 | 3 — <the trigger that sets it>   ← one-rule.md § What level is it?
 
 ## Diagram
 <5-line ASCII of the flow: happy path + error path. So a reader grasps the change in a second — describe the design, never justify it.>
@@ -41,4 +42,4 @@ After the steps are written, list on the `Entry points:` line every route, job o
 
 ## Fresh-eyes check
 
-Before marking `ready`, spawn a subagent on `sonnet` with only the issue + draft plan: "Propose a design with half the moving parts, or the same behaviour owned by a different object." A smaller version of the same shape keeps a wrong owner; asking for another owner is what catches it. If it finds a simpler shape or a better owner, that becomes the plan. If its shape contradicts a rule (`../one-rule.md`, the project `CLAUDE.md`), never reject it on the rule alone: put the conflict under Questions, both shapes in one line each and the recommended one, and let the user decide. Exploration and fresh-eyes run on the smaller model on purpose (not for limits: to have the data before they bind); judgment stays on the main one.
+At levels 2 and 3, before marking `ready`, spawn a subagent on `sonnet` with only the issue + draft plan: "Propose a design with half the moving parts, or the same behaviour owned by a different object." A smaller version of the same shape keeps a wrong owner; asking for another owner is what catches it. If it finds a simpler shape or a better owner, that becomes the plan. If its shape contradicts a rule (`../one-rule.md`, the project `CLAUDE.md`), never reject it on the rule alone: put the conflict under Questions, both shapes in one line each and the recommended one, and let the user decide. Exploration and fresh-eyes run on the smaller model on purpose (not for limits: to have the data before they bind); judgment stays on the main one.

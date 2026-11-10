@@ -14,6 +14,16 @@ Answer first. The kind sets the level of abstraction, the pattern to follow and 
 
 When the kind is unclear, it is a question, not a guess.
 
+## What level is it?
+
+The level sets which checks the plan runs and when the user sees it. It goes on the plan's `Level:` line, with the trigger that set it. The level is read off the plan, never judged: one trigger is enough to move up, and a doubt between two levels takes the higher one, and a plan with no `Level:` line is level 3. An agent labels its own work low, and every plan sent back by review was labelled small.
+
+| Level | Triggers | Checks | The user |
+|---|---|---|---|
+| **1** | fills an existing system, or isolated: no new query, scope, migration, job or route; one entry point; no screen | design grid | reads the plan on the issue, with the code |
+| **2** | a new query, scope, job or route; a migration that leaves the data model as it is (an index); two entry points or more; a screen with a mockup | design grid, fresh-eyes | reads the plan on the issue, with the code; its Questions stop it as always |
+| **3** | a new system; a change to the data model, its migration included; a migration that changes existing data; a Flag; money; data leaving the app | design grid, fresh-eyes, split review | approves the plan before ship |
+
 ## Rules
 
 - **A graft is not simple.** A graft is a second path for something the system already does (a second builder, a hook beside a chain step, a mock branch beside the real one), wrong even when it works. Widen the existing path. The plan removes a graft the design grid finds, new or old, or puts the preparatory refactoring that removes it under Questions.

@@ -13,9 +13,9 @@ The project lead session runs in the repo with the vault protocol and the projec
 | --- | --- | --- |
 | a bug report: email, message, screenshot, Sentry event | `/reproduce`, in session | `reproduced` or `flaky` → ticket written with the `issue` skill → challenge; `already fixed` or `not reproduced` → answer the reporter, stop |
 | an issue with no command | `/challenge`, in session | `CHALLENGE: GO` → plan; `RESHAPE` or `DROP` → the user |
-| an issue with the ask settled | `/plan`, in session | plan `ready` → the user approves → ship; questions → the user |
+| an issue with the ask settled | `/plan`, in session | plan `ready` → level 3: the user approves → ship; levels 1 and 2 → ship; questions → the user |
 | several issues at once (« ship them all ») | § Batch | one brief at the end |
-| an approved plan | `/ship <ISSUE>`, **one subagent per issue**, prompt exactly `Run /ship <ISSUE>` plus the decisions this session holds | PR opened and reviewed inside ship → merge per § Human gates |
+| a plan cleared for ship (§ Human gates) | `/ship <ISSUE>`, **one subagent per issue**, prompt exactly `Run /ship <ISSUE>` plus the decisions this session holds | PR opened and reviewed inside ship → merge per § Human gates |
 | a PR to look at | `/review <url>`, fresh subagent | report relayed, quoted in its own language |
 | a PR with a human review: ours reviewed by a teammate or the user, or a teammate's the user reviewed | `/learn <PR>`, in session | the kept rules applied, the ledger updated |
 | the EA's Monday brief | do `~/.claude/skills/clean/SKILL.md` for `.notes/`, `/verify maintain` in a subagent, `/learn since <last Monday>` up to its step 5 | the outcomes and the table in the brief's Result |
@@ -25,7 +25,7 @@ The project lead session runs in the repo with the vault protocol and the projec
 
 ## Human gates
 
-The session never crosses these on its own: plan approval before ship; merge by default, unless the repo's own merge rules (`REVIEW.md`, its `CLAUDE.md`) let an agent merge that PR: they are stronger than this default; `RESHAPE` or `DROP`; anything irreversible (force-push, migration on data, deploy, a message to a partner).
+The session never crosses these on its own: plan approval before ship at level 3 (`../one-rule.md` § What level is it?); at levels 1 and 2 the user reads the plan on the issue, with the code; merge by default, unless the repo's own merge rules (`REVIEW.md`, its `CLAUDE.md`) let an agent merge that PR: they are stronger than this default; `RESHAPE` or `DROP`; anything irreversible (force-push, migration on data, deploy, a message to a partner).
 
 ## Batch
 
