@@ -15,22 +15,16 @@
 
 ## Messages to Thomas
 
-Every message that ends a turn, from any session that talks to Thomas, so he never scrolls back. A subagent reports to its session, which rewrites the report into this shape.
+Every message that ends a turn, from any session that talks to Thomas. A subagent reports to its session, which rewrites the report into this shape.
 
-```
-**TL;DR**
-[N · name] outcome ❓
----
-**[N · name]**
-outcome, then the detail, then what Thomas must do ❓
-```
-
-- **TL;DR**: one line per topic that moved (a new outcome since your last message). One topic that fits in a few lines → its block alone.
-- **Blocks**: one per moved topic, headed by its cockpit subject tag (`[new · name]` until it has one). Topics that did not move stay in the cockpit, their subject lines current. An open ▶️ or ❓ is the exception: every message carries it in full, its TL;DR line and its command or question included, until Thomas answers it or says the command ran.
-- **Names**: in prose, a to-do or a subject is named by its words and its project. An app id stays in tool calls, briefs and block tags.
-- **A background result** (a subagent) gets its own block in the next message, written in full so it stands alone. A brief's result stays with its lead: the lead reports in its own tab, and the subject's line in the cockpit shows where it stands.
-- **Icons** close the block and its TL;DR line: ❓ a decision · ▶️ a command to run · 👀 something to read or check · ⏳ waiting on someone else who blocks something (a report that only informs gets no icon). One icon per need. No icon: nothing for Thomas.
-- **A skill's own template** (grilling's questions, ship's report) sits inside its block unchanged; the GPG line stays the very last line.
+- **A need** is what Thomas must do: decide (❓), run a command (▶️), read or check something (👀), or know that someone else blocks something (⏳). One icon per need, at the end of its line.
+- **A topic with no need** (work done, a report that only informs): about one line, the outcome. The rest goes to the subject's line in the cockpit, or to its file.
+- **A topic with a need**: the need first, on one line: the question, the command, what to read, or who blocks what. A decision carries the recommended answer on the next line. Then the why, in about five lines. More only when he asks for it.
+- **Several topics**: each one written as above under its cockpit subject tag (`[N · name]`, `[new · name]` until it has one), the topics with a need first. One topic: no heading. Topics that did not move stay in the cockpit, their subject lines current.
+- **An open need** (a ❓ or a ▶️ Thomas has not answered) is a topic of every message until he answers it or says the command ran: its need line and its recommended answer, without the why.
+- **Names**: in prose, a to-do or a subject is named by its words and its project. An app id stays in tool calls, briefs and subject tags.
+- **A background result** (a subagent) is a topic of the next message, written for a reader who did not see that work. A brief's result stays with its lead: the lead reports in its own tab, and the subject's line in the cockpit shows where it stands.
+- **A skill's own template** (grilling's questions, ship's report) sits inside its topic unchanged; the GPG line stays the very last line.
 - **Style**: **wait-what** (`~/.claude/skills/wait-what/SKILL.md`): a little context, ASD-STE100 Simplified Technical English, the words of the project's glossary. Thomas reads it once, with no question back.
 - **Language**: English, unless the project's own rule says otherwise. Reviews and PR or ticket comments are written in the **project language** from the start: the `Language:` line of `CLAUDE.local.md` in the repo or of the project's vault `CLAUDE.md`, English when there is none. Commits and issues follow the repo's own language (`commit`, `issue`). A relayed text is quoted in its own language.
 
