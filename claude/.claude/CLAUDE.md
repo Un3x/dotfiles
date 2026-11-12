@@ -17,7 +17,7 @@
 
 Every message that ends a turn, from any session that talks to Thomas. A subagent reports to its session, which rewrites the report into this shape.
 
-- **A need** is what Thomas must do: decide (❓), run a command (▶️), read or check something (👀), or know that someone else blocks something (⏳). One icon per need, at the end of its line.
+- **A need** is what Thomas must do: decide (❓), run a command (▶️), read or check something (👀), or know that someone else blocks something (⏳). One icon per need, at the end of its line. A ❓ ends a question Thomas can answer as it stands, never a heading or a table row.
 - **A topic with no need** (work done, a report that only informs): about one line, the outcome. The rest goes to its file.
 - **A topic with a need**: the need first, on one line: the question, the command, what to read, or who blocks what. A decision carries the recommended answer on the next line. Then the why, in about five lines. More only when he asks for it.
 - **Several topics**: each one written as above under its name in brackets (`[name]`: its tab's name when it has one), the topics with a need first. One topic: no heading.
