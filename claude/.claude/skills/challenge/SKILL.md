@@ -60,7 +60,7 @@ After presenting findings, ask the user whether they agree with the recommendati
 - **Disagreed or killed**: leave a comment with the verdict and the user's decision, so the reasoning survives the next time the issue surfaces.
 - **No issue** (conversation-mode challenge): offer to create one capturing the agreed scope.
 
-Never update the tracker before the user has weighed in.
+Update the tracker only after the user has weighed in.
 
 ## Rules
 

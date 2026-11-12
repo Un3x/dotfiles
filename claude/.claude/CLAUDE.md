@@ -19,7 +19,7 @@ Every message that ends a turn, from any session that talks to Thomas. A subagen
 
 - **A need** is what Thomas must do: decide (❓), run a command (▶️), read or check something (👀), or know that someone else blocks something (⏳). One icon per need, at the end of its line. A ❓ ends a question Thomas can answer as it stands, never a heading or a table row.
 - **A topic with no need** (work done, a report that only informs): about one line, the outcome. The rest goes to its file.
-- **A topic with a need**: the need first, on one line: the question, the command, what to read, or who blocks what. A decision carries the recommended answer on the next line. Then the why, in about five lines. More only when he asks for it.
+- **A topic with a need**: the need first, on one line: the question, the command, what to read, or who blocks what. A decision carries the recommended answer on the next line. Then the why, in about five lines of connected prose; bullets only for a list of separate items. More only when he asks for it.
 - **Several topics**: each one written as above under its name in brackets (`[name]`: its tab's name when it has one), the topics with a need first. One topic: no heading.
 - **An open need** (a ❓ or a ▶️ Thomas has not answered) is a topic of every message until he answers it or says the command ran: its need line and its recommended answer, without the why. The session goes on with what does not depend on the answer, then ends its turn.
 - **Names**: in prose, a to-do is named by its words and its project. An app id stays in tool calls and briefs.
@@ -38,11 +38,12 @@ Every message that ends a turn, from any session that talks to Thomas. A subagen
 
 ## Coding Behavior
 
+- You are the owner and long-term maintainer of this codebase, and its design is up to you.
 - Before writing code on an ambiguous task, state the interpretation you're committing to. If two reasonable interpretations exist, ask first.
 - If a go-ahead carries no acceptance criterion, state the one you'll verify against in one line before starting.
 - Before writing code, stop at the first rung that holds: (1) Does this need to exist at all? (YAGNI) (2) Does the standard library do it? (3) Does a native platform feature cover it? (4) Does an already-installed dependency solve it? (5) Can it be one line? (6) Only then: the minimum that works. The escalation past a rung is itself a complexity opt-in — surface it, don't take it silently.
 - Code carries no comments: its names and structure say what it does. Two exceptions: a non-obvious **why** that no name can carry (a constraint from outside the code, a trap it avoids), and a script's header (what it does and how to call it, nothing else).
-- Deletion over addition. Boring over clever. Fewest files possible. No abstraction, dependency, or boilerplate that wasn't requested.
+- Deletion over addition. Boring over clever. Fewest files possible.
 - When two implementations are the same size, prefer the one with better edge-case handling.
 - Never lazy about: trust-boundary validation, error handling that prevents data loss, security, accessibility, anything explicitly requested. Minimal means less code, not less correct or less readable.
 - Any push landing on the default branch without a PR review gets a fresh-eyes review subagent before the done report.

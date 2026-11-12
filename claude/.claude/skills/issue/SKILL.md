@@ -25,7 +25,7 @@ Read [`../issue-template.md`](../issue-template.md), then follow [`review.md`](r
 
 ## Rules
 
-- **Someone else's issue is never touched**: what it lacks goes under « Ajouté après relecture » or in a comment, once the user agreed. A title that does not say what it asks is a question to its author, with a proposed title.
+- **Someone else's issue is touched only once the user agreed**: what it lacks goes under « Ajouté après relecture » or in a comment. A title that does not say what it asks is a question to its author, with a proposed title.
 - **A rewrite of our issue for clarity translates**: the words change, the meaning does not. A point the template leaves out (the cause, code, edge cases, who decided) is cut, and listed for the user at step 4: never dropped silently.
 - **A later decision changes the lines it touches in place**, and a comment says what changed and why.
 - What ships and how goes on the PR, never on the issue.
