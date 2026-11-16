@@ -25,6 +25,9 @@ Bash)
   if printf '%s' "$CMD" | grep -qE -- "${START}(heroku|scalingo)\b[^;&|]* run\b[^;&|]*[ \"'](env|printenv)([ \"']|$)" || printf '%s' "$CMD" | grep -qE -- "${START}(heroku +config|scalingo\b[^;&|]* env)( |$)"; then
     block "this prints every config var of the app, secrets included. Pass settings inside the one-off command itself (bin/rails runner …), a value the user needs: hand them the command."
   fi
+  if printf '%s' "$CMD" | grep -oE -- "${START}((until|while|if|then|do|!) +)*(command +)?p(grep|kill)\b[^;&|]* -[a-zA-Z]*f\b[^;&|]*" | grep -qv '\['; then
+    block "pgrep -f and pkill -f match the shell that runs this command, whose command line holds the same pattern: a wait loop never ends, a pkill kills its own shell. Wait on the PID (\`while kill -0 <pid>\`) or on an output file, or bracket one letter of the pattern (\`[c]odex exec\`)."
+  fi
   if printf '%s' "$CMD" | grep -qE -- "${START}(command +)?herdr +agent +prompt" && [ "$(printf '%s' "$CMD" | grep -oE '/(plan|ship|review|challenge)\b' | wc -l)" -ge 2 ]; then
     block "one slash command per delegated brief. Chaining is /work's job."
   fi

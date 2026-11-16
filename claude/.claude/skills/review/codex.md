@@ -1,6 +1,6 @@
 # Codex second opinion
 
-Review mode is read-only by design. Run it with `run_in_background`, before your own passes, so it runs in parallel. In a subagent, run it in the foreground after Pass 4 instead (Bash `timeout` 600000): a subagent that waits on a background run ends its turn and the review never finishes. Past the timeout, the Codex line says `not run — timeout`.
+Review mode is read-only by design. Run it with `run_in_background`, before your own passes, so it runs in parallel. In a subagent, start it detached before your own passes and keep its PID (`nohup <command> & echo $!`), then wait on that PID after Pass 4, in foreground calls under 180 s (`timeout 170 sh -c 'while kill -0 <pid> 2>/dev/null; do sleep 5; done'`), until it exits or 10 minutes pass: the Bash tool moves a longer call to the background, and a subagent that waits on a background run ends its turn. Past 10 minutes, the Codex line says `not run — timeout`.
 
 ## Command per target
 
