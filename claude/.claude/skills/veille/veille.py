@@ -349,10 +349,12 @@ def advisories(since, locks):
         raw = f"{a.get('summary') or ''} {a.get('description') or ''}".lower()
         text = re.sub(r"\b(action|active) (\w+)", r"\1\2", raw.replace("ruby on rails", "rails").replace("action dispatch", "actionpack"))
         found = []
+        # "the httpx Ruby gem … calls json" is about httpx: once the text names its gem or package, match only that name.
+        named = set(re.findall(r"\b([\w/.-]+) (?:ruby )?(?:gem|package)\b", text)) - {"the", "a", "this", "ruby", "php", "npm"}
         for eco, marker in UNREVIEWED_MARKERS.items():
             if not re.search(marker, raw):
                 continue
-            for pkg in sorted({n for _, _, e, p in locks if e == eco for n in p if len(n) >= 4}):
+            for pkg in sorted({n for _, _, e, p in locks if e == eco for n in p if len(n) >= 4 and (not named or n in named)}):
                 if not re.search(rf"(?<![\w/-]){re.escape(pkg)}(?![\w/-])", text):
                     continue
                 fixed = re.search(rf"{re.escape(pkg)}[^.]*?\b(?:before|prior to) v?(\d[\w.]*\d)", text)
