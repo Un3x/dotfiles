@@ -63,6 +63,18 @@
         ]
       }
     ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "env=\"$HOME/.config/yspassequoi/push.env\"; [ -r \"$env\" ] || exit 1; set -a; . \"$env\"; set +a; python3 \"$HOME/Project/yspassequoi/script/inbox_hook.py\" || exit 1",
+            "async": true,
+            "timeout": 20
+          }
+        ]
+      }
+    ],
     "PreToolUse": [
       {
         "matcher": "Edit|Write|MultiEdit",
