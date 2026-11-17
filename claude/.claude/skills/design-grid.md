@@ -26,6 +26,7 @@ Report only what the code shows. An empty family is a fine outcome.
 - **Shared mutable context**: values set then reset to hide them, defensive copies, temporal coupling.
 - **Inputs mutated in place** (normalization, defaults), so the original is lost to whoever needs it later. Parse at the boundary into a new value.
 - **Time**: several « now » in one operation, time zones, expiry windows.
+- **Double submit and races**: closed on the server, by a unique key or a lock inside a transaction. A disabled button or any JS guard is comfort only: without JS, on an old browser or a slow network, the request still goes twice.
 - **Cache**: does the new behaviour bypass, poison or leak through a cache, and on which key. A cached value whose content, shape or lifetime changes gets a new key in the same commit, not a purge left to the deploy.
 
 ## Paths and environments

@@ -16,5 +16,6 @@
 - **A change the plan names but the step could do without gets its own commit**, before the commit that uses it: a boy-scout cleanup, a new hook in a base class, a rename. Folded into a feature commit, it reads as a required change.
 - **Design tripwire**: when a plan step's design does not hold (the approved construct breaks a test or hides a failure), stop and flag it with what broke. Another construct comes in only on the planner's word, and one the plan's `Design:` line rejected only on the user's: the shape is the planner's call.
 - **Scope tripwire**: the diff stops at the issue's scope, never at a line count. A change the plan did not name is listed in the PR body; a diff that outgrows a commit-by-commit read is said in the report, never split into a PR that ships half a functionality ([`slices.md`](slices.md)).
+- **Mechanism tripwire**: when a fix needs one more mechanism the plan did not name (it had a session reset, now JS, now cache headers), stop and report it with the smallest fix you see that covers most cases; the planner decides. A bug fix that leaves rare cases out, each named on its own line in the PR body, is not half a functionality. The reviewer pays for every mechanism, and a partial fix stated openly beats a full one nobody can follow.
 - If tests fail unrelated to the plan, note them and continue
 - No blocking on flaky feature tests
