@@ -31,5 +31,6 @@ An agent that has to start the app, find the admin login and click to a screen r
 - Prefer stable handles: accessible names, labels, route paths, `data-*` attributes; never CSS position or generated classes.
 - Drive only an instance this run started, on its own port; a shared dev server is not verified through.
 - Evidence is the action and the resulting state, plus a read-back of any mutation; a final screenshot alone proves nothing.
+- The VPS has no ffmpeg: a screencast there is a captioned slideshow of the drive's screenshots.
 - The map is the user's point of view; class names and code paths stay out of it, an agent discovers them at run time.
 - **One drive per feature**, `features/<feature>.<ext>` beside `features/<feature>.md`, on the shared harness; never one file holding every feature, which every PR touching the map rewrites and rebases. A drive asserts each check and prints one line per check, `PASS <check>` or `FAIL <check>: <what it saw>`, then the evidence path.

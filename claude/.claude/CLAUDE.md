@@ -7,11 +7,12 @@
 ## Servers and secrets
 
 - Never connect to a server (`ssh`, `scp`, remote exec) and never read, decrypt or print a secret (Rails credentials, ansible-vault, `.env` values). Hand the user the command and let them paste back what they choose. Public HTTP checks are fine.
+- A log command handed to the user takes a time window around the event (`grep -B 40 -A 5 "<hh:mm>"`), never a keyword filter: the filter drops the line that gives the cause.
 
 ## Commit Conventions
 
 - Commit messages and PR title/body: the `commit` skill, read before every `git commit` and `gh pr create`.
-- **NEVER** disable GPG signing (`--no-gpg-sign`). If signing fails, the key is locked: leave the change staged with its message ready, end your message with this line on its own — `GPG locked — run: ! echo | gpg --clearsign >/dev/null, then say go` — and carry on with whatever needs no commit. A subagent hands that line up to the session that spawned it.
+- **NEVER** disable GPG signing (`--no-gpg-sign`). If signing fails, the key is locked: leave the change staged with its message ready, in the main checkout (a worktree is deleted with what it stages), end your message with this line on its own — `GPG locked — run: ! echo | gpg --clearsign >/dev/null, then say go` — and carry on with whatever needs no commit. A subagent hands that line up to the session that spawned it.
 
 ## Messages to Thomas
 
@@ -34,7 +35,7 @@ Every message that ends a turn, from any session that talks to Thomas. A subagen
 - Prefer a 5-line diagram over 5 paragraphs when explaining a flow.
 - Anything handed to someone (a review, a PR, an issue, a message) is ready to pass on as is. If Thomas has to rewrite it, it failed.
 - A number in a rule or a message is a goal, not a cap: comprehension wins (`~/.claude/skills/writing-for-agents/house-rules.md` § Three kinds of number).
-- A PR, issue or ticket (GitHub, Linear…) named in a message to the user or in a subagent report comes as a Markdown link, its short tag as the text and its full URL as the target (`[SIM-257](https://linear.app/pole-api/issue/SIM-257)`, `[formulaire-qf#426](https://github.com/etalab/formulaire-qf/pull/426)`), never a bare tag nor a raw URL: herdr makes only the visible part of a wrapped URL clickable.
+- A PR, issue or ticket (GitHub, Linear…) named in a message to the user or in a subagent report comes as a Markdown link, its short tag as the text and its full URL as the target, the one the tracker returns, never built from the example (`[SIM-257](https://linear.app/pole-api/issue/SIM-257)`, `[formulaire-qf#426](https://github.com/etalab/formulaire-qf/pull/426)`), never a bare tag nor a raw URL: herdr makes only the visible part of a wrapped URL clickable.
 
 ## Coding Behavior
 

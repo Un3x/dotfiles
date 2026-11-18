@@ -6,7 +6,7 @@ GitHub draws a markdown image at its natural size, capped at the body width (abo
 python3 -c 'import struct,sys; d=open(sys.argv[1],"rb").read(24); print(*struct.unpack(">II", d[16:24]))' a.png
 ```
 
-- Crop a very tall image (a full-page capture) to the part that matters, about a screen ratio, under a new name, before attaching it.
+- Crop a very tall image (a full-page capture) to the part that matters, about a screen ratio, under a new name, before attaching it. The VPS has no image tools (no Pillow, ImageMagick, vips): take the capture again in the browser at that size.
 - After the upload, replace each `![alt](https://github.com/user-attachments/…)` of a portrait capture by `<img src="…" alt="alt" width="240">`, and put the images to compare on the same line, separated by a space, so they render side by side (mockup, before, after).
 - Attach with `![alt](/abs/path)` first, since gh does not rewrite an `<img src>` holding a local path; then fetch the saved body, swap in the `<img>` tags and save it with `gh pr edit --body-file` without `--attach`, which would upload the files a second time.
 
