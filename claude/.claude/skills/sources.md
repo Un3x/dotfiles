@@ -1,6 +1,6 @@
 # Sources
 
-Read from step 2 of `post`. Thomas criticises studies in public (« et si je lisais l'article ? »): his own post cannot be caught with the same flaw.
+Read when a text rests on a source: step 3 of `post`. Thomas criticises studies in public (« et si je lisais l'article ? »): his own post cannot be caught with the same flaw.
 
 1. **Get the primary source**: the study's PDF or the advisory, not the article about it. A PDF comes back binary through WebFetch: download it to the scratchpad and run `pdftotext -layout`. A news item without a primary source is said to be secondary in the hand-over.
 2. **Read it with the grid**:

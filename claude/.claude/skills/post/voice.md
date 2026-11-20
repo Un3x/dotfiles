@@ -1,12 +1,11 @@
 # La voix de Thomas
 
-Lu à l'étape 4 de `post`, après `paires.md`. Les exemples priment sur les règles : en cas de doute, on imite les textes publiés des paires « dictée ».
+Lu à l'étape 5 de `post`, voix de Thomas, après `paires.md`. Les exemples priment sur les règles : en cas de doute, on imite les textes publiés des paires « dictée ».
 
 ## Ce qui marche (posts.md, octobre 2026)
 
 - Une expérience à lui + un avis tranché (« L'IA a mal fait TON travail », 10x la portée des autres).
 - L'actualité tech + un avis tranché (PHP, 13 500 impressions, record).
-- Une vraie question à la fin, qui fait commenter. La plus sincère : il avoue ne pas avoir la réponse, puis il demande (« Et moi ? Honnêtement, je n'ai pas la réponse. […] Vous le gérez comment, vous ? »). Quand sa pratique manque, on lui propose ce format plutôt qu'une réponse inventée.
 - Un mème illustre un post qui a du fond : il aime les mèmes, il travaille avec des gens qu'il aime.
 - Ce qui a fait un flop : la série de posts faits d'un mème seul, le commentaire d'étude sans actualité.
 
@@ -27,10 +26,8 @@ Lu à l'étape 4 de `post`, après `paires.md`. Les exemples priment sur les rè
 
 ## Forme
 
-- Première ligne courte, qui tient seule dans l'aperçu : « Je suis d'accord avec moi même. », « Il y a un truc avec l'IA que je ne comprends pas. », « Les tests unitaires sont morts, vives les tests unitaires. »
 - Une idée par ligne, une ligne vide entre chaque.
 - Pas de post court sans fond. Une histoire ou une méthode peut aller jusqu'à 2 000 caractères.
-- Fin : une chute ou une question, jamais un résumé.
 
 ## Tics d'IA à ne pas écrire
 
@@ -41,7 +38,7 @@ Lu à l'étape 4 de `post`, après `paires.md`. Les exemples priment sur les rè
 - Les listes à emojis 🚀✅💡.
 - Une morale générale à la fin (« Au final, tout est une question d'équilibre »).
 
-## Vérification (étape 5)
+## Vérification (étape 6)
 
 - [ ] Chaque chiffre est dans la source lue, avec le même périmètre (« des équipes interrogées », pas « des équipes »).
 - [ ] Chaque blague qui affirme un fait est vraie.
