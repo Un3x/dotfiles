@@ -132,6 +132,8 @@ See [Specification Test Reference](references/core/specification-test.md) for de
 
 **"Where should this code go?"**
 
+A project's own rules (its `CLAUDE.md`) win over this guide: where they rule out a pattern below, such as presenters or service objects, follow the project.
+
 | If you have... | Consider... |
 |----------------|-------------|
 | Complex multi-model form | Form Object |
