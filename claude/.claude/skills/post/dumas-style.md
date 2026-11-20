@@ -17,7 +17,7 @@ Lu à l'étape 5 de `post`, voix Dumas, après la transposition. Thomas veut une
 
 - L'ouverture tient seule dans l'aperçu, avant « voir plus » : environ les deux premières lignes, environ 200 caractères.
 - Une idée par paragraphe, une ligne vide entre les paragraphes et entre les répliques, 1 500 à 2 000 caractères.
-- La fin : la phrase de fin de chapitre, en dernier. Ni question au lecteur ni ligne qui dit que c'est vrai après elle (Thomas, 2026-11-20). La source va dans le premier commentaire.
+- La fin : la phrase de fin de chapitre, puis, seule sur sa ligne, une question au lecteur : « Vous avez reconnu de quoi on parlait ? 👇 » (Thomas, 2026-11-20 : sur chaque post). Aucune ligne qui dit que c'est vrai. La source va dans le premier commentaire.
 
 ## L'ouverture
 
@@ -90,4 +90,4 @@ Une phrase déclarative courte, au point final, presque jamais une réplique : u
 - [ ] Le dialogue porte le tournant de l'histoire (l'accusation, la découverte), en répliques courtes.
 - [ ] Au moins une période longue tombe sur une phrase courte seule dans son paragraphe.
 - [ ] Le tiret n'apparaît qu'en tête de réplique.
-- [ ] Le texte se clôt sur la phrase de fin de chapitre, déclarative et courte ; rien après elle.
+- [ ] Le récit se clôt sur la phrase de fin de chapitre, déclarative et courte ; après elle, seule la question « Vous avez reconnu de quoi on parlait ? 👇 ».
