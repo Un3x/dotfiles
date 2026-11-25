@@ -9,7 +9,7 @@ For each subfolder, check the corresponding issue in the project's tracker (« i
 Then delete the project's auto-review briefs whose PR is merged or closed: `~/Documents/mylife_in_a_vault/systems/clean-briefs.sh <project>`, the project being the last folder of the path in `.claude/project-lead`.
 Then the branches, after `git fetch --prune origin`:
 Our finished branches are the `headRefName` and `headRefOid` of `gh pr list --author @me --state merged --limit 1000`. A branch that is the default branch, the base (`baseRefName`) of any PR (`--state all --limit 1000`), or the head of more than one PR, is never one of them: it is long-lived.
-When the current branch is one of them and `git status --porcelain` prints nothing, `git fetch`, `git switch` to the default branch and `git merge --ff-only origin/<default>` first: a checkout left on a merged branch falls behind, and the next session starts from old code.
+When the current branch is one of them and `git status --porcelain` prints nothing, `git switch` to the default branch and `git merge --ff-only origin/<default>` first: a checkout left on a merged branch falls behind, and the next session starts from old code.
 - **Local**: each one deleted with `git branch -d`. When git refuses (a squash merge), `git branch -D` only when its tip is the PR's `headRefOid`.
 - **Remote**: each one whose remote tip is still the PR's `headRefOid`, deleted with `git push origin --delete`.
 - Never deleted: the current branch, a branch in a worktree, a branch with an open PR. A closed PR's branch and a teammate's are not finished branches. A finished branch that stays is named in the report (the reply, or the brief's Result).

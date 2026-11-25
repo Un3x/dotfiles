@@ -11,7 +11,7 @@ The project lead session runs in the repo with the vault protocol and the projec
 
 | Input | First step | Then |
 | --- | --- | --- |
-| a bug report: email, message, screenshot, Sentry event | `/reproduce`, in session | `reproduced` or `flaky` → ticket written with the `issue` skill → challenge; `already fixed` or `not reproduced` → answer the reporter, stop |
+| a bug report: email, message, screenshot, Sentry event | `/reproduce`, in session | `reproduced` or `flaky` → ticket written with the `issue` skill → challenge; `already fixed` or `not reproduced` → answer the reporter, stop; a past decision → the user, stop |
 | an issue with no command | `/challenge`, in session | `CHALLENGE: GO` → plan; `RESHAPE` or `DROP` → the user |
 | an issue with the ask settled | `/plan`, in session | plan `ready` → level 3: the user approves → ship; levels 1 and 2 → ship; questions → the user |
 | several issues at once (« ship them all ») | § Batch | one brief at the end |
