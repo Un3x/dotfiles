@@ -85,5 +85,3 @@ One GitHub review, event `COMMENT`, never an approval or a change request. The a
 - **Post**: `gh api repos/<owner>/<repo>/pulls/<n>/reviews --input review.json`, the file holding `commit_id` (the head SHA), `event: "COMMENT"`, `body`, and `comments: [{path, line, side: "RIGHT", body}]`. A line is in the diff when `gh pr diff` shows it as an added or context line of a hunk. A `422` rejects the whole review: move the comments it names (or all of them) into the body and post again, and an auto-review brief's Result says so.
 
 No finding left after the filter: the automatic review posts nothing on the PR, since a post gives its readers something to act on.
-
-An approval Thomas asks for is his own act, outside this review. Before `gh pr review --approve`, read the findings on that head, posted or in the local report; the message that reports the approval names each `critical` or `important` finding that is not fixed or answered on the PR: he gives the word without the review in front of him.

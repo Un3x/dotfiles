@@ -25,7 +25,7 @@ The project lead session runs in the repo with the vault protocol and the projec
 
 ## Human gates
 
-The session never crosses these on its own: plan approval before ship at level 3 (`../one-rule.md` § What level is it?); at levels 1 and 2 the user reads the plan on the issue, with the code; merge by default, unless the repo's own merge rules (`REVIEW.md`, its `CLAUDE.md`) let an agent merge that PR: they are stronger than this default; `RESHAPE` or `DROP`; anything irreversible (force-push, migration on data, deploy, a message to a partner).
+The session never crosses these on its own: plan approval before ship at level 3 (`../one-rule.md` § What level is it?); at levels 1 and 2 the user reads the plan on the issue, with the code; merge by default, unless the repo's own merge rules (`REVIEW.md`, its `CLAUDE.md`) let an agent merge that PR: they are stronger than this default; `RESHAPE` or `DROP`; anything irreversible (force-push, migration on data, deploy, a message to a partner). An approval the user asks for (`gh pr review --approve`) waits one turn when a `critical` or `important` finding on that head is not fixed or answered on the PR, in the posted review or the local report: name each one to the user, and approve only on their answer, since they gave the word without the review in front of them.
 
 ## Batch
 
