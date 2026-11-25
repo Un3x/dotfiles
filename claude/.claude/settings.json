@@ -23,6 +23,15 @@
     "defaultMode": "bypassPermissions"
   },
   "model": "opus",
+  "skillOverrides": {
+    "anthropic-skills:built-in-browser": "off",
+    "anthropic-skills:chrome-browser": "off",
+    "anthropic-skills:computer-use": "off",
+    "anthropic-skills:docs": "off",
+    "anthropic-skills:import-memory": "off",
+    "anthropic-skills:docx": "off",
+    "anthropic-skills:pptx": "off"
+  },
   "hooks": {
     "SessionStart": [
       {
@@ -63,8 +72,8 @@
           {
             "type": "command",
             "command": "env=\"$HOME/.config/yspassequoi/push.env\"; [ -r \"$env\" ] || exit 1; set -a; . \"$env\"; set +a; python3 \"$HOME/Project/yspassequoi/script/inbox_hook.py\" || exit 1",
-            "async": true,
-            "timeout": 20
+            "timeout": 20,
+            "async": true
           }
         ]
       }
@@ -75,8 +84,8 @@
           {
             "type": "command",
             "command": "env=\"$HOME/.config/yspassequoi/push.env\"; [ -r \"$env\" ] || exit 1; set -a; . \"$env\"; set +a; python3 \"$HOME/Project/yspassequoi/script/inbox_hook.py\" || exit 1",
-            "async": true,
-            "timeout": 20
+            "timeout": 20,
+            "async": true
           }
         ]
       }
@@ -119,6 +128,17 @@
           }
         ]
       }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "env=\"$HOME/.config/yspassequoi/push.env\"; [ -r \"$env\" ] || exit 1; set -a; . \"$env\"; set +a; python3 \"$HOME/Project/yspassequoi/script/inbox_hook.py\" || exit 1",
+            "timeout": 5
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
@@ -130,7 +150,8 @@
     "dsfr@dsfr-skill": false,
     "ruby-lsp@claude-plugins-official": true,
     "accessibility@rgaa-toolkit": true,
-    "dsfr-skill@dsfr-skill": true
+    "dsfr-skill@dsfr-skill": true,
+    "stripe@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "rgaa-toolkit": {
@@ -142,19 +163,11 @@
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "medium",
+  "advisorModel": "opus",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
   "verbose": false,
   "switchModelsOnFlag": false,
-  "agentPushNotifEnabled": true,
-  "skillOverrides": {
-    "anthropic-skills:built-in-browser": "off",
-    "anthropic-skills:chrome-browser": "off",
-    "anthropic-skills:computer-use": "off",
-    "anthropic-skills:docs": "off",
-    "anthropic-skills:import-memory": "off",
-    "anthropic-skills:docx": "off",
-    "anthropic-skills:pptx": "off"
-  }
+  "agentPushNotifEnabled": true
 }
