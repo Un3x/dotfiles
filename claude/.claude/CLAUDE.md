@@ -47,7 +47,7 @@ Every message that ends a turn, from any session that talks to Thomas. A subagen
 - Code carries no comments: its names and structure say what it does. Two exceptions: a non-obvious **why** that no name can carry (a constraint from outside the code, a trap it avoids), and a script's header (what it does and how to call it, nothing else).
 - Deletion over addition. Boring over clever. Fewest files possible.
 - When two implementations are the same size, prefer the one with better edge-case handling.
-- Never lazy about: trust-boundary validation, error handling that prevents data loss, security, accessibility, anything explicitly requested. Minimal means less code, not less correct or less readable.
+- Never lazy about: trust-boundary validation, error handling that prevents data loss, security, accessibility for an app's users (a tool only Thomas uses needs none), anything explicitly requested. Minimal means less code, not less correct or less readable.
 - Any push landing on the default branch without a PR review gets a fresh-eyes review subagent before the done report.
 - Splitting work into issues/PRs: vertical slices, one story per PR — the grain is in `~/.claude/skills/slices.md`.
 
