@@ -14,5 +14,5 @@
     3. **Re-ship**: implement the new steps with the [red-green-commit](../red-green-commit.md) cycle, push to the same branch (the PR updates; when SSH fails, the rewritten-branch HTTPS push of `SKILL.md` step 4). A fix goes into the commit whose story it tells (`commit` skill step 3: `--fixup`, autosquash, `--force-with-lease`) and into the file whose behaviour it covers, never into a file because its setup happens to make the test pass
     4. Spawn a **fresh** review subagent on the updated PR with the round-2 prompt, repeat
 - **A `rule` row** is fixed like any other. Monday's `/learn since` carries every `rule` row to the lessons ledger.
-- **Round cap: 3.** If open rows remain after round 3, stop looping: note the open rows in the session file `## Notes` and surface them to the user. Past three rounds the problem is likely the design or the scope, not the fixes: say which you suspect.
+- **Round cap: 3.** If open rows remain after round 3, stop looping: note the open rows in the session file `## Notes` and surface them to the user. Past three rounds the problem is likely the design or the scope, not the fixes: say which you suspect. A fix written after the cap stays local: it is pushed only after a round reads it, or on the user's word.
 - Update the session's Review round after each pass so resumption re-enters the loop correctly
