@@ -34,7 +34,7 @@ The **wait-what** pitch of the finding, written for the PR's author (who may be 
 
 ## Verdict
 
-From the findings, `pre-existing` left out; the first that matches: `needs rethink` (an `off-target` deviation that needs a new approach, or a `critical` or `important` `design` finding questions the approach itself), `fix first` (a `critical` or `important` finding), `clean up first` (a `minor` one), `ship it`. An `off-target` deviation that one fix closes takes its severity's verdict.
+From the findings, `pre-existing` left out; the first that matches: `needs rethink` (the ask is `off-target` and closing it needs a new approach, or a `critical` or `important` `design` finding questions the approach itself), `fix first` (a `critical` or `important` finding), `clean up first` (a `minor` one), `ship it`.
 
 ## Language
 
