@@ -26,6 +26,13 @@ bash_block 'git commit --no-gpg-sign -m x'
 bash_block 'git -c commit.gpgsign=false commit -m x'
 bash_block 'cd repo && git commit --no-gpg-sign -m x'
 bash_pass 'git commit -m "explain --no-gpg-sign"'
+bash_pass "git commit -m 'drop commit.gpgsign=false from the docs'"
+bash_pass 'git commit --message="say --no-gpg-sign is refused"'
+bash_block 'git -c "commit.gpgsign=false" commit -m x'
+bash_block 'git commit -m "x" --no-gpg-sign'
+bash_block 'git commit -m "a$(git commit --no-gpg-sign -m z)"'
+bash_block 'git commit -m "`git commit --no-gpg-sign -m z`"'
+bash_pass "git commit -m 'a \$(--no-gpg-sign) in single quotes runs nothing'"
 
 bash_block 'git push --force origin main'
 bash_block 'git push -f'
