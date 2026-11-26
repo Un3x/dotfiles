@@ -9,7 +9,7 @@ Ships one issue of the project's tracker ([`../tracker.md`](../tracker.md)): its
 - `/ship-issue <issue>` - Ship that issue
 - `/ship-issue` (no args) - Resume an in-progress ship (`session.md` § Resumption); none → report "No active ship session"
 
-Progress lives in `.notes/<branch_name>/ship-issue-session.md` ([`session.md`](session.md)). Update it after each phase change.
+Progress lives in `.notes/<branch_name>/ship-session.md` ([`session.md`](session.md)). Update it after each phase change.
 
 ## Phases
 
