@@ -26,7 +26,7 @@ Then check against [`../issue-template.md`](../issue-template.md): the rules the
 ## 4. The other readers
 
 - **Dev**: can estimate from the top and the links; each decision said as what was decided. Code detail below the line, a screen detail in the expected behaviour, or a decision that repeats the top or says who, when or how, is PAS CLAIR.
-- **Tester and `/ship`**: the scope is bounded; each criterion is a check they can run; each user the change touches has one for their usual path; the bug's steps reproduce from a clean account; nothing needed sits outside the repo unsaid.
+- **Tester and `/ship-issue`**: the scope is bounded; each criterion is a check they can run; each user the change touches has one for their usual path; the bug's steps reproduce from a clean account; nothing needed sits outside the repo unsaid.
 - **The requester**: they recognise their request.
 
 An edge case the rule or a decision answers is `/plan`'s, not a finding; one the PO would answer differently is a hidden question, BLOQUANT.

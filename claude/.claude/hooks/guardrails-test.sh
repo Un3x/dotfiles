@@ -51,8 +51,8 @@ bash_block 'pkill -f node'
 bash_pass 'pgrep -f "[c]odex exec"'
 bash_pass 'pgrep codex'
 
-bash_block 'herdr agent prompt lead "/plan X then /ship X"'
-bash_pass 'herdr agent prompt lead "/ship X"'
+bash_block 'herdr agent prompt lead "/plan X then /ship-issue X"'
+bash_pass 'herdr agent prompt lead "/ship-issue X"'
 
 bash_pass $'cat <<EOF\ngit push --force\nEOF'
 

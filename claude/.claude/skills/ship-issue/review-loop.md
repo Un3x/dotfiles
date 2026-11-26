@@ -2,7 +2,7 @@
 
 - Spawn a review subagent (fresh context, main model: review is judgment, `isolation: "worktree"` so its `gh pr checkout` never switches the branch under you) whose prompt is exactly:
   ```
-  Run /review solo <pull_request_link> — inside /ship's review loop: never post it
+  Run /review solo <pull_request_link> — inside /ship-issue's review loop: never post it
   ```
   `solo` when the plan's `Level:` is 1 or 2. A level 3 plan, or a plan with no `Level:` line, drops the word `solo` and gets the split review.
   From round 2 it adds `Earlier rounds: <absolute paths of the review-round-*.md files in the main checkout's .notes/ (git worktree list)>`. Nothing else — the reviewer forms its own view from the PR and those rounds. `/review` carries the checklist, its specialists, the Codex second opinion and the layered-rails review, so this phase adds nothing on top of it. Save the subagent's report **verbatim** to `.notes/<branch_name>/review-round-N.md` (the `review/output.md` shape, tables and numbering kept), then append `## Triage` with one line per finding, prefixed by its number, severity and type: `1. important bug fixed | rebutted: <why> | deferred: <where>`. A paraphrased round file cannot be counted: a finding that recurs across rounds stops being measurable.

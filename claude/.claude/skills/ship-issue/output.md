@@ -26,5 +26,5 @@ FAS-124 not shipped: the plan has open questions. Run /plan FAS-124 to resolve t
 ### On error:
 ```
 Error shipping FAS-124: [error details]
-Session saved. Run /ship to retry.
+Session saved. Run /ship-issue to retry.
 ```

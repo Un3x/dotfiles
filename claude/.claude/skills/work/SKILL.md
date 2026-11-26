@@ -15,12 +15,12 @@ The project lead session runs in the repo with the vault protocol and the projec
 | an issue with no command | `/challenge`, in session | `CHALLENGE: GO` → plan; `RESHAPE` or `DROP` → the user |
 | an issue with the ask settled | `/plan`, in session | plan `ready` → level 3: the user approves → ship; levels 1 and 2 → ship; questions → the user |
 | several issues at once (« ship them all ») | § Batch | one brief at the end |
-| a plan cleared for ship (§ Human gates) | `/ship <ISSUE>`, **one subagent per issue**, prompt exactly `Run /ship <ISSUE>` plus the decisions this session holds | PR opened and reviewed inside ship → merge per § Human gates |
+| a plan cleared for ship (§ Human gates) | `/ship-issue <ISSUE>`, **one subagent per issue**, prompt exactly `Run /ship-issue <ISSUE>` plus the decisions this session holds | PR opened and reviewed inside ship → merge per § Human gates |
 | a PR to look at | `/review <url>`, fresh subagent | report relayed, quoted in its own language |
 | a PR with a human review: ours reviewed by a teammate or the user, or a teammate's the user reviewed | `/learn <PR>`, in session | the kept rules applied, the ledger updated |
 | the EA's Monday brief | do `~/.claude/skills/clean/SKILL.md` for `.notes/`, `/verify maintain` in a subagent, `/learn since <last Monday>` up to its step 5 | the outcomes and the table in the brief's Result |
 | drift suspected in the verify map | `/verify maintain`, subagent | outcome in the check-in |
-| a settled ask that ends in a PR, with no issue: an EA brief, a chore | one subagent follows `/ship` with the ask in place of the issue and plan: worktree branch, tests where the change can be tested (else the proof the ask names), PR, review loop (`ship/review-loop.md`); never in session | PR reviewed and fixed by that subagent → merge per § Human gates; one subagent owns the PR, so none leaves unreviewed |
+| a settled ask that ends in a PR, with no issue: an EA brief, a chore | one subagent follows `/ship-issue` with the ask in place of the issue and plan: worktree branch, tests where the change can be tested (else the proof the ask names), PR, review loop (`ship-issue/review-loop.md`); never in session | PR reviewed and fixed by that subagent → merge per § Human gates; one subagent owns the PR, so none leaves unreviewed |
 | an explicit command | as given; one that opens a PR takes the row above | — |
 
 ## Human gates
@@ -32,7 +32,7 @@ The session never crosses these on its own: plan approval before ship at level 3
 Several issues handed over at once (« ship them all ») run push right: the user is asked once, late, with everything prepared.
 
 - One issue at a time, each to a reviewed PR, no checkpoint in between. Each plan is written and checked like any other; its approval moves from before ship to the PR review, where the user sees plan and code together.
-- A question of the user's (product, design, a contradiction between plan and review, a choice between two shapes) is never settled: it goes under the plan's `## Questions` with its recommended answer, the plan is attached to the issue the way `/ship` step 2 does, that issue stops, the queue goes on.
+- A question of the user's (product, design, a contradiction between plan and review, a choice between two shapes) is never settled: it goes under the plan's `## Questions` with its recommended answer, the plan is attached to the issue the way `/ship-issue` step 2 does, that issue stops, the queue goes on.
 - At the end, one brief: first every issue that needs the user, each one once: stopped on a question, with its plan; at the review cap, blocked or in error, with what stopped it; its PR link when it has one. Then per shipped PR, what was produced, why, its link.
 - A single issue, or anything irreversible, keeps § Human gates as written. In a batch the merge stays with the user even where the repo's merge rules allow an agent: it is their only approval of the plan.
 

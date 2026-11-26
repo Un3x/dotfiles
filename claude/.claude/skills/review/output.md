@@ -38,7 +38,7 @@ From the findings, `pre-existing` left out; the first that matches: `needs rethi
 
 ## Language
 
-Constats and placeholders are in the project language. In the local report, the labels, type words, severity words, verdict words, `Ask:` marks and `not run` stay as written below, since `/ship` reads it by them; the posted review translates them (FR: `Ask:` → `Demande :`, `Ask delivered:` → `Demande réalisée : oui | non | partielle`, `Note:` → `Commentaire :`, `Direction:` → `Piste de correction :`, `Reproduce:` → `Reproduire :`, `Details` → `Détails`, `Where:` → `Où :`, `Result:` → `Résultat :`, `Class:` → `Classe :`). A link is always whole: a PR, an issue or a URL in full; a rule's file by its full path.
+Constats and placeholders are in the project language. In the local report, the labels, type words, severity words, verdict words, `Ask:` marks and `not run` stay as written below, since `/ship-issue` reads it by them; the posted review translates them (FR: `Ask:` → `Demande :`, `Ask delivered:` → `Demande réalisée : oui | non | partielle`, `Note:` → `Commentaire :`, `Direction:` → `Piste de correction :`, `Reproduce:` → `Reproduire :`, `Details` → `Détails`, `Where:` → `Où :`, `Result:` → `Résultat :`, `Class:` → `Classe :`). A link is always whole: a PR, an issue or a URL in full; a rule's file by its full path.
 
 ## Local report
 

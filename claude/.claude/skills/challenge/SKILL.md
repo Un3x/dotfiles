@@ -53,7 +53,7 @@ For each feature/issue, think through these in order:
 
 ## Persist the Verdict
 
-After presenting findings, ask the user whether they agree with the recommendation. Then update the issue so downstream commands (`/plan`, `/ship`) read the post-challenge truth instead of the original issue:
+After presenting findings, ask the user whether they agree with the recommendation. Then update the issue so downstream commands (`/plan`, `/ship-issue`) read the post-challenge truth instead of the original issue:
 
 - **Agreed (proceed / rethink with changes)**: write the issue with the `issue` skill (Skill tool), from the reframed problem, the acceptance lines, the no-gos: it carries the template, the review and the rule for an issue someone else wrote. Rejected alternatives and rabbit holes stay in the challenge output, not on the issue.
 - **Last line of every challenge, verbatim**: `CHALLENGE: GO` (proceed as is or with agreed changes, once every decision has its answer), `CHALLENGE: RESHAPE` (split or rethink, the user decides), or `CHALLENGE: DROP`. `/work` reads that line and nothing else.
