@@ -60,5 +60,3 @@ Every message that ends a turn, from any session that talks to Thomas. A subagen
 ## Rails
 
 - **Vanilla Rails first.** Before writing or planning Rails code, read `~/.claude/skills/one-rule.md`.
-
-@RTK.md
