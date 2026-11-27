@@ -143,7 +143,7 @@ return {
   },
   
   -- Treesitter
-  'nvim-treesitter/nvim-treesitter',
+  { 'nvim-treesitter/nvim-treesitter', branch = 'main', lazy = false, build = ':TSUpdate' },
   
   -- Git
   {
@@ -391,45 +391,42 @@ return {
   -- Treesitter text objects and enhanced selection
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
     dependencies = "nvim-treesitter/nvim-treesitter",
     event = "BufReadPost",
     config = function()
-      require("nvim-treesitter.configs").setup({
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-              ["aa"] = "@parameter.outer",
-              ["ia"] = "@parameter.inner",
-            },
-          },
-          move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-              ["]f"] = "@function.outer",
-              ["]c"] = "@class.outer",
-            },
-            goto_next_end = {
-              ["]F"] = "@function.outer",
-              ["]C"] = "@class.outer",
-            },
-            goto_previous_start = {
-              ["[f"] = "@function.outer",
-              ["[c"] = "@class.outer",
-            },
-            goto_previous_end = {
-              ["[F"] = "@function.outer",
-              ["[C"] = "@class.outer",
-            },
-          },
-        },
+      require("nvim-treesitter-textobjects").setup({
+        select = { lookahead = true },
+        move = { set_jumps = true },
       })
+
+      local select = require("nvim-treesitter-textobjects.select")
+      for key, capture in pairs({
+        af = "@function.outer",
+        ["if"] = "@function.inner",
+        ac = "@class.outer",
+        ic = "@class.inner",
+        aa = "@parameter.outer",
+        ia = "@parameter.inner",
+      }) do
+        vim.keymap.set({ "x", "o" }, key, function()
+          select.select_textobject(capture, "textobjects")
+        end)
+      end
+
+      local move = require("nvim-treesitter-textobjects.move")
+      for method, keys in pairs({
+        goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer" },
+        goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer" },
+        goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer" },
+        goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer" },
+      }) do
+        for key, capture in pairs(keys) do
+          vim.keymap.set({ "n", "x", "o" }, key, function()
+            move[method](capture, "textobjects")
+          end)
+        end
+      end
     end,
   },
   
