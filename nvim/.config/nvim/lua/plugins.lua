@@ -16,7 +16,7 @@ return {
     opts = {},
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+      { "rcarriga/nvim-notify", opts = { stages = vim.env.SSH_TTY and "static" or "fade_in_slide_out" } },
     }
   },
 
