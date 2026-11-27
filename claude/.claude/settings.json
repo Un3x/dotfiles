@@ -154,7 +154,7 @@
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "medium",
-  "advisorModel": "opus",
+  "advisorModel": "fable",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
